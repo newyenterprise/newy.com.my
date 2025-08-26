@@ -13,7 +13,6 @@ export function Navigation() {
   const { user } = useAuth();
 
   const navigation = [
-    { name: "Home", href: "/" },
     { name: "Website", href: "/website" },
     { name: "Apps", href: "/apps" },
     { name: "AI Automation", href: "/ai-automation" },
