@@ -1,8 +1,13 @@
+"use client";
+
+import { useState } from "react";
 import { Button, Card, CardContent, CardDescription, CardHeader, CardTitle, Badge } from "@digitallinked/ui";
 import { ArrowRight, Globe, Smartphone, Zap, TrendingUp, CheckCircle, Users, Building2, GraduationCap, ShoppingCart, Heart } from "lucide-react";
 import Link from "next/link";
+import { InstantQuoteModal } from "../components/instant-quote-modal";
 
 export default function HomePage() {
+  const [isQuoteModalOpen, setIsQuoteModalOpen] = useState(false);
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
@@ -21,7 +26,11 @@ export default function HomePage() {
                 and drive impactful marketing strategies to grow your business.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button size="lg" className="btn-primary text-lg px-8 py-4 animate-glow">
+                <Button 
+                  size="lg" 
+                  className="btn-primary text-lg px-8 py-4 animate-glow"
+                  onClick={() => setIsQuoteModalOpen(true)}
+                >
                   Instant Quote
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
@@ -261,13 +270,23 @@ export default function HomePage() {
             <Button size="lg" variant="secondary" className="text-lg px-8 py-3" asChild>
               <Link href="/contact?action=strategy-call">Book a Free Strategy Call</Link>
             </Button>
-            <Button size="lg" variant="outline" className="text-lg px-8 py-3 bg-transparent border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary">
+            <Button 
+              size="lg" 
+              variant="outline" 
+              className="text-lg px-8 py-3 bg-transparent border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary"
+              onClick={() => setIsQuoteModalOpen(true)}
+            >
               Instant Quote
               <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
           </div>
         </div>
       </section>
+      
+      <InstantQuoteModal 
+        isOpen={isQuoteModalOpen} 
+        onClose={() => setIsQuoteModalOpen(false)} 
+      />
     </div>
   );
 }

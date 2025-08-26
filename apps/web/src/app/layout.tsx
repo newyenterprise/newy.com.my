@@ -4,6 +4,9 @@ import "./globals.css";
 import { ThemeProvider } from "../components/theme-provider";
 import { Toaster } from "../components/ui/toaster";
 import { Navigation } from "../components/navigation";
+import { ChatAssistant } from "../components/chat-assistant";
+import { Footer } from "../components/footer";
+import { AuthProvider } from "../contexts/auth-context";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -62,11 +65,15 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <Navigation />
-          <main className="pt-16">
-            {children}
-          </main>
-          <Toaster />
+          <AuthProvider>
+            <Navigation />
+            <main className="pt-16">
+              {children}
+            </main>
+            <Footer />
+            <ChatAssistant />
+            <Toaster />
+          </AuthProvider>
         </ThemeProvider>
       </body>
     </html>

@@ -4,12 +4,15 @@ import { useState } from "react";
 import Link from "next/link";
 import { Button } from "@digitallinked/ui";
 import { Menu, X } from "lucide-react";
+import { InstantQuoteModal } from "./instant-quote-modal";
 
 export function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isQuoteModalOpen, setIsQuoteModalOpen] = useState(false);
 
   const navigation = [
-    { name: "Website", href: "/" },
+    { name: "Home", href: "/" },
+    { name: "Website", href: "/website" },
     { name: "Apps", href: "/apps" },
     { name: "AI Automation", href: "/ai-automation" },
     { name: "Marketing", href: "/marketing" },
@@ -43,7 +46,10 @@ export function Navigation() {
 
           {/* CTA Button */}
           <div className="hidden md:block">
-            <Button className="btn-primary">
+            <Button 
+              className="btn-primary"
+              onClick={() => setIsQuoteModalOpen(true)}
+            >
               Instant Quote
             </Button>
           </div>
@@ -74,7 +80,13 @@ export function Navigation() {
                 </Link>
               ))}
               <div className="px-3 py-2">
-                <Button className="btn-primary w-full">
+                <Button 
+                  className="btn-primary w-full"
+                  onClick={() => {
+                    setIsQuoteModalOpen(true);
+                    setIsOpen(false);
+                  }}
+                >
                   Instant Quote
                 </Button>
               </div>
@@ -82,6 +94,11 @@ export function Navigation() {
           </div>
         )}
       </div>
+      
+      <InstantQuoteModal 
+        isOpen={isQuoteModalOpen} 
+        onClose={() => setIsQuoteModalOpen(false)} 
+      />
     </nav>
   );
 }
