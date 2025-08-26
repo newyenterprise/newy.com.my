@@ -1,16 +1,19 @@
 import { Button, Card, CardContent, CardDescription, CardHeader, CardTitle, Badge } from "@digitallinked/ui";
 import Link from "next/link";
 import { ArrowRight, Zap, Brain, Bot, Workflow, Check, Star, Code, BarChart, Shield, Clock } from "lucide-react";
+import { ScrollReveal } from "../../components/scroll-reveal";
+import { MagneticButton } from "../../components/magnetic-button";
+import { ParallaxHero } from "../../components/parallax-hero";
 
 export default function AIAutomationPage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center bg-gradient-to-br from-background via-purple-900/20 to-pink-900/20">
-        <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]"></div>
+        <ParallaxHero className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]" speed={0.3}></ParallaxHero>
         <div className="container relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
+            <ScrollReveal>
               <h1 className="text-5xl md:text-6xl font-bold font-display mb-6">
                 <span className="gradient-text">AI-Powered Automation Solutions</span>
               </h1>
@@ -19,20 +22,20 @@ export default function AIAutomationPage() {
                 transform your business operations.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button size="lg" className="btn-primary text-lg px-8 py-4 animate-glow">
+                <MagneticButton size="lg" className="btn-primary text-lg px-8 py-4 animate-glow">
                   Explore AI Solutions
                   <ArrowRight className="ml-2 h-5 w-5" />
-                </Button>
-                <Button size="lg" variant="outline" className="btn-outline text-lg px-8 py-4" asChild>
+                </MagneticButton>
+                <MagneticButton size="lg" variant="outline" className="btn-outline text-lg px-8 py-4" asChild>
                   <Link href="/portfolio">View AI Projects</Link>
-                </Button>
+                </MagneticButton>
               </div>
-            </div>
-            <div className="relative">
+            </ScrollReveal>
+            <ParallaxHero className="relative" speed={0.2}>
               <div className="aspect-[4/3] bg-gradient-to-br from-purple-500/20 to-pink-500/20 rounded-2xl border border-purple-500/20 flex items-center justify-center">
                 <div className="text-6xl font-bold text-muted-foreground/30">600 × 400</div>
               </div>
-            </div>
+            </ParallaxHero>
           </div>
         </div>
       </section>
@@ -40,17 +43,17 @@ export default function AIAutomationPage() {
       {/* How AI Can Transform Your Business */}
       <section className="py-24 bg-muted/30">
         <div className="container">
-          <div className="text-center mb-16">
+          <ScrollReveal className="text-center mb-16">
             <h2 className="text-4xl font-bold font-display mb-4">How AI Can Transform Your Business</h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               Leveraging the Google's Gemini AI model, GPT-4, and other AI technologies, we build intelligent 
               solutions that give your business a competitive edge. We help you identify and implement AI solutions that deliver real-world 
               benefits.
             </p>
-          </div>
+          </ScrollReveal>
           
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-6">
+            <ScrollReveal className="space-y-6" stagger={0.1}>
               {[
                 "Automate repetitive tasks and workflows",
                 "Enhanced customer service with intelligent chatbots",
@@ -64,7 +67,7 @@ export default function AIAutomationPage() {
                   <span className="text-lg">{item}</span>
                 </div>
               ))}
-            </div>
+            </ScrollReveal>
             <div className="relative">
               <div className="aspect-[4/3] bg-gradient-to-br from-purple-500/20 to-pink-500/20 rounded-2xl border border-purple-500/20 flex items-center justify-center">
                 <div className="text-6xl font-bold text-muted-foreground/30">600 × 400</div>
@@ -77,11 +80,11 @@ export default function AIAutomationPage() {
       {/* Our AI Automation Services */}
       <section className="py-24">
         <div className="container">
-          <div className="text-center mb-16">
+          <ScrollReveal className="text-center mb-16">
             <h2 className="text-4xl font-bold font-display mb-4">Our AI Automation Services</h2>
-          </div>
+          </ScrollReveal>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <ScrollReveal className="grid md:grid-cols-2 lg:grid-cols-3 gap-8" stagger={0.1}>
             {[
               {
                 title: "Intelligent Document Processing",
@@ -153,22 +156,22 @@ export default function AIAutomationPage() {
                 </CardContent>
               </Card>
             ))}
-          </div>
+          </ScrollReveal>
         </div>
       </section>
 
       {/* Ready to Automate and Innovate */}
       <section className="py-24 bg-gradient-to-r from-purple-900/20 to-pink-900/20">
-        <div className="container text-center">
+        <ScrollReveal className="container text-center">
           <h2 className="text-4xl font-bold font-display mb-4">Ready to Automate and Innovate?</h2>
           <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
             Let's discuss how AI automation can transform your business operations and drive growth.
           </p>
-          <Button size="lg" className="btn-primary text-lg px-8 py-4 animate-glow">
+          <MagneticButton size="lg" className="btn-primary text-lg px-8 py-4 animate-glow">
             Schedule AI Consultation
             <ArrowRight className="ml-2 h-5 w-5" />
-          </Button>
-        </div>
+          </MagneticButton>
+        </ScrollReveal>
       </section>
 
       {/* Client Testimonials */}

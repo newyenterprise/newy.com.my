@@ -113,7 +113,7 @@ export function Footer() {
               <div className="flex items-start gap-3">
                 <MapPin className="h-5 w-5 text-purple-400 mt-0.5 flex-shrink-0" />
                 <div className="text-muted-foreground text-sm">
-                  38, Jalan 3/24, Bandar Baru Bangi, Selangor 43650 Malaysia
+                  Newcastle, NSW, Australia
                 </div>
               </div>
               <div className="flex items-center gap-3">
@@ -128,10 +128,10 @@ export function Footer() {
               <div className="flex items-center gap-3">
                 <Phone className="h-5 w-5 text-purple-400 flex-shrink-0" />
                 <a 
-                  href="tel:+60138994478" 
+                  href="tel:+61406612824" 
                   className="text-muted-foreground text-sm hover:text-purple-400 transition-colors"
                 >
-                  +60138994478
+                  0406 612 824
                 </a>
               </div>
             </div>

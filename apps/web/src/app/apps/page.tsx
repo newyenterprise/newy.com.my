@@ -1,16 +1,19 @@
 import { Button, Card, CardContent, CardDescription, CardHeader, CardTitle, Badge } from "@digitallinked/ui";
 import Link from "next/link";
 import { ArrowRight, Smartphone, Globe, Zap, TrendingUp, Check, Star, Code, Palette, Database, Shield } from "lucide-react";
+import { ScrollReveal } from "../../components/scroll-reveal";
+import { MagneticButton } from "../../components/magnetic-button";
+import { ParallaxHero } from "../../components/parallax-hero";
 
 export default function AppsPage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center bg-gradient-to-br from-background via-purple-900/20 to-pink-900/20">
-        <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]"></div>
+        <ParallaxHero className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]" speed={0.3}></ParallaxHero>
         <div className="container relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
+            <ScrollReveal>
               <h1 className="text-5xl md:text-6xl font-bold font-display mb-6">
                 <span className="gradient-text">Innovative App Development</span>
               </h1>
@@ -19,20 +22,20 @@ export default function AppsPage() {
                 drive business growth.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button size="lg" className="btn-primary text-lg px-8 py-4 animate-glow">
+                <MagneticButton size="lg" className="btn-primary text-lg px-8 py-4 animate-glow">
                   Discuss Your App Idea
                   <ArrowRight className="ml-2 h-5 w-5" />
-                </Button>
-                <Button size="lg" variant="outline" className="btn-outline text-lg px-8 py-4" asChild>
+                </MagneticButton>
+                <MagneticButton size="lg" variant="outline" className="btn-outline text-lg px-8 py-4" asChild>
                   <Link href="/portfolio">See App Projects</Link>
-                </Button>
+                </MagneticButton>
               </div>
-            </div>
-            <div className="relative">
+            </ScrollReveal>
+            <ParallaxHero className="relative" speed={0.2}>
               <div className="aspect-[3/4] bg-gradient-to-br from-purple-500/20 to-pink-500/20 rounded-2xl border border-purple-500/20 flex items-center justify-center max-w-sm mx-auto">
                 <div className="text-4xl font-bold text-muted-foreground/30">600 × 450</div>
               </div>
-            </div>
+            </ParallaxHero>
           </div>
         </div>
       </section>
@@ -40,16 +43,16 @@ export default function AppsPage() {
       {/* Our App Development Expertise */}
       <section className="py-24 bg-muted/30">
         <div className="container">
-          <div className="text-center mb-16">
+          <ScrollReveal className="text-center mb-16">
             <h2 className="text-4xl font-bold font-display mb-4">Our App Development Expertise</h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               We specialize in creating a wide range of applications, from sophisticated enterprise 
               solutions to engaging consumer apps. Our services include:
             </p>
-          </div>
+          </ScrollReveal>
           
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-6">
+            <ScrollReveal className="space-y-6" stagger={0.1}>
               {[
                 "Native iOS & Android App Development",
                 "Cross-Platform App Development (React Native, Flutter)",
@@ -64,11 +67,11 @@ export default function AppsPage() {
                 </div>
               ))}
               <div className="mt-8">
-                <Button asChild className="btn-primary">
+                <MagneticButton asChild className="btn-primary">
                   <Link href="/portfolio">See App Projects</Link>
-                </Button>
+                </MagneticButton>
               </div>
-            </div>
+            </ScrollReveal>
             <div className="relative">
               <div className="aspect-[3/4] bg-gradient-to-br from-purple-500/20 to-pink-500/20 rounded-2xl border border-purple-500/20 flex items-center justify-center max-w-sm mx-auto">
                 <div className="text-4xl font-bold text-muted-foreground/30">600 × 450</div>
@@ -81,11 +84,11 @@ export default function AppsPage() {
       {/* Technologies We Master */}
       <section className="py-24">
         <div className="container">
-          <div className="text-center mb-16">
+          <ScrollReveal className="text-center mb-16">
             <h2 className="text-4xl font-bold font-display mb-4">Technologies We Master</h2>
-          </div>
+          </ScrollReveal>
           
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-8 items-center justify-items-center">
+          <ScrollReveal className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-8 items-center justify-items-center" stagger={0.05}>
             {[
               "Swift", "Kotlin", "React Native", "Flutter", "Node.js", "Python", "Firebase", "AWS"
             ].map((tech, index) => (
@@ -96,22 +99,22 @@ export default function AppsPage() {
                 <span className="text-sm font-medium">{tech}</span>
               </div>
             ))}
-          </div>
+          </ScrollReveal>
         </div>
       </section>
 
       {/* Transform Your Idea Into a Reality */}
       <section className="py-24 bg-gradient-to-r from-purple-900/20 to-pink-900/20">
-        <div className="container text-center">
+        <ScrollReveal className="container text-center">
           <h2 className="text-4xl font-bold font-display mb-4">Transform Your Idea Into a Reality</h2>
           <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
             Have an app idea? Let's collaborate to bring it to life.
           </p>
-          <Button size="lg" className="btn-primary text-lg px-8 py-4 animate-glow">
+          <MagneticButton size="lg" className="btn-primary text-lg px-8 py-4 animate-glow">
             Get a Free App Consultation
             <ArrowRight className="ml-2 h-5 w-5" />
-          </Button>
-        </div>
+          </MagneticButton>
+        </ScrollReveal>
       </section>
 
       {/* Client Testimonials */}

@@ -5,6 +5,9 @@ import { Button, Card, CardContent, CardDescription, CardHeader, CardTitle, Badg
 import { ArrowRight, Globe, Smartphone, Zap, TrendingUp, CheckCircle, Users, Building2, GraduationCap, ShoppingCart, Heart } from "lucide-react";
 import Link from "next/link";
 import { InstantQuoteModal } from "../components/instant-quote-modal";
+import { ScrollReveal } from "../components/scroll-reveal";
+import { MagneticButton } from "../components/magnetic-button";
+import { ParallaxHero } from "../components/parallax-hero";
 
 export default function HomePage() {
   const [isQuoteModalOpen, setIsQuoteModalOpen] = useState(false);
@@ -12,10 +15,10 @@ export default function HomePage() {
     <div className="min-h-screen">
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center bg-gradient-to-br from-background via-purple-900/20 to-pink-900/20">
-        <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]"></div>
+        <ParallaxHero className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]" speed={0.3}></ParallaxHero>
         <div className="container relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
+            <ScrollReveal>
               <h1 className="text-5xl md:text-7xl font-bold font-display mb-6">
                 <span className="gradient-text">Digital Linked</span>
                 <span className="block text-foreground mt-2">Your Strategic Partner for</span>
@@ -26,20 +29,20 @@ export default function HomePage() {
                 and drive impactful marketing strategies to grow your business.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button 
+                <MagneticButton 
                   size="lg" 
                   className="btn-primary text-lg px-8 py-4 animate-glow"
                   onClick={() => setIsQuoteModalOpen(true)}
                 >
                   Instant Quote
                   <ArrowRight className="ml-2 h-5 w-5" />
-                </Button>
-                <Button size="lg" variant="outline" className="btn-outline text-lg px-8 py-4" asChild>
+                </MagneticButton>
+                <MagneticButton size="lg" variant="outline" className="btn-outline text-lg px-8 py-4" asChild>
                   <Link href="/contact">Contact Us</Link>
-                </Button>
+                </MagneticButton>
               </div>
-            </div>
-            <div className="relative">
+            </ScrollReveal>
+            <ParallaxHero className="relative" speed={0.2}>
               <div className="gradient-secondary rounded-3xl p-8 backdrop-blur-sm border border-purple-500/20 animate-float">
                 <div className="text-center space-y-6">
                   <div className="relative">
@@ -55,7 +58,7 @@ export default function HomePage() {
                   </div>
                 </div>
               </div>
-            </div>
+            </ParallaxHero>
           </div>
         </div>
       </section>
@@ -63,7 +66,7 @@ export default function HomePage() {
       {/* Pain Points Section */}
       <section className="py-20 bg-gradient-to-r from-purple-900/10 to-pink-900/10">
         <div className="container">
-          <div className="text-center mb-12">
+          <ScrollReveal className="text-center mb-12">
             <h2 className="text-3xl md:text-5xl font-bold font-display mb-6">
               <span className="text-foreground">Tired of Digital</span> <span className="gradient-text">Complexity?</span>
               <br />
@@ -71,14 +74,14 @@ export default function HomePage() {
               <br />
               <span className="text-foreground">Ready for a</span> <span className="gradient-text">Streamlined Solution?</span>
             </h2>
-          </div>
+          </ScrollReveal>
         </div>
       </section>
 
       {/* Process Section */}
       <section className="py-20">
         <div className="container">
-          <div className="text-center mb-16">
+          <ScrollReveal className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold font-display mb-4">
               Our Process to Success
             </h2>
@@ -86,9 +89,9 @@ export default function HomePage() {
               We follow a proven 5-step process to ensure your digital projects are delivered 
               efficiently and effectively, driving tangible results.
             </p>
-          </div>
+          </ScrollReveal>
           
-          <div className="grid md:grid-cols-5 gap-8">
+          <ScrollReveal className="grid md:grid-cols-5 gap-8" stagger={0.1}>
             {[
               {
                 title: "Plan",
@@ -128,14 +131,14 @@ export default function HomePage() {
                 </CardContent>
               </Card>
             ))}
-          </div>
+          </ScrollReveal>
         </div>
       </section>
 
       {/* Services Section */}
       <section className="py-20 bg-secondary/30">
         <div className="container">
-          <div className="text-center mb-16">
+          <ScrollReveal className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold font-display mb-4">
               Our Core Services
             </h2>
@@ -143,9 +146,9 @@ export default function HomePage() {
               We offer a comprehensive suite of digital services designed to elevate your brand 
               and accelerate your growth in the digital landscape.
             </p>
-          </div>
+          </ScrollReveal>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <ScrollReveal className="grid md:grid-cols-2 lg:grid-cols-4 gap-8" stagger={0.1}>
             {[
               {
                 title: "Website Development",
@@ -190,14 +193,14 @@ export default function HomePage() {
                 </CardContent>
               </Card>
             ))}
-          </div>
+          </ScrollReveal>
         </div>
       </section>
 
       {/* Features Section */}
       <section className="py-20">
         <div className="container">
-          <div className="text-center mb-16">
+          <ScrollReveal className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold font-display mb-4">
               Get Started Quickly & Efficiently
             </h2>
@@ -205,9 +208,9 @@ export default function HomePage() {
               Our streamlined process ensures a smooth and efficient journey from concept to launch. 
               We prioritize clarity, collaboration, and delivering value fast.
             </p>
-          </div>
+          </ScrollReveal>
           
-          <div className="grid md:grid-cols-3 gap-8">
+          <ScrollReveal className="grid md:grid-cols-3 gap-8" stagger={0.1}>
             {[
               "Rapid onboarding & strategy alignment.",
               "Transparent project management & communication.",
@@ -218,14 +221,14 @@ export default function HomePage() {
                 <p className="text-lg">{feature}</p>
               </div>
             ))}
-          </div>
+          </ScrollReveal>
         </div>
       </section>
 
       {/* Industries Section */}
       <section className="py-20 bg-secondary/30">
         <div className="container">
-          <div className="text-center mb-16">
+          <ScrollReveal className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold font-display mb-4">
               Serving Diverse Industries
             </h2>
@@ -233,9 +236,9 @@ export default function HomePage() {
               We adapt our expertise to meet the unique challenges and opportunities of various sectors, 
               delivering tailored digital solutions that drive success.
             </p>
-          </div>
+          </ScrollReveal>
           
-          <div className="grid md:grid-cols-5 gap-8">
+          <ScrollReveal className="grid md:grid-cols-5 gap-8" stagger={0.1}>
             {[
               { name: "Real Estate", icon: Building2 },
               { name: "E-commerce", icon: ShoppingCart },
@@ -252,13 +255,13 @@ export default function HomePage() {
                 </CardHeader>
               </Card>
             ))}
-          </div>
+          </ScrollReveal>
         </div>
       </section>
 
       {/* CTA Section */}
       <section className="py-20 bg-primary text-primary-foreground">
-        <div className="container text-center">
+        <ScrollReveal className="container text-center">
           <h2 className="text-3xl md:text-4xl font-bold font-display mb-4">
             Ready to Cut the Chaos & Elevate Your Digital Presence?
           </h2>
@@ -267,10 +270,10 @@ export default function HomePage() {
             the complexities of the digital world and achieving your business objectives.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" variant="secondary" className="text-lg px-8 py-3" asChild>
+            <MagneticButton size="lg" variant="secondary" className="text-lg px-8 py-3" asChild>
               <Link href="/contact?action=strategy-call">Book a Free Strategy Call</Link>
-            </Button>
-            <Button 
+            </MagneticButton>
+            <MagneticButton 
               size="lg" 
               variant="outline" 
               className="text-lg px-8 py-3 bg-transparent border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary"
@@ -278,9 +281,9 @@ export default function HomePage() {
             >
               Instant Quote
               <ArrowRight className="ml-2 h-5 w-5" />
-            </Button>
+            </MagneticButton>
           </div>
-        </div>
+        </ScrollReveal>
       </section>
       
       <InstantQuoteModal 
