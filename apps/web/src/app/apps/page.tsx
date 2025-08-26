@@ -4,6 +4,7 @@ import { ArrowRight, Smartphone, Globe, Zap, TrendingUp, Check, Star, Code, Pale
 import { ScrollReveal } from "../../components/scroll-reveal";
 import { MagneticButton } from "../../components/magnetic-button";
 import { ParallaxHero } from "../../components/parallax-hero";
+import { HoverCard } from "../../components/hover-card";
 
 export default function AppsPage() {
   return (
@@ -139,7 +140,7 @@ export default function AppsPage() {
                 company: "ServiceFirst Inc"
               }
             ].map((testimonial, index) => (
-              <Card key={index} className="border-purple-500/20">
+              <HoverCard key={index} className="border-purple-500/20">
                 <CardContent className="p-6">
                   <div className="flex mb-4">
                     {[...Array(5)].map((_, i) => (
@@ -155,7 +156,7 @@ export default function AppsPage() {
                     <div>{testimonial.company}</div>
                   </div>
                 </CardContent>
-              </Card>
+              </HoverCard>
             ))}
           </div>
           <div className="text-center mt-8">
@@ -186,14 +187,14 @@ export default function AppsPage() {
                 answer: "Absolutely! We specialize in creating apps that integrate seamlessly with your existing business systems, APIs, databases, and third-party services."
               }
             ].map((faq, index) => (
-              <Card key={index} className="border-purple-500/20">
+              <HoverCard key={index} className="border-purple-500/20">
                 <CardHeader>
                   <CardTitle className="text-left">{faq.question}</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-muted-foreground">{faq.answer}</p>
                 </CardContent>
-              </Card>
+              </HoverCard>
             ))}
           </div>
           <div className="text-center mt-8">
@@ -222,7 +223,7 @@ export default function AppsPage() {
                 image: "600 × 400"
               }
             ].map((article, index) => (
-              <Card key={index} className="group hover:shadow-xl transition-all duration-300 border-purple-500/20 hover:border-purple-500/40">
+              <HoverCard key={index} className="group border-purple-500/20 hover:border-purple-500/40">
                 <div className="aspect-video bg-gradient-to-br from-purple-500/20 to-pink-500/20 rounded-t-lg border-b border-purple-500/20 flex items-center justify-center">
                   <div className="text-2xl font-bold text-muted-foreground/30">{article.image}</div>
                 </div>
@@ -239,7 +240,7 @@ export default function AppsPage() {
                     Read More <ArrowRight className="ml-1 h-4 w-4" />
                   </Button>
                 </CardContent>
-              </Card>
+              </HoverCard>
             ))}
           </div>
           <div className="text-center mt-8">

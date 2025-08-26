@@ -4,6 +4,7 @@ import { ArrowRight, Globe, Zap, TrendingUp, Check, Star, Code, Palette, Databas
 import { ScrollReveal } from "../../components/scroll-reveal";
 import { MagneticButton } from "../../components/magnetic-button";
 import { ParallaxHero } from "../../components/parallax-hero";
+import { HoverCard } from "../../components/hover-card";
 
 export default function WebsitePage() {
   return (
@@ -122,7 +123,7 @@ export default function WebsitePage() {
                 icon: <TrendingUp className="h-8 w-8 text-purple-400" />
               }
             ].map((service, index) => (
-              <Card key={index} className="group hover:shadow-xl transition-all duration-300 border-purple-500/20 hover:border-purple-500/40">
+              <HoverCard key={index} className="group border-purple-500/20 hover:border-purple-500/40">
                 <CardHeader>
                   <div className="w-16 h-16 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-lg flex items-center justify-center mb-4 border border-purple-500/20">
                     {service.icon}
@@ -134,7 +135,7 @@ export default function WebsitePage() {
                     {service.description}
                   </CardDescription>
                 </CardHeader>
-              </Card>
+              </HoverCard>
             ))}
           </ScrollReveal>
         </div>
@@ -175,7 +176,7 @@ export default function WebsitePage() {
                 author: "Jane Smith"
               }
             ].map((testimonial, index) => (
-              <Card key={index} className="border-purple-500/20">
+              <HoverCard key={index} className="border-purple-500/20">
                 <CardContent className="p-6">
                   <div className="flex mb-4">
                     {[...Array(5)].map((_, i) => (
@@ -190,7 +191,7 @@ export default function WebsitePage() {
                     <div className="font-semibold">— {testimonial.author}</div>
                   </div>
                 </CardContent>
-              </Card>
+              </HoverCard>
             ))}
           </div>
           <div className="text-center mt-8">
@@ -221,14 +222,14 @@ export default function WebsitePage() {
                 answer: "Absolutely! We specialize in creating websites that integrate seamlessly with your existing business systems, CRM platforms, e-commerce solutions, and third-party APIs."
               }
             ].map((faq, index) => (
-              <Card key={index} className="border-purple-500/20">
+              <HoverCard key={index} className="border-purple-500/20">
                 <CardHeader>
                   <CardTitle className="text-left">{faq.question}</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-muted-foreground">{faq.answer}</p>
                 </CardContent>
-              </Card>
+              </HoverCard>
             ))}
           </div>
           <div className="text-center mt-8">
@@ -255,7 +256,7 @@ export default function WebsitePage() {
                 description: "Learn strategies to ensure your investment in website development delivers maximum returns."
               }
             ].map((article, index) => (
-              <Card key={index} className="group hover:shadow-xl transition-all duration-300 border-purple-500/20 hover:border-purple-500/40">
+              <HoverCard key={index} className="group border-purple-500/20 hover:border-purple-500/40">
                 <div className="aspect-video bg-gradient-to-br from-purple-500/20 to-pink-500/20 rounded-t-lg border-b border-purple-500/20 flex items-center justify-center">
                   <div className="text-2xl font-bold text-muted-foreground/30">600 × 400</div>
                 </div>
@@ -272,7 +273,7 @@ export default function WebsitePage() {
                     Read More <ArrowRight className="ml-1 h-4 w-4" />
                   </Button>
                 </CardContent>
-              </Card>
+              </HoverCard>
             ))}
           </div>
           <div className="text-center mt-8">

@@ -8,6 +8,7 @@ import { InstantQuoteModal } from "../components/instant-quote-modal";
 import { ScrollReveal } from "../components/scroll-reveal";
 import { MagneticButton } from "../components/magnetic-button";
 import { ParallaxHero } from "../components/parallax-hero";
+import { HoverCard } from "../components/hover-card";
 
 export default function HomePage() {
   const [isQuoteModalOpen, setIsQuoteModalOpen] = useState(false);
@@ -119,7 +120,7 @@ export default function HomePage() {
                 icon: TrendingUp,
               },
             ].map((step, index) => (
-              <Card key={index} className="text-center">
+              <HoverCard key={index} className="text-center">
                 <CardHeader>
                   <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
                     <step.icon className="h-6 w-6 text-primary" />
@@ -129,7 +130,7 @@ export default function HomePage() {
                 <CardContent>
                   <CardDescription>{step.description}</CardDescription>
                 </CardContent>
-              </Card>
+              </HoverCard>
             ))}
           </ScrollReveal>
         </div>
@@ -175,7 +176,7 @@ export default function HomePage() {
                 href: "/marketing",
               },
             ].map((service, index) => (
-              <Card key={index} className="group hover:shadow-lg transition-all duration-300">
+              <HoverCard key={index} className="group">
                 <CardHeader>
                   <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
                     <service.icon className="h-6 w-6 text-primary" />
@@ -191,7 +192,7 @@ export default function HomePage() {
                     </Link>
                   </Button>
                 </CardContent>
-              </Card>
+              </HoverCard>
             ))}
           </ScrollReveal>
         </div>
@@ -246,14 +247,14 @@ export default function HomePage() {
               { name: "Education", icon: GraduationCap },
               { name: "Startups", icon: Users },
             ].map((industry, index) => (
-              <Card key={index} className="text-center hover:shadow-lg transition-all duration-300">
+              <HoverCard key={index} className="text-center">
                 <CardHeader>
                   <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-4">
                     <industry.icon className="h-6 w-6 text-primary" />
                   </div>
                   <CardTitle className="text-lg">{industry.name}</CardTitle>
                 </CardHeader>
-              </Card>
+              </HoverCard>
             ))}
           </ScrollReveal>
         </div>
