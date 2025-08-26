@@ -64,7 +64,7 @@ export default function BlogManagementPage() {
         .from('blog_posts')
         .update({ 
           published: !currentStatus,
-          published_at: !currentStatus ? new Date().toISOString() : null
+          published_at: !currentStatus ? new Date().toISOString() : undefined
         })
         .eq('id', id);
 
@@ -78,7 +78,7 @@ export default function BlogManagementPage() {
               ? { 
                   ...post, 
                   published: !currentStatus,
-                  published_at: !currentStatus ? new Date().toISOString() : null
+                  published_at: !currentStatus ? new Date().toISOString() : undefined
                 }
               : post
           )

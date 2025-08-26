@@ -76,7 +76,7 @@ export default function NewBlogPostPage() {
       const postData = {
         ...formData,
         published: publish,
-        published_at: publish ? new Date().toISOString() : null,
+        published_at: publish ? new Date().toISOString() : undefined,
       };
 
       const { error } = await supabase
