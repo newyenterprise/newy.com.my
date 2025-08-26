@@ -1,0 +1,40 @@
+{
+    "mcpServers": {
+      "digitallinked-supabase": {
+    "command": "npx",
+    "args": [
+      "-y",
+      "@supabase/mcp-server-supabase@latest", 
+      "--project-ref=trdmxdtzwwbucmpefuxa"
+    ],
+    "env": {
+      "SUPABASE_ACCESS_TOKEN": "YOUR_SUPABASE_ACCESS_TOKEN"
+    }
+  },
+  "digitallinked-stripe": {
+    "command": "npx",
+    "args": ["-y", "@stripe/mcp", "--tools=all"],
+    "env": {
+        "STRIPE_SECRET_KEY": "YOUR_STRIPE_SECRET_KEY"
+          }
+    },
+        "digitallinked-vercel": {
+          "command": "npx",
+          "args": ["-y", "@modelcontextprotocol/server-vercel"],
+          "env": {
+            "VERCEL_ACCESS_TOKEN": "YOUR_VERCEL_ACCESS_TOKEN"
+          }
+        },
+        "playwright": {
+          "command": "npx",
+          "args": ["@playwright/mcp@1.53.1"]
+        },
+        "sentry": {
+          "url": "https://mcp.sentry.dev/mcp"
+        },
+        "browsermcp": {
+          "command": "npx",
+          "args": ["@browsermcp/mcp@latest"]
+        }
+    }
+  }
