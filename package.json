@@ -19,7 +19,7 @@
     "mobile:dev": "turbo dev --filter=mobile",
     "web:build": "turbo build --filter=web",
     "mobile:build": "turbo build --filter=mobile",
-    "vercel:build": "pnpm run build:packages && cd apps/web && pnpm run build",
+    "vercel:build": "turbo build --filter=@digitallinked/utils --filter=@digitallinked/ui && turbo build --filter=web",
     "build:packages": "turbo build --filter=@digitallinked/utils --filter=@digitallinked/ui"
   },
   "devDependencies": {

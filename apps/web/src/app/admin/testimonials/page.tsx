@@ -12,7 +12,16 @@ export default function TestimonialsManagementPage() {
   const [filterStatus, setFilterStatus] = useState<"all" | "approved" | "pending">("all");
   const [selectedTestimonial, setSelectedTestimonial] = useState<Testimonial | null>(null);
   const [isEditing, setIsEditing] = useState(false);
-  const [editForm, setEditForm] = useState({
+  const [editForm, setEditForm] = useState<{
+    client_name: string;
+    client_company: string;
+    client_position: string;
+    testimonial: string;
+    rating: number;
+    project_type: 'website' | 'app' | 'ai_automation' | 'marketing' | '';
+    featured: boolean;
+    approved: boolean;
+  }>({
     client_name: "",
     client_company: "",
     client_position: "",
@@ -147,9 +156,13 @@ export default function TestimonialsManagementPage() {
     if (!selectedTestimonial) return;
 
     try {
+      const updateData = {
+        ...editForm,
+        project_type: editForm.project_type === '' ? null : editForm.project_type
+      };
       const { error } = await supabase
         .from('testimonials')
-        .update(editForm)
+        .update(updateData)
         .eq('id', selectedTestimonial.id);
 
       if (error) {
@@ -159,11 +172,19 @@ export default function TestimonialsManagementPage() {
         setTestimonials(testimonials => 
           testimonials.map(testimonial => 
             testimonial.id === selectedTestimonial.id 
-              ? { ...testimonial, ...editForm }
+              ? { 
+                  ...testimonial, 
+                  ...editForm,
+                  project_type: editForm.project_type === '' ? undefined : editForm.project_type as 'website' | 'app' | 'ai_automation' | 'marketing'
+                }
               : testimonial
           )
         );
-        setSelectedTestimonial({ ...selectedTestimonial, ...editForm });
+        setSelectedTestimonial({ 
+          ...selectedTestimonial, 
+          ...editForm,
+          project_type: editForm.project_type === '' ? undefined : editForm.project_type as 'website' | 'app' | 'ai_automation' | 'marketing'
+        });
         setIsEditing(false);
       }
     } catch (error) {

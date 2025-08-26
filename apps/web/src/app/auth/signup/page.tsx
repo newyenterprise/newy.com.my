@@ -57,9 +57,7 @@ export default function SignupPage() {
     }
 
     try {
-      const { error } = await signUp(formData.email, formData.password, {
-        name: formData.name
-      });
+      const { error } = await signUp(formData.email, formData.password, formData.name);
       if (error) {
         setError(error.message);
       } else {
