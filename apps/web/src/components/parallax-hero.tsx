@@ -5,7 +5,7 @@ import { useIsomorphicLayoutEffect } from "@/hooks/use-isomorphic-layout-effect"
 import { getGsap, prefersReducedMotion } from "@/lib/gsap";
 
 interface ParallaxHeroProps {
-  children: React.ReactNode;
+  children?: React.ReactNode;
   className?: string;
   speed?: number;
 }
