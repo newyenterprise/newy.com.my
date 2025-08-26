@@ -100,7 +100,7 @@ export default function ContactPage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <ParallaxHero className="relative py-24 bg-gradient-to-br from-background via-purple-900/20 to-pink-900/20">
+      <ParallaxHero className="relative min-h-screen flex items-center bg-gradient-to-br from-background via-purple-900/20 to-pink-900/20">
         <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]"></div>
         <div className="container relative z-10">
           <ScrollReveal>
