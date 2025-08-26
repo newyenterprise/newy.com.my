@@ -3,9 +3,7 @@ import { Inter, Poppins } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "../components/theme-provider";
 import { Toaster } from "../components/ui/toaster";
-import { Navigation } from "../components/navigation";
-import { ChatAssistant } from "../components/chat-assistant";
-import { Footer } from "../components/footer";
+import { LayoutWrapper } from "../components/layout-wrapper";
 import { AuthProvider } from "../contexts/auth-context";
 
 const inter = Inter({
@@ -58,7 +56,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.variable} ${poppins.variable} font-sans antialiased`}>
+      <body className={`${inter.variable} ${poppins.variable} font-sans antialiased`} suppressHydrationWarning>
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
@@ -66,12 +64,9 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <AuthProvider>
-            <Navigation />
-            <main className="pt-16">
+            <LayoutWrapper>
               {children}
-            </main>
-            <Footer />
-            <ChatAssistant />
+            </LayoutWrapper>
             <Toaster />
           </AuthProvider>
         </ThemeProvider>

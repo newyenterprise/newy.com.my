@@ -3,12 +3,14 @@
 import { useState } from "react";
 import Link from "next/link";
 import { Button } from "@digitallinked/ui";
-import { Menu, X } from "lucide-react";
+import { Menu, X, LogIn, User } from "lucide-react";
 import { InstantQuoteModal } from "./instant-quote-modal";
+import { useAuth } from "@/contexts/auth-context";
 
 export function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
   const [isQuoteModalOpen, setIsQuoteModalOpen] = useState(false);
+  const { user } = useAuth();
 
   const navigation = [
     { name: "Home", href: "/" },
@@ -45,13 +47,24 @@ export function Navigation() {
           </div>
 
           {/* CTA Button */}
-          <div className="hidden md:block">
+          <div className="hidden md:flex items-center space-x-4">
             <Button 
               className="btn-primary"
               onClick={() => setIsQuoteModalOpen(true)}
             >
               Instant Quote
             </Button>
+            {user ? (
+              <Link href="/dashboard" className="flex items-center space-x-2 text-sm text-gray-600 hover:text-purple-400">
+                <User className="h-5 w-5" />
+                <span>Dashboard</span>
+              </Link>
+            ) : (
+              <Link href="/auth/login" className="flex items-center space-x-2 text-sm text-gray-600 hover:text-purple-400">
+                <LogIn className="h-5 w-5" />
+                <span>Login</span>
+              </Link>
+            )}
           </div>
 
           {/* Mobile menu button */}
@@ -79,17 +92,36 @@ export function Navigation() {
                   {item.name}
                 </Link>
               ))}
-              <div className="px-3 py-2">
-                <Button 
-                  className="btn-primary w-full"
-                  onClick={() => {
-                    setIsQuoteModalOpen(true);
-                    setIsOpen(false);
-                  }}
-                >
-                  Instant Quote
-                </Button>
-              </div>
+                             <div className="px-3 py-2 space-y-2">
+                 <Button 
+                   className="btn-primary w-full"
+                   onClick={() => {
+                     setIsQuoteModalOpen(true);
+                     setIsOpen(false);
+                   }}
+                 >
+                   Instant Quote
+                 </Button>
+                 {user ? (
+                   <Link
+                     href="/dashboard"
+                     className="flex items-center space-x-2 px-3 py-2 text-sm text-gray-600 hover:text-purple-400 transition-colors duration-200"
+                     onClick={() => setIsOpen(false)}
+                   >
+                     <User className="h-4 w-4" />
+                     <span>Dashboard</span>
+                   </Link>
+                 ) : (
+                   <Link
+                     href="/auth/login"
+                     className="flex items-center space-x-2 px-3 py-2 text-sm text-gray-600 hover:text-purple-400 transition-colors duration-200"
+                     onClick={() => setIsOpen(false)}
+                   >
+                     <LogIn className="h-4 w-4" />
+                     <span>Login</span>
+                   </Link>
+                 )}
+               </div>
             </div>
           </div>
         )}
