@@ -5,6 +5,7 @@ import { ThemeProvider } from "../components/theme-provider";
 import { Toaster } from "../components/ui/toaster";
 import { LayoutWrapper } from "../components/layout-wrapper";
 import { AuthProvider } from "../contexts/auth-context";
+import { AnalyticsWrapper } from "../components/analytics";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -18,23 +19,46 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "Digital Linked - Your Strategic Partner for Digital Success",
-  description: "We craft stunning websites, build innovative apps, implement intelligent AI automation, and drive impactful marketing strategies to grow your business.",
-  keywords: ["web development", "app development", "AI automation", "digital marketing", "agency"],
-  authors: [{ name: "Digital Linked" }],
-  creator: "Digital Linked",
+  title: {
+    default: "DigitalLinked - Digital Solutions & Web Development",
+    template: "%s | DigitalLinked"
+  },
+  description: "Professional digital solutions, web development, and technology services. We help businesses grow with cutting-edge digital strategies and custom web applications.",
+  keywords: ["web development", "app development", "AI automation", "digital marketing", "agency", "digital solutions"],
+  authors: [{ name: "DigitalLinked" }],
+  creator: "DigitalLinked",
+  publisher: "DigitalLinked",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  metadataBase: new URL('https://digitallinked.com.au'),
+  alternates: {
+    canonical: '/',
+  },
   openGraph: {
     type: "website",
-    locale: "en_US",
+    locale: "en_AU",
     url: "https://digitallinked.com.au",
-    title: "Digital Linked - Your Strategic Partner for Digital Success",
-    description: "We craft stunning websites, build innovative apps, implement intelligent AI automation, and drive impactful marketing strategies to grow your business.",
-    siteName: "Digital Linked",
+    title: "DigitalLinked - Digital Solutions & Web Development",
+    description: "Professional digital solutions, web development, and technology services. We help businesses grow with cutting-edge digital strategies and custom web applications.",
+    siteName: "DigitalLinked",
+    images: [
+      {
+        url: "https://digitallinked.com.au/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "DigitalLinked - Digital Solutions & Web Development",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Digital Linked - Your Strategic Partner for Digital Success",
-    description: "We craft stunning websites, build innovative apps, implement intelligent AI automation, and drive impactful marketing strategies to grow your business.",
+    title: "DigitalLinked - Digital Solutions & Web Development",
+    description: "Professional digital solutions, web development, and technology services. We help businesses grow with cutting-edge digital strategies and custom web applications.",
+    creator: "@digitallinked",
+    site: "@digitallinked",
   },
   robots: {
     index: true,
@@ -46,6 +70,14 @@ export const metadata: Metadata = {
       "max-image-preview": "large",
       "max-snippet": -1,
     },
+  },
+  verification: {
+    google: "your-google-verification-code",
+  },
+  other: {
+    "theme-color": "#000000",
+    "apple-mobile-web-app-capable": "yes",
+    "apple-mobile-web-app-status-bar-style": "default",
   },
 };
 
@@ -68,6 +100,7 @@ export default function RootLayout({
               {children}
             </LayoutWrapper>
             <Toaster />
+            <AnalyticsWrapper />
           </AuthProvider>
         </ThemeProvider>
       </body>

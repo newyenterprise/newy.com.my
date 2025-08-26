@@ -10,15 +10,13 @@ interface HoverCardProps {
   scale?: number;
   lift?: number;
   className?: string;
-  [key: string]: any;
 }
 
 export function HoverCard({ 
   children, 
   scale = 1.05, 
   lift = -8,
-  className = "", 
-  ...props 
+  className = ""
 }: HoverCardProps) {
   const ref = useRef<HTMLDivElement>(null);
 
@@ -60,8 +58,7 @@ export function HoverCard({
   return (
     <Card 
       ref={ref} 
-      className={`transition-shadow duration-300 hover:shadow-xl ${className}`} 
-      {...props}
+      className={`transition-shadow duration-300 hover:shadow-xl ${className}`}
     >
       {children}
     </Card>
