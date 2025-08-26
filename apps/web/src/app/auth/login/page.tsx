@@ -68,7 +68,7 @@ export default function LoginPage() {
             <div className="w-8 h-8 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg"></div>
             <span className="text-2xl font-bold text-white">Digital Linked</span>
           </div>
-          <p className="text-gray-300 mt-2">Admin Dashboard</p>
+          <p className="text-gray-300 mt-2">Welcome back!</p>
         </div>
 
         {/* Login Form */}
