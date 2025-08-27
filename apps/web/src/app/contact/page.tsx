@@ -15,10 +15,15 @@ export default function ContactPage() {
     email: "",
     messageType: "",
     subject: "",
-    message: ""
+    message: "",
+    // Honeypot fields (hidden from users, filled by bots)
+    website: "",
+    phone: "",
+    company: ""
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [formStartTime, setFormStartTime] = useState<number | null>(null);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -30,10 +35,43 @@ export default function ContactPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Basic client-side spam prevention
+    if (!formStartTime || Date.now() - formStartTime < 3000) {
+      alert('Please take your time filling out the form. This helps prevent spam.');
+      return;
+    }
+    
+    // Check for honeypot fields (should be empty)
+    if (formData.website || formData.phone || formData.company) {
+      console.warn('Honeypot fields filled - likely a bot');
+      return;
+    }
+    
     setIsSubmitting(true);
     
     try {
-      // Submit to Supabase
+      // Send email via Resend API
+      const emailResponse = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          fullName: formData.fullName,
+          email: formData.email,
+          messageType: formData.messageType,
+          subject: formData.subject,
+          message: formData.message,
+        }),
+      });
+
+      if (!emailResponse.ok) {
+        const errorData = await emailResponse.json();
+        throw new Error(errorData.error || 'Failed to send email');
+      }
+
+      // Also submit to Supabase for record keeping
       const { error } = await supabase
         .from('contact_messages')
         .insert([
@@ -48,8 +86,8 @@ export default function ContactPage() {
         ]);
 
       if (error) {
-        console.error('Error submitting contact message:', error);
-        // In a real app, you'd show an error message to the user
+        console.error('Error storing contact message in database:', error);
+        // Continue anyway since email was sent successfully
       }
       
       setIsSubmitting(false);
@@ -63,13 +101,28 @@ export default function ContactPage() {
           email: "",
           messageType: "",
           subject: "",
-          message: ""
+          message: "",
+          website: "",
+          phone: "",
+          company: ""
         });
       }, 3000);
     } catch (error) {
       console.error('Error submitting contact message:', error);
       setIsSubmitting(false);
-      // In a real app, you'd show an error message to the user
+      
+      // Show user-friendly error message
+      let errorMessage = 'Failed to send message. Please try again or contact us directly.';
+      
+      if (error instanceof Error) {
+        if (error.message.includes('Email service is not configured')) {
+          errorMessage = 'Email service is temporarily unavailable. Please contact us directly at hello@digitallinked.com.au or call 0406 612 824.';
+        } else if (error.message.includes('Failed to send email')) {
+          errorMessage = 'Unable to send email at this time. Please try again later or contact us directly.';
+        }
+      }
+      
+      alert(errorMessage);
     }
   };
 
@@ -187,7 +240,15 @@ export default function ContactPage() {
                     </CardDescription>
                   </CardHeader>
                   <CardContent>
-                    <form onSubmit={handleSubmit} className="space-y-6">
+                    <form 
+                      onSubmit={handleSubmit} 
+                      className="space-y-6"
+                      onFocus={() => {
+                        if (!formStartTime) {
+                          setFormStartTime(Date.now());
+                        }
+                      }}
+                    >
                       <div>
                         <label htmlFor="fullName" className="block text-sm font-medium mb-2">
                           Full Name
@@ -271,6 +332,34 @@ export default function ContactPage() {
                         />
                       </div>
 
+                      {/* Honeypot fields - hidden from users but visible to bots */}
+                      <div style={{ display: 'none' }}>
+                        <input
+                          type="text"
+                          name="website"
+                          value={formData.website}
+                          onChange={handleInputChange}
+                          tabIndex={-1}
+                          autoComplete="off"
+                        />
+                        <input
+                          type="text"
+                          name="phone"
+                          value={formData.phone}
+                          onChange={handleInputChange}
+                          tabIndex={-1}
+                          autoComplete="off"
+                        />
+                        <input
+                          type="text"
+                          name="company"
+                          value={formData.company}
+                          onChange={handleInputChange}
+                          tabIndex={-1}
+                          autoComplete="off"
+                        />
+                      </div>
+
                       <MagneticButton
                         type="submit"
                         disabled={isSubmitting}
@@ -323,16 +412,7 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* Note about functionality */}
-      <section className="py-12 bg-muted/50">
-        <div className="container text-center">
-          <p className="text-muted-foreground">
-            <strong>Note:</strong> This contact form is currently a demo. In the full implementation, 
-            form submissions will be stored in the Supabase database and email notifications will be sent. 
-            The map will also be integrated with Google Maps for precise location display.
-          </p>
-        </div>
-      </section>
+
     </div>
   );
 }
