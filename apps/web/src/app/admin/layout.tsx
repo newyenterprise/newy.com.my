@@ -13,39 +13,71 @@ import {
   Star,
   LogOut,
   Menu,
-  X
+  X,
+  Users
 } from "lucide-react";
-import { useAuth } from "@/contexts/auth-context";
+import { supabase } from "@/lib/supabase";
 
 export default function AdminLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const { user, signOut, loading } = useAuth();
   const router = useRouter();
   const pathname = usePathname();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [user, setUser] = useState<any>(null);
+  const [loading, setLoading] = useState(true);
 
-  const isAdmin = user?.email === "admin@digitallinked.com.au" || user?.user_metadata?.role === "admin";
-
+  // Direct Supabase auth check
   useEffect(() => {
-    if (!loading) {
-      if (!user) {
+    async function checkAuth() {
+      try {
+        const { data: { session }, error } = await supabase.auth.getSession();
+        
+        if (error || !session) {
+          router.push("/auth/login");
+          return;
+        }
+
+        // Check if user is admin
+        if (session.user.email !== "digitallinked.au@gmail.com") {
+          router.push("/dashboard");
+          return;
+        }
+
+        setUser(session.user);
+      } catch (error) {
         router.push("/auth/login");
-      } else if (!isAdmin) {
-        router.push("/");
+      } finally {
+        setLoading(false);
       }
     }
-  }, [user, isAdmin, router, loading]);
+
+    checkAuth();
+
+    // Listen for auth changes
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
+      if (event === 'SIGNED_OUT' || !session) {
+        router.push("/auth/login");
+      } else if (session.user.email !== "digitallinked.au@gmail.com") {
+        router.push("/dashboard");
+      } else {
+        setUser(session.user);
+      }
+    });
+
+    return () => subscription.unsubscribe();
+  }, [router]);
 
   const handleSignOut = async () => {
-    await signOut();
+    await supabase.auth.signOut();
     router.push("/auth/login");
   };
 
   const navigation = [
     { name: "Dashboard", href: "/admin", icon: LayoutDashboard },
+    { name: "Users", href: "/admin/users", icon: Users },
     { name: "Blog Posts", href: "/admin/blog", icon: FileText },
     { name: "Portfolio", href: "/admin/portfolio", icon: Briefcase },
     { name: "Quote Requests", href: "/admin/quotes", icon: MessageSquare },
@@ -53,12 +85,18 @@ export default function AdminLayout({
     { name: "Testimonials", href: "/admin/testimonials", icon: Star },
   ];
 
-  if (loading || !user || !isAdmin) {
+  // Show loading spinner
+  if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-purple-500"></div>
       </div>
     );
+  }
+
+  // If no user, will redirect in useEffect
+  if (!user) {
+    return null;
   }
 
   return (
@@ -120,7 +158,7 @@ export default function AdminLayout({
             </div>
             <div className="flex-1 min-w-0">
               <p className="text-sm font-medium text-gray-900 truncate">
-                {user.user_metadata?.name || user.email}
+                {user.user_metadata?.full_name || user.email}
               </p>
               <p className="text-xs text-gray-500 truncate">Admin</p>
             </div>
@@ -151,7 +189,7 @@ export default function AdminLayout({
             <div className="flex-1 lg:hidden"></div>
             <div className="flex items-center space-x-4">
               <span className="text-sm text-gray-500">
-                Welcome back, {user.user_metadata?.name || 'Admin'}
+                Welcome back, {user.user_metadata?.full_name || 'Admin'}
               </span>
             </div>
           </div>

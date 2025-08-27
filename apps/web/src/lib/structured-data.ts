@@ -128,3 +128,4 @@ export function generateLocalBusinessStructuredData(data: {
     ...(data.priceRange && { priceRange: data.priceRange }),
   };
 }
+

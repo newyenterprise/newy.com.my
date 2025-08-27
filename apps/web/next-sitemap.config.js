@@ -20,3 +20,4 @@ module.exports = {
   priority: 0.7,
   sitemapSize: 5000,
 }
+

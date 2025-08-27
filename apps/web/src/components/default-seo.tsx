@@ -64,3 +64,4 @@ const DEFAULT_SEO = {
 export function DefaultSEO() {
   return <DefaultSeo {...DEFAULT_SEO} />;
 }
+

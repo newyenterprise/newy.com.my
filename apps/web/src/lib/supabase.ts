@@ -13,6 +13,7 @@ export interface Profile {
   avatar_url?: string
   company?: string
   phone?: string
+  role: 'user' | 'admin' | 'moderator'
   created_at: string
   updated_at: string
 }
