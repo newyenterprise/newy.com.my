@@ -1,17 +1,14 @@
 "use client";
 
-import { useState } from "react";
 import { Button, Card, CardContent, CardDescription, CardHeader, CardTitle, Badge } from "@digitallinked/ui";
 import { ArrowRight, Globe, Smartphone, Zap, TrendingUp, CheckCircle, Users, Building2, GraduationCap, ShoppingCart, Heart, Target, Palette, Code } from "lucide-react";
 import Link from "next/link";
-import { InstantQuoteModal } from "../components/instant-quote-modal";
 import { ScrollReveal } from "../components/scroll-reveal";
 import { MagneticButton } from "../components/magnetic-button";
 import { ParallaxHero } from "../components/parallax-hero";
 import { HoverCard } from "../components/hover-card";
 
 export default function HomePage() {
-  const [isQuoteModalOpen, setIsQuoteModalOpen] = useState(false);
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
@@ -20,10 +17,12 @@ export default function HomePage() {
         <div className="container relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <ScrollReveal>
-              <h1 className="text-5xl md:text-7xl font-bold font-display mb-6">
+              <h1 className="text-5xl md:text-6xl font-bold font-display mb-6">
                 <span className="gradient-text">Digital Linked</span>
-                <span className="block text-foreground mt-2">Your Strategic Partner for</span>
-                <span className="block gradient-text">Digital Success</span>
+                <br />
+                Your Strategic Partner for
+                <br />
+                <span className="text-yellow-400">Digital Success</span>
               </h1>
               <p className="text-xl text-muted-foreground mb-8 max-w-2xl leading-relaxed">
                 We craft stunning websites, build innovative apps, implement intelligent AI automation, 
@@ -33,7 +32,9 @@ export default function HomePage() {
                 <MagneticButton 
                   size="lg" 
                   className="btn-primary text-lg px-8 py-4 animate-glow"
-                  onClick={() => setIsQuoteModalOpen(true)}
+                  onClick={() => {
+                    window.dispatchEvent(new CustomEvent('openQuoteModal'));
+                  }}
                 >
                   Instant Quote
                   <ArrowRight className="ml-2 h-5 w-5" />
@@ -44,108 +45,45 @@ export default function HomePage() {
               </div>
             </ScrollReveal>
             <ParallaxHero className="relative" speed={0.2}>
-              <div className="gradient-secondary rounded-3xl p-8 backdrop-blur-sm border border-purple-500/20 animate-float">
-                <div className="text-center space-y-6">
-                  <div className="relative">
-                    <Globe className="h-20 w-20 text-purple-400 mx-auto animate-pulse" />
-                    <div className="absolute -top-2 -right-2 h-6 w-6 bg-pink-500 rounded-full animate-ping"></div>
+              <HoverCard className="bg-background/50 backdrop-blur-sm border border-purple-500/20 rounded-2xl p-8">
+                <div className="flex items-center gap-4 mb-4">
+                  <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg flex items-center justify-center">
+                    <Globe className="h-6 w-6 text-white" />
                   </div>
-                  <h3 className="text-2xl font-semibold gradient-text">Digital Excellence</h3>
-                  <p className="text-muted-foreground">Transforming ideas into digital reality</p>
-                  <div className="flex justify-center space-x-4 pt-4">
-                    <div className="h-2 w-2 bg-purple-500 rounded-full animate-pulse"></div>
-                    <div className="h-2 w-2 bg-pink-500 rounded-full animate-pulse delay-75"></div>
-                    <div className="h-2 w-2 bg-purple-400 rounded-full animate-pulse delay-150"></div>
+                  <div>
+                    <h3 className="text-xl font-semibold">Digital Excellence</h3>
+                    <p className="text-muted-foreground">Transforming ideas into digital reality</p>
                   </div>
                 </div>
-              </div>
+                <div className="space-y-3">
+                  {[
+                    { icon: CheckCircle, text: "Custom Web Development" },
+                    { icon: CheckCircle, text: "Mobile App Solutions" },
+                    { icon: CheckCircle, text: "AI-Powered Automation" },
+                    { icon: CheckCircle, text: "Strategic Digital Marketing" },
+                  ].map((item, index) => (
+                    <div key={index} className="flex items-center gap-3">
+                      <item.icon className="h-5 w-5 text-green-500" />
+                      <span className="text-sm">{item.text}</span>
+                    </div>
+                  ))}
+                </div>
+              </HoverCard>
             </ParallaxHero>
           </div>
         </div>
       </section>
 
-      {/* Pain Points Section */}
-      <section className="py-20 bg-gradient-to-r from-purple-900/10 to-pink-900/10">
-        <div className="container">
-          <ScrollReveal className="text-center mb-12">
-            <h2 className="text-3xl md:text-5xl font-bold font-display mb-6">
-              <span className="text-foreground">Tired of Digital</span> <span className="gradient-text">Complexity?</span>
-              <br />
-              <span className="text-foreground">Overwhelmed by</span> <span className="gradient-text">Endless Options?</span>
-              <br />
-              <span className="text-foreground">Ready for a</span> <span className="gradient-text">Streamlined Solution?</span>
-            </h2>
-          </ScrollReveal>
-        </div>
-      </section>
-
-      {/* Process Section */}
+      {/* Services Section */}
       <section className="py-20">
         <div className="container">
           <ScrollReveal className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold font-display mb-4">
-              Our Process to Success
+              Comprehensive Digital Solutions
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              We follow a proven 5-step process to ensure your digital projects are delivered 
-              efficiently and effectively, driving tangible results.
-            </p>
-          </ScrollReveal>
-          
-          <ScrollReveal className="grid md:grid-cols-5 gap-8" stagger={0.1}>
-            {[
-              {
-                title: "Plan",
-                description: "Strategic planning and roadmap creation.",
-                icon: Target,
-              },
-              {
-                title: "Design",
-                description: "User-centric design and prototyping.",
-                icon: Palette,
-              },
-              {
-                title: "Develop",
-                description: "Robust development and integration.",
-                icon: Code,
-              },
-              {
-                title: "Automate",
-                description: "AI-powered automation solutions.",
-                icon: Zap,
-              },
-              {
-                title: "Grow",
-                description: "Continuous growth and optimization.",
-                icon: TrendingUp,
-              },
-            ].map((step, index) => (
-              <HoverCard key={index} className="text-center">
-                <CardHeader>
-                  <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <step.icon className="h-6 w-6 text-primary" />
-                  </div>
-                  <CardTitle className="text-xl">{step.title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription>{step.description}</CardDescription>
-                </CardContent>
-              </HoverCard>
-            ))}
-          </ScrollReveal>
-        </div>
-      </section>
-
-      {/* Services Section */}
-      <section className="py-20 bg-secondary/30">
-        <div className="container">
-          <ScrollReveal className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold font-display mb-4">
-              Our Core Services
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              We offer a comprehensive suite of digital services designed to elevate your brand 
-              and accelerate your growth in the digital landscape.
+              From concept to launch, we provide end-to-end digital solutions that drive growth, 
+              enhance user experience, and deliver measurable results for your business.
             </p>
           </ScrollReveal>
           
@@ -153,45 +91,37 @@ export default function HomePage() {
             {[
               {
                 title: "Website Development",
-                description: "Crafting responsive, high-performance websites that captivate and convert visitors.",
+                description: "Custom, responsive websites that convert visitors into customers.",
                 icon: Globe,
-                href: "/website",
+                color: "text-blue-500"
               },
               {
                 title: "App Development",
-                description: "Building intuitive and scalable mobile & web applications tailored to your needs.",
+                description: "Native and cross-platform mobile applications for iOS and Android.",
                 icon: Smartphone,
-                href: "/apps",
+                color: "text-green-500"
               },
               {
                 title: "AI Automation",
-                description: "Leveraging artificial intelligence to streamline processes and unlock new efficiencies.",
+                description: "Intelligent automation solutions that streamline your operations.",
                 icon: Zap,
-                href: "/ai-automation",
+                color: "text-purple-500"
               },
               {
                 title: "Digital Marketing",
-                description: "Driving growth with data-driven marketing strategies across all digital channels.",
+                description: "Data-driven marketing strategies that grow your online presence.",
                 icon: TrendingUp,
-                href: "/marketing",
-              },
+                color: "text-orange-500"
+              }
             ].map((service, index) => (
-              <HoverCard key={index} className="group">
+              <HoverCard key={index} className="text-center">
                 <CardHeader>
-                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
-                    <service.icon className="h-6 w-6 text-primary" />
+                  <div className={`w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-4`}>
+                    <service.icon className={`h-6 w-6 ${service.color}`} />
                   </div>
-                  <CardTitle className="text-xl">{service.title}</CardTitle>
+                  <CardTitle className="text-lg">{service.title}</CardTitle>
+                  <CardDescription>{service.description}</CardDescription>
                 </CardHeader>
-                <CardContent>
-                  <CardDescription className="mb-4">{service.description}</CardDescription>
-                  <Button variant="ghost" className="p-0 h-auto" asChild>
-                    <Link href={service.href}>
-                      Learn More
-                      <ArrowRight className="ml-2 h-4 w-4" />
-                    </Link>
-                  </Button>
-                </CardContent>
               </HoverCard>
             ))}
           </ScrollReveal>
@@ -278,7 +208,9 @@ export default function HomePage() {
               size="lg" 
               variant="outline" 
               className="text-lg px-8 py-3 bg-transparent border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary"
-              onClick={() => setIsQuoteModalOpen(true)}
+              onClick={() => {
+                window.dispatchEvent(new CustomEvent('openQuoteModal'));
+              }}
             >
               Instant Quote
               <ArrowRight className="ml-2 h-5 w-5" />
@@ -286,11 +218,7 @@ export default function HomePage() {
           </div>
         </ScrollReveal>
       </section>
-      
-      <InstantQuoteModal 
-        isOpen={isQuoteModalOpen} 
-        onClose={() => setIsQuoteModalOpen(false)} 
-      />
     </div>
   );
 }
+
