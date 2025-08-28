@@ -152,13 +152,13 @@ export function Footer() {
               © 2025 Digital Linked. All rights reserved.
             </p>
             <div className="flex items-center gap-6 text-sm">
-              <Link href="/privacy" className="text-muted-foreground hover:text-accent transition-colors">
+              <Link href="/privacy-policy" className="text-muted-foreground hover:text-accent transition-colors">
                 Privacy Policy
               </Link>
-              <Link href="/terms" className="text-muted-foreground hover:text-accent transition-colors">
+              <Link href="/terms-of-service" className="text-muted-foreground hover:text-accent transition-colors">
                 Terms of Service
               </Link>
-              <Link href="/cookies" className="text-muted-foreground hover:text-accent transition-colors">
+              <Link href="/cookie-policy" className="text-muted-foreground hover:text-accent transition-colors">
                 Cookie Policy
               </Link>
             </div>

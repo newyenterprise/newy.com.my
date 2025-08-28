@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { Button, Card, CardContent, CardDescription, CardHeader, CardTitle, Badge } from "@digitallinked/ui";
-import { ArrowRight, Globe, Smartphone, Zap, TrendingUp, CheckCircle, Users, Building2, GraduationCap, ShoppingCart, Heart } from "lucide-react";
+import { ArrowRight, Globe, Smartphone, Zap, TrendingUp, CheckCircle, Users, Building2, GraduationCap, ShoppingCart, Heart, Target, Palette, Code } from "lucide-react";
 import Link from "next/link";
 import { InstantQuoteModal } from "../components/instant-quote-modal";
 import { ScrollReveal } from "../components/scroll-reveal";
@@ -97,17 +97,17 @@ export default function HomePage() {
               {
                 title: "Plan",
                 description: "Strategic planning and roadmap creation.",
-                icon: CheckCircle,
+                icon: Target,
               },
               {
                 title: "Design",
                 description: "User-centric design and prototyping.",
-                icon: CheckCircle,
+                icon: Palette,
               },
               {
                 title: "Develop",
                 description: "Robust development and integration.",
-                icon: CheckCircle,
+                icon: Code,
               },
               {
                 title: "Automate",

@@ -44,36 +44,29 @@ export default function AboutPage() {
                 </Link>
               </Button>
             </div>
-            <div className="bg-gradient-to-br from-primary/10 to-secondary/10 rounded-2xl p-8">
-              <div className="grid grid-cols-2 gap-6">
-                <Card>
-                  <CardHeader className="text-center">
-                    <Users className="h-8 w-8 text-primary mx-auto mb-2" />
-                    <CardTitle className="text-lg">100+</CardTitle>
-                    <CardDescription>Happy Clients</CardDescription>
-                  </CardHeader>
-                </Card>
-                <Card>
-                  <CardHeader className="text-center">
-                    <Target className="h-8 w-8 text-primary mx-auto mb-2" />
-                    <CardTitle className="text-lg">500+</CardTitle>
-                    <CardDescription>Projects Completed</CardDescription>
-                  </CardHeader>
-                </Card>
-                <Card>
-                  <CardHeader className="text-center">
-                    <Award className="h-8 w-8 text-primary mx-auto mb-2" />
-                    <CardTitle className="text-lg">5+</CardTitle>
-                    <CardDescription>Years Experience</CardDescription>
-                  </CardHeader>
-                </Card>
-                <Card>
-                  <CardHeader className="text-center">
-                    <Globe className="h-8 w-8 text-primary mx-auto mb-2" />
-                    <CardTitle className="text-lg">25+</CardTitle>
-                    <CardDescription>Countries Served</CardDescription>
-                  </CardHeader>
-                </Card>
+            <div className="gradient-secondary rounded-3xl p-8 backdrop-blur-sm border border-purple-500/20 animate-float">
+              <div className="text-center space-y-6">
+                <div className="relative">
+                  <Users className="h-20 w-20 text-purple-400 mx-auto animate-pulse" />
+                  <div className="absolute -top-2 -right-2 h-6 w-6 bg-pink-500 rounded-full animate-ping"></div>
+                </div>
+                <h3 className="text-2xl font-semibold gradient-text">Our Team</h3>
+                <p className="text-muted-foreground">Passionate experts driving digital innovation</p>
+                <div className="grid grid-cols-2 gap-4 pt-4">
+                  <div className="text-center">
+                    <div className="text-2xl font-bold text-purple-400">100+</div>
+                    <div className="text-sm text-muted-foreground">Happy Clients</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-2xl font-bold text-purple-400">500+</div>
+                    <div className="text-sm text-muted-foreground">Projects</div>
+                  </div>
+                </div>
+                <div className="flex justify-center space-x-4 pt-4">
+                  <div className="h-2 w-2 bg-purple-500 rounded-full animate-pulse"></div>
+                  <div className="h-2 w-2 bg-pink-500 rounded-full animate-pulse delay-75"></div>
+                  <div className="h-2 w-2 bg-purple-400 rounded-full animate-pulse delay-150"></div>
+                </div>
               </div>
             </div>
           </div>
