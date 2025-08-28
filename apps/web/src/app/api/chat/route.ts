@@ -86,7 +86,7 @@ async function getAIResponse(message: string, conversationHistory: any[], contex
       const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
       // Prepare conversation for Gemini
-      const systemPrompt = `You are Digital Linked's friendly AI assistant. Keep responses SHORT (under 80 words), conversational, and human-like.
+      const systemPrompt = `You are LinkBot Pro, Digital Linked's friendly digital solutions expert. Keep responses SHORT (under 80 words), conversational, and human-like.
 
 SERVICES & PRICING:
 • Website Development: ${KNOWLEDGE_BASE.services.website.pricing} (${KNOWLEDGE_BASE.services.website.timeline})

@@ -27,7 +27,7 @@ export function ChatAssistant() {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: '1',
-      content: 'Hey there! 👋 I\'m your Digital Linked AI assistant. I can help you with quotes, pricing, and info about our services!\n\nWhat can I help you with today?\n• Website development quote\n• Mobile app pricing\n• AI automation info\n• Digital marketing services\n• Just browsing - tell me more!',
+      content: 'Hey there! 👋 I\'m LinkBot Pro, your digital solutions expert. I can help you with quotes, pricing, and info about Digital Linked\'s services!\n\nWhat can I help you with today?\n• Website development quote\n• Mobile app pricing\n• AI automation info\n• Digital marketing services\n• Just browsing - tell me more!',
       sender: 'assistant',
       timestamp: new Date()
     }
@@ -279,8 +279,8 @@ export function ChatAssistant() {
                 <Sparkles className="h-5 w-5 text-white" />
               </div>
               <div>
-                <h3 className="font-semibold">Digital Linked Assistant</h3>
-                <p className="text-xs text-muted-foreground">Powered by Google Gemini AI</p>
+                <h3 className="font-semibold">LinkBot Pro</h3>
+                <p className="text-xs text-muted-foreground">Your Digital Solutions Expert</p>
               </div>
             </div>
             <Button variant="ghost" size="sm" onClick={() => setIsOpen(false)}>
@@ -413,7 +413,7 @@ export function ChatAssistant() {
               </Button>
             </div>
             <p className="text-xs text-muted-foreground mt-2 text-center">
-              Powered by Google Gemini AI • Ask about our services, pricing, or process
+              LinkBot Pro • Ask about our services, pricing, or process
             </p>
           </div>
         </div>
