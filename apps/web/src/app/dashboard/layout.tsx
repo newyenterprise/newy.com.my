@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { useRouter, usePathname } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import { Button } from "@digitallinked/ui";
 import { 
   LayoutDashboard, 
@@ -70,13 +71,14 @@ export default function DashboardLayout({
              }`}>
         <div className="flex items-center justify-between h-16 px-6 border-b border-gray-200 bg-white">
           <div className="flex items-center space-x-3">
-            <div className="w-10 h-10 bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl flex items-center justify-center">
-              <span className="text-white text-lg font-bold">DL</span>
-            </div>
-            <div>
-              <span className="text-lg font-bold text-gray-900">Dashboard</span>
-              <p className="text-xs text-gray-500">Digital Linked</p>
-            </div>
+            <Image 
+              src="/logo.png" 
+              alt="DigitalLinked Logo" 
+              width={120} 
+              height={40} 
+              className="h-8 w-auto"
+              priority
+            />
           </div>
           <button
             onClick={() => setIsSidebarOpen(false)}

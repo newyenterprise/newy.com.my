@@ -33,7 +33,7 @@ const DEFAULT_SEO = {
     },
     {
       name: 'theme-color',
-      content: '#000000',
+      content: '#1c0940',
     },
     {
       name: 'apple-mobile-web-app-capable',
@@ -47,16 +47,16 @@ const DEFAULT_SEO = {
   additionalLinkTags: [
     {
       rel: 'icon',
-      href: '/favicon.ico',
+      href: '/favicon.ico?v=2',
     },
     {
       rel: 'apple-touch-icon',
-      href: '/apple-touch-icon.png',
+      href: '/apple-touch-icon.png?v=2',
       sizes: '180x180',
     },
     {
       rel: 'manifest',
-      href: '/site.webmanifest',
+      href: '/site.webmanifest?v=2',
     },
   ],
 };

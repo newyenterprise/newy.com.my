@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import { useAuth } from "@/contexts/auth-context";
 
 export default function SignupPage() {
@@ -84,9 +85,15 @@ export default function SignupPage() {
       <div className="w-full max-w-md">
         {/* Logo */}
         <div className="text-center mb-8">
-          <div className="inline-flex items-center space-x-2">
-            <div className="w-8 h-8 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg"></div>
-            <span className="text-2xl font-bold text-white">Digital Linked</span>
+          <div className="inline-flex items-center justify-center">
+            <Image 
+              src="/logo.png" 
+              alt="DigitalLinked Logo" 
+              width={200} 
+              height={60} 
+              className="h-12 w-auto"
+              priority
+            />
           </div>
           <p className="text-gray-300 mt-2">Create Account</p>
         </div>
