@@ -9,7 +9,16 @@ const nextConfig = {
   },
   transpilePackages: ['@digitallinked/ui', '@digitallinked/utils'],
   images: {
-    domains: ['images.unsplash.com', 'via.placeholder.com'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'via.placeholder.com',
+      },
+    ],
   },
   env: {
     CUSTOM_KEY: process.env.CUSTOM_KEY,
