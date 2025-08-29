@@ -5,7 +5,7 @@ import { ScrollReveal } from "../../components/scroll-reveal";
 import { MagneticButton } from "../../components/magnetic-button";
 import { ParallaxHero } from "../../components/parallax-hero";
 import { HoverCard } from "../../components/hover-card";
-import { AppDevelopmentVisual } from "../../components/animated-excellence-list";
+import { AppDevelopmentVisual } from "../../components/app-development-visual";
 
 export default function AppsPage() {
   return (

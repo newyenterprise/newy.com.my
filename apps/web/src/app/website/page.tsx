@@ -5,7 +5,7 @@ import { ScrollReveal } from "../../components/scroll-reveal";
 import { MagneticButton } from "../../components/magnetic-button";
 import { ParallaxHero } from "../../components/parallax-hero";
 import { HoverCard } from "../../components/hover-card";
-import { WebDevelopmentProcessVisual } from "../../components/animated-excellence-list";
+import { WebDevelopmentProcessVisual } from "../../components/web-development-visual";
 
 export default function WebsitePage() {
   return (

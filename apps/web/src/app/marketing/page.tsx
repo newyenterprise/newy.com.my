@@ -5,7 +5,7 @@ import { ScrollReveal } from "@/components/scroll-reveal";
 import { MagneticButton } from "@/components/magnetic-button";
 import { ParallaxHero } from "@/components/parallax-hero";
 import { HoverCard } from "@/components/hover-card";
-import { MarketingVisual } from "@/components/animated-excellence-list";
+import { MarketingVisual } from "../../components/marketing-visual";
 
 export default function MarketingPage() {
   return (

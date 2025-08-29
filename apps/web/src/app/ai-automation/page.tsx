@@ -5,7 +5,7 @@ import { ScrollReveal } from "../../components/scroll-reveal";
 import { MagneticButton } from "../../components/magnetic-button";
 import { ParallaxHero } from "../../components/parallax-hero";
 import { HoverCard } from "../../components/hover-card";
-import { AIAutomationVisual } from "../../components/animated-excellence-list";
+import { AIAutomationVisual } from "../../components/ai-automation-visual";
 
 export default function AIAutomationPage() {
   return (
