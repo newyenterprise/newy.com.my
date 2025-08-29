@@ -24,14 +24,14 @@ interface ConversationContext {
 
 export function ChatAssistant() {
   const [isOpen, setIsOpen] = useState(false);
-  const [messages, setMessages] = useState<Message[]>([
-    {
-      id: '1',
-      content: 'Hey there! 👋 I\'m LinkBot Pro, your digital solutions expert. I can help you with quotes, pricing, and info about Digital Linked\'s services!\n\nWhat can I help you with today?\n• Website development quote\n• Mobile app pricing\n• AI automation info\n• Digital marketing services\n• Just browsing - tell me more!',
-      sender: 'assistant',
-      timestamp: new Date()
-    }
-  ]);
+     const [messages, setMessages] = useState<Message[]>([
+     {
+       id: '1',
+       content: 'Hey there! 👋 I\'m AskLinked, your digital solutions expert. I can help you with quotes, pricing, and info about Digital Linked\'s services!\n\nWhat can I help you with today?\n• Website development quote\n• Mobile app pricing\n• AI automation info\n• Digital marketing services\n• Just browsing - tell me more!',
+       sender: 'assistant',
+       timestamp: new Date()
+     }
+   ]);
   const [inputMessage, setInputMessage] = useState('');
   const [isTyping, setIsTyping] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -278,10 +278,10 @@ export function ChatAssistant() {
               <div className="w-8 h-8 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center">
                 <Sparkles className="h-5 w-5 text-white" />
               </div>
-              <div>
-                <h3 className="font-semibold">LinkBot Pro</h3>
-                <p className="text-xs text-muted-foreground">Your Digital Solutions Expert</p>
-              </div>
+                             <div>
+                 <h3 className="font-semibold">AskLinked</h3>
+                 <p className="text-xs text-muted-foreground">Got a question? Just ask.</p>
+               </div>
             </div>
             <Button variant="ghost" size="sm" onClick={() => setIsOpen(false)}>
               <X className="h-4 w-4" />
@@ -356,16 +356,16 @@ export function ChatAssistant() {
                   <div className="w-6 h-6 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center flex-shrink-0">
                     <Bot className="h-3 w-3 text-white" />
                   </div>
-                  <div className="px-3 py-2 bg-muted border border-purple-500/20 rounded-lg text-sm">
-                    <div className="flex items-center space-x-1">
-                      <span className="text-muted-foreground">Gemini AI is thinking</span>
-                    <div className="flex space-x-1">
-                      <div className="w-2 h-2 bg-purple-500 rounded-full animate-bounce"></div>
-                      <div className="w-2 h-2 bg-purple-500 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
-                      <div className="w-2 h-2 bg-purple-500 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
-                      </div>
-                    </div>
-                  </div>
+                                     <div className="px-3 py-2 bg-muted border border-purple-500/20 rounded-lg text-sm">
+                     <div className="flex items-center space-x-1">
+                       <span className="text-muted-foreground">AskLinked is thinking</span>
+                     <div className="flex space-x-1">
+                       <div className="w-2 h-2 bg-purple-500 rounded-full animate-bounce"></div>
+                       <div className="w-2 h-2 bg-purple-500 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
+                       <div className="w-2 h-2 bg-purple-500 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
+                       </div>
+                     </div>
+                   </div>
                 </div>
               </div>
             )}
@@ -399,7 +399,7 @@ export function ChatAssistant() {
                 value={inputMessage}
                 onChange={(e) => setInputMessage(e.target.value)}
                 onKeyPress={handleKeyPress}
-                placeholder={isLoading ? "Gemini AI is thinking..." : "Ask something..."}
+                                 placeholder={isLoading ? "AskLinked is thinking..." : "Ask something..."}
                 disabled={isLoading}
                 className="flex-1 px-3 py-2 bg-background border border-purple-500/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500/40 text-sm disabled:opacity-50 disabled:cursor-not-allowed"
               />
@@ -412,9 +412,9 @@ export function ChatAssistant() {
                 <Send className="h-4 w-4" />
               </Button>
             </div>
-            <p className="text-xs text-muted-foreground mt-2 text-center">
-              LinkBot Pro • Ask about our services, pricing, or process
-            </p>
+                         <p className="text-xs text-muted-foreground mt-2 text-center">
+               AskLinked • Ask about our services, pricing, or process
+             </p>
           </div>
         </div>
       )}
