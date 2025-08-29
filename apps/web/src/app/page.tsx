@@ -171,13 +171,17 @@ export default function HomePage() {
             the complexities of the digital world and achieving your business objectives.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <MagneticButton size="lg" variant="secondary" className="text-lg px-8 py-3" asChild>
+            <MagneticButton 
+              size="lg" 
+              className="btn-primary text-lg px-8 py-4 animate-glow"
+              asChild
+            >
               <Link href="/contact?action=strategy-call">Book a Free Strategy Call</Link>
             </MagneticButton>
             <MagneticButton 
               size="lg" 
               variant="outline" 
-              className="text-lg px-8 py-3 bg-transparent border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary"
+              className="btn-outline text-lg px-8 py-4"
               onClick={() => {
                 window.dispatchEvent(new CustomEvent('openQuoteModal'));
               }}
