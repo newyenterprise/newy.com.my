@@ -12,6 +12,29 @@ import { AnimatedExcellenceList } from "../components/animated-excellence-list";
 import { MagneticCard } from "../components/magnetic-card";
 
 export default function HomePage() {
+  const excellenceItems = [
+    {
+      title: "Expert Development",
+      description: "Cutting-edge web and mobile solutions built with the latest technologies",
+      icon: <Code className="h-6 w-6 text-primary" />
+    },
+    {
+      title: "AI-Powered Automation",
+      description: "Intelligent systems that streamline your business processes",
+      icon: <Zap className="h-6 w-6 text-primary" />
+    },
+    {
+      title: "Strategic Marketing",
+      description: "Data-driven campaigns that deliver measurable results",
+      icon: <Target className="h-6 w-6 text-primary" />
+    },
+    {
+      title: "Creative Design",
+      description: "Beautiful, user-centered designs that captivate your audience",
+      icon: <Palette className="h-6 w-6 text-primary" />
+    }
+  ];
+
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
@@ -59,7 +82,7 @@ export default function HomePage() {
                       <p className="text-muted-foreground">Transforming ideas into digital reality</p>
                     </div>
                   </div>
-                  <AnimatedExcellenceList />
+                  <AnimatedExcellenceList items={excellenceItems} />
                 </HoverCard>
               </MagneticCard>
             </ParallaxHero>
