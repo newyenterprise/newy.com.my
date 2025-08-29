@@ -7,6 +7,7 @@ import { ScrollReveal } from "../components/scroll-reveal";
 import { MagneticButton } from "../components/magnetic-button";
 import { ParallaxHero } from "../components/parallax-hero";
 import { HoverCard } from "../components/hover-card";
+import { AnimatedIndustries } from "../components/animated-industries";
 
 export default function HomePage() {
   return (
@@ -157,38 +158,7 @@ export default function HomePage() {
       </section>
 
       {/* Industries Section */}
-      <section className="py-20 bg-secondary/30">
-        <div className="container">
-          <ScrollReveal className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold font-display mb-4">
-              Serving Diverse Industries
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              We adapt our expertise to meet the unique challenges and opportunities of various sectors, 
-              delivering tailored digital solutions that drive success.
-            </p>
-          </ScrollReveal>
-          
-          <ScrollReveal className="grid md:grid-cols-5 gap-8" stagger={0.1}>
-            {[
-              { name: "Real Estate", icon: Building2 },
-              { name: "E-commerce", icon: ShoppingCart },
-              { name: "Healthcare", icon: Heart },
-              { name: "Education", icon: GraduationCap },
-              { name: "Startups", icon: Users },
-            ].map((industry, index) => (
-              <HoverCard key={index} className="text-center">
-                <CardHeader>
-                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-4">
-                    <industry.icon className="h-6 w-6 text-primary" />
-                  </div>
-                  <CardTitle className="text-lg">{industry.name}</CardTitle>
-                </CardHeader>
-              </HoverCard>
-            ))}
-          </ScrollReveal>
-        </div>
-      </section>
+      <AnimatedIndustries />
 
       {/* CTA Section */}
       <section className="py-20 bg-primary text-primary-foreground">

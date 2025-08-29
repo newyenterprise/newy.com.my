@@ -1,6 +1,6 @@
 import { Button, Card, CardContent, CardDescription, CardHeader, CardTitle, Badge } from "@digitallinked/ui";
 import Link from "next/link";
-import { ArrowRight, ExternalLink, Github, Calendar, Users, Zap, Globe, Smartphone, Brain, TrendingUp } from "lucide-react";
+import { ArrowRight, ExternalLink, Github, Calendar, Users, Zap, Globe, Smartphone, Brain, TrendingUp, Building2, ShoppingCart, Heart, GraduationCap, Truck, UtensilsCrossed, Briefcase, Palette, Target } from "lucide-react";
 import { ScrollReveal } from "@/components/scroll-reveal";
 import { MagneticButton } from "@/components/magnetic-button";
 import { ParallaxHero } from "@/components/parallax-hero";
@@ -236,19 +236,26 @@ export default function PortfolioPage() {
           </ScrollReveal>
           
           <ScrollReveal stagger={0.1}>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-8">
               {[
-                "Real Estate",
-                "E-commerce", 
-                "Healthcare",
-                "Education",
-                "Startups"
+                { name: "Real Estate", icon: Building2 },
+                { name: "E-commerce", icon: ShoppingCart },
+                { name: "Healthcare", icon: Heart },
+                { name: "Education", icon: GraduationCap },
+                { name: "Startups", icon: Users },
+                { name: "Logistics", icon: Truck },
+                { name: "Restaurants", icon: UtensilsCrossed },
+                { name: "Portfolios", icon: Briefcase },
+                { name: "Creative", icon: Palette },
+                { name: "Technology", icon: Globe },
+                { name: "AI & Automation", icon: Zap },
+                { name: "Marketing", icon: Target },
               ].map((industry, index) => (
                 <div key={index} className="text-center group">
                   <div className="w-20 h-20 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-lg flex items-center justify-center mx-auto mb-4 border border-purple-500/20 group-hover:border-purple-500/40 transition-colors">
-                    <Users className="h-10 w-10 text-purple-400" />
+                    <industry.icon className="h-10 w-10 text-purple-400" />
                   </div>
-                  <h3 className="font-semibold">{industry}</h3>
+                  <h3 className="font-semibold text-sm">{industry.name}</h3>
                 </div>
               ))}
             </div>
