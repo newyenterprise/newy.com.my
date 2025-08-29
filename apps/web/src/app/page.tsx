@@ -8,6 +8,8 @@ import { MagneticButton } from "../components/magnetic-button";
 import { ParallaxHero } from "../components/parallax-hero";
 import { HoverCard } from "../components/hover-card";
 import { AnimatedIndustries } from "../components/animated-industries";
+import { AnimatedExcellenceList } from "../components/animated-excellence-list";
+import { MagneticCard } from "../components/magnetic-card";
 
 export default function HomePage() {
   return (
@@ -46,30 +48,20 @@ export default function HomePage() {
               </div>
             </ScrollReveal>
             <ParallaxHero className="relative" speed={0.2}>
-              <HoverCard className="bg-background/50 backdrop-blur-sm border border-purple-500/20 rounded-2xl p-8">
-                <div className="flex items-center gap-4 mb-4">
-                  <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg flex items-center justify-center">
-                    <Globe className="h-6 w-6 text-white" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-semibold">Digital Excellence</h3>
-                    <p className="text-muted-foreground">Transforming ideas into digital reality</p>
-                  </div>
-                </div>
-                <div className="space-y-3">
-                  {[
-                    { icon: CheckCircle, text: "Custom Web Development" },
-                    { icon: CheckCircle, text: "Mobile App Solutions" },
-                    { icon: CheckCircle, text: "AI-Powered Automation" },
-                    { icon: CheckCircle, text: "Strategic Digital Marketing" },
-                  ].map((item, index) => (
-                    <div key={index} className="flex items-center gap-3">
-                      <item.icon className="h-5 w-5 text-green-500" />
-                      <span className="text-sm">{item.text}</span>
+              <MagneticCard strength={0.15}>
+                <HoverCard className="bg-background/50 backdrop-blur-sm border border-purple-500/20 rounded-2xl p-8 animate-glow">
+                  <div className="flex items-center gap-4 mb-4">
+                    <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg flex items-center justify-center">
+                      <Globe className="h-6 w-6 text-white" />
                     </div>
-                  ))}
-                </div>
-              </HoverCard>
+                    <div>
+                      <h3 className="text-xl font-semibold">Digital Excellence</h3>
+                      <p className="text-muted-foreground">Transforming ideas into digital reality</p>
+                    </div>
+                  </div>
+                  <AnimatedExcellenceList />
+                </HoverCard>
+              </MagneticCard>
             </ParallaxHero>
           </div>
         </div>
