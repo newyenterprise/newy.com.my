@@ -262,7 +262,7 @@ export function ChatAssistant() {
       {!isOpen && (
         <Button
           onClick={() => setIsOpen(true)}
-          className="fixed bottom-6 right-6 w-14 h-14 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 shadow-lg z-[9999] animate-pulse cursor-pointer"
+          className="fixed bottom-4 sm:bottom-6 right-4 sm:right-6 w-14 h-14 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 shadow-lg z-[9999] animate-pulse cursor-pointer"
           style={{ pointerEvents: 'auto' }}
         >
           <MessageCircle className="h-6 w-6 text-white" />
@@ -271,9 +271,9 @@ export function ChatAssistant() {
 
       {/* Chat Window */}
       {isOpen && (
-        <div className="fixed bottom-6 right-6 w-96 h-[500px] bg-background border border-purple-500/20 rounded-2xl shadow-2xl z-[9999] flex flex-col">
+        <div className="fixed bottom-4 sm:bottom-6 right-4 sm:right-6 w-[calc(100vw-2rem)] sm:w-96 h-[calc(100vh-8rem)] sm:h-[500px] max-h-[600px] bg-background border border-purple-500/20 rounded-2xl shadow-2xl z-[9999] flex flex-col">
           {/* Header */}
-          <div className="flex items-center justify-between p-4 border-b border-purple-500/20 bg-gradient-to-r from-purple-500/10 to-pink-500/10 rounded-t-2xl">
+          <div className="flex items-center justify-between p-3 sm:p-4 border-b border-purple-500/20 bg-gradient-to-r from-purple-500/10 to-pink-500/10 rounded-t-2xl">
             <div className="flex items-center gap-3">
               <div className="w-8 h-8 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center">
                 <Sparkles className="h-5 w-5 text-white" />
@@ -289,7 +289,7 @@ export function ChatAssistant() {
           </div>
 
           {/* Messages */}
-          <div className="flex-1 overflow-y-auto p-4 space-y-4">
+          <div className="flex-1 overflow-y-auto p-3 sm:p-4 space-y-4">
             {messages.map((message) => (
               <div
                 key={message.id}
@@ -374,15 +374,15 @@ export function ChatAssistant() {
 
           {/* Quick Replies */}
           {messages.length <= 1 && (
-            <div className="px-4 pb-2">
+            <div className="px-3 sm:px-4 pb-2">
               <p className="text-xs text-muted-foreground mb-2">Quick questions:</p>
-              <div className="flex flex-wrap gap-2">
+              <div className="flex flex-wrap gap-1 sm:gap-2">
                 {getContextualQuickReplies().map((reply) => (
                   <button
                     key={reply}
                     onClick={() => handleQuickReply(reply)}
                     disabled={isLoading}
-                    className="px-3 py-1 text-xs bg-purple-500/10 text-purple-300 border border-purple-500/20 rounded-full hover:bg-purple-500/20 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="px-2 sm:px-3 py-1 text-xs bg-purple-500/10 text-purple-300 border border-purple-500/20 rounded-full hover:bg-purple-500/20 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     {reply}
                   </button>
@@ -392,7 +392,7 @@ export function ChatAssistant() {
           )}
 
           {/* Input */}
-          <div className="p-4 border-t border-purple-500/20">
+          <div className="p-3 sm:p-4 border-t border-purple-500/20">
             <div className="flex gap-2">
               <input
                 type="text"
