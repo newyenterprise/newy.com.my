@@ -5,6 +5,7 @@ import { ScrollReveal } from "@/components/scroll-reveal";
 import { MagneticButton } from "@/components/magnetic-button";
 import { ParallaxHero } from "@/components/parallax-hero";
 import { HoverCard } from "@/components/hover-card";
+import { MarketingVisual } from "@/components/animated-excellence-list";
 
 export default function MarketingPage() {
   return (
@@ -88,11 +89,9 @@ export default function MarketingPage() {
                   </MagneticButton>
                 </div>
               </div>
-              <div className="relative">
-                <div className="aspect-[4/3] bg-gradient-to-br from-purple-500/20 to-pink-500/20 rounded-2xl border border-purple-500/20 flex items-center justify-center">
-                  <div className="text-6xl font-bold text-muted-foreground/30">600 × 400</div>
-                </div>
-              </div>
+              <ScrollReveal>
+                <MarketingVisual />
+              </ScrollReveal>
             </div>
           </ScrollReveal>
         </div>

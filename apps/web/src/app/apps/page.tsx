@@ -5,6 +5,7 @@ import { ScrollReveal } from "../../components/scroll-reveal";
 import { MagneticButton } from "../../components/magnetic-button";
 import { ParallaxHero } from "../../components/parallax-hero";
 import { HoverCard } from "../../components/hover-card";
+import { AppDevelopmentVisual } from "../../components/animated-excellence-list";
 
 export default function AppsPage() {
   return (
@@ -85,11 +86,9 @@ export default function AppsPage() {
                 </MagneticButton>
               </div>
             </ScrollReveal>
-            <div className="relative">
-              <div className="aspect-[3/4] bg-gradient-to-br from-purple-500/20 to-pink-500/20 rounded-2xl border border-purple-500/20 flex items-center justify-center max-w-sm mx-auto">
-                <div className="text-4xl font-bold text-muted-foreground/30">600 × 450</div>
-              </div>
-            </div>
+            <ScrollReveal>
+              <AppDevelopmentVisual />
+            </ScrollReveal>
           </div>
         </div>
       </section>
