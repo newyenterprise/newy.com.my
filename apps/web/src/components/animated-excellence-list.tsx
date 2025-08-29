@@ -92,7 +92,7 @@ export function AnimatedExcellenceList({ items, className = "" }: AnimatedExcell
   }, []);
 
   return (
-    <div ref={containerRef} className={`grid grid-cols-2 gap-4 ${className}`}>
+    <div ref={containerRef} className={`grid grid-cols-1 md:grid-cols-2 gap-4 ${className}`}>
       {items.map((item, index) => (
         <div
           key={index}

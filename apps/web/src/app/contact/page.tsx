@@ -7,7 +7,6 @@ import { supabase } from "../../lib/supabase";
 import { ScrollReveal } from "@/components/scroll-reveal";
 import { MagneticButton } from "@/components/magnetic-button";
 import { ParallaxHero } from "@/components/parallax-hero";
-import { HoverCard } from "@/components/hover-card";
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -171,12 +170,11 @@ export default function ContactPage() {
       </ParallaxHero>
 
       {/* Contact Form and Information */}
-      <section className="py-24">
+      <section className="pt-4 pb-24 -mt-16">
         <div className="container">
           <div className="grid lg:grid-cols-2 gap-12">
             {/* Contact Information */}
-            <ScrollReveal>
-              <div>
+            <div>
                 <h2 className="text-3xl font-bold font-display mb-8">Contact Information</h2>
                 
                 <div className="space-y-6">
@@ -236,12 +234,10 @@ export default function ContactPage() {
                   </div>
                 </div>
               </div>
-            </ScrollReveal>
 
             {/* Contact Form */}
-            <ScrollReveal>
-              <div>
-                <HoverCard className="border-purple-500/20">
+            <div>
+                <Card className="border-purple-500/20">
                   <CardHeader>
                     <CardTitle className="text-2xl">Send Us a Message</CardTitle>
                     <CardDescription>
@@ -388,39 +384,11 @@ export default function ContactPage() {
                       </MagneticButton>
                     </form>
                   </CardContent>
-                </HoverCard>
+                </Card>
               </div>
-            </ScrollReveal>
           </div>
         </div>
       </section>
-
-      {/* Map Section Placeholder */}
-      <section className="py-24 bg-muted/30">
-        <div className="container">
-          <ScrollReveal>
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold font-display mb-4">Find Us</h2>
-              <p className="text-muted-foreground">
-                Located in the heart of Bandar Baru Bangi, Selangor
-              </p>
-            </div>
-          </ScrollReveal>
-          
-          <ScrollReveal>
-            <div className="aspect-video bg-gradient-to-br from-purple-500/20 to-pink-500/20 rounded-2xl border border-purple-500/20 flex items-center justify-center">
-              <div className="text-center">
-                <MapPin className="h-16 w-16 text-purple-400 mx-auto mb-4" />
-                <p className="text-xl font-semibold mb-2">Interactive Map</p>
-                <p className="text-muted-foreground">
-                  Google Maps integration will be added here to show our exact location
-                </p>
-              </div>
-            </div>
-          </ScrollReveal>
-        </div>
-      </section>
-
 
     </div>
   );
