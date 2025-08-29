@@ -318,12 +318,12 @@ What type of project are you planning? I can guide you to the best option.`;
   }
 
   // Contact information with context
-  if (lowerMessage.includes('contact') || lowerMessage.includes('call') || lowerMessage.includes('email') || lowerMessage.includes('reach')) {
+  if (lowerMessage.includes('contact') || lowerMessage.includes('call') || lowerMessage.includes('email') || lowerMessage.includes('reach') || lowerMessage.includes('whatsapp')) {
     const company = KNOWLEDGE_BASE.company;
     let response = `Here's how you can reach us:
 
 📧 Email: ${company.email}
-📞 Phone: ${company.phone}
+📱 ${company.phone}
 📍 Address: ${company.address}
 🕒 Hours: ${company.hours}
 

@@ -211,11 +211,14 @@ export function ChatAssistant() {
       }
     }
     
-    // Check if it's a phone option
-    if (option.toLowerCase().includes('call') || option.toLowerCase().includes('phone')) {
+    // Check if it's a phone/WhatsApp option
+    if (option.toLowerCase().includes('call') || option.toLowerCase().includes('phone') || option.toLowerCase().includes('whatsapp')) {
       const phoneMatch = option.match(/(\d{4}\s?\d{3}\s?\d{3}|\+?\d{1,4}[\s-]?\d{3,4}[\s-]?\d{3,4}[\s-]?\d{3,4})/);
       if (phoneMatch) {
-        window.open(`tel:${phoneMatch[1].replace(/\s/g, '')}`, '_blank');
+        // Convert to WhatsApp link
+        const cleanPhone = phoneMatch[1].replace(/\s/g, '');
+        const whatsappNumber = cleanPhone.startsWith('0') ? '61' + cleanPhone.substring(1) : cleanPhone;
+        window.open(`https://wa.me/${whatsappNumber}`, '_blank');
         return;
       }
     }
@@ -275,9 +278,9 @@ export function ChatAssistant() {
           {/* Header */}
           <div className="flex items-center justify-between p-3 sm:p-4 border-b border-purple-500/20 bg-gradient-to-r from-purple-500/10 to-pink-500/10 rounded-t-2xl">
             <div className="flex items-center gap-3">
-              <div className="w-8 h-8 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center">
-                <Sparkles className="h-5 w-5 text-white" />
-              </div>
+                             <div className="w-8 h-8 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center">
+                 <Bot className="h-5 w-5 text-white" />
+               </div>
                              <div>
                  <h3 className="font-semibold">AskLinked</h3>
                  <p className="text-xs text-muted-foreground">Got a question? Just ask.</p>
