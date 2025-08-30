@@ -63,7 +63,11 @@ export async function POST(request: NextRequest) {
           currency: 'aud',
           product_data: {
             name: 'GST (10%)',
-            description: 'Goods and Services Tax'
+            description: 'Goods and Services Tax',
+            metadata: {
+              orderId: orderId,
+              addOns: ''
+            }
           },
         },
         quantity: 1,
