@@ -1,17 +1,39 @@
 import { NextRequest, NextResponse } from 'next/server';
 import Stripe from 'stripe';
 
+interface CheckoutItem {
+  name: string;
+  description: string;
+  price: number;
+  addOns?: Array<{
+    name: string;
+    price: number;
+  }>;
+}
+
+interface CustomerInfo {
+  email: string;
+  fullName: string;
+  phone: string;
+  company?: string;
+}
+
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
   apiVersion: '2023-10-16',
 });
 
 export async function POST(request: NextRequest) {
   try {
-    const { orderId, items, customerInfo, total } = await request.json();
+    const { orderId, items, customerInfo, total }: {
+      orderId: string;
+      items: CheckoutItem[];
+      customerInfo: CustomerInfo;
+      total: number;
+    } = await request.json();
 
     // Create line items for Stripe
-    const lineItems = items.map((item: any) => {
-      const addOnTotal = item.addOns?.reduce((sum: number, addOn: any) => sum + addOn.price, 0) || 0;
+    const lineItems = items.map((item: CheckoutItem) => {
+      const addOnTotal = item.addOns?.reduce((sum: number, addOn) => sum + addOn.price, 0) || 0;
       const itemTotal = item.price + addOnTotal;
       
       return {
@@ -22,7 +44,7 @@ export async function POST(request: NextRequest) {
             description: item.description,
             metadata: {
               orderId: orderId,
-              addOns: item.addOns?.map((addOn: any) => addOn.name).join(', ') || ''
+              addOns: item.addOns?.map((addOn) => addOn.name).join(', ') || ''
             }
           },
         },
@@ -81,10 +103,11 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json({ url: session.url });
 
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Error creating checkout session:', error);
+    const errorMessage = error instanceof Error ? error.message : 'Failed to create checkout session';
     return NextResponse.json(
-      { error: error.message || 'Failed to create checkout session' },
+      { error: errorMessage },
       { status: 500 }
     );
   }
