@@ -16,6 +16,7 @@ export function Navigation() {
     { name: "Apps", href: "/apps" },
     { name: "AI Automation", href: "/ai-automation" },
     { name: "Marketing", href: "/marketing" },
+    { name: "Pricing", href: "/pricing" },
     { name: "Portfolio", href: "/portfolio" },
     { name: "Blog", href: "/blog" },
     { name: "Contact", href: "/contact" },
