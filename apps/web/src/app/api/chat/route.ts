@@ -73,8 +73,8 @@ function withTimeout<T>(promise: Promise<T>, timeoutMs: number): Promise<T> {
 
 // Try to use Gemini if available, otherwise fall back to custom system
 async function getAIResponse(message: string, conversationHistory: any[], context: ConversationContext): Promise<{ response: string; updatedContext: ConversationContext }> {
-  // Use the provided Gemini API key
-  const geminiApiKey = "AIzaSyCUlmtWR4jvL1VpWBgQYWkn7TtrdjA1zy8";
+  // Use the Gemini API key from environment variables
+  const geminiApiKey = process.env.GEMINI_API_KEY;
   
   if (geminiApiKey) {
     try {

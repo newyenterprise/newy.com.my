@@ -3,7 +3,17 @@ import { NextRequest, NextResponse } from 'next/server';
 export async function GET(request: NextRequest) {
   try {
     const { GoogleGenerativeAI } = await import('@google/generative-ai');
-    const genAI = new GoogleGenerativeAI("AIzaSyCUlmtWR4jvL1VpWBgQYWkn7TtrdjA1zy8");
+    const geminiApiKey = process.env.GEMINI_API_KEY;
+    
+    if (!geminiApiKey) {
+      return NextResponse.json({
+        status: 'error',
+        message: 'Gemini API key not configured',
+        timestamp: new Date().toISOString()
+      }, { status: 500 });
+    }
+    
+    const genAI = new GoogleGenerativeAI(geminiApiKey);
     const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
     const result = await model.generateContent("Hello! Can you confirm you're working? Just respond with 'Gemini AI is working correctly!'");
