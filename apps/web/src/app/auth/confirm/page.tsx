@@ -1,13 +1,13 @@
 "use client";
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { supabase } from '@/lib/supabase';
 import { Card, CardContent, CardHeader, CardTitle, Button } from '@digitallinked/ui';
 import { CheckCircle, XCircle, Loader2 } from 'lucide-react';
 import Link from 'next/link';
 
-export default function ConfirmPage() {
+function ConfirmContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [status, setStatus] = useState<'loading' | 'success' | 'error'>('loading');
@@ -106,6 +106,31 @@ export default function ConfirmPage() {
         </CardContent>
       </Card>
     </div>
+  );
+}
+
+export default function ConfirmPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-gradient-to-br from-gray-900 via-purple-900 to-gray-900 flex items-center justify-center p-6">
+        <Card className="max-w-md w-full bg-gray-800/50 backdrop-blur-sm border-gray-700">
+          <CardHeader className="text-center">
+            <CardTitle className="text-white text-2xl">
+              Email Confirmation
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="text-center space-y-6">
+            <Loader2 className="w-16 h-16 text-purple-400 mx-auto animate-spin" />
+            <div>
+              <p className="text-gray-300 text-lg mb-2">Loading...</p>
+              <p className="text-gray-400 text-sm">Please wait while we process your request.</p>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+    }>
+      <ConfirmContent />
+    </Suspense>
   );
 }
 
