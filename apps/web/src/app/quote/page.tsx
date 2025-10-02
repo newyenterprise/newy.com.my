@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { motion } from "framer-motion";
 import { Button, Card, CardContent, CardHeader, CardTitle } from "@digitallinked/ui";
 import { ArrowLeft, User, Mail, Phone, Building, MapPin, MessageSquare, Check, Star, Globe, Smartphone, Brain, TrendingUp } from "lucide-react";
@@ -45,7 +45,7 @@ const serviceNames = {
   marketing: "Digital Marketing"
 };
 
-export default function QuoteRequestPage() {
+function QuoteRequestContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -94,8 +94,6 @@ export default function QuoteRequestPage() {
 
       // Create user account if requested
       if (wantsAccount && accountPassword) {
-        console.log('Attempting to create user account for:', quoteRequest.customerInfo.email);
-        
         try {
           const { data: authData, error: authError } = await supabase.auth.signUp({
             email: quoteRequest.customerInfo.email,
@@ -109,25 +107,11 @@ export default function QuoteRequestPage() {
             }
           });
 
-          if (authError) {
-            console.error('Error creating account:', authError);
-            console.error('Full auth error details:', JSON.stringify(authError, null, 2));
-            alert(`Account creation failed: ${authError.message}. Quote will still be submitted.`);
-            // Continue without account creation
-          } else {
-            console.log('User account created successfully:', authData.user?.id);
-            console.log('Full auth data:', JSON.stringify(authData, null, 2));
+          if (!authError) {
             userId = authData.user?.id;
-            
-            // Check if email confirmation is required
-            if (authData.user && !authData.user.email_confirmed_at) {
-              console.log('Email confirmation required for user:', authData.user.id);
-              // User created but needs email confirmation
-            }
           }
         } catch (error) {
-          console.error('Unexpected error during user creation:', error);
-          alert(`Account creation failed due to an unexpected error. Quote will still be submitted.`);
+          // Continue without account
         }
       }
 
@@ -148,16 +132,13 @@ export default function QuoteRequestPage() {
         .single();
 
       if (error) {
-        console.error('Error saving quote request:', error);
         throw new Error('Failed to save quote request');
       }
 
       // Send email notification
       await fetch('/api/send-quote-email', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           quoteId: data.id,
           customerInfo: quoteRequest.customerInfo,
@@ -171,8 +152,6 @@ export default function QuoteRequestPage() {
       });
 
       setIsSuccess(true);
-      
-      // Redirect to success page with quote data after 3 seconds
       setTimeout(() => {
         const params = new URLSearchParams({
           service: quoteRequest.service,
@@ -188,42 +167,24 @@ export default function QuoteRequestPage() {
       }, 3000);
 
     } catch (error) {
-      console.error('Error submitting quote request:', error);
       setIsSubmitting(false);
-      // Show error message to user
     }
   };
 
   if (isSuccess) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-gray-900 via-purple-900 to-gray-900 flex items-center justify-center p-4">
-        <motion.div
-          initial={{ scale: 0.8, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          className="max-w-md w-full"
-        >
+        <motion.div initial={{ scale: 0.8, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} className="max-w-md w-full">
           <Card className="bg-gray-800/50 backdrop-blur-sm border-gray-700">
             <CardHeader className="text-center">
-              <motion.div
-                initial={{ scale: 0 }}
-                animate={{ scale: 1 }}
-                transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
-                className="w-16 h-16 bg-gradient-to-r from-green-500 to-blue-500 rounded-full flex items-center justify-center mx-auto mb-4"
-              >
+              <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ delay: 0.2, type: "spring", stiffness: 200 }} className="w-16 h-16 bg-gradient-to-r from-green-500 to-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Check className="h-8 w-8 text-white" />
               </motion.div>
               <CardTitle className="text-2xl text-white">Quote Request Sent!</CardTitle>
-              <p className="text-gray-300 mt-2">
-                Thank you for your interest. We'll review your requirements and send you a detailed quote within 24 hours.
-              </p>
+              <p className="text-gray-300 mt-2">Thank you for your interest. We'll review your requirements and send you a detailed quote within 24 hours.</p>
             </CardHeader>
             <CardContent className="text-center">
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.5 }}
-                className="text-sm text-gray-400"
-              >
+              <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }} className="text-sm text-gray-400">
                 Redirecting to success page...
               </motion.div>
             </CardContent>
@@ -241,13 +202,13 @@ export default function QuoteRequestPage() {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="flex items-center gap-4 mb-8">
             <Link href="/pricing">
-              <Button variant="ghost" size="sm" className="text-white hover:bg-white/20">
+              <Button variant="ghost" size="sm" className="text-white hover:bg:white/20">
                 <ArrowLeft className="h-4 w-4 mr-2" />
                 Back to Pricing
               </Button>
             </Link>
             <div>
-              <h1 className="text-3xl font-bold text-white">Request Your Quote</h1>
+              <h1 className="text-3xl font-bold text:white">Request Your Quote</h1>
               <p className="text-gray-300">Get a personalized quote for your project</p>
             </div>
           </div>
@@ -620,5 +581,13 @@ export default function QuoteRequestPage() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function QuoteRequestPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-gradient-to-br from-gray-900 via-purple-900 to-gray-900 flex items-center justify-center p-10 text-white">Loading...</div>}>
+      <QuoteRequestContent />
+    </Suspense>
   );
 }

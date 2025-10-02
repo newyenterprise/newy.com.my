@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { motion } from "framer-motion";
 import { Button, Card, CardContent, CardHeader, CardTitle } from "@digitallinked/ui";
 import { Check, Mail, Phone, Clock, ArrowRight, Star, DollarSign, Globe, Smartphone, Brain, TrendingUp } from "lucide-react";
@@ -23,7 +23,7 @@ const serviceNames = {
   marketing: "Digital Marketing"
 };
 
-export default function QuoteSuccessPage() {
+function QuoteSuccessContent() {
   const searchParams = useSearchParams();
   const [quoteData, setQuoteData] = useState({
     service: '',
@@ -270,5 +270,13 @@ export default function QuoteSuccessPage() {
         </motion.div>
       </div>
     </div>
+  );
+}
+
+export default function QuoteSuccessPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-gradient-to-br from-gray-900 via-purple-900 to-gray-900 flex items-center justify-center p-10 text-white">Loading...</div>}>
+      <QuoteSuccessContent />
+    </Suspense>
   );
 }
