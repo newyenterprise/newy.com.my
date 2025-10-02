@@ -1,12 +1,36 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Check, Star, Zap, Shield, Globe, Smartphone, Brain, TrendingUp, Plus, Minus, ShoppingCart, ArrowRight, Sparkles, Heart, Users, Clock, Award, Rocket, Target } from "lucide-react";
+import { Check, Globe, Smartphone, Brain, TrendingUp, ArrowRight, Sparkles, Rocket, X } from "lucide-react";
 import { Button } from "@digitallinked/ui";
 import { Card, CardContent, CardHeader, CardTitle } from "@digitallinked/ui";
 import { Badge } from "@/components/ui/badge";
 import { useRouter } from "next/navigation";
+
+interface Platform {
+  id: string;
+  name: string;
+  description: string;
+  price: number;
+  features: string[];
+}
+
+interface ServiceType {
+  id: string;
+  name: string;
+  description: string;
+  basePrice: number;
+  platforms: Platform[];
+}
+
+interface AddOn {
+  id: string;
+  name: string;
+  description: string;
+  price: number;
+  popular?: boolean;
+}
 
 interface Service {
   id: string;
@@ -19,21 +43,7 @@ interface Service {
   addOns: AddOn[];
   color: string;
   gradient: string;
-}
-
-interface AddOn {
-  id: string;
-  name: string;
-  description: string;
-  price: number;
-  category: string;
-  popular?: boolean;
-}
-
-interface CartItem {
-  service: Service;
-  selectedAddOns: AddOn[];
-  quantity: number;
+  serviceTypes?: ServiceType[];
 }
 
 const services: Service[] = [
@@ -41,26 +51,257 @@ const services: Service[] = [
     id: "website",
     name: "Website Development",
     icon: <Globe className="w-8 h-8" />,
-    description: "Custom websites that convert visitors into customers",
-    basePrice: 2500,
+    description: "Professional websites that convert visitors into customers",
+    basePrice: 500,
     popular: true,
     color: "from-blue-500 to-purple-600",
     gradient: "bg-gradient-to-br from-blue-500 to-purple-600",
     features: [
       "Responsive Design",
       "SEO Optimized",
-      "Fast Loading",
-      "Mobile First",
-      "Content Management",
-      "Analytics Integration"
+      "Fast Loading Speed",
+      "Mobile-First Approach",
+      "Analytics Integration",
+      "Up to 5 Pages Included"
+    ],
+    serviceTypes: [
+      {
+        id: "new-website",
+        name: "New Website",
+        description: "Build a brand new website from scratch",
+        basePrice: 500,
+        platforms: [
+          {
+            id: "wordpress",
+            name: "WordPress",
+            description: "Most popular CMS platform",
+            price: 1500,
+            features: ["Up to 5 Pages", "Theme Customization", "Plugin Integration", "Easy Content Management"]
+          },
+          {
+            id: "wix",
+            name: "Wix",
+            description: "User-friendly website builder",
+            price: 1200,
+            features: ["Up to 5 Pages", "Drag & Drop Editor", "Wix App Market", "Built-in SEO Tools"]
+          },
+          {
+            id: "shopify",
+            name: "Shopify",
+            description: "E-commerce focused platform",
+            price: 2000,
+            features: ["Up to 20 Products", "Payment Processing", "Inventory Management", "Shopify App Integration"]
+          },
+          {
+            id: "squarespace",
+            name: "Squarespace",
+            description: "Beautiful design templates",
+            price: 1300,
+            features: ["Up to 5 Pages", "Modern Templates", "Built-in Analytics", "Mobile Responsive"]
+          },
+          {
+            id: "webflow",
+            name: "Webflow",
+            description: "Professional design platform",
+            price: 1800,
+            features: ["Up to 5 Pages", "Custom Animations", "CMS Integration", "Advanced Design Control"]
+          }
+        ]
+      },
+      {
+        id: "upgrade-website",
+        name: "Upgrade Existing Website",
+        description: "Enhance your current website",
+        basePrice: 800,
+        platforms: [
+          {
+            id: "wordpress-upgrade",
+            name: "WordPress Upgrade",
+            description: "Modernize your WordPress site",
+            price: 1200,
+            features: ["Theme Update", "Performance Optimization", "Security Enhancement", "Plugin Updates"]
+          },
+          {
+            id: "wix-upgrade",
+            name: "Wix Upgrade",
+            description: "Enhance your Wix site",
+            price: 1000,
+            features: ["Design Refresh", "New Features", "SEO Improvements", "Mobile Optimization"]
+          },
+          {
+            id: "shopify-upgrade",
+            name: "Shopify Upgrade",
+            description: "Upgrade your online store",
+            price: 1500,
+            features: ["Store Optimization", "Checkout Enhancement", "Product Page Redesign", "App Integration"]
+          },
+          {
+            id: "platform-migration",
+            name: "Platform Migration",
+            description: "Move to a better platform",
+            price: 2500,
+            features: ["Content Migration", "Design Transfer", "SEO Preservation", "Training & Support"]
+          },
+          {
+            id: "redesign",
+            name: "Complete Redesign",
+            description: "Fresh new look and feel",
+            price: 2000,
+            features: ["Modern Design", "UX Improvements", "Branding Update", "Performance Boost"]
+          }
+        ]
+      }
     ],
     addOns: [
-      { id: "ecommerce", name: "E-commerce Integration", description: "Online store with payment processing", price: 1500, category: "website", popular: true },
-      { id: "blog", name: "Blog System", description: "Content management with SEO tools", price: 800, category: "website" },
-      { id: "seo", name: "SEO Package", description: "Search engine optimization", price: 1200, category: "website" },
-      { id: "cms", name: "Advanced CMS", description: "Easy content management system", price: 1000, category: "website" },
-      { id: "analytics", name: "Analytics Setup", description: "Google Analytics & tracking", price: 500, category: "website" },
-      { id: "ssl", name: "SSL Certificate", description: "Secure HTTPS connection", price: 200, category: "website" }
+      { id: "ecommerce", name: "E-commerce Integration", description: "Online store (up to 20 products)", price: 1500, popular: true },
+      { id: "additional-pages", name: "Additional Pages", description: "5 extra pages beyond base package", price: 500 },
+      { id: "domain", name: "Domain Registration", description: "Custom domain (.com, .com.au, etc.)", price: 50 },
+      { id: "hosting", name: "Hosting Setup (1 Year)", description: "Managed hosting with SSL & backups", price: 300 },
+      { id: "additional-products", name: "Additional Products", description: "20 extra products for e-commerce", price: 800 },
+      { id: "professional-email", name: "Professional Email", description: "5 custom email addresses", price: 100 },
+      { id: "monthly-maintenance", name: "Monthly Maintenance", description: "Updates, backups & monitoring", price: 200 },
+      { id: "ssl", name: "Premium SSL Certificate", description: "Enhanced security certificate", price: 150 }
+    ]
+  },
+  {
+    id: "webapp",
+    name: "Web Applications",
+    icon: <Rocket className="w-8 h-8" />,
+    description: "Custom web applications built with modern frameworks",
+    basePrice: 2500,
+    color: "from-cyan-500 to-blue-600",
+    gradient: "bg-gradient-to-br from-cyan-500 to-blue-600",
+    features: [
+      "Modern Framework",
+      "Scalable Architecture",
+      "Database Integration",
+      "API Development",
+      "User Authentication",
+      "Admin Dashboard"
+    ],
+    serviceTypes: [
+      {
+        id: "new-webapp",
+        name: "New Web Application",
+        description: "Build a custom web application",
+        basePrice: 2500,
+        platforms: [
+          {
+            id: "nextjs",
+            name: "Next.js",
+            description: "React framework for production",
+            price: 5000,
+            features: ["Server-Side Rendering", "API Routes", "Optimized Performance", "SEO Friendly"]
+          },
+          {
+            id: "nuxtjs",
+            name: "Nuxt.js",
+            description: "Vue.js framework",
+            price: 4500,
+            features: ["Universal Rendering", "Auto Routing", "Static Generation", "Module System"]
+          },
+          {
+            id: "flutter-web",
+            name: "Flutter Web",
+            description: "Cross-platform framework",
+            price: 5500,
+            features: ["Single Codebase", "Beautiful UI", "Fast Performance", "Native Feel"]
+          },
+          {
+            id: "react-spa",
+            name: "React SPA",
+            description: "Single Page Application",
+            price: 4000,
+            features: ["Fast Navigation", "Component-Based", "State Management", "Modern UI"]
+          },
+          {
+            id: "vue-spa",
+            name: "Vue.js SPA",
+            description: "Progressive JavaScript framework",
+            price: 3800,
+            features: ["Reactive Components", "Easy Learning Curve", "Flexible Architecture", "Performance Optimized"]
+          },
+          {
+            id: "angular",
+            name: "Angular",
+            description: "Enterprise-grade framework",
+            price: 5200,
+            features: ["TypeScript Based", "Complete Solution", "Enterprise Ready", "Rich Ecosystem"]
+          },
+          {
+            id: "svelte",
+            name: "Svelte/SvelteKit",
+            description: "Compile-time framework",
+            price: 4200,
+            features: ["No Virtual DOM", "Smaller Bundles", "Better Performance", "Simple Syntax"]
+          },
+          {
+            id: "laravel",
+            name: "Laravel + Blade/Inertia",
+            description: "PHP full-stack framework",
+            price: 4500,
+            features: ["MVC Architecture", "Built-in Auth", "Database ORM", "Admin Panel"]
+          }
+        ]
+      },
+      {
+        id: "webapp-enhancement",
+        name: "Web App Enhancement",
+        description: "Improve existing web application",
+        basePrice: 1500,
+        platforms: [
+          {
+            id: "nextjs-upgrade",
+            name: "Next.js Upgrade",
+            description: "Enhance your Next.js app",
+            price: 3000,
+            features: ["Performance Optimization", "Feature Addition", "SEO Enhancement", "Code Refactoring"]
+          },
+          {
+            id: "nuxt-upgrade",
+            name: "Nuxt.js Upgrade",
+            description: "Improve your Nuxt app",
+            price: 2800,
+            features: ["Module Integration", "Performance Tuning", "UI Enhancement", "Bug Fixes"]
+          },
+          {
+            id: "react-upgrade",
+            name: "React App Upgrade",
+            description: "Modernize your React app",
+            price: 2500,
+            features: ["Component Refactoring", "State Management", "Performance Boost", "UI Improvements"]
+          },
+          {
+            id: "vue-upgrade",
+            name: "Vue.js Upgrade",
+            description: "Enhance your Vue app",
+            price: 2400,
+            features: ["Composition API", "Vuex Integration", "Performance Optimization", "Feature Addition"]
+          },
+          {
+            id: "framework-migration",
+            name: "Framework Migration",
+            description: "Migrate to modern framework",
+            price: 6000,
+            features: ["Code Migration", "Architecture Redesign", "Data Preservation", "Testing & QA"]
+          },
+          {
+            id: "feature-enhancement",
+            name: "Feature Enhancement",
+            description: "Add new capabilities",
+            price: 2000,
+            features: ["New Features", "Integration", "Testing", "Documentation"]
+          }
+        ]
+      }
+    ],
+    addOns: [
+      { id: "domain", name: "Domain Registration", description: "Custom domain (.com, .com.au, etc.)", price: 50 },
+      { id: "cloud-hosting", name: "Cloud Hosting Setup", description: "AWS/Vercel/Railway deployment (1 year)", price: 500 },
+      { id: "database-hosting", name: "Database Hosting", description: "Managed database (PostgreSQL/MySQL)", price: 300 },
+      { id: "admin-dashboard", name: "Admin Dashboard", description: "Custom admin panel (up to 10 models)", price: 2000, popular: true },
+      { id: "additional-models", name: "Additional Data Models", description: "5 extra database models/tables", price: 800 },
+      { id: "monthly-maintenance", name: "Monthly Maintenance", description: "Updates, monitoring & support", price: 400 }
     ]
   },
   {
@@ -68,178 +309,421 @@ const services: Service[] = [
     name: "Mobile Apps",
     icon: <Smartphone className="w-8 h-8" />,
     description: "Native & cross-platform mobile applications",
-    basePrice: 8000,
+    basePrice: 3000,
     color: "from-green-500 to-teal-600",
     gradient: "bg-gradient-to-br from-green-500 to-teal-600",
     features: [
-      "Cross-Platform",
+      "Cross-Platform Support",
       "Native Performance",
       "Push Notifications",
       "Offline Support",
-      "App Store Ready",
-      "User Authentication"
+      "App Store Submission",
+      "Up to 10 Screens Included"
+    ],
+    serviceTypes: [
+      {
+        id: "new-app",
+        name: "New Mobile App",
+        description: "Build a new mobile application",
+        basePrice: 3000,
+        platforms: [
+          {
+            id: "flutter",
+            name: "Flutter",
+            description: "Cross-platform framework by Google",
+            price: 8000,
+            features: ["iOS & Android", "Native Performance", "Beautiful UI", "Hot Reload"]
+          },
+          {
+            id: "react-native",
+            name: "React Native",
+            description: "Popular cross-platform framework",
+            price: 7500,
+            features: ["iOS & Android", "JavaScript/TypeScript", "Large Community", "Reusable Components"]
+          },
+          {
+            id: "ios-native",
+            name: "Native iOS",
+            description: "Swift/SwiftUI development",
+            price: 10000,
+            features: ["Best Performance", "iOS Only", "Native Features", "App Store Optimized"]
+          },
+          {
+            id: "android-native",
+            name: "Native Android",
+            description: "Kotlin development",
+            price: 9000,
+            features: ["Best Performance", "Android Only", "Material Design", "Google Play Optimized"]
+          },
+          {
+            id: "both-native",
+            name: "Both Native (iOS + Android)",
+            description: "Separate native apps",
+            price: 16000,
+            features: ["Maximum Performance", "Platform-Specific Features", "Best User Experience", "Separate Codebases"]
+          },
+          {
+            id: "pwa",
+            name: "Progressive Web App (PWA)",
+            description: "Web-based mobile experience",
+            price: 5000,
+            features: ["Works Everywhere", "No App Store", "Offline Support", "Push Notifications"]
+          }
+        ]
+      },
+      {
+        id: "app-enhancement",
+        name: "App Enhancement",
+        description: "Improve existing mobile app",
+        basePrice: 2000,
+        platforms: [
+          {
+            id: "flutter-upgrade",
+            name: "Flutter App Upgrade",
+            description: "Enhance your Flutter app",
+            price: 4000,
+            features: ["New Features", "Performance Optimization", "Bug Fixes", "UI Enhancement"]
+          },
+          {
+            id: "react-native-upgrade",
+            name: "React Native Upgrade",
+            description: "Improve your RN app",
+            price: 3800,
+            features: ["Library Updates", "Performance Tuning", "Feature Addition", "UI Refresh"]
+          },
+          {
+            id: "native-upgrade",
+            name: "Native App Upgrade",
+            description: "Enhance native iOS/Android app",
+            price: 5000,
+            features: ["New Features", "OS Updates", "Performance Boost", "Security Enhancement"]
+          },
+          {
+            id: "cross-platform-migration",
+            name: "Cross-Platform Migration",
+            description: "Migrate to Flutter/React Native",
+            price: 10000,
+            features: ["Code Migration", "Feature Parity", "Testing", "App Store Submission"]
+          }
+        ]
+      }
     ],
     addOns: [
-      { id: "backend", name: "Backend API", description: "Custom backend with database", price: 3000, category: "apps", popular: true },
-      { id: "push", name: "Push Notifications", description: "Real-time notifications", price: 800, category: "apps" },
-      { id: "analytics", name: "App Analytics", description: "User behavior tracking", price: 600, category: "apps" },
-      { id: "payments", name: "In-App Payments", description: "Stripe integration", price: 1200, category: "apps" },
-      { id: "social", name: "Social Features", description: "User profiles & sharing", price: 1500, category: "apps" },
-      { id: "offline", name: "Offline Mode", description: "Work without internet", price: 1000, category: "apps" }
+      { id: "additional-screens", name: "Additional Screens", description: "5 extra screens beyond base package", price: 1000 },
+      { id: "push-notifications", name: "Push Notifications", description: "Firebase Cloud Messaging integration", price: 800 },
+      { id: "backend-api", name: "Backend API", description: "Custom REST/GraphQL API", price: 3000, popular: true },
+      { id: "app-analytics", name: "App Analytics", description: "Firebase Analytics & Crashlytics", price: 500 },
+      { id: "in-app-payments", name: "In-App Payments", description: "Stripe/Apple Pay/Google Pay", price: 1500 },
+      { id: "app-store-optimization", name: "App Store Optimization", description: "ASO for better visibility", price: 600 },
+      { id: "monthly-maintenance", name: "Monthly Maintenance", description: "Updates & bug fixes", price: 300 }
     ]
   },
   {
     id: "ai",
     name: "AI Automation",
     icon: <Brain className="w-8 h-8" />,
-    description: "Intelligent automation solutions",
-    basePrice: 3500,
+    description: "Workflow automation & intelligent chatbots",
+    basePrice: 1500,
     color: "from-purple-500 to-pink-600",
     gradient: "bg-gradient-to-br from-purple-500 to-pink-600",
     features: [
-      "Machine Learning",
-      "Data Processing",
-      "Automated Workflows",
-      "Smart Analytics",
-      "API Integration",
-      "Real-time Processing"
+      "Workflow Automation",
+      "AI Chatbot Development",
+      "Platform Integration",
+      "CRM Integration",
+      "Email Automation",
+      "Data Collection & Reporting"
+    ],
+    serviceTypes: [
+      {
+        id: "new-automation",
+        name: "New Automation Project",
+        description: "Build custom automation workflow",
+        basePrice: 1500,
+        platforms: [
+          {
+            id: "lead-generation",
+            name: "Lead Generation Automation",
+            description: "Automate lead capture and follow-up",
+            price: 2000,
+            features: ["Form Integration", "Auto-Response", "CRM Sync", "Lead Scoring"]
+          },
+          {
+            id: "email-marketing",
+            name: "Email Marketing Automation",
+            description: "Automated email campaigns",
+            price: 1800,
+            features: ["Email Sequences", "Segmentation", "A/B Testing", "Analytics"]
+          },
+          {
+            id: "customer-support-chatbot",
+            name: "Customer Support Chatbot",
+            description: "AI-powered customer support",
+            price: 3000,
+            features: ["24/7 Support", "Natural Language", "Knowledge Base", "Multi-Channel"]
+          },
+          {
+            id: "social-media-automation",
+            name: "Social Media Automation",
+            description: "Schedule and manage posts",
+            price: 1500,
+            features: ["Post Scheduling", "Multi-Platform", "Analytics", "Content Calendar"]
+          },
+          {
+            id: "data-collection",
+            name: "Data Collection & Reporting",
+            description: "Automated data aggregation",
+            price: 2500,
+            features: ["Data Scraping", "API Integration", "Custom Reports", "Dashboard"]
+          },
+          {
+            id: "ecommerce-automation",
+            name: "E-commerce Automation",
+            description: "Order and inventory automation",
+            price: 3500,
+            features: ["Order Processing", "Inventory Sync", "Customer Notifications", "Analytics"]
+          },
+          {
+            id: "n8n-workflow",
+            name: "n8n Workflow Automation",
+            description: "Visual workflow builder",
+            price: 2200,
+            features: ["Visual Builder", "400+ Integrations", "Self-Hosted", "Custom Workflows"]
+          },
+          {
+            id: "make-zapier",
+            name: "Make/Zapier Automation",
+            description: "No-code automation platform",
+            price: 1800,
+            features: ["Easy Setup", "1000+ Apps", "Templates", "Cloud-Based"]
+          }
+        ]
+      },
+      {
+        id: "automation-enhancement",
+        name: "Automation Enhancement",
+        description: "Optimize existing automation",
+        basePrice: 1000,
+        platforms: [
+          {
+            id: "workflow-optimization",
+            name: "Workflow Optimization",
+            description: "Improve existing workflows",
+            price: 1500,
+            features: ["Performance Analysis", "Bottleneck Removal", "Error Handling", "Monitoring"]
+          },
+          {
+            id: "integration-expansion",
+            name: "Integration Expansion",
+            description: "Add more integrations",
+            price: 1200,
+            features: ["New Platforms", "API Connections", "Data Sync", "Testing"]
+          },
+          {
+            id: "chatbot-training",
+            name: "Chatbot Training & Enhancement",
+            description: "Improve AI responses",
+            price: 2000,
+            features: ["Training Data", "Intent Recognition", "Response Quality", "Analytics"]
+          },
+          {
+            id: "automation-consulting",
+            name: "Automation Consulting",
+            description: "Strategy and planning",
+            price: 800,
+            features: ["Process Analysis", "ROI Calculation", "Implementation Plan", "Best Practices"]
+          }
+        ]
+      }
     ],
     addOns: [
-      { id: "chatbot", name: "AI Chatbot", description: "Intelligent customer support", price: 2000, category: "ai", popular: true },
-      { id: "analytics", name: "Predictive Analytics", description: "Data-driven insights", price: 1500, category: "ai" },
-      { id: "automation", name: "Workflow Automation", description: "Process automation", price: 1200, category: "ai" },
-      { id: "integration", name: "API Integration", description: "Connect with existing systems", price: 1000, category: "ai" },
-      { id: "training", name: "Custom Training", description: "Train on your data", price: 2500, category: "ai" },
-      { id: "monitoring", name: "Performance Monitoring", description: "Real-time system monitoring", price: 800, category: "ai" }
+      { id: "crm-integration", name: "CRM Integration", description: "HubSpot, Salesforce, etc.", price: 1000, popular: true },
+      { id: "advanced-chatbot", name: "Advanced Chatbot Training", description: "Custom training on your data", price: 1500 },
+      { id: "multi-platform", name: "Multi-Platform Deployment", description: "Website, Slack, Teams, etc.", price: 800 },
+      { id: "email-platform", name: "Email Platform Integration", description: "Mailchimp, SendGrid, etc.", price: 600 },
+      { id: "social-integration", name: "Social Media Integration", description: "Facebook, Twitter, LinkedIn", price: 700 },
+      { id: "analytics-dashboard", name: "Analytics Dashboard", description: "Custom metrics & reporting", price: 1200 },
+      { id: "slack-teams", name: "Slack/Teams Integration", description: "Internal notifications", price: 500 },
+      { id: "database-integration", name: "Database Integration", description: "Connect to existing databases", price: 900 },
+      { id: "additional-workflows", name: "Additional Workflows", description: "3 extra automation workflows", price: 1500 },
+      { id: "ongoing-optimization", name: "Ongoing Optimization", description: "Continuous improvement (per month)", price: 400 },
+      { id: "team-training", name: "Team Training Session", description: "2-hour training for your team", price: 500 },
+      { id: "monthly-maintenance", name: "Monthly Maintenance", description: "Monitoring & updates", price: 250 }
     ]
   },
   {
     id: "marketing",
     name: "Digital Marketing",
     icon: <TrendingUp className="w-8 h-8" />,
-    description: "Data-driven marketing strategies",
-    basePrice: 1500,
+    description: "Data-driven marketing strategies & campaigns",
+    basePrice: 1000,
     color: "from-orange-500 to-red-600",
     gradient: "bg-gradient-to-br from-orange-500 to-red-600",
     features: [
-      "SEO Strategy",
-      "Social Media",
-      "Content Marketing",
-      "Email Campaigns",
-      "Analytics & Reporting",
-      "Conversion Optimization"
+      "Marketing Strategy",
+      "Target Audience Analysis",
+      "Campaign Planning",
+      "Monthly Reporting",
+      "ROI Tracking",
+      "A/B Testing"
+    ],
+    serviceTypes: [
+      {
+        id: "new-campaign",
+        name: "New Marketing Campaign",
+        description: "Launch a new marketing initiative",
+        basePrice: 1000,
+        platforms: [
+          {
+            id: "seo-campaign",
+            name: "SEO Campaign",
+            description: "Search engine optimization",
+            price: 2000,
+            features: ["Keyword Research", "On-Page SEO", "Link Building", "Monthly Reporting"]
+          },
+          {
+            id: "ppc-advertising",
+            name: "PPC Advertising",
+            description: "Google Ads & social ads",
+            price: 2500,
+            features: ["Ad Creation", "Targeting Setup", "Budget Management", "Performance Tracking"]
+          },
+          {
+            id: "social-media-marketing",
+            name: "Social Media Marketing",
+            description: "Organic social media growth",
+            price: 1800,
+            features: ["Content Creation", "Daily Posting", "Community Management", "Analytics"]
+          },
+          {
+            id: "content-marketing",
+            name: "Content Marketing",
+            description: "Blog posts and articles",
+            price: 1500,
+            features: ["4 Blog Posts/Month", "SEO Optimization", "Keyword Targeting", "Content Calendar"]
+          },
+          {
+            id: "email-marketing",
+            name: "Email Marketing",
+            description: "Email campaigns",
+            price: 1200,
+            features: ["4 Campaigns/Month", "List Segmentation", "A/B Testing", "Analytics"]
+          },
+          {
+            id: "full-digital",
+            name: "Full Digital Strategy",
+            description: "Comprehensive marketing solution",
+            price: 5000,
+            features: ["Multi-Channel", "SEO + PPC + Social", "Content Creation", "Full Reporting"]
+          },
+          {
+            id: "ecommerce-marketing",
+            name: "E-commerce Marketing",
+            description: "Online store promotion",
+            price: 3000,
+            features: ["Product Ads", "Shopping Campaigns", "Retargeting", "Conversion Optimization"]
+          },
+          {
+            id: "local-marketing",
+            name: "Local Marketing",
+            description: "Local business promotion",
+            price: 1500,
+            features: ["Google My Business", "Local SEO", "Review Management", "Local Ads"]
+          }
+        ]
+      },
+      {
+        id: "campaign-enhancement",
+        name: "Campaign Enhancement",
+        description: "Optimize existing campaigns",
+        basePrice: 800,
+        platforms: [
+          {
+            id: "campaign-audit",
+            name: "Campaign Audit",
+            description: "Comprehensive performance review",
+            price: 1000,
+            features: ["Performance Analysis", "Competitor Research", "Recommendations", "Action Plan"]
+          },
+          {
+            id: "campaign-optimization",
+            name: "Campaign Optimization",
+            description: "Improve ROI",
+            price: 1500,
+            features: ["A/B Testing", "Targeting Refinement", "Budget Optimization", "Creative Refresh"]
+          },
+          {
+            id: "channel-expansion",
+            name: "Channel Expansion",
+            description: "Add new marketing channels",
+            price: 2000,
+            features: ["New Platforms", "Strategy Development", "Implementation", "Tracking Setup"]
+          },
+          {
+            id: "marketing-consulting",
+            name: "Marketing Consulting",
+            description: "Strategic guidance",
+            price: 800,
+            features: ["Strategy Session", "Market Analysis", "Growth Plan", "Recommendations"]
+          }
+        ]
+      }
     ],
     addOns: [
-      { id: "ppc", name: "PPC Campaigns", description: "Google Ads & social ads", price: 1000, category: "marketing", popular: true },
-      { id: "social", name: "Social Media Management", description: "Daily content & engagement", price: 800, category: "marketing" },
-      { id: "email", name: "Email Marketing", description: "Automated email campaigns", price: 600, category: "marketing" },
-      { id: "content", name: "Content Creation", description: "Blog posts & social content", price: 500, category: "marketing" },
-      { id: "seo", name: "Technical SEO", description: "On-page optimization", price: 1200, category: "marketing" },
-      { id: "analytics", name: "Advanced Analytics", description: "Conversion tracking", price: 700, category: "marketing" }
+      { id: "additional-content", name: "Additional Content", description: "4 extra blog posts per month", price: 600 },
+      { id: "video-marketing", name: "Video Marketing", description: "2 videos per month", price: 1500, popular: true },
+      { id: "landing-pages", name: "Landing Page Design", description: "2 custom landing pages", price: 1000 },
+      { id: "ongoing-management", name: "Ongoing Management", description: "Monthly campaign management", price: 800 },
+      { id: "influencer-marketing", name: "Influencer Marketing", description: "Influencer outreach & collaboration", price: 1200 },
+      { id: "reputation-management", name: "Reputation Management", description: "Review monitoring & response", price: 600 }
     ]
   }
 ];
 
 export default function PricingPage() {
   const [selectedService, setSelectedService] = useState<Service | null>(null);
-  const [cart, setCart] = useState<CartItem[]>([]);
-  const [hoveredService, setHoveredService] = useState<string | null>(null);
+  const [selectedServiceType, setSelectedServiceType] = useState<ServiceType | null>(null);
+  const [selectedPlatform, setSelectedPlatform] = useState<Platform | null>(null);
   const [selectedAddOns, setSelectedAddOns] = useState<AddOn[]>([]);
-  const [showCart, setShowCart] = useState(false);
-  const [animatedPrice, setAnimatedPrice] = useState(0);
-  const [showPriceComparison, setShowPriceComparison] = useState(false);
-  const [activeTab, setActiveTab] = useState('services');
   const router = useRouter();
 
-  // Animate price changes
-  useEffect(() => {
-    if (selectedService) {
-      const targetPrice = selectedService.basePrice + selectedAddOns.reduce((sum, addOn) => sum + addOn.price, 0);
-      const duration = 800;
-      const steps = 30;
-      const increment = (targetPrice - animatedPrice) / steps;
-      
-      let currentStep = 0;
-      const timer = setInterval(() => {
-        currentStep++;
-        setAnimatedPrice(prev => prev + increment);
-        
-        if (currentStep >= steps) {
-          setAnimatedPrice(targetPrice);
-          clearInterval(timer);
-        }
-      }, duration / steps);
-      
-      return () => clearInterval(timer);
-    }
-  }, [selectedService, selectedAddOns]);
-
-  const totalCartValue = cart.reduce((total, item) => {
-    const addOnsTotal = item.selectedAddOns.reduce((sum, addOn) => sum + addOn.price, 0);
-    return total + (item.service.basePrice + addOnsTotal) * item.quantity;
-  }, 0);
-
-  const addToCart = () => {
-    if (!selectedService) return;
-    
-    const existingItem = cart.find(item => item.service.id === selectedService.id);
-    
-    if (existingItem) {
-      setCart(cart.map(item => 
-        item.service.id === selectedService.id 
-          ? { ...item, selectedAddOns: selectedAddOns, quantity: item.quantity + 1 }
-          : item
-      ));
-    } else {
-      setCart([...cart, {
-        service: selectedService,
-        selectedAddOns: selectedAddOns,
-        quantity: 1
-      }]);
-    }
-    
-    setSelectedAddOns([]);
-    setSelectedService(null);
-    setShowCart(true);
-  };
-
-  const removeFromCart = (serviceId: string) => {
-    setCart(cart.filter(item => item.service.id !== serviceId));
-  };
-
-  const updateQuantity = (serviceId: string, quantity: number) => {
-    if (quantity <= 0) {
-      removeFromCart(serviceId);
-      return;
-    }
-    setCart(cart.map(item => 
-      item.service.id === serviceId ? { ...item, quantity } : item
-    ));
-  };
-
   const toggleAddOn = (addOn: AddOn) => {
-    setSelectedAddOns(prev => 
+    setSelectedAddOns(prev =>
       prev.find(a => a.id === addOn.id)
         ? prev.filter(a => a.id !== addOn.id)
         : [...prev, addOn]
     );
   };
 
-  const proceedToCheckout = () => {
-    const checkoutData = {
-      items: cart,
-      total: totalCartValue
-    };
-    localStorage.setItem('checkoutData', JSON.stringify(checkoutData));
-    router.push('/checkout');
+  const requestQuote = () => {
+    if (!selectedService) return;
+
+    const platformPrice = selectedPlatform?.price || selectedServiceType?.basePrice || selectedService.basePrice;
+    const addOnsTotal = selectedAddOns.reduce((sum, addOn) => sum + addOn.price, 0);
+    const estimatedTotal = platformPrice + addOnsTotal;
+
+    // Build query parameters for quote request
+    const params = new URLSearchParams({
+      service: selectedService.id,
+      serviceType: selectedServiceType?.id || '',
+      platform: selectedPlatform?.id || '',
+      platformName: selectedPlatform?.name || '',
+      addOns: JSON.stringify(selectedAddOns.map(addOn => addOn.name)),
+      basePrice: platformPrice.toString(),
+      addOnsTotal: addOnsTotal.toString(),
+      estimatedTotal: estimatedTotal.toString()
+    });
+
+    // Redirect to quote request page
+    router.push(`/quote?${params.toString()}`);
   };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-purple-900 to-gray-900 relative overflow-hidden">
-      {/* Animated Background Elements */}
+      {/* Animated Background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <motion.div
-          animate={{ 
+          animate={{
             x: [0, 100, 0],
             y: [0, -100, 0],
             rotate: [0, 180, 360]
@@ -248,7 +732,7 @@ export default function PricingPage() {
           className="absolute top-20 left-10 w-32 h-32 bg-gradient-to-r from-purple-500 to-yellow-400 rounded-full opacity-20 blur-xl"
         />
         <motion.div
-          animate={{ 
+          animate={{
             x: [0, -150, 0],
             y: [0, 100, 0],
             rotate: [360, 180, 0]
@@ -256,226 +740,64 @@ export default function PricingPage() {
           transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
           className="absolute top-40 right-20 w-24 h-24 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full opacity-20 blur-xl"
         />
-        <motion.div
-          animate={{ 
-            x: [0, 80, 0],
-            y: [0, -80, 0],
-            scale: [1, 1.2, 1]
-          }}
-          transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-          className="absolute bottom-20 left-1/4 w-20 h-20 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full opacity-20 blur-xl"
-        />
       </div>
 
       {/* Header */}
-      <div className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-yellow-500 opacity-10"></div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-center"
-          >
-            <motion.div
-              initial={{ scale: 0.8 }}
-              animate={{ scale: 1 }}
-              whileHover={{ scale: 1.05 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-600 to-yellow-500 text-white px-6 py-3 rounded-full text-sm font-medium mb-8 shadow-lg cursor-pointer"
-            >
-              <motion.div
-                animate={{ rotate: 360 }}
-                transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-              >
-                <Sparkles className="w-4 h-4" />
-              </motion.div>
-              Choose Your Perfect Package
-            </motion.div>
-            
-            <motion.h1 
-              className="text-4xl md:text-6xl font-bold text-white mb-6"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-            >
-              <motion.span
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.5, delay: 0.5 }}
-              >
-                Transparent
-              </motion.span>
-              <motion.span 
-                className="bg-gradient-to-r from-purple-400 to-yellow-400 bg-clip-text text-transparent"
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, delay: 0.7 }}
-              >
-                {" "}Pricing
-              </motion.span>
-            </motion.h1>
-            
-            <motion.p 
-              className="text-xl text-gray-300 max-w-3xl mx-auto mb-8"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.9 }}
-            >
-              Build your custom solution with our flexible pricing. Start with a base package and add the features you need.
-            </motion.p>
-
-            {/* Interactive Stats */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 1.1 }}
-              className="flex justify-center items-center gap-8 mb-8"
-            >
-              <motion.div 
-                className="text-center"
-                whileHover={{ scale: 1.1 }}
-              >
-                <div className="flex items-center justify-center w-12 h-12 bg-gradient-to-r from-purple-500 to-yellow-500 rounded-full text-white mb-2 mx-auto">
-                  <Users className="w-6 h-6" />
-                </div>
-                <div className="text-2xl font-bold text-white">500+</div>
-                <div className="text-sm text-gray-300">Happy Clients</div>
-              </motion.div>
-              
-              <motion.div 
-                className="text-center"
-                whileHover={{ scale: 1.1 }}
-              >
-                <div className="flex items-center justify-center w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full text-white mb-2 mx-auto">
-                  <Award className="w-6 h-6" />
-                </div>
-                <div className="text-2xl font-bold text-white">98%</div>
-                <div className="text-sm text-gray-300">Success Rate</div>
-              </motion.div>
-              
-              <motion.div 
-                className="text-center"
-                whileHover={{ scale: 1.1 }}
-              >
-                <div className="flex items-center justify-center w-12 h-12 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full text-white mb-2 mx-auto">
-                  <Clock className="w-6 h-6" />
-                </div>
-                <div className="text-2xl font-bold text-white">24/7</div>
-                <div className="text-sm text-gray-300">Support</div>
-              </motion.div>
-            </motion.div>
-          </motion.div>
-        </div>
-      </div>
-
-      {/* Interactive Tabs */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="flex justify-center mb-8"
+          transition={{ duration: 0.6 }}
+          className="text-center"
         >
-          <div className="bg-gray-800/50 backdrop-blur-sm rounded-full p-2 shadow-lg border border-gray-700">
-            <div className="flex space-x-2">
-              {[
-                { id: 'services', label: 'Services', icon: <Rocket className="w-4 h-4" /> },
-                { id: 'packages', label: 'Packages', icon: <Target className="w-4 h-4" /> }
-              ].map((tab) => (
-                <motion.button
-                  key={tab.id}
-                  onClick={() => setActiveTab(tab.id)}
-                  className={`flex items-center gap-2 px-6 py-3 rounded-full font-medium transition-all duration-300 ${
-                    activeTab === tab.id
-                      ? 'bg-gradient-to-r from-purple-600 to-yellow-500 text-white shadow-lg'
-                      : 'text-gray-300 hover:text-white hover:bg-gray-700/50'
-                  }`}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  {tab.icon}
-                  {tab.label}
-                </motion.button>
-              ))}
-            </div>
-          </div>
+          <motion.div
+            initial={{ scale: 0.8 }}
+            animate={{ scale: 1 }}
+            className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-600 to-yellow-500 text-white px-6 py-3 rounded-full text-sm font-medium mb-8 shadow-lg"
+          >
+            <Sparkles className="w-4 h-4" />
+            Get Your Custom Quote
+          </motion.div>
+
+          <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
+            <span className="bg-gradient-to-r from-purple-400 to-yellow-400 bg-clip-text text-transparent">
+              Flexible Pricing
+            </span>
+          </h1>
+
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+            Choose your service, select your platform, and add features you need. We'll send you a personalized quote.
+          </p>
         </motion.div>
       </div>
 
       {/* Services Grid */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
-        <AnimatePresence mode="wait">
-          {activeTab === 'services' && (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+          {services.map((service, index) => (
             <motion.div
-              key="services"
+              key={service.id}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.6 }}
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12"
+              transition={{ duration: 0.6, delay: 0.1 * index }}
+              whileHover={{ y: -8, scale: 1.03 }}
             >
-              {services.map((service, index) => (
+              <Card className="relative overflow-hidden cursor-pointer bg-gray-800/50 backdrop-blur-sm border-gray-700 hover:shadow-2xl transition-all duration-300">
                 <motion.div
-                  key={service.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.1 * index }}
-                  whileHover={{ y: -12, scale: 1.03 }}
-                  onHoverStart={() => setHoveredService(service.id)}
-                  onHoverEnd={() => setHoveredService(null)}
-                >
-                                <Card className={`relative overflow-hidden cursor-pointer transition-all duration-500 bg-gray-800/50 backdrop-blur-sm border-gray-700 ${
-                hoveredService === service.id ? 'shadow-2xl ring-2 ring-purple-400' : 'shadow-lg hover:shadow-xl'
-              }`}>
-                {/* Animated Background */}
-                <motion.div 
-                  className={`absolute inset-0 ${service.gradient}`}
-                  initial={{ opacity: 0.1 }}
-                  animate={{ 
-                    opacity: hoveredService === service.id ? 0.25 : 0.1,
-                    scale: hoveredService === service.id ? 1.1 : 1
-                  }}
-                  transition={{ duration: 0.3 }}
+                  className={`absolute inset-0 ${service.gradient} opacity-10`}
                 />
                 
-                {/* Floating Elements */}
-                {hoveredService === service.id && (
-                  <motion.div
-                    initial={{ opacity: 0, scale: 0 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    className="absolute top-4 right-4 w-8 h-8 bg-yellow-400 bg-opacity-20 rounded-full flex items-center justify-center"
-                  >
-                    <Heart className="w-4 h-4 text-yellow-400" />
-                  </motion.div>
+                {service.popular && (
+                  <div className="absolute top-4 right-4">
+                    <Badge className="bg-gradient-to-r from-yellow-400 to-orange-500 text-black shadow-lg">
+                      Popular
+                    </Badge>
+                  </div>
                 )}
-                
+
                 <CardHeader className="relative">
-                  <div className="flex items-center justify-between mb-4">
-                    <motion.div 
-                      className={`p-3 rounded-xl ${service.gradient} text-white shadow-lg`}
-                      whileHover={{ rotate: 360 }}
-                      transition={{ duration: 0.6 }}
-                    >
-                      {service.icon}
-                    </motion.div>
-                    {service.popular && (
-                      <motion.div
-                        initial={{ scale: 0 }}
-                        animate={{ scale: 1 }}
-                        transition={{ delay: 0.3 }}
-                      >
-                        <Badge className="bg-gradient-to-r from-yellow-400 to-orange-500 text-black shadow-lg">
-                          <motion.div
-                            animate={{ rotate: [0, 10, -10, 0] }}
-                            transition={{ duration: 2, repeat: Infinity }}
-                          >
-                            <Star className="w-3 h-3 mr-1" />
-                          </motion.div>
-                          Popular
-                        </Badge>
-                      </motion.div>
-                    )}
+                  <div className={`p-3 rounded-xl ${service.gradient} text-white shadow-lg w-fit mb-4`}>
+                    {service.icon}
                   </div>
                   <CardTitle className="text-xl font-bold text-white mb-2">
                     {service.name}
@@ -484,171 +806,29 @@ export default function PricingPage() {
                     {service.description}
                   </p>
                 </CardHeader>
+
                 <CardContent className="relative">
-                  <motion.div 
-                    className="mb-4"
-                    whileHover={{ scale: 1.05 }}
-                  >
-                    <span className="text-3xl font-bold text-white">
-                      ${service.basePrice.toLocaleString()}
-                    </span>
-                    <span className="text-gray-400 ml-2">starting</span>
-                  </motion.div>
-                  
                   <ul className="space-y-2 mb-6">
-                    {service.features.slice(0, 3).map((feature, idx) => (
-                      <motion.li 
-                        key={idx} 
-                        className="flex items-center text-sm text-gray-300"
-                        initial={{ opacity: 0, x: -20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: 0.1 * idx }}
-                      >
-                        <motion.div
-                          whileHover={{ scale: 1.2 }}
-                          className="mr-2"
-                        >
-                          <Check className="w-4 h-4 text-green-400 flex-shrink-0" />
-                        </motion.div>
+                    {service.features.slice(0, 5).map((feature, idx) => (
+                      <li key={idx} className="flex items-center text-sm text-gray-300">
+                        <Check className="w-4 h-4 text-green-400 mr-2 flex-shrink-0" />
                         {feature}
-                      </motion.li>
+                      </li>
                     ))}
                   </ul>
-                  
-                  <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
-                    <Button
-                      onClick={() => setSelectedService(service)}
-                      className={`w-full ${service.gradient} hover:opacity-90 transition-all duration-300 shadow-lg hover:shadow-xl`}
-                    >
-                      <span className="mr-2">Choose Package</span>
-                      <motion.div
-                        animate={{ x: hoveredService === service.id ? 5 : 0 }}
-                        transition={{ duration: 0.2 }}
-                      >
-                        <ArrowRight className="w-4 h-4" />
-                      </motion.div>
-                    </Button>
-                  </motion.div>
+
+                  <Button
+                    onClick={() => setSelectedService(service)}
+                    className={`w-full ${service.gradient} hover:opacity-90 transition-all`}
+                  >
+                    Get Started
+                    <ArrowRight className="w-4 h-4 ml-2" />
+                  </Button>
                 </CardContent>
               </Card>
-                </motion.div>
-              ))}
             </motion.div>
-          )}
-
-          {activeTab === 'packages' && (
-            <motion.div
-              key="packages"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.6 }}
-              className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12"
-            >
-              {/* Package Cards */}
-              {[
-                {
-                  name: "Starter Package",
-                  price: 2500,
-                  description: "Perfect for small businesses",
-                  features: ["Website Development", "Basic SEO", "Mobile Responsive", "1 Month Support"],
-                  gradient: "bg-gradient-to-br from-blue-500 to-purple-600",
-                  popular: false
-                },
-                {
-                  name: "Business Package",
-                  price: 5500,
-                  description: "Ideal for growing companies",
-                  features: ["Website + E-commerce", "Advanced SEO", "Analytics Setup", "3 Months Support", "Social Media Integration"],
-                  gradient: "bg-gradient-to-br from-purple-500 to-pink-600",
-                  popular: true
-                },
-                {
-                  name: "Enterprise Package",
-                  price: 12000,
-                  description: "Complete digital solution",
-                  features: ["Website + Mobile App", "AI Automation", "Marketing Campaign", "6 Months Support", "Priority Support", "Custom Integrations"],
-                  gradient: "bg-gradient-to-br from-orange-500 to-red-600",
-                  popular: false
-                }
-              ].map((pkg, index) => (
-                <motion.div
-                  key={pkg.name}
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.2 * index }}
-                  whileHover={{ y: -8, scale: 1.02 }}
-                  className={`relative ${pkg.popular ? 'md:-mt-4 md:mb-4' : ''}`}
-                >
-                  <Card className={`relative overflow-hidden cursor-pointer transition-all duration-300 bg-gray-800/50 backdrop-blur-sm border-gray-700 ${
-                    pkg.popular ? 'ring-2 ring-yellow-400 shadow-2xl' : 'shadow-lg hover:shadow-xl'
-                  }`}>
-                    <div className={`absolute inset-0 ${pkg.gradient} opacity-10`}></div>
-                    
-                    {pkg.popular && (
-                      <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                        <Badge className="bg-gradient-to-r from-purple-600 to-yellow-500 text-white px-4 py-2 shadow-lg">
-                          <Star className="w-4 h-4 mr-1" />
-                          Most Popular
-                        </Badge>
-                      </div>
-                    )}
-                    
-                    <CardHeader className="relative text-center pt-8">
-                      <CardTitle className="text-2xl font-bold text-white mb-2">
-                        {pkg.name}
-                      </CardTitle>
-                      <p className="text-gray-300 mb-4">{pkg.description}</p>
-                      <div className="mb-6">
-                        <span className="text-4xl font-bold text-white">
-                          ${pkg.price.toLocaleString()}
-                        </span>
-                        <span className="text-gray-400 ml-2">total</span>
-                      </div>
-                    </CardHeader>
-                    
-                    <CardContent className="relative">
-                      <ul className="space-y-3 mb-8">
-                        {pkg.features.map((feature, idx) => (
-                          <motion.li 
-                            key={idx} 
-                            className="flex items-center text-sm text-gray-300"
-                            initial={{ opacity: 0, x: -20 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            transition={{ delay: 0.1 * idx }}
-                          >
-                            <Check className="w-4 h-4 text-green-400 mr-3 flex-shrink-0" />
-                            {feature}
-                          </motion.li>
-                        ))}
-                      </ul>
-                      
-                      <Button
-                        className={`w-full ${pkg.gradient} hover:opacity-90 transition-all duration-300 shadow-lg`}
-                        onClick={() => {
-                          // Add package to cart logic
-                          const packageData = {
-                            items: [{
-                              service: { id: 'package', name: pkg.name, basePrice: pkg.price },
-                              selectedAddOns: [],
-                              quantity: 1
-                            }],
-                            total: pkg.price
-                          };
-                          localStorage.setItem('checkoutData', JSON.stringify(packageData));
-                          router.push('/checkout');
-                        }}
-                      >
-                        Get Started
-                        <ArrowRight className="w-4 h-4 ml-2" />
-                      </Button>
-                    </CardContent>
-                  </Card>
-                </motion.div>
-              ))}
-            </motion.div>
-          )}
-        </AnimatePresence>
+          ))}
+        </div>
 
         {/* Service Details Modal */}
         <AnimatePresence>
@@ -657,77 +837,143 @@ export default function PricingPage() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4"
-              onClick={() => setSelectedService(null)}
+              className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4 overflow-y-auto"
+              onClick={() => {
+                setSelectedService(null);
+                setSelectedServiceType(null);
+                setSelectedPlatform(null);
+                setSelectedAddOns([]);
+              }}
             >
               <motion.div
-                initial={{ scale: 0.8, opacity: 0 }}
+                initial={{ scale: 0.9, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
-                exit={{ scale: 0.8, opacity: 0 }}
-                className="bg-gray-800/90 backdrop-blur-sm rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto border border-gray-700"
+                exit={{ scale: 0.9, opacity: 0 }}
+                className="bg-gray-800/95 backdrop-blur-sm rounded-2xl max-w-5xl w-full max-h-[90vh] overflow-y-auto border border-gray-700 my-8"
                 onClick={(e) => e.stopPropagation()}
               >
-                <div className={`${selectedService.gradient} text-white p-8 rounded-t-2xl`}>
+                {/* Header */}
+                <div className={`${selectedService.gradient} text-white p-8 rounded-t-2xl sticky top-0 z-10`}>
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-4">
-                      <div className="p-3 bg-white bg-opacity-20 rounded-xl">
+                      <div className="p-3 bg-white/20 rounded-xl">
                         {selectedService.icon}
                       </div>
                       <div>
                         <h2 className="text-3xl font-bold">{selectedService.name}</h2>
-                        <p className="text-white text-opacity-90">{selectedService.description}</p>
+                        <p className="text-white/90">{selectedService.description}</p>
                       </div>
                     </div>
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      onClick={() => setSelectedService(null)}
-                      className="text-white hover:bg-white hover:bg-opacity-20"
+                    <button
+                      onClick={() => {
+                        setSelectedService(null);
+                        setSelectedServiceType(null);
+                        setSelectedPlatform(null);
+                        setSelectedAddOns([]);
+                      }}
+                      className="text-white hover:bg-white/20 rounded-full p-2 transition-colors"
                     >
-                      ✕
-                    </Button>
+                      <X className="w-6 h-6" />
+                    </button>
                   </div>
                 </div>
 
-                <div className="p-8">
-                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                    {/* Features */}
+                <div className="p-8 space-y-8">
+                  {/* Step 1: Service Type Selection */}
+                  {selectedService.serviceTypes && selectedService.serviceTypes.length > 0 && (
                     <div>
-                      <h3 className="text-xl font-semibold mb-4 text-white">What's Included</h3>
-                      <ul className="space-y-3">
-                        {selectedService.features.map((feature, idx) => (
-                          <motion.li
-                            key={idx}
-                            initial={{ opacity: 0, x: -20 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            transition={{ delay: idx * 0.1 }}
-                            className="flex items-center text-gray-300"
+                      <div className="flex items-center gap-3 mb-6">
+                        <div className="w-8 h-8 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center text-white font-bold shadow-lg">
+                          1
+                        </div>
+                        <h3 className="text-2xl font-semibold text-white">Choose Service Type</h3>
+                      </div>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        {selectedService.serviceTypes.map((serviceType) => (
+                          <motion.div
+                            key={serviceType.id}
+                            whileHover={{ scale: 1.02 }}
+                            onClick={() => {
+                              setSelectedServiceType(serviceType);
+                              setSelectedPlatform(null);
+                            }}
+                            className={`p-6 rounded-xl border-2 cursor-pointer transition-all ${
+                              selectedServiceType?.id === serviceType.id
+                                ? 'border-purple-500 bg-purple-500/20 shadow-lg shadow-purple-500/50'
+                                : 'border-gray-600 hover:border-gray-500 bg-gray-700/30'
+                            }`}
                           >
-                            <Check className="w-5 h-5 text-green-400 mr-3 flex-shrink-0" />
-                            {feature}
-                          </motion.li>
+                            <h4 className="font-semibold text-white text-lg mb-2">{serviceType.name}</h4>
+                            <p className="text-gray-300 text-sm">{serviceType.description}</p>
+                          </motion.div>
                         ))}
-                      </ul>
+                      </div>
                     </div>
+                  )}
 
-                    {/* Add-ons */}
+                  {/* Step 2: Platform Selection */}
+                  {selectedServiceType && (
                     <div>
-                      <h3 className="text-xl font-semibold mb-4 text-white">Customize Your Package</h3>
-                      <div className="space-y-3">
+                      <div className="h-px bg-gradient-to-r from-transparent via-purple-500 to-transparent my-8" />
+                      <div className="flex items-center gap-3 mb-6">
+                        <div className="w-8 h-8 rounded-full bg-gradient-to-r from-blue-500 to-cyan-500 flex items-center justify-center text-white font-bold shadow-lg">
+                          2
+                        </div>
+                        <h3 className="text-2xl font-semibold text-white">Select Platform</h3>
+                      </div>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        {selectedServiceType.platforms.map((platform) => (
+                          <motion.div
+                            key={platform.id}
+                            whileHover={{ scale: 1.02 }}
+                            onClick={() => setSelectedPlatform(platform)}
+                            className={`p-6 rounded-xl border-2 cursor-pointer transition-all ${
+                              selectedPlatform?.id === platform.id
+                                ? 'border-blue-500 bg-blue-500/20 shadow-lg shadow-blue-500/50'
+                                : 'border-gray-600 hover:border-gray-500 bg-gray-700/30'
+                            }`}
+                          >
+                            <h4 className="font-semibold text-white text-lg mb-2">{platform.name}</h4>
+                            <p className="text-gray-300 text-sm mb-4">{platform.description}</p>
+                            <ul className="space-y-2">
+                              {platform.features.map((feature, idx) => (
+                                <li key={idx} className="flex items-center text-sm text-gray-300">
+                                  <Check className="w-4 h-4 text-green-400 mr-2 flex-shrink-0" />
+                                  {feature}
+                                </li>
+                              ))}
+                            </ul>
+                          </motion.div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Step 3: Add-ons */}
+                  {selectedPlatform && (
+                    <div>
+                      <div className="h-px bg-gradient-to-r from-transparent via-yellow-500 to-transparent my-8" />
+                      <div className="flex items-center gap-3 mb-6">
+                        <div className="w-8 h-8 rounded-full bg-gradient-to-r from-yellow-500 to-orange-500 flex items-center justify-center text-white font-bold shadow-lg">
+                          3
+                        </div>
+                        <h3 className="text-2xl font-semibold text-white">Additional Services (Optional)</h3>
+                      </div>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         {selectedService.addOns.map((addOn) => (
                           <motion.div
                             key={addOn.id}
                             whileHover={{ scale: 1.02 }}
-                            className={`p-4 rounded-lg border-2 cursor-pointer transition-all duration-200 ${
-                              selectedAddOns.find(a => a.id === addOn.id)
-                                ? 'border-purple-500 bg-purple-500/10'
-                                : 'border-gray-600 hover:border-gray-500 bg-gray-700/50'
-                            }`}
                             onClick={() => toggleAddOn(addOn)}
+                            className={`p-4 rounded-xl border-2 cursor-pointer transition-all ${
+                              selectedAddOns.find(a => a.id === addOn.id)
+                                ? 'border-yellow-500 bg-yellow-500/20 shadow-lg shadow-yellow-500/50'
+                                : 'border-gray-600 hover:border-gray-500 bg-gray-700/30'
+                            }`}
                           >
-                            <div className="flex items-center justify-between">
+                            <div className="flex items-start justify-between">
                               <div className="flex-1">
-                                <div className="flex items-center gap-2">
+                                <div className="flex items-center gap-2 mb-1">
                                   <h4 className="font-medium text-white">{addOn.name}</h4>
                                   {addOn.popular && (
                                     <Badge className="bg-gradient-to-r from-yellow-400 to-orange-500 text-black text-xs">
@@ -735,261 +981,56 @@ export default function PricingPage() {
                                     </Badge>
                                   )}
                                 </div>
-                                <p className="text-sm text-gray-300 mt-1">{addOn.description}</p>
+                                <p className="text-sm text-gray-300">{addOn.description}</p>
                               </div>
-                              <div className="flex items-center gap-3">
-                                <span className="font-semibold text-white">
-                                  +${addOn.price.toLocaleString()}
-                                </span>
-                                <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${
-                                  selectedAddOns.find(a => a.id === addOn.id)
-                                    ? 'border-purple-500 bg-purple-500'
-                                    : 'border-gray-500'
-                                }`}>
-                                  {selectedAddOns.find(a => a.id === addOn.id) && (
-                                    <Check className="w-3 h-3 text-white" />
-                                  )}
-                                </div>
+                              <div className={`ml-3 w-6 h-6 rounded-full border-2 flex items-center justify-center flex-shrink-0 ${
+                                selectedAddOns.find(a => a.id === addOn.id)
+                                  ? 'border-yellow-500 bg-yellow-500'
+                                  : 'border-gray-500'
+                              }`}>
+                                {selectedAddOns.find(a => a.id === addOn.id) && (
+                                  <Check className="w-4 h-4 text-white" />
+                                )}
                               </div>
                             </div>
                           </motion.div>
                         ))}
                       </div>
                     </div>
-                  </div>
+                  )}
 
-                  {/* Total and Add to Cart */}
-                  <div className="mt-8 pt-6 border-t border-gray-700">
-                    <div className="grid grid-cols-1 md:grid-cols-4 gap-4 items-end">
-                      <div className="text-center md:text-left">
-                        <p className="text-sm text-gray-400">Base Price</p>
-                        <motion.p 
-                          className="text-2xl font-bold text-white"
-                          key={selectedService.basePrice}
-                          initial={{ scale: 0.8, opacity: 0 }}
-                          animate={{ scale: 1, opacity: 1 }}
-                          transition={{ duration: 0.3 }}
-                        >
-                          ${selectedService.basePrice.toLocaleString()}
-                        </motion.p>
-                      </div>
-                      <div className="text-center md:text-left">
-                        <p className="text-sm text-gray-400">Add-ons</p>
-                        <motion.p 
-                          className="text-xl font-semibold text-white"
-                          key={selectedAddOns.length}
-                          initial={{ scale: 0.8, opacity: 0 }}
-                          animate={{ scale: 1, opacity: 1 }}
-                          transition={{ duration: 0.3 }}
-                        >
-                          +${selectedAddOns.reduce((sum, addOn) => sum + addOn.price, 0).toLocaleString()}
-                        </motion.p>
-                      </div>
-                      <div className="text-center md:text-left">
-                        <p className="text-sm text-gray-400">Total</p>
-                        <motion.p 
-                          className="text-3xl font-bold text-white"
-                          key={animatedPrice}
-                          animate={{ 
-                            scale: [1, 1.1, 1],
-                            color: ["#FFFFFF", "#FCD34D", "#FFFFFF"]
-                          }}
-                          transition={{ duration: 0.5 }}
-                        >
-                          ${Math.round(animatedPrice).toLocaleString()}
-                        </motion.p>
-                      </div>
-                      <motion.div
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                      >
+                  {/* Quote Summary */}
+                  {selectedPlatform && (
+                    <div>
+                      <div className="h-px bg-gradient-to-r from-transparent via-green-500 to-transparent my-8" />
+                      <div className="bg-gradient-to-br from-gray-700/50 to-gray-800/50 rounded-xl p-6 border border-gray-600">
+                        <h3 className="text-xl font-semibold text-white mb-4">Ready to Get Your Quote?</h3>
+                        <div className="space-y-2 text-gray-300 mb-6">
+                          <p><strong>Service:</strong> {selectedService.name}</p>
+                          <p><strong>Type:</strong> {selectedServiceType?.name}</p>
+                          <p><strong>Platform:</strong> {selectedPlatform?.name}</p>
+                          {selectedAddOns.length > 0 && (
+                            <p><strong>Add-ons:</strong> {selectedAddOns.length} selected</p>
+                          )}
+                        </div>
                         <Button
-                          onClick={addToCart}
-                          className={`w-full ${selectedService.gradient} hover:opacity-90 px-8 py-3 shadow-lg hover:shadow-xl`}
+                          onClick={requestQuote}
+                          className="w-full bg-gradient-to-r from-purple-600 to-yellow-500 hover:opacity-90 text-lg py-6"
                         >
-                          <motion.div
-                            animate={{ rotate: [0, 360] }}
-                            transition={{ duration: 0.5 }}
-                            className="mr-2"
-                          >
-                            <ShoppingCart className="w-5 h-5" />
-                          </motion.div>
-                          Add to Cart
+                          Request Custom Quote
+                          <ArrowRight className="w-5 h-5 ml-2" />
                         </Button>
-                      </motion.div>
+                        <p className="text-center text-sm text-gray-400 mt-4">
+                          We'll send you a personalized quote within 24 hours
+                        </p>
+                      </div>
                     </div>
-                  </div>
+                  )}
                 </div>
               </motion.div>
             </motion.div>
           )}
         </AnimatePresence>
-
-        {/* Enhanced Shopping Cart */}
-        <AnimatePresence>
-          {showCart && cart.length > 0 && (
-            <motion.div
-              initial={{ opacity: 0, y: 100, scale: 0.8 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: 100, scale: 0.8 }}
-              className="fixed bottom-6 right-6 z-40"
-            >
-              <Card className="w-80 shadow-2xl border-0 bg-gray-800/95 backdrop-blur-sm border-gray-700">
-                <CardHeader className="pb-3 bg-gradient-to-r from-purple-600 to-yellow-500 text-white rounded-t-lg">
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-2">
-                      <motion.div
-                        animate={{ rotate: [0, 15, -15, 0] }}
-                        transition={{ duration: 2, repeat: Infinity }}
-                      >
-                        <ShoppingCart className="w-5 h-5" />
-                      </motion.div>
-                      <CardTitle className="text-lg">Your Cart ({cart.length})</CardTitle>
-                    </div>
-                    <motion.button
-                      whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.9 }}
-                      onClick={() => setShowCart(false)}
-                      className="text-white hover:bg-white hover:bg-opacity-20 rounded-full p-1"
-                    >
-                      ✕
-                    </motion.button>
-                  </div>
-                </CardHeader>
-                <CardContent className="space-y-4 max-h-96 overflow-y-auto">
-                  {cart.map((item, index) => (
-                    <motion.div 
-                      key={item.service.id} 
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: index * 0.1 }}
-                      className="border-b border-gray-700 pb-3 last:border-b-0"
-                    >
-                      <div className="flex items-center justify-between mb-2">
-                        <h4 className="font-medium text-white text-sm">{item.service.name}</h4>
-                        <div className="flex items-center gap-2">
-                          <motion.button
-                            whileHover={{ scale: 1.1 }}
-                            whileTap={{ scale: 0.9 }}
-                            onClick={() => updateQuantity(item.service.id, item.quantity - 1)}
-                            className="w-6 h-6 rounded-full bg-gray-700 hover:bg-gray-600 flex items-center justify-center"
-                          >
-                            <Minus className="w-3 h-3 text-gray-300" />
-                          </motion.button>
-                          <motion.span 
-                            key={item.quantity}
-                            initial={{ scale: 1.2 }}
-                            animate={{ scale: 1 }}
-                            className="w-8 text-center font-medium text-white"
-                          >
-                            {item.quantity}
-                          </motion.span>
-                          <motion.button
-                            whileHover={{ scale: 1.1 }}
-                            whileTap={{ scale: 0.9 }}
-                            onClick={() => updateQuantity(item.service.id, item.quantity + 1)}
-                            className="w-6 h-6 rounded-full bg-purple-600 hover:bg-purple-500 flex items-center justify-center"
-                          >
-                            <Plus className="w-3 h-3 text-white" />
-                          </motion.button>
-                        </div>
-                      </div>
-                      {item.selectedAddOns.length > 0 && (
-                        <div className="ml-4 space-y-1">
-                          {item.selectedAddOns.map((addOn, addOnIndex) => (
-                            <motion.div 
-                              key={addOn.id} 
-                              initial={{ opacity: 0, x: -10 }}
-                              animate={{ opacity: 1, x: 0 }}
-                              transition={{ delay: addOnIndex * 0.05 }}
-                              className="flex items-center justify-between text-xs text-gray-300"
-                            >
-                              <span>+ {addOn.name}</span>
-                              <span>${addOn.price.toLocaleString()}</span>
-                            </motion.div>
-                          ))}
-                        </div>
-                      )}
-                      <div className="flex items-center justify-between mt-2">
-                        <span className="text-sm text-gray-400">Subtotal</span>
-                        <motion.span 
-                          className="font-semibold text-yellow-400"
-                          key={item.quantity}
-                          initial={{ scale: 1.1 }}
-                          animate={{ scale: 1 }}
-                        >
-                          ${((item.service.basePrice + item.selectedAddOns.reduce((sum, addOn) => sum + addOn.price, 0)) * item.quantity).toLocaleString()}
-                        </motion.span>
-                      </div>
-                    </motion.div>
-                  ))}
-                  <div className="border-t border-gray-700 pt-4">
-                    <div className="flex items-center justify-between mb-4">
-                      <span className="text-lg font-semibold text-white">Total</span>
-                      <motion.span 
-                        className="text-2xl font-bold bg-gradient-to-r from-purple-400 to-yellow-400 bg-clip-text text-transparent"
-                        key={totalCartValue}
-                        initial={{ scale: 1.2 }}
-                        animate={{ scale: 1 }}
-                        transition={{ type: "spring", stiffness: 300 }}
-                      >
-                        ${totalCartValue.toLocaleString()}
-                      </motion.span>
-                    </div>
-                    <motion.div
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
-                    >
-                      <Button
-                        onClick={proceedToCheckout}
-                        className="w-full bg-gradient-to-r from-purple-600 to-yellow-500 hover:opacity-90 shadow-lg hover:shadow-xl"
-                      >
-                        <span className="mr-2">Proceed to Checkout</span>
-                        <motion.div
-                          animate={{ x: [0, 5, 0] }}
-                          transition={{ duration: 1, repeat: Infinity }}
-                        >
-                          <ArrowRight className="w-4 h-4" />
-                        </motion.div>
-                      </Button>
-                    </motion.div>
-                  </div>
-                </CardContent>
-              </Card>
-            </motion.div>
-          )}
-        </AnimatePresence>
-
-        {/* Floating Cart Button */}
-        {cart.length > 0 && !showCart && (
-          <motion.div
-            initial={{ scale: 0 }}
-            animate={{ scale: 1 }}
-            className="fixed bottom-6 right-6 z-30"
-          >
-            <motion.button
-              onClick={() => setShowCart(true)}
-              className="bg-gradient-to-r from-purple-600 to-yellow-500 text-white p-4 rounded-full shadow-2xl hover:shadow-3xl"
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-              animate={{ 
-                boxShadow: ["0 10px 30px rgba(147, 51, 234, 0.3)", "0 10px 30px rgba(251, 191, 36, 0.3)", "0 10px 30px rgba(147, 51, 234, 0.3)"]
-              }}
-              transition={{ duration: 2, repeat: Infinity }}
-            >
-              <div className="relative">
-                <ShoppingCart className="w-6 h-6" />
-                <motion.div
-                  initial={{ scale: 0 }}
-                  animate={{ scale: 1 }}
-                  className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center font-bold"
-                >
-                  {cart.length}
-                </motion.div>
-              </div>
-            </motion.button>
-          </motion.div>
-        )}
       </div>
     </div>
   );
