@@ -463,12 +463,11 @@ export default function AppsPage() {
             Have an app idea? Let's collaborate to bring it to life and make it a success.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <MagneticButton size="lg" className="btn-primary text-lg px-8 py-4 animate-glow">
-              Get a Free App Consultation
-              <ArrowRight className="ml-2 h-5 w-5" />
+            <MagneticButton size="lg" className="btn-primary text-lg px-8 py-4 animate-glow" asChild>
+              <Link href="/contact">Get a Free App Consultation</Link>
             </MagneticButton>
-            <MagneticButton size="lg" variant="outline" className="btn-outline text-lg px-8 py-4">
-              Get Instant Quote
+            <MagneticButton size="lg" variant="outline" className="btn-outline text-lg px-8 py-4" asChild>
+              <Link href="/pricing">Get Instant Quote</Link>
             </MagneticButton>
           </div>
         </ScrollReveal>

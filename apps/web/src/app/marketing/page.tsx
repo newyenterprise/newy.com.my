@@ -439,12 +439,11 @@ export default function MarketingPage() {
               Let's craft a marketing strategy that delivers exceptional results and drives sustainable growth.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <MagneticButton size="lg" className="btn-primary text-lg px-8 py-4 animate-glow">
-                Get a Free Marketing Consultation
-                <ArrowRight className="ml-2 h-5 w-5" />
+              <MagneticButton size="lg" className="btn-primary text-lg px-8 py-4 animate-glow" asChild>
+                <Link href="/contact">Get a Free Marketing Consultation</Link>
               </MagneticButton>
-              <MagneticButton size="lg" variant="outline" className="btn-outline text-lg px-8 py-4">
-                Get Instant Quote
+              <MagneticButton size="lg" variant="outline" className="btn-outline text-lg px-8 py-4" asChild>
+                <Link href="/pricing">Get Instant Quote</Link>
               </MagneticButton>
             </div>
           </ScrollReveal>
