@@ -1,16 +1,77 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Button, Card, CardContent, CardDescription, CardHeader, CardTitle, Badge } from "@digitallinked/ui";
-import { Eye, Mail, Phone, Building, Calendar, Search, Filter, CheckCircle, X, Clock } from "lucide-react";
-import { supabase, Quote } from "../../../lib/supabase";
+import { motion } from "framer-motion";
+import { Button, Card, CardContent, CardHeader, CardTitle } from "@digitallinked/ui";
+import { Badge } from "@/components/ui/badge";
+import { 
+  Mail, 
+  Phone, 
+  Building, 
+  Calendar, 
+  DollarSign, 
+  Eye, 
+  CheckCircle, 
+  XCircle, 
+  Clock,
+  Star,
+  Globe,
+  Smartphone,
+  Brain,
+  TrendingUp
+} from "lucide-react";
+import { supabase } from "../../../lib/supabase";
 
-export default function QuotesManagementPage() {
-  const [quotes, setQuotes] = useState<Quote[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [searchTerm, setSearchTerm] = useState("");
-  const [filterStatus, setFilterStatus] = useState<"all" | "pending" | "reviewed" | "quoted" | "accepted" | "rejected">("all");
-  const [selectedQuote, setSelectedQuote] = useState<Quote | null>(null);
+interface QuoteRequest {
+  id: string;
+  service: string;
+  selected_addons: string[];
+  base_price: number;
+  addons_total: number;
+  estimated_total: number;
+  customer_info: {
+    fullName: string;
+    email: string;
+    phone: string;
+    company: string;
+    projectDescription: string;
+    budget: string;
+    timeline: string;
+    additionalNotes: string;
+  };
+  status: 'pending' | 'reviewed' | 'quoted' | 'accepted' | 'rejected';
+  final_quote?: number;
+  created_at: string;
+  updated_at: string;
+}
+
+const serviceIcons = {
+  website: <Globe className="w-5 h-5" />,
+  apps: <Smartphone className="w-5 h-5" />,
+  ai: <Brain className="w-5 h-5" />,
+  marketing: <TrendingUp className="w-5 h-5" />
+};
+
+const serviceNames = {
+  website: "Website Development",
+  apps: "Mobile Apps",
+  ai: "AI Automation",
+  marketing: "Digital Marketing"
+};
+
+const statusColors = {
+  pending: "bg-yellow-500/20 text-yellow-400 border-yellow-500/30",
+  reviewed: "bg-blue-500/20 text-blue-400 border-blue-500/30",
+  quoted: "bg-purple-500/20 text-purple-400 border-purple-500/30",
+  accepted: "bg-green-500/20 text-green-400 border-green-500/30",
+  rejected: "bg-red-500/20 text-red-400 border-red-500/30"
+};
+
+export default function AdminQuotesPage() {
+  const [quotes, setQuotes] = useState<QuoteRequest[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [selectedQuote, setSelectedQuote] = useState<QuoteRequest | null>(null);
+  const [statusFilter, setStatusFilter] = useState<string>('all');
 
   useEffect(() => {
     fetchQuotes();
@@ -19,403 +80,326 @@ export default function QuotesManagementPage() {
   const fetchQuotes = async () => {
     try {
       const { data, error } = await supabase
-        .from('quotes')
+        .from('quote_requests')
         .select('*')
         .order('created_at', { ascending: false });
 
       if (error) {
         console.error('Error fetching quotes:', error);
-      } else {
-        setQuotes(data || []);
+        return;
       }
+
+        setQuotes(data || []);
     } catch (error) {
-      console.error('Error fetching quotes:', error);
+      console.error('Error:', error);
     } finally {
-      setIsLoading(false);
+      setLoading(false);
     }
   };
 
-  const updateQuoteStatus = async (id: string, status: Quote['status']) => {
+  const updateQuoteStatus = async (quoteId: string, status: string, finalQuote?: number) => {
     try {
       const { error } = await supabase
-        .from('quotes')
-        .update({ status, updated_at: new Date().toISOString() })
-        .eq('id', id);
+        .from('quote_requests')
+        .update({ 
+          status,
+          final_quote: finalQuote,
+          updated_at: new Date().toISOString()
+        })
+        .eq('id', quoteId);
 
       if (error) {
         console.error('Error updating quote:', error);
-        alert('Error updating quote');
-      } else {
-        setQuotes(quotes => 
-          quotes.map(quote => 
-            quote.id === id 
-              ? { ...quote, status, updated_at: new Date().toISOString() }
-              : quote
-          )
-        );
-        if (selectedQuote?.id === id) {
-          setSelectedQuote(prev => prev ? { ...prev, status } : null);
-        }
+        return;
       }
+
+      // Refresh quotes
+      fetchQuotes();
+      setSelectedQuote(null);
     } catch (error) {
-      console.error('Error updating quote:', error);
-      alert('Error updating quote');
+      console.error('Error:', error);
     }
   };
 
-  const filteredQuotes = quotes.filter(quote => {
-    const matchesSearch = quote.full_name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         quote.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         quote.company?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         quote.project_description.toLowerCase().includes(searchTerm.toLowerCase());
-    
-    const matchesStatus = filterStatus === "all" || quote.status === filterStatus;
+  const filteredQuotes = quotes.filter(quote => 
+    statusFilter === 'all' || quote.status === statusFilter
+  );
 
-    return matchesSearch && matchesStatus;
-  });
-
-  const getStatusColor = (status: string) => {
-    switch (status) {
-      case 'pending':
-        return 'bg-yellow-500/20 text-yellow-300 border-yellow-500/30';
-      case 'reviewed':
-        return 'bg-blue-500/20 text-blue-300 border-blue-500/30';
-      case 'quoted':
-        return 'bg-purple-500/20 text-purple-300 border-purple-500/30';
-      case 'accepted':
-        return 'bg-green-500/20 text-green-300 border-green-500/30';
-      case 'rejected':
-        return 'bg-red-500/20 text-red-300 border-red-500/30';
-      default:
-        return 'bg-gray-500/20 text-gray-300 border-gray-500/30';
-    }
-  };
-
-  const getProjectTypeColor = (type: string) => {
-    switch (type) {
-      case 'website':
-        return 'bg-purple-500/20 text-purple-300 border-purple-500/30';
-      case 'apps':
-        return 'bg-blue-500/20 text-blue-300 border-blue-500/30';
-      case 'ai_automation':
-        return 'bg-pink-500/20 text-pink-300 border-pink-500/30';
-      case 'marketing':
-        return 'bg-green-500/20 text-green-300 border-green-500/30';
-      default:
-        return 'bg-gray-500/20 text-gray-300 border-gray-500/30';
-    }
-  };
-
-  if (isLoading) {
+  if (loading) {
     return (
-      <div className="flex items-center justify-center h-64">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-purple-500"></div>
+      <div className="min-h-screen bg-gray-900 flex items-center justify-center">
+        <div className="text-white">Loading quotes...</div>
       </div>
     );
   }
 
   return (
-    <div className="space-y-6">
-      {/* Header */}
-      <div>
-        <h1 className="text-3xl font-bold font-display">Quote Requests</h1>
-        <p className="text-muted-foreground mt-2">
-          Manage and respond to client quote requests
-        </p>
+    <div className="min-h-screen bg-gray-900 p-6">
+      <div className="max-w-7xl mx-auto">
+        <div className="mb-8">
+          <h1 className="text-3xl font-bold text-white mb-2">Quote Requests</h1>
+          <p className="text-gray-400">Manage and review customer quote requests</p>
       </div>
 
-      {/* Filters */}
-      <Card className="border-purple-500/20">
-        <CardContent className="pt-6">
-          <div className="flex flex-col sm:flex-row gap-4">
-            <div className="flex-1">
-              <div className="relative">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-                <input
-                  type="text"
-                  placeholder="Search quotes..."
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                  className="w-full pl-10 pr-4 py-2 bg-background border border-purple-500/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500/40"
-                />
+        {/* Status Filter */}
+        <div className="mb-6">
+          <div className="flex gap-2 flex-wrap">
+            {[
+              { key: 'all', label: 'All', count: quotes.length },
+              { key: 'pending', label: 'Pending', count: quotes.filter(q => q.status === 'pending').length },
+              { key: 'reviewed', label: 'Reviewed', count: quotes.filter(q => q.status === 'reviewed').length },
+              { key: 'quoted', label: 'Quoted', count: quotes.filter(q => q.status === 'quoted').length },
+              { key: 'accepted', label: 'Accepted', count: quotes.filter(q => q.status === 'accepted').length },
+              { key: 'rejected', label: 'Rejected', count: quotes.filter(q => q.status === 'rejected').length }
+            ].map((filter) => (
+              <Button
+                key={filter.key}
+                variant={statusFilter === filter.key ? "default" : "outline"}
+                onClick={() => setStatusFilter(filter.key)}
+                className={`${
+                  statusFilter === filter.key 
+                    ? 'bg-purple-600 text-white' 
+                    : 'border-gray-600 text-gray-300 hover:bg-gray-800'
+                }`}
+              >
+                {filter.label} ({filter.count})
+              </Button>
+            ))}
               </div>
             </div>
-            <select
-              value={filterStatus}
-              onChange={(e) => setFilterStatus(e.target.value as any)}
-              className="px-4 py-2 bg-background border border-purple-500/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500/40"
+
+        {/* Quotes Grid */}
+        <div className="grid gap-6">
+          {filteredQuotes.map((quote) => (
+            <motion.div
+              key={quote.id}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="bg-gray-800/50 backdrop-blur-sm border border-gray-700 rounded-lg p-6"
             >
-              <option value="all">All Status</option>
-              <option value="pending">Pending</option>
-              <option value="reviewed">Reviewed</option>
-              <option value="quoted">Quoted</option>
-              <option value="accepted">Accepted</option>
-              <option value="rejected">Rejected</option>
-            </select>
+              <div className="flex items-start justify-between mb-4">
+                <div className="flex items-center gap-3">
+                  {serviceIcons[quote.service as keyof typeof serviceIcons]}
+                  <div>
+                    <h3 className="text-lg font-semibold text-white">
+                      {serviceNames[quote.service as keyof typeof serviceNames]}
+                    </h3>
+                    <p className="text-gray-400 text-sm">
+                      {quote.customer_info.fullName} • {quote.customer_info.company || 'No company'}
+                    </p>
           </div>
-        </CardContent>
-      </Card>
+              </div>
+                <div className="flex items-center gap-3">
+                  <Badge className={statusColors[quote.status]}>
+                    {quote.status.charAt(0).toUpperCase() + quote.status.slice(1)}
+                  </Badge>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={() => setSelectedQuote(quote)}
+                    className="border-gray-600 text-gray-300 hover:bg-gray-700"
+                  >
+                    <Eye className="w-4 h-4 mr-2" />
+                    View Details
+                  </Button>
+            </div>
+              </div>
 
-      {/* Stats */}
-      <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
-        <Card className="border-purple-500/20">
-          <CardContent className="pt-6">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm font-medium text-muted-foreground">Total</p>
-                <p className="text-2xl font-bold">{quotes.length}</p>
-              </div>
-              <Eye className="h-4 w-4 text-blue-400" />
+              <div className="grid md:grid-cols-4 gap-4 mb-4">
+                <div className="flex items-center gap-2 text-gray-300">
+                  <Mail className="w-4 h-4" />
+                  <span className="text-sm">{quote.customer_info.email}</span>
             </div>
-          </CardContent>
-        </Card>
-        <Card className="border-purple-500/20">
-          <CardContent className="pt-6">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm font-medium text-muted-foreground">Pending</p>
-                <p className="text-2xl font-bold">{quotes.filter(q => q.status === 'pending').length}</p>
+                <div className="flex items-center gap-2 text-gray-300">
+                  <Phone className="w-4 h-4" />
+                  <span className="text-sm">{quote.customer_info.phone}</span>
               </div>
-              <Clock className="h-4 w-4 text-yellow-400" />
+                <div className="flex items-center gap-2 text-gray-300">
+                  <Calendar className="w-4 h-4" />
+                  <span className="text-sm">
+                    {new Date(quote.created_at).toLocaleDateString()}
+                  </span>
             </div>
-          </CardContent>
-        </Card>
-        <Card className="border-purple-500/20">
-          <CardContent className="pt-6">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm font-medium text-muted-foreground">Quoted</p>
-                <p className="text-2xl font-bold">{quotes.filter(q => q.status === 'quoted').length}</p>
+                <div className="flex items-center gap-2 text-gray-300">
+                  <DollarSign className="w-4 h-4" />
+                  <span className="text-sm font-semibold text-yellow-400">
+                    ${quote.estimated_total.toLocaleString()}
+                  </span>
               </div>
-              <Filter className="h-4 w-4 text-purple-400" />
             </div>
-          </CardContent>
-        </Card>
-        <Card className="border-purple-500/20">
-          <CardContent className="pt-6">
+
             <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm font-medium text-muted-foreground">Accepted</p>
-                <p className="text-2xl font-bold">{quotes.filter(q => q.status === 'accepted').length}</p>
+                <div className="text-sm text-gray-400">
+                  {quote.selected_addons.length} add-ons selected
+                </div>
+                <div className="flex gap-2">
+                  {quote.status === 'pending' && (
+                    <>
+                      <Button
+                        size="sm"
+                        onClick={() => updateQuoteStatus(quote.id, 'reviewed')}
+                        className="bg-blue-600 hover:bg-blue-700 text-white"
+                      >
+                        <CheckCircle className="w-4 h-4 mr-1" />
+                        Mark Reviewed
+                      </Button>
+                      <Button
+                        size="sm"
+                        variant="outline"
+                        onClick={() => updateQuoteStatus(quote.id, 'rejected')}
+                        className="border-red-500 text-red-400 hover:bg-red-500/10"
+                      >
+                        <XCircle className="w-4 h-4 mr-1" />
+                        Reject
+                      </Button>
+                    </>
+                  )}
               </div>
-              <CheckCircle className="h-4 w-4 text-green-400" />
             </div>
-          </CardContent>
-        </Card>
-        <Card className="border-purple-500/20">
-          <CardContent className="pt-6">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm font-medium text-muted-foreground">Rejected</p>
-                <p className="text-2xl font-bold">{quotes.filter(q => q.status === 'rejected').length}</p>
-              </div>
-              <X className="h-4 w-4 text-red-400" />
-            </div>
-          </CardContent>
-        </Card>
+            </motion.div>
+          ))}
       </div>
 
-      {/* Quotes List */}
-      <div className="grid lg:grid-cols-2 gap-6">
-        <div className="space-y-4">
-          {filteredQuotes.length === 0 ? (
-            <Card className="border-purple-500/20">
-              <CardContent className="pt-6">
+        {filteredQuotes.length === 0 && (
                 <div className="text-center py-12">
-                  <Eye className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
-                  <h3 className="text-lg font-semibold mb-2">No quotes found</h3>
-                  <p className="text-muted-foreground">
-                    {searchTerm || filterStatus !== "all" 
-                      ? "Try adjusting your search or filter criteria"
-                      : "Quote requests will appear here when submitted"
+            <Clock className="w-12 h-12 text-gray-500 mx-auto mb-4" />
+            <h3 className="text-lg font-semibold text-gray-400 mb-2">No quotes found</h3>
+            <p className="text-gray-500">
+              {statusFilter === 'all' 
+                ? 'No quote requests have been submitted yet.'
+                : `No quotes with status "${statusFilter}" found.`
                     }
                   </p>
                 </div>
-              </CardContent>
-            </Card>
-          ) : (
-            filteredQuotes.map((quote) => (
-              <Card 
-                key={quote.id} 
-                className={`border-purple-500/20 cursor-pointer transition-all hover:shadow-lg ${
-                  selectedQuote?.id === quote.id ? 'ring-2 ring-purple-500/40' : ''
-                }`}
-                onClick={() => setSelectedQuote(quote)}
-              >
-                <CardContent className="pt-6">
-                  <div className="space-y-3">
-                    <div className="flex items-start justify-between">
-                      <div>
-                        <h3 className="font-semibold">{quote.full_name}</h3>
-                        <p className="text-sm text-muted-foreground">{quote.email}</p>
-                      </div>
-                      <div className="flex gap-2">
-                        <Badge className={getProjectTypeColor(quote.project_type)}>
-                          {quote.project_type.replace('_', ' ')}
-                        </Badge>
-                        <Badge className={getStatusColor(quote.status)}>
-                          {quote.status}
-                        </Badge>
-                      </div>
-                    </div>
-
-                    <p className="text-sm line-clamp-2">{quote.project_description}</p>
-
-                    <div className="flex items-center justify-between text-xs text-muted-foreground">
-                      <span>{new Date(quote.created_at).toLocaleDateString()}</span>
-                      {quote.budget_range && <span>Budget: {quote.budget_range}</span>}
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            ))
           )}
         </div>
 
-        {/* Quote Details */}
+      {/* Quote Details Modal */}
         {selectedQuote && (
-          <Card className="border-purple-500/20 sticky top-6">
-            <CardHeader>
+        <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+          <motion.div
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            className="bg-gray-800 rounded-lg max-w-4xl w-full max-h-[90vh] overflow-y-auto"
+          >
+            <div className="p-6 border-b border-gray-700">
               <div className="flex items-center justify-between">
-                <CardTitle>Quote Details</CardTitle>
+                <h2 className="text-2xl font-bold text-white">Quote Request Details</h2>
                 <Button
                   variant="ghost"
-                  size="sm"
                   onClick={() => setSelectedQuote(null)}
+                  className="text-gray-400 hover:text-white"
                 >
-                  <X className="h-4 w-4" />
+                  ✕
                 </Button>
               </div>
-            </CardHeader>
-            <CardContent className="space-y-6">
-              {/* Client Info */}
+            </div>
+
+            <div className="p-6 space-y-6">
+              {/* Customer Info */}
               <div>
-                <h4 className="font-semibold mb-3">Client Information</h4>
-                <div className="space-y-2">
-                  <div className="flex items-center gap-2">
-                    <Mail className="h-4 w-4 text-muted-foreground" />
-                    <span className="text-sm">{selectedQuote.email}</span>
+                <h3 className="text-lg font-semibold text-white mb-4">Customer Information</h3>
+                <div className="grid md:grid-cols-2 gap-4">
+                  <div className="flex items-center gap-2 text-gray-300">
+                    <Mail className="w-4 h-4" />
+                    <span>{selectedQuote.customer_info.email}</span>
                   </div>
-                  {selectedQuote.phone && (
-                    <div className="flex items-center gap-2">
-                      <Phone className="h-4 w-4 text-muted-foreground" />
-                      <span className="text-sm">{selectedQuote.phone}</span>
+                  <div className="flex items-center gap-2 text-gray-300">
+                    <Phone className="w-4 h-4" />
+                    <span>{selectedQuote.customer_info.phone}</span>
                     </div>
-                  )}
-                  {selectedQuote.company && (
-                    <div className="flex items-center gap-2">
-                      <Building className="h-4 w-4 text-muted-foreground" />
-                      <span className="text-sm">{selectedQuote.company}</span>
+                  <div className="flex items-center gap-2 text-gray-300">
+                    <Building className="w-4 h-4" />
+                    <span>{selectedQuote.customer_info.company || 'No company'}</span>
                     </div>
-                  )}
-                  <div className="flex items-center gap-2">
-                    <Calendar className="h-4 w-4 text-muted-foreground" />
-                    <span className="text-sm">{new Date(selectedQuote.created_at).toLocaleString()}</span>
+                  <div className="flex items-center gap-2 text-gray-300">
+                    <Calendar className="w-4 h-4" />
+                    <span>{new Date(selectedQuote.created_at).toLocaleDateString()}</span>
                   </div>
                 </div>
               </div>
 
               {/* Project Details */}
               <div>
-                <h4 className="font-semibold mb-3">Project Details</h4>
+                <h3 className="text-lg font-semibold text-white mb-4">Project Details</h3>
                 <div className="space-y-3">
                   <div>
-                    <p className="text-sm font-medium text-muted-foreground">Project Type</p>
-                    <Badge className={getProjectTypeColor(selectedQuote.project_type)}>
-                      {selectedQuote.project_type.replace('_', ' ')}
-                    </Badge>
+                    <label className="text-sm text-gray-400">Description</label>
+                    <p className="text-gray-300 mt-1">{selectedQuote.customer_info.projectDescription}</p>
+                  </div>
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div>
+                      <label className="text-sm text-gray-400">Budget</label>
+                      <p className="text-gray-300 mt-1">{selectedQuote.customer_info.budget || 'Not specified'}</p>
                   </div>
                   <div>
-                    <p className="text-sm font-medium text-muted-foreground mb-1">Description</p>
-                    <p className="text-sm bg-muted/50 p-3 rounded-lg">{selectedQuote.project_description}</p>
+                      <label className="text-sm text-gray-400">Timeline</label>
+                      <p className="text-gray-300 mt-1">{selectedQuote.customer_info.timeline || 'Not specified'}</p>
                   </div>
-                  {selectedQuote.budget_range && (
-                    <div>
-                      <p className="text-sm font-medium text-muted-foreground">Budget Range</p>
-                      <p className="text-sm">{selectedQuote.budget_range}</p>
                     </div>
-                  )}
-                  {selectedQuote.timeline && (
+                  {selectedQuote.customer_info.additionalNotes && (
                     <div>
-                      <p className="text-sm font-medium text-muted-foreground">Timeline</p>
-                      <p className="text-sm">{selectedQuote.timeline}</p>
+                      <label className="text-sm text-gray-400">Additional Notes</label>
+                      <p className="text-gray-300 mt-1">{selectedQuote.customer_info.additionalNotes}</p>
                     </div>
                   )}
                 </div>
               </div>
 
-              {/* Status Actions */}
+              {/* Pricing */}
               <div>
-                <h4 className="font-semibold mb-3">Update Status</h4>
-                <div className="grid grid-cols-2 gap-2">
+                <h3 className="text-lg font-semibold text-white mb-4">Pricing Breakdown</h3>
+                <div className="bg-gray-700/30 rounded-lg p-4 space-y-2">
+                  <div className="flex justify-between">
+                    <span className="text-gray-300">Base Price:</span>
+                    <span className="text-white">${selectedQuote.base_price.toLocaleString()}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-gray-300">Add-ons Total:</span>
+                    <span className="text-white">+${selectedQuote.addons_total.toLocaleString()}</span>
+                  </div>
+                  <div className="border-t border-gray-600 pt-2">
+                    <div className="flex justify-between font-semibold">
+                      <span className="text-white">Estimated Total:</span>
+                      <span className="text-yellow-400">${selectedQuote.estimated_total.toLocaleString()}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Actions */}
+              <div className="flex gap-3 pt-4 border-t border-gray-700">
+                {selectedQuote.status === 'pending' && (
+                  <>
                   <Button
-                    variant="outline"
-                    size="sm"
                     onClick={() => updateQuoteStatus(selectedQuote.id, 'reviewed')}
-                    disabled={selectedQuote.status === 'reviewed'}
-                    className="text-blue-400 border-blue-500/30 hover:bg-blue-500/10"
+                      className="bg-blue-600 hover:bg-blue-700 text-white"
                   >
-                    Mark Reviewed
+                      <CheckCircle className="w-4 h-4 mr-2" />
+                      Mark as Reviewed
                   </Button>
                   <Button
                     variant="outline"
-                    size="sm"
-                    onClick={() => updateQuoteStatus(selectedQuote.id, 'quoted')}
-                    disabled={selectedQuote.status === 'quoted'}
-                    className="text-purple-400 border-purple-500/30 hover:bg-purple-500/10"
-                  >
-                    Mark Quoted
+                      onClick={() => updateQuoteStatus(selectedQuote.id, 'rejected')}
+                      className="border-red-500 text-red-400 hover:bg-red-500/10"
+                    >
+                      <XCircle className="w-4 h-4 mr-2" />
+                      Reject Quote
                   </Button>
+                  </>
+                )}
                   <Button
                     variant="outline"
-                    size="sm"
-                    onClick={() => updateQuoteStatus(selectedQuote.id, 'accepted')}
-                    disabled={selectedQuote.status === 'accepted'}
-                    className="text-green-400 border-green-500/30 hover:bg-green-500/10"
-                  >
-                    Accept
-                  </Button>
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    onClick={() => updateQuoteStatus(selectedQuote.id, 'rejected')}
-                    disabled={selectedQuote.status === 'rejected'}
-                    className="text-red-400 border-red-500/30 hover:bg-red-500/10"
-                  >
-                    Reject
+                  onClick={() => setSelectedQuote(null)}
+                  className="border-gray-600 text-gray-300 hover:bg-gray-700"
+                >
+                  Close
                   </Button>
                 </div>
               </div>
-
-              {/* Contact Actions */}
-              <div>
-                <h4 className="font-semibold mb-3">Contact Client</h4>
-                <div className="space-y-2">
-                  <a
-                    href={`mailto:${selectedQuote.email}?subject=Re: Your ${selectedQuote.project_type.replace('_', ' ')} Project Quote`}
-                    className="block"
-                  >
-                    <Button variant="outline" size="sm" className="w-full">
-                      <Mail className="mr-2 h-4 w-4" />
-                      Send Email
-                    </Button>
-                  </a>
-                                     {selectedQuote.phone && (
-                     <a href={`https://wa.me/${selectedQuote.phone.replace(/\s/g, '')}`} target="_blank" rel="noopener noreferrer" className="block">
-                       <Button variant="outline" size="sm" className="w-full">
-                         <svg className="mr-2 h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
-                           <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
-                         </svg>
-                         WhatsApp Client
-                       </Button>
-                     </a>
-                   )}
-                </div>
+          </motion.div>
               </div>
-            </CardContent>
-          </Card>
         )}
-      </div>
     </div>
   );
 }
