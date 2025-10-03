@@ -263,25 +263,25 @@ export default function TestimonialsManagementPage() {
       </div>
 
       {/* Filters */}
-      <Card className="border-purple-500/20">
+      <Card className="border border-gray-200 bg-white shadow-sm">
         <CardContent className="pt-6">
           <div className="flex flex-col sm:flex-row gap-4">
             <div className="flex-1">
               <div className="relative">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
                 <input
                   type="text"
                   placeholder="Search testimonials..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="w-full pl-10 pr-4 py-2 bg-background border border-purple-500/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500/40"
+                  className="w-full pl-10 pr-4 py-2 bg-white border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-300 focus:border-gray-400 text-gray-900 placeholder:text-gray-400"
                 />
               </div>
             </div>
             <select
               value={filterStatus}
               onChange={(e) => setFilterStatus(e.target.value as any)}
-              className="px-4 py-2 bg-background border border-purple-500/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500/40"
+              className="px-4 py-2 bg-white border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-300 focus:border-gray-400 text-gray-900"
             >
               <option value="all">All Testimonials</option>
               <option value="approved">Approved</option>
@@ -343,12 +343,12 @@ export default function TestimonialsManagementPage() {
       <div className="grid lg:grid-cols-2 gap-6">
         <div className="space-y-4">
           {filteredTestimonials.length === 0 ? (
-            <Card className="border-purple-500/20">
+            <Card className="border border-gray-200 bg-white shadow-sm">
               <CardContent className="pt-6">
                 <div className="text-center py-12">
-                  <Star className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
+                  <Star className="h-12 w-12 text-gray-400 mx-auto mb-4" />
                   <h3 className="text-lg font-semibold mb-2">No testimonials found</h3>
-                  <p className="text-muted-foreground mb-4">
+                  <p className="text-gray-500 mb-4">
                     {searchTerm || filterStatus !== "all" 
                       ? "Try adjusting your search or filter criteria"
                       : "Get started by adding your first testimonial"
@@ -365,8 +365,8 @@ export default function TestimonialsManagementPage() {
             filteredTestimonials.map((testimonial) => (
               <Card 
                 key={testimonial.id} 
-                className={`border-purple-500/20 cursor-pointer transition-all hover:shadow-lg ${
-                  selectedTestimonial?.id === testimonial.id ? 'ring-2 ring-purple-500/40' : ''
+                className={`border border-gray-200 bg-white shadow-sm cursor-pointer transition-all hover:shadow-md ${
+                  selectedTestimonial?.id === testimonial.id ? 'ring-2 ring-gray-300' : ''
                 }`}
                 onClick={() => setSelectedTestimonial(testimonial)}
               >
@@ -385,11 +385,11 @@ export default function TestimonialsManagementPage() {
                         </div>
                       </div>
                       <div className="flex flex-col gap-2">
-                        <Badge className={testimonial.approved ? 'bg-green-500/20 text-green-300 border-green-500/30' : 'bg-yellow-500/20 text-yellow-300 border-yellow-500/30'}>
+                        <Badge className={testimonial.approved ? 'bg-green-100 text-green-700 border-green-200' : 'bg-yellow-100 text-yellow-800 border-yellow-200'}>
                           {testimonial.approved ? 'Approved' : 'Pending'}
                         </Badge>
                         {testimonial.featured && (
-                          <Badge variant="outline" className="border-purple-500/30 text-purple-300">
+                          <Badge variant="outline" className="border-yellow-300 text-yellow-700 bg-yellow-50">
                             Featured
                           </Badge>
                         )}
@@ -401,9 +401,9 @@ export default function TestimonialsManagementPage() {
                       </div>
                     </div>
 
-                    <p className="text-sm line-clamp-3 italic">"{testimonial.testimonial}"</p>
+                    <p className="text-sm text-gray-700 line-clamp-3 italic">"{testimonial.testimonial}"</p>
 
-                    <div className="flex items-center justify-between text-xs text-muted-foreground">
+                    <div className="flex items-center justify-between text-xs text-gray-500">
                       <span>{new Date(testimonial.created_at).toLocaleDateString()}</span>
                     </div>
                   </div>
@@ -415,8 +415,8 @@ export default function TestimonialsManagementPage() {
 
         {/* Testimonial Details */}
         {selectedTestimonial && (
-          <Card className="border-purple-500/20 sticky top-6">
-            <CardHeader>
+          <Card className="border border-gray-200 bg-white shadow-sm sticky top-6">
+            <CardHeader className="border-b border-gray-100">
               <div className="flex items-center justify-between">
                 <CardTitle>{isEditing ? 'Edit Testimonial' : 'Testimonial Details'}</CardTitle>
                 <div className="flex items-center gap-2">
@@ -452,7 +452,7 @@ export default function TestimonialsManagementPage() {
                       type="text"
                       value={editForm.client_name}
                       onChange={(e) => setEditForm(prev => ({ ...prev, client_name: e.target.value }))}
-                      className="w-full px-3 py-2 bg-background border border-purple-500/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500/40"
+                      className="w-full px-3 py-2 bg-white border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-300 focus:border-gray-400"
                     />
                   </div>
                   <div>
@@ -461,7 +461,7 @@ export default function TestimonialsManagementPage() {
                       type="text"
                       value={editForm.client_company}
                       onChange={(e) => setEditForm(prev => ({ ...prev, client_company: e.target.value }))}
-                      className="w-full px-3 py-2 bg-background border border-purple-500/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500/40"
+                      className="w-full px-3 py-2 bg-white border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-300 focus:border-gray-400"
                     />
                   </div>
                   <div>
@@ -470,7 +470,7 @@ export default function TestimonialsManagementPage() {
                       type="text"
                       value={editForm.client_position}
                       onChange={(e) => setEditForm(prev => ({ ...prev, client_position: e.target.value }))}
-                      className="w-full px-3 py-2 bg-background border border-purple-500/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500/40"
+                      className="w-full px-3 py-2 bg-white border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-300 focus:border-gray-400"
                     />
                   </div>
                   <div>
@@ -479,7 +479,7 @@ export default function TestimonialsManagementPage() {
                       value={editForm.testimonial}
                       onChange={(e) => setEditForm(prev => ({ ...prev, testimonial: e.target.value }))}
                       rows={4}
-                      className="w-full px-3 py-2 bg-background border border-purple-500/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500/40 resize-none"
+                      className="w-full px-3 py-2 bg-white border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-300 focus:border-gray-400 resize-none"
                     />
                   </div>
                   <div>
@@ -487,7 +487,7 @@ export default function TestimonialsManagementPage() {
                     <select
                       value={editForm.rating}
                       onChange={(e) => setEditForm(prev => ({ ...prev, rating: parseInt(e.target.value) }))}
-                      className="w-full px-3 py-2 bg-background border border-purple-500/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500/40"
+                      className="w-full px-3 py-2 bg-white border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-300 focus:border-gray-400"
                     >
                       <option value={5}>5 Stars</option>
                       <option value={4}>4 Stars</option>
@@ -502,7 +502,7 @@ export default function TestimonialsManagementPage() {
                         type="checkbox"
                         checked={editForm.approved}
                         onChange={(e) => setEditForm(prev => ({ ...prev, approved: e.target.checked }))}
-                        className="w-4 h-4 text-purple-500 bg-background border-purple-500/20 rounded focus:ring-purple-500/40"
+                        className="w-4 h-4"
                       />
                       <span className="text-sm">Approved</span>
                     </label>
@@ -511,7 +511,7 @@ export default function TestimonialsManagementPage() {
                         type="checkbox"
                         checked={editForm.featured}
                         onChange={(e) => setEditForm(prev => ({ ...prev, featured: e.target.checked }))}
-                        className="w-4 h-4 text-purple-500 bg-background border-purple-500/20 rounded focus:ring-purple-500/40"
+                        className="w-4 h-4"
                       />
                       <span className="text-sm">Featured</span>
                     </label>
@@ -534,12 +534,12 @@ export default function TestimonialsManagementPage() {
                     <div className="space-y-2">
                       <div className="flex items-center gap-2">
                         <User className="h-4 w-4 text-muted-foreground" />
-                        <span className="text-sm">{selectedTestimonial.client_name}</span>
+                        <span className="text-sm text-gray-900">{selectedTestimonial.client_name}</span>
                       </div>
                       {selectedTestimonial.client_company && (
                         <div className="flex items-center gap-2">
                           <Building className="h-4 w-4 text-muted-foreground" />
-                          <span className="text-sm">
+                          <span className="text-sm text-gray-900">
                             {selectedTestimonial.client_position && `${selectedTestimonial.client_position} at `}
                             {selectedTestimonial.client_company}
                           </span>
@@ -549,7 +549,7 @@ export default function TestimonialsManagementPage() {
                         <Star className="h-4 w-4 text-muted-foreground" />
                         <div className="flex items-center gap-1">
                           {renderStars(selectedTestimonial.rating)}
-                          <span className="text-sm text-muted-foreground ml-1">
+                          <span className="text-sm text-gray-600 ml-1">
                             ({selectedTestimonial.rating}/5)
                           </span>
                         </div>
@@ -560,7 +560,7 @@ export default function TestimonialsManagementPage() {
                   {/* Testimonial Content */}
                   <div>
                     <h4 className="font-semibold mb-3">Testimonial</h4>
-                    <div className="text-sm bg-muted/50 p-4 rounded-lg italic">
+                    <div className="text-sm bg-gray-50 p-4 rounded-lg italic text-gray-900">
                       "{selectedTestimonial.testimonial}"
                     </div>
                   </div>
@@ -573,7 +573,7 @@ export default function TestimonialsManagementPage() {
                         variant="outline"
                         size="sm"
                         onClick={() => toggleApproved(selectedTestimonial.id, selectedTestimonial.approved)}
-                        className={selectedTestimonial.approved ? "text-yellow-400 border-yellow-500/30 hover:bg-yellow-500/10" : "text-green-400 border-green-500/30 hover:bg-green-500/10"}
+                        className="text-gray-700 hover:bg-gray-100"
                       >
                         {selectedTestimonial.approved ? 'Unapprove' : 'Approve'}
                       </Button>
@@ -581,7 +581,7 @@ export default function TestimonialsManagementPage() {
                         variant="outline"
                         size="sm"
                         onClick={() => toggleFeatured(selectedTestimonial.id, selectedTestimonial.featured)}
-                        className={selectedTestimonial.featured ? "text-yellow-400 border-yellow-500/30 hover:bg-yellow-500/10" : "text-purple-400 border-purple-500/30 hover:bg-purple-500/10"}
+                        className="text-gray-700 hover:bg-gray-100"
                       >
                         {selectedTestimonial.featured ? 'Unfeature' : 'Feature'}
                       </Button>
@@ -590,7 +590,7 @@ export default function TestimonialsManagementPage() {
                       variant="outline"
                       size="sm"
                       onClick={() => handleDelete(selectedTestimonial.id)}
-                      className="w-full mt-2 text-red-400 border-red-500/30 hover:bg-red-500/10"
+                      className="w-full mt-2 text-red-700 border-red-200 hover:bg-red-50"
                     >
                       <Trash2 className="mr-2 h-4 w-4" />
                       Delete Testimonial

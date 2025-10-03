@@ -289,7 +289,7 @@ export default function NewBlogPostPage() {
 
           {/* Sidebar */}
           <div className="space-y-6">
-            <Card className="border border-gray-200 bg-white shadow-sm sticky top-6">
+            <Card className="border border-gray-200 bg-white shadow-sm">
               <CardHeader className="border-b border-gray-200">
                 <div className="flex items-center gap-2">
                   <div className="h-8 w-1 bg-gray-300 rounded-full"></div>

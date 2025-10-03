@@ -129,7 +129,7 @@ export default function AdminDashboard() {
       {/* Header */}
       <div>
         <h1 className="text-3xl font-bold font-display">Dashboard</h1>
-        <p className="text-muted-foreground mt-2">
+        <p className="text-gray-600 mt-2">
           Welcome to the Digital Linked admin panel. Here's an overview of your content and activity.
         </p>
       </div>
@@ -137,16 +137,16 @@ export default function AdminDashboard() {
       {/* Stats Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
         {statCards.map((stat, index) => (
-          <Card key={index} className="border-purple-500/20">
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+          <Card key={index} className="border border-gray-200 bg-white shadow-sm">
+            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2 border-b border-gray-100">
               <CardTitle className="text-sm font-medium">{stat.title}</CardTitle>
-              <div className={`w-8 h-8 ${stat.bgColor} rounded-lg flex items-center justify-center`}>
+              <div className={`w-8 h-8 rounded-lg flex items-center justify-center bg-gray-100`}>
                 <stat.icon className={`h-4 w-4 ${stat.color}`} />
               </div>
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">{stat.value}</div>
-              <p className="text-xs text-muted-foreground">{stat.subtitle}</p>
+              <div className="text-2xl font-bold text-gray-900">{stat.value}</div>
+              <p className="text-xs text-gray-500">{stat.subtitle}</p>
             </CardContent>
           </Card>
         ))}
@@ -154,10 +154,10 @@ export default function AdminDashboard() {
 
       {/* Quick Actions */}
       <div className="grid md:grid-cols-2 gap-6">
-        <Card className="border-purple-500/20">
-          <CardHeader>
+        <Card className="border border-gray-200 bg-white shadow-sm">
+          <CardHeader className="border-b border-gray-100">
             <CardTitle className="flex items-center gap-2">
-              <TrendingUp className="h-5 w-5 text-green-400" />
+              <TrendingUp className="h-5 w-5 text-green-600" />
               Recent Activity
             </CardTitle>
             <CardDescription>
@@ -166,30 +166,30 @@ export default function AdminDashboard() {
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
-              <div className="flex items-center gap-3 p-3 bg-muted/50 rounded-lg">
+              <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
                 <div className="w-2 h-2 bg-green-500 rounded-full"></div>
                 <div className="flex-1">
                   <p className="text-sm font-medium">System initialized</p>
-                  <p className="text-xs text-muted-foreground">Admin dashboard is ready</p>
+                  <p className="text-xs text-gray-500">Admin dashboard is ready</p>
                 </div>
-                <span className="text-xs text-muted-foreground">Just now</span>
+                <span className="text-xs text-gray-500">Just now</span>
               </div>
-              <div className="flex items-center gap-3 p-3 bg-muted/50 rounded-lg">
+              <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
                 <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
                 <div className="flex-1">
                   <p className="text-sm font-medium">Database connected</p>
-                  <p className="text-xs text-muted-foreground">All tables are accessible</p>
+                  <p className="text-xs text-gray-500">All tables are accessible</p>
                 </div>
-                <span className="text-xs text-muted-foreground">1 min ago</span>
+                <span className="text-xs text-gray-500">1 min ago</span>
               </div>
             </div>
           </CardContent>
         </Card>
 
-        <Card className="border-purple-500/20">
-          <CardHeader>
+        <Card className="border border-gray-200 bg-white shadow-sm">
+          <CardHeader className="border-b border-gray-100">
             <CardTitle className="flex items-center gap-2">
-              <Calendar className="h-5 w-5 text-purple-400" />
+              <Calendar className="h-5 w-5 text-gray-600" />
               Quick Actions
             </CardTitle>
             <CardDescription>
@@ -198,25 +198,25 @@ export default function AdminDashboard() {
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-2 gap-3">
-              <button className="p-3 text-left bg-muted/50 rounded-lg hover:bg-muted/70 transition-colors">
-                <FileText className="h-5 w-5 text-blue-400 mb-2" />
+              <button className="p-3 text-left bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                <FileText className="h-5 w-5 text-blue-600 mb-2" />
                 <p className="text-sm font-medium">New Blog Post</p>
-                <p className="text-xs text-muted-foreground">Create article</p>
+                <p className="text-xs text-gray-500">Create article</p>
               </button>
-              <button className="p-3 text-left bg-muted/50 rounded-lg hover:bg-muted/70 transition-colors">
-                <Briefcase className="h-5 w-5 text-green-400 mb-2" />
+              <button className="p-3 text-left bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                <Briefcase className="h-5 w-5 text-green-600 mb-2" />
                 <p className="text-sm font-medium">Add Project</p>
-                <p className="text-xs text-muted-foreground">Portfolio item</p>
+                <p className="text-xs text-gray-500">Portfolio item</p>
               </button>
-              <button className="p-3 text-left bg-muted/50 rounded-lg hover:bg-muted/70 transition-colors">
-                <MessageSquare className="h-5 w-5 text-yellow-400 mb-2" />
+              <button className="p-3 text-left bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                <MessageSquare className="h-5 w-5 text-yellow-600 mb-2" />
                 <p className="text-sm font-medium">View Quotes</p>
-                <p className="text-xs text-muted-foreground">Pending requests</p>
+                <p className="text-xs text-gray-500">Pending requests</p>
               </button>
-              <button className="p-3 text-left bg-muted/50 rounded-lg hover:bg-muted/70 transition-colors">
-                <Eye className="h-5 w-5 text-purple-400 mb-2" />
+              <button className="p-3 text-left bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                <Eye className="h-5 w-5 text-gray-600 mb-2" />
                 <p className="text-sm font-medium">Site Preview</p>
-                <p className="text-xs text-muted-foreground">View website</p>
+                <p className="text-xs text-gray-500">View website</p>
               </button>
             </div>
           </CardContent>
@@ -224,8 +224,8 @@ export default function AdminDashboard() {
       </div>
 
       {/* System Status */}
-      <Card className="border-purple-500/20">
-        <CardHeader>
+      <Card className="border border-gray-200 bg-white shadow-sm">
+        <CardHeader className="border-b border-gray-100">
           <CardTitle>System Status</CardTitle>
           <CardDescription>
             Current status of all integrated services
@@ -233,25 +233,25 @@ export default function AdminDashboard() {
         </CardHeader>
         <CardContent>
           <div className="grid md:grid-cols-3 gap-4">
-            <div className="flex items-center gap-3 p-3 bg-green-500/10 border border-green-500/20 rounded-lg">
+            <div className="flex items-center gap-3 p-3 bg-green-50 border border-green-200 rounded-lg">
               <div className="w-3 h-3 bg-green-500 rounded-full"></div>
               <div>
                 <p className="text-sm font-medium">Supabase Database</p>
-                <p className="text-xs text-muted-foreground">Connected & Operational</p>
+                <p className="text-xs text-gray-500">Connected & Operational</p>
               </div>
             </div>
-            <div className="flex items-center gap-3 p-3 bg-green-500/10 border border-green-500/20 rounded-lg">
+            <div className="flex items-center gap-3 p-3 bg-green-50 border border-green-200 rounded-lg">
               <div className="w-3 h-3 bg-green-500 rounded-full"></div>
               <div>
                 <p className="text-sm font-medium">Stripe Payments</p>
-                <p className="text-xs text-muted-foreground">Test Mode Active</p>
+                <p className="text-xs text-gray-500">Test Mode Active</p>
               </div>
             </div>
-            <div className="flex items-center gap-3 p-3 bg-green-500/10 border border-green-500/20 rounded-lg">
+            <div className="flex items-center gap-3 p-3 bg-green-50 border border-green-200 rounded-lg">
               <div className="w-3 h-3 bg-green-500 rounded-full"></div>
               <div>
                 <p className="text-sm font-medium">Authentication</p>
-                <p className="text-xs text-muted-foreground">Secure & Active</p>
+                <p className="text-xs text-gray-500">Secure & Active</p>
               </div>
             </div>
           </div>

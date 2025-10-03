@@ -127,18 +127,18 @@ export default function AdminQuotesPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gray-900 flex items-center justify-center">
-        <div className="text-white">Loading quotes...</div>
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="text-gray-700">Loading quotes...</div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gray-900 p-6">
+    <div className="min-h-screen bg-gray-50 p-6">
       <div className="max-w-7xl mx-auto">
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-white mb-2">Quote Requests</h1>
-          <p className="text-gray-400">Manage and review customer quote requests</p>
+          <h1 className="text-3xl font-bold text-gray-900 mb-2">Quote Requests</h1>
+          <p className="text-gray-600">Manage and review customer quote requests</p>
       </div>
 
         {/* Status Filter */}
@@ -158,8 +158,8 @@ export default function AdminQuotesPage() {
                 onClick={() => setStatusFilter(filter.key)}
                 className={`${
                   statusFilter === filter.key 
-                    ? 'bg-purple-600 text-white' 
-                    : 'border-gray-600 text-gray-300 hover:bg-gray-800'
+                    ? 'bg-gray-900 text-white' 
+                    : 'border-gray-300 text-gray-700 hover:bg-gray-100'
                 }`}
               >
                 {filter.label} ({filter.count})
@@ -175,16 +175,16 @@ export default function AdminQuotesPage() {
               key={quote.id}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              className="bg-gray-800/50 backdrop-blur-sm border border-gray-700 rounded-lg p-6"
+              className="bg-white border border-gray-200 rounded-lg p-6 shadow-sm"
             >
               <div className="flex items-start justify-between mb-4">
                 <div className="flex items-center gap-3">
                   {serviceIcons[quote.service as keyof typeof serviceIcons]}
                   <div>
-                    <h3 className="text-lg font-semibold text-white">
+                    <h3 className="text-lg font-semibold text-gray-900">
                       {serviceNames[quote.service as keyof typeof serviceNames]}
                     </h3>
-                    <p className="text-gray-400 text-sm">
+                    <p className="text-gray-600 text-sm">
                       {quote.customer_info.fullName} • {quote.customer_info.company || 'No company'}
                     </p>
           </div>
@@ -197,7 +197,7 @@ export default function AdminQuotesPage() {
                     variant="outline"
                     size="sm"
                     onClick={() => setSelectedQuote(quote)}
-                    className="border-gray-600 text-gray-300 hover:bg-gray-700"
+                    className="border-gray-300 text-gray-700 hover:bg-gray-100"
                   >
                     <Eye className="w-4 h-4 mr-2" />
                     View Details
@@ -206,30 +206,30 @@ export default function AdminQuotesPage() {
               </div>
 
               <div className="grid md:grid-cols-4 gap-4 mb-4">
-                <div className="flex items-center gap-2 text-gray-300">
+                <div className="flex items-center gap-2 text-gray-700">
                   <Mail className="w-4 h-4" />
                   <span className="text-sm">{quote.customer_info.email}</span>
             </div>
-                <div className="flex items-center gap-2 text-gray-300">
+                <div className="flex items-center gap-2 text-gray-700">
                   <Phone className="w-4 h-4" />
                   <span className="text-sm">{quote.customer_info.phone}</span>
               </div>
-                <div className="flex items-center gap-2 text-gray-300">
+                <div className="flex items-center gap-2 text-gray-700">
                   <Calendar className="w-4 h-4" />
                   <span className="text-sm">
                     {new Date(quote.created_at).toLocaleDateString()}
                   </span>
             </div>
-                <div className="flex items-center gap-2 text-gray-300">
+                <div className="flex items-center gap-2 text-gray-700">
                   <DollarSign className="w-4 h-4" />
-                  <span className="text-sm font-semibold text-yellow-400">
+                  <span className="text-sm font-semibold text-gray-900">
                     ${quote.estimated_total.toLocaleString()}
                   </span>
               </div>
             </div>
 
             <div className="flex items-center justify-between">
-                <div className="text-sm text-gray-400">
+                <div className="text-sm text-gray-600">
                   {quote.selected_addons.length} add-ons selected
                 </div>
                 <div className="flex gap-2">
@@ -238,7 +238,7 @@ export default function AdminQuotesPage() {
                       <Button
                         size="sm"
                         onClick={() => updateQuoteStatus(quote.id, 'reviewed')}
-                        className="bg-blue-600 hover:bg-blue-700 text-white"
+                        className="bg-gray-900 hover:bg-gray-800 text-white"
                       >
                         <CheckCircle className="w-4 h-4 mr-1" />
                         Mark Reviewed
@@ -247,7 +247,7 @@ export default function AdminQuotesPage() {
                         size="sm"
                         variant="outline"
                         onClick={() => updateQuoteStatus(quote.id, 'rejected')}
-                        className="border-red-500 text-red-400 hover:bg-red-500/10"
+                        className="border-red-300 text-red-700 hover:bg-red-50"
                       >
                         <XCircle className="w-4 h-4 mr-1" />
                         Reject
@@ -261,16 +261,16 @@ export default function AdminQuotesPage() {
       </div>
 
         {filteredQuotes.length === 0 && (
-                <div className="text-center py-12">
-            <Clock className="w-12 h-12 text-gray-500 mx-auto mb-4" />
-            <h3 className="text-lg font-semibold text-gray-400 mb-2">No quotes found</h3>
-            <p className="text-gray-500">
+          <div className="text-center py-12">
+            <Clock className="w-12 h-12 text-gray-400 mx-auto mb-4" />
+            <h3 className="text-lg font-semibold text-gray-900 mb-2">No quotes found</h3>
+            <p className="text-gray-600">
               {statusFilter === 'all' 
                 ? 'No quote requests have been submitted yet.'
                 : `No quotes with status "${statusFilter}" found.`
-                    }
-                  </p>
-                </div>
+              }
+            </p>
+          </div>
           )}
         </div>
 
@@ -280,15 +280,15 @@ export default function AdminQuotesPage() {
           <motion.div
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
-            className="bg-gray-800 rounded-lg max-w-4xl w-full max-h-[90vh] overflow-y-auto"
+            className="bg-white rounded-lg max-w-4xl w-full max-h-[90vh] overflow-y-auto shadow-xl"
           >
-            <div className="p-6 border-b border-gray-700">
+            <div className="p-6 border-b border-gray-200">
               <div className="flex items-center justify-between">
-                <h2 className="text-2xl font-bold text-white">Quote Request Details</h2>
+                <h2 className="text-2xl font-bold text-gray-900">Quote Request Details</h2>
                 <Button
                   variant="ghost"
                   onClick={() => setSelectedQuote(null)}
-                  className="text-gray-400 hover:text-white"
+                  className="text-gray-600 hover:text-gray-900"
                 >
                   ✕
                 </Button>
@@ -298,21 +298,21 @@ export default function AdminQuotesPage() {
             <div className="p-6 space-y-6">
               {/* Customer Info */}
               <div>
-                <h3 className="text-lg font-semibold text-white mb-4">Customer Information</h3>
+                <h3 className="text-lg font-semibold text-gray-900 mb-4">Customer Information</h3>
                 <div className="grid md:grid-cols-2 gap-4">
-                  <div className="flex items-center gap-2 text-gray-300">
+                  <div className="flex items-center gap-2 text-gray-700">
                     <Mail className="w-4 h-4" />
                     <span>{selectedQuote.customer_info.email}</span>
                   </div>
-                  <div className="flex items-center gap-2 text-gray-300">
+                  <div className="flex items-center gap-2 text-gray-700">
                     <Phone className="w-4 h-4" />
                     <span>{selectedQuote.customer_info.phone}</span>
                     </div>
-                  <div className="flex items-center gap-2 text-gray-300">
+                  <div className="flex items-center gap-2 text-gray-700">
                     <Building className="w-4 h-4" />
                     <span>{selectedQuote.customer_info.company || 'No company'}</span>
                     </div>
-                  <div className="flex items-center gap-2 text-gray-300">
+                  <div className="flex items-center gap-2 text-gray-700">
                     <Calendar className="w-4 h-4" />
                     <span>{new Date(selectedQuote.created_at).toLocaleDateString()}</span>
                   </div>
@@ -321,26 +321,26 @@ export default function AdminQuotesPage() {
 
               {/* Project Details */}
               <div>
-                <h3 className="text-lg font-semibold text-white mb-4">Project Details</h3>
+                <h3 className="text-lg font-semibold text-gray-900 mb-4">Project Details</h3>
                 <div className="space-y-3">
                   <div>
-                    <label className="text-sm text-gray-400">Description</label>
-                    <p className="text-gray-300 mt-1">{selectedQuote.customer_info.projectDescription}</p>
+                    <label className="text-sm text-gray-500">Description</label>
+                    <p className="text-gray-800 mt-1">{selectedQuote.customer_info.projectDescription}</p>
                   </div>
                   <div className="grid md:grid-cols-2 gap-4">
                     <div>
-                      <label className="text-sm text-gray-400">Budget</label>
-                      <p className="text-gray-300 mt-1">{selectedQuote.customer_info.budget || 'Not specified'}</p>
+                      <label className="text-sm text-gray-500">Budget</label>
+                      <p className="text-gray-800 mt-1">{selectedQuote.customer_info.budget || 'Not specified'}</p>
                   </div>
                   <div>
-                      <label className="text-sm text-gray-400">Timeline</label>
-                      <p className="text-gray-300 mt-1">{selectedQuote.customer_info.timeline || 'Not specified'}</p>
+                      <label className="text-sm text-gray-500">Timeline</label>
+                      <p className="text-gray-800 mt-1">{selectedQuote.customer_info.timeline || 'Not specified'}</p>
                   </div>
                     </div>
                   {selectedQuote.customer_info.additionalNotes && (
                     <div>
-                      <label className="text-sm text-gray-400">Additional Notes</label>
-                      <p className="text-gray-300 mt-1">{selectedQuote.customer_info.additionalNotes}</p>
+                      <label className="text-sm text-gray-500">Additional Notes</label>
+                      <p className="text-gray-800 mt-1">{selectedQuote.customer_info.additionalNotes}</p>
                     </div>
                   )}
                 </div>
@@ -348,32 +348,32 @@ export default function AdminQuotesPage() {
 
               {/* Pricing */}
               <div>
-                <h3 className="text-lg font-semibold text-white mb-4">Pricing Breakdown</h3>
-                <div className="bg-gray-700/30 rounded-lg p-4 space-y-2">
+                <h3 className="text-lg font-semibold text-gray-900 mb-4">Pricing Breakdown</h3>
+                <div className="bg-gray-50 rounded-lg p-4 space-y-2">
                   <div className="flex justify-between">
-                    <span className="text-gray-300">Base Price:</span>
-                    <span className="text-white">${selectedQuote.base_price.toLocaleString()}</span>
+                    <span className="text-gray-700">Base Price:</span>
+                    <span className="text-gray-900">${selectedQuote.base_price.toLocaleString()}</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-gray-300">Add-ons Total:</span>
-                    <span className="text-white">+${selectedQuote.addons_total.toLocaleString()}</span>
+                    <span className="text-gray-700">Add-ons Total:</span>
+                    <span className="text-gray-900">+${selectedQuote.addons_total.toLocaleString()}</span>
                   </div>
-                  <div className="border-t border-gray-600 pt-2">
+                  <div className="border-t border-gray-200 pt-2">
                     <div className="flex justify-between font-semibold">
-                      <span className="text-white">Estimated Total:</span>
-                      <span className="text-yellow-400">${selectedQuote.estimated_total.toLocaleString()}</span>
+                      <span className="text-gray-900">Estimated Total:</span>
+                      <span className="text-gray-900">${selectedQuote.estimated_total.toLocaleString()}</span>
                     </div>
                   </div>
                 </div>
               </div>
 
               {/* Actions */}
-              <div className="flex gap-3 pt-4 border-t border-gray-700">
+              <div className="flex gap-3 pt-4 border-t border-gray-200">
                 {selectedQuote.status === 'pending' && (
                   <>
                   <Button
                     onClick={() => updateQuoteStatus(selectedQuote.id, 'reviewed')}
-                      className="bg-blue-600 hover:bg-blue-700 text-white"
+                      className="bg-gray-900 hover:bg-gray-800 text-white"
                   >
                       <CheckCircle className="w-4 h-4 mr-2" />
                       Mark as Reviewed
@@ -381,7 +381,7 @@ export default function AdminQuotesPage() {
                   <Button
                     variant="outline"
                       onClick={() => updateQuoteStatus(selectedQuote.id, 'rejected')}
-                      className="border-red-500 text-red-400 hover:bg-red-500/10"
+                      className="border-red-300 text-red-700 hover:bg-red-50"
                     >
                       <XCircle className="w-4 h-4 mr-2" />
                       Reject Quote
@@ -391,7 +391,7 @@ export default function AdminQuotesPage() {
                   <Button
                     variant="outline"
                   onClick={() => setSelectedQuote(null)}
-                  className="border-gray-600 text-gray-300 hover:bg-gray-700"
+                  className="border-gray-300 text-gray-700 hover:bg-gray-100"
                 >
                   Close
                   </Button>

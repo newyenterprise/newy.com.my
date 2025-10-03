@@ -150,25 +150,25 @@ export default function PortfolioManagementPage() {
       </div>
 
       {/* Filters */}
-      <Card className="border-purple-500/20">
+      <Card className="border border-gray-200 bg-white shadow-sm">
         <CardContent className="pt-6">
           <div className="flex flex-col lg:flex-row gap-4">
             <div className="flex-1">
               <div className="relative">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
                 <input
                   type="text"
                   placeholder="Search projects..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="w-full pl-10 pr-4 py-2 bg-background border border-purple-500/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500/40"
+                  className="w-full pl-10 pr-4 py-2 bg-white border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-300 focus:border-gray-400 text-gray-900 placeholder:text-gray-400"
                 />
               </div>
             </div>
             <select
               value={filterType}
               onChange={(e) => setFilterType(e.target.value as any)}
-              className="px-4 py-2 bg-background border border-purple-500/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500/40"
+              className="px-4 py-2 bg-white border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-300 focus:border-gray-400 text-gray-900"
             >
               <option value="all">All Types</option>
               <option value="website">Website</option>
@@ -179,7 +179,7 @@ export default function PortfolioManagementPage() {
             <select
               value={filterStatus}
               onChange={(e) => setFilterStatus(e.target.value as any)}
-              className="px-4 py-2 bg-background border border-purple-500/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500/40"
+              className="px-4 py-2 bg-white border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-300 focus:border-gray-400 text-gray-900"
             >
               <option value="all">All Status</option>
               <option value="completed">Completed</option>
@@ -250,12 +250,12 @@ export default function PortfolioManagementPage() {
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         {filteredProjects.length === 0 ? (
           <div className="col-span-full">
-            <Card className="border-purple-500/20">
+            <Card className="border border-gray-200 bg-white shadow-sm">
               <CardContent className="pt-6">
                 <div className="text-center py-12">
-                  <Eye className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
+                  <Eye className="h-12 w-12 text-gray-400 mx-auto mb-4" />
                   <h3 className="text-lg font-semibold mb-2">No projects found</h3>
-                  <p className="text-muted-foreground mb-4">
+                  <p className="text-gray-500 mb-4">
                     {searchTerm || filterType !== "all" || filterStatus !== "all"
                       ? "Try adjusting your search or filter criteria"
                       : "Get started by adding your first project"
@@ -273,13 +273,13 @@ export default function PortfolioManagementPage() {
           </div>
         ) : (
           filteredProjects.map((project) => (
-            <Card key={project.id} className="border-purple-500/20 group hover:shadow-lg transition-shadow">
+            <Card key={project.id} className="border border-gray-200 bg-white shadow-sm hover:shadow-md transition-shadow">
               <CardContent className="pt-6">
                 <div className="space-y-4">
                   <div className="flex items-start justify-between">
                     <div className="flex-1">
                       <h3 className="text-lg font-semibold mb-2">{project.title}</h3>
-                      <p className="text-muted-foreground text-sm line-clamp-2 mb-3">
+                      <p className="text-gray-600 text-sm line-clamp-2 mb-3">
                         {project.description}
                       </p>
                     </div>
@@ -293,14 +293,14 @@ export default function PortfolioManagementPage() {
                       {project.status.replace('_', ' ')}
                     </Badge>
                     {project.featured && (
-                      <Badge variant="outline" className="border-purple-500/30 text-purple-300">
+                      <Badge variant="outline" className="border-yellow-300 text-yellow-700 bg-yellow-50">
                         Featured
                       </Badge>
                     )}
                   </div>
 
                   {project.client_name && (
-                    <p className="text-sm text-muted-foreground">
+                    <p className="text-sm text-gray-500">
                       Client: {project.client_name}
                     </p>
                   )}
@@ -310,27 +310,27 @@ export default function PortfolioManagementPage() {
                       {project.technologies.slice(0, 3).map((tech, index) => (
                         <span
                           key={index}
-                          className="px-2 py-1 text-xs bg-muted rounded text-muted-foreground"
+                          className="px-2 py-1 text-xs bg-gray-100 rounded text-gray-600"
                         >
                           {tech}
                         </span>
                       ))}
                       {project.technologies.length > 3 && (
-                        <span className="px-2 py-1 text-xs bg-muted rounded text-muted-foreground">
+                        <span className="px-2 py-1 text-xs bg-gray-100 rounded text-gray-600">
                           +{project.technologies.length - 3} more
                         </span>
                       )}
                     </div>
                   )}
 
-                  <div className="flex items-center justify-between pt-4 border-t border-purple-500/20">
+                  <div className="flex items-center justify-between pt-4 border-t border-gray-200">
                     <div className="flex items-center gap-2">
                       {project.project_url && (
                         <a
                           href={project.project_url}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-muted-foreground hover:text-purple-400 transition-colors"
+                          className="text-gray-500 hover:text-gray-700 transition-colors"
                         >
                           <Globe className="h-4 w-4" />
                         </a>
@@ -340,7 +340,7 @@ export default function PortfolioManagementPage() {
                           href={project.github_url}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-muted-foreground hover:text-purple-400 transition-colors"
+                          className="text-gray-500 hover:text-gray-700 transition-colors"
                         >
                           <Github className="h-4 w-4" />
                         </a>
@@ -351,12 +351,12 @@ export default function PortfolioManagementPage() {
                         variant="ghost"
                         size="sm"
                         onClick={() => toggleFeatured(project.id, project.featured)}
-                        className={project.featured ? "text-yellow-400 hover:text-yellow-300" : "text-muted-foreground hover:text-purple-400"}
+                        className="text-gray-700 hover:bg-gray-100"
                       >
                         {project.featured ? "Unfeature" : "Feature"}
                       </Button>
                       <Link href={`/admin/portfolio/edit/${project.id}`}>
-                        <Button variant="ghost" size="sm" className="text-blue-400 hover:text-blue-300">
+                        <Button variant="ghost" size="sm" className="text-gray-700 hover:bg-gray-100">
                           <Edit className="h-4 w-4" />
                         </Button>
                       </Link>
@@ -364,7 +364,7 @@ export default function PortfolioManagementPage() {
                         variant="ghost"
                         size="sm"
                         onClick={() => handleDelete(project.id)}
-                        className="text-red-400 hover:text-red-300"
+                        className="text-red-600 hover:bg-red-50"
                       >
                         <Trash2 className="h-4 w-4" />
                       </Button>
