@@ -4,12 +4,10 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@digitallinked/ui";
-import { Menu, X, LogIn, User } from "lucide-react";
-import { useAuth } from "@/contexts/auth-context";
+import { Menu, X } from "lucide-react";
 
 export function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
-  const { user } = useAuth();
 
   const navigation = [
     { name: "Website", href: "/website" },
@@ -59,17 +57,6 @@ export function Navigation() {
             >
               <Link href="/pricing">Instant Quote</Link>
             </Button>
-            {user ? (
-              <Link href="/dashboard" className="flex items-center space-x-2 text-sm text-gray-600 hover:text-accent">
-                <User className="h-5 w-5" />
-                <span>Dashboard</span>
-              </Link>
-            ) : (
-              <Link href="/auth/login" className="flex items-center space-x-2 text-sm text-gray-600 hover:text-accent">
-                <LogIn className="h-5 w-5" />
-                <span>Login</span>
-              </Link>
-            )}
           </div>
 
           {/* Mobile menu button */}
@@ -104,25 +91,6 @@ export function Navigation() {
                 >
                   <Link href="/pricing" onClick={() => setIsOpen(false)}>Instant Quote</Link>
                 </Button>
-                {user ? (
-                  <Link
-                    href="/dashboard"
-                    className="flex items-center space-x-2 px-3 py-2 text-sm text-gray-600 hover:text-accent transition-colors duration-200"
-                    onClick={() => setIsOpen(false)}
-                  >
-                    <User className="h-4 w-4" />
-                    <span>Dashboard</span>
-                  </Link>
-                ) : (
-                  <Link
-                    href="/auth/login"
-                    className="flex items-center space-x-2 px-3 py-2 text-sm text-gray-600 hover:text-accent transition-colors duration-200"
-                    onClick={() => setIsOpen(false)}
-                  >
-                    <LogIn className="h-4 w-4" />
-                    <span>Login</span>
-                  </Link>
-                )}
               </div>
             </div>
           </div>
