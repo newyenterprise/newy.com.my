@@ -1,12 +1,14 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
 
-// Check if API key is available
-if (!process.env.RESEND_API_KEY) {
-  console.error('RESEND_API_KEY environment variable is not set');
+// Lazily create the Resend client to avoid build-time crashes when the key is absent
+function getResend(): Resend | null {
+  const apiKey = process.env.RESEND_API_KEY;
+  if (!apiKey) {
+    return null;
+  }
+  return new Resend(apiKey);
 }
-
-const resend = new Resend(process.env.RESEND_API_KEY);
 
 // Simple in-memory rate limiting (in production, use Redis or database)
 const rateLimitMap = new Map<string, { count: number; resetTime: number }>();
@@ -98,7 +100,8 @@ function isSuspiciousSubmission(data: any): boolean {
 export async function POST(request: NextRequest) {
   try {
     // Check if Resend API key is configured
-    if (!process.env.RESEND_API_KEY) {
+    const resend = getResend();
+    if (!resend) {
       console.error('RESEND_API_KEY is not configured');
       return NextResponse.json(
         { error: 'Email service is not configured. Please contact the administrator.' },
