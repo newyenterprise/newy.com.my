@@ -55,12 +55,9 @@ export function Navigation() {
           <div className="hidden md:flex items-center space-x-4">
             <Button 
               className="btn-primary"
-              onClick={() => {
-                // Dispatch a custom event to open the modal
-                window.dispatchEvent(new CustomEvent('openQuoteModal'));
-              }}
+              asChild
             >
-              Instant Quote
+              <Link href="/pricing">Instant Quote</Link>
             </Button>
             {user ? (
               <Link href="/dashboard" className="flex items-center space-x-2 text-sm text-gray-600 hover:text-accent">
@@ -103,12 +100,9 @@ export function Navigation() {
               <div className="px-3 py-2 space-y-2">
                 <Button 
                   className="btn-primary w-full"
-                  onClick={() => {
-                    window.dispatchEvent(new CustomEvent('openQuoteModal'));
-                    setIsOpen(false);
-                  }}
+                  asChild
                 >
-                  Instant Quote
+                  <Link href="/pricing" onClick={() => setIsOpen(false)}>Instant Quote</Link>
                 </Button>
                 {user ? (
                   <Link

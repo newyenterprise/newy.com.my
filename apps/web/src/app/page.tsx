@@ -58,12 +58,12 @@ export default function HomePage() {
                 <MagneticButton 
                   size="lg" 
                   className="btn-primary text-lg px-8 py-4 animate-glow"
-                  onClick={() => {
-                    window.dispatchEvent(new CustomEvent('openQuoteModal'));
-                  }}
+                  asChild
                 >
-                  Instant Quote
-                  <ArrowRight className="ml-2 h-5 w-5" />
+                  <Link href="/pricing">
+                    Instant Quote
+                    <ArrowRight className="ml-2 h-5 w-5" />
+                  </Link>
                 </MagneticButton>
                 <MagneticButton size="lg" variant="outline" className="btn-outline text-lg px-8 py-4" asChild>
                   <Link href="/contact">Contact Us</Link>
@@ -197,12 +197,12 @@ export default function HomePage() {
               size="lg" 
               variant="outline" 
               className="btn-outline text-lg px-8 py-4"
-              onClick={() => {
-                window.dispatchEvent(new CustomEvent('openQuoteModal'));
-              }}
+              asChild
             >
-              Instant Quote
-              <ArrowRight className="ml-2 h-5 w-5" />
+              <Link href="/pricing">
+                Instant Quote
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Link>
             </MagneticButton>
           </div>
         </ScrollReveal>
