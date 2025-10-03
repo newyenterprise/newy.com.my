@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Button, Card, CardContent, CardDescription, CardHeader, CardTitle } from "@digitallinked/ui";
+import { Button, Card, CardContent, CardDescription, CardHeader, CardTitle } from "@newy/ui";
 import { ArrowLeft, CreditCard, Shield, Check, Loader2 } from "lucide-react";
 import Link from "next/link";
 import { useAuth } from "../../contexts/auth-context";

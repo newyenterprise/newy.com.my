@@ -1,7 +1,7 @@
 {
-  "name": "@digitallinked/ui",
+  "name": "@newy/ui",
   "version": "1.0.0",
-  "description": "Shared UI components for Digital Linked monorepo",
+  "description": "Shared UI components for NewY Enterprise monorepo",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
@@ -15,14 +15,14 @@
     "clean": "rm -rf dist"
   },
   "devDependencies": {
-    "@digitallinked/config": "workspace:*",
+    "@newy/config": "workspace:*",
     "@types/react": "^18.2.48",
     "@types/react-dom": "^18.2.18",
     "tsup": "^8.0.1",
     "typescript": "^5.3.3"
   },
   "dependencies": {
-    "@digitallinked/utils": "workspace:*",
+    "@newy/utils": "workspace:*",
     "@radix-ui/react-slot": "^1.0.2",
     "class-variance-authority": "^0.7.0",
     "lucide-react": "^0.323.0",

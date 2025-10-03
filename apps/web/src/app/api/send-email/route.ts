@@ -160,8 +160,8 @@ export async function POST(request: NextRequest) {
 
     // Send email to admin
     const { data, error } = await resend.emails.send({
-      from: 'DigitalLinked Contact Form <noreply@digitallinked.com.au>',
-      to: ['hello@digitallinked.com.au', 'digitallinked.au@gmail.com'], // Admin emails
+      from: 'NewY Enterprise Contact Form <noreply@newy.com.my>',
+      to: ['newyenterprise@gmail.com'], // Admin emails
       subject: `New Contact Form Submission: ${subject}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
@@ -192,7 +192,7 @@ export async function POST(request: NextRequest) {
           </div>
           
           <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #e5e7eb; color: #6b7280; font-size: 14px;">
-            <p>This message was sent from the DigitalLinked contact form.</p>
+            <p>This message was sent from the NewY Enterprise contact form.</p>
             <p>Submitted on: ${new Date().toLocaleString('en-AU', { 
               timeZone: 'Australia/Sydney',
               year: 'numeric',
@@ -216,9 +216,9 @@ export async function POST(request: NextRequest) {
 
     // Send confirmation email to the user
     await resend.emails.send({
-      from: 'DigitalLinked <noreply@digitallinked.com.au>',
+      from: 'NewY Enterprise <noreply@newy.com.my>',
       to: [email],
-      subject: 'Thank you for contacting DigitalLinked',
+      subject: 'Thank you for contacting NewY Enterprise',
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
           <h2 style="color: #7c3aed; border-bottom: 2px solid #7c3aed; padding-bottom: 10px;">
@@ -227,7 +227,7 @@ export async function POST(request: NextRequest) {
           
           <p>Dear ${fullName},</p>
           
-          <p>Thank you for contacting DigitalLinked. We have received your message and will get back to you within 24 hours.</p>
+          <p>Thank you for contacting NewY Enterprise. We have received your message and will get back to you within 24 hours.</p>
           
           <div style="background-color: #f8fafc; padding: 20px; border-radius: 8px; margin: 20px 0;">
             <h3 style="color: #374151; margin-top: 0;">Your Message Summary</h3>
@@ -235,16 +235,15 @@ export async function POST(request: NextRequest) {
             <p><strong>Message Type:</strong> ${messageType || 'General Inquiry'}</p>
           </div>
           
-          <p>If you have any urgent questions, please don't hesitate to call us at <strong>0406 612 824</strong>.</p>
+          <p>If you have any urgent questions, please don't hesitate to contact us.</p>
           
           <p>Best regards,<br>
-          The DigitalLinked Team</p>
+          The NewY Enterprise Team</p>
           
           <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #e5e7eb; color: #6b7280; font-size: 14px;">
-            <p>DigitalLinked<br>
-            Newcastle, NSW, Australia<br>
-            Phone: 0406 612 824<br>
-            Email: hello@digitallinked.com.au</p>
+            <p>NewY Enterprise<br>
+            Malaysia<br>
+            Email: newyenterprise@gmail.com</p>
           </div>
         </div>
       `,

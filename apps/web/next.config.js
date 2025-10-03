@@ -7,7 +7,7 @@ const nextConfig = {
   experimental: {
     mdxRs: true,
   },
-  transpilePackages: ['@digitallinked/ui', '@digitallinked/utils'],
+  transpilePackages: ['@newy/ui', '@newy/utils'],
   images: {
     remotePatterns: [
       {

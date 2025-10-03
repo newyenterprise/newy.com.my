@@ -1,7 +1,7 @@
 {
-  "name": "@digitallinked/utils",
+  "name": "@newy/utils",
   "version": "1.0.0",
-  "description": "Shared utilities for Digital Linked monorepo",
+  "description": "Shared utilities for NewY Enterprise monorepo",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
@@ -15,7 +15,7 @@
     "clean": "rm -rf dist"
   },
   "devDependencies": {
-    "@digitallinked/config": "workspace:*",
+    "@newy/config": "workspace:*",
     "tsup": "^8.0.1",
     "typescript": "^5.3.3"
   },

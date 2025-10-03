@@ -1,6 +1,6 @@
 "use client";
 
-import { Button } from "@digitallinked/ui";
+import { Button } from "@newy/ui";
 import { ArrowLeft, Home, Search, Zap, Globe, Smartphone, Target, Code, RefreshCw, Rocket } from "lucide-react";
 import Link from "next/link";
 import { useState, useEffect } from "react";

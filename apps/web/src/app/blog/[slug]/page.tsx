@@ -1,7 +1,7 @@
 import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { createClient } from '@supabase/supabase-js'
-import { Button, Card, CardContent, CardHeader, CardTitle, Badge } from "@digitallinked/ui"
+import { Button, Card, CardContent, CardHeader, CardTitle, Badge } from "@newy/ui"
 import { ArrowLeft, Calendar, Clock, Eye, Tag, Share2, Twitter, Linkedin, Facebook } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"

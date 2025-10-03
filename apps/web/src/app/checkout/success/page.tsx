@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, Suspense } from "react";
-import { Button, Card, CardContent, CardDescription, CardHeader, CardTitle } from "@digitallinked/ui";
+import { Button, Card, CardContent, CardDescription, CardHeader, CardTitle } from "@newy/ui";
 import { Check, ArrowRight, Mail, Phone, Calendar } from "lucide-react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";

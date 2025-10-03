@@ -20,45 +20,45 @@ const poppins = Poppins({
 
 export const metadata: Metadata = {
   title: {
-    default: "DigitalLinked - Digital Solutions & Web Development",
-    template: "%s | DigitalLinked"
+    default: "NewY Enterprise - Digital Solutions & Web Development",
+    template: "%s | NewY Enterprise"
   },
   description: "Professional digital solutions, web development, and technology services. We help businesses grow with cutting-edge digital strategies and custom web applications.",
   keywords: ["web development", "app development", "AI automation", "digital marketing", "agency", "digital solutions"],
-  authors: [{ name: "DigitalLinked" }],
-  creator: "DigitalLinked",
-  publisher: "DigitalLinked",
+  authors: [{ name: "NewY Enterprise" }],
+  creator: "NewY Enterprise",
+  publisher: "NewY Enterprise",
   formatDetection: {
     email: false,
     address: false,
     telephone: false,
   },
-  metadataBase: new URL('https://digitallinked.com.au'),
+  metadataBase: new URL('https://newy.com.my'),
   alternates: {
     canonical: '/',
   },
   openGraph: {
     type: "website",
-    locale: "en_AU",
-    url: "https://digitallinked.com.au",
-    title: "DigitalLinked - Digital Solutions & Web Development",
+    locale: "en_MY",
+    url: "https://newy.com.my",
+    title: "NewY Enterprise - Digital Solutions & Web Development",
     description: "Professional digital solutions, web development, and technology services. We help businesses grow with cutting-edge digital strategies and custom web applications.",
-    siteName: "DigitalLinked",
+    siteName: "NewY Enterprise",
     images: [
       {
-        url: "https://digitallinked.com.au/og-image.jpg",
+        url: "https://newy.com.my/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "DigitalLinked - Digital Solutions & Web Development",
+        alt: "NewY Enterprise - Digital Solutions & Web Development",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "DigitalLinked - Digital Solutions & Web Development",
+    title: "NewY Enterprise - Digital Solutions & Web Development",
     description: "Professional digital solutions, web development, and technology services. We help businesses grow with cutting-edge digital strategies and custom web applications.",
-    creator: "@digitallinked",
-    site: "@digitallinked",
+    creator: "@newyenterprise",
+    site: "@newyenterprise",
   },
   robots: {
     index: true,

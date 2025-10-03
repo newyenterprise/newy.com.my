@@ -2,7 +2,7 @@
 
 import { useState, useEffect, Suspense } from "react";
 import { motion } from "framer-motion";
-import { Button, Card, CardContent, CardHeader, CardTitle } from "@digitallinked/ui";
+import { Button, Card, CardContent, CardHeader, CardTitle } from "@newy/ui";
 import { Check, Mail, Phone, Clock, ArrowRight, Star, DollarSign, Globe, Smartphone, Brain, TrendingUp } from "lucide-react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";

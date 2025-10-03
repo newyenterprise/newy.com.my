@@ -13,7 +13,7 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
-    "@digitallinked/utils": "workspace:*",
+    "@newy/utils": "workspace:*",
     "@expo/vector-icons": "^14.0.0",
     "@react-navigation/bottom-tabs": "^6.5.11",
     "@react-navigation/native": "^6.1.9",
@@ -41,7 +41,7 @@
     "zod": "^3.22.4"
   },
   "devDependencies": {
-    "@digitallinked/config": "workspace:*",
+    "@newy/config": "workspace:*",
     "@babel/core": "^7.20.0",
     "@types/react": "~18.2.45",
     "@types/react-native": "~0.73.0",

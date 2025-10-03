@@ -1,7 +1,7 @@
 {
-  "name": "digitallinked-monorepo",
+  "name": "newy-monorepo",
   "version": "1.0.0",
-  "description": "Digital Linked - Your Strategic Partner for Digital Success",
+  "description": "NewY Enterprise - Your Strategic Partner for Digital Success",
   "private": true,
   "workspaces": [
     "apps/*",
@@ -19,8 +19,8 @@
     "mobile:dev": "turbo dev --filter=mobile",
     "web:build": "turbo build --filter=web",
     "mobile:build": "turbo build --filter=mobile",
-    "vercel:build": "turbo build --filter=@digitallinked/utils --filter=@digitallinked/ui && turbo build --filter=web",
-    "build:packages": "turbo build --filter=@digitallinked/utils --filter=@digitallinked/ui"
+    "vercel:build": "turbo build --filter=@newy/utils --filter=@newy/ui && turbo build --filter=web",
+    "build:packages": "turbo build --filter=@newy/utils --filter=@newy/ui"
   },
   "devDependencies": {
     "@turbo/gen": "^1.12.4",

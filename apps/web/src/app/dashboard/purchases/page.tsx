@@ -1,7 +1,7 @@
 "use client";
 
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@digitallinked/ui";
-import { Badge } from "@digitallinked/ui";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@newy/ui";
+import { Badge } from "@newy/ui";
 import { ShoppingCart, Download, Eye } from "lucide-react";
 
 export default function PurchasesPage() {

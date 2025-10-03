@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Button, Card, CardContent, CardHeader, CardTitle } from "@digitallinked/ui";
+import { Button, Card, CardContent, CardHeader, CardTitle } from "@newy/ui";
 import { 
   CreditCard, 
   Shield, 

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Button, Card, CardContent, CardDescription, CardHeader, CardTitle } from "@digitallinked/ui";
+import { Button, Card, CardContent, CardDescription, CardHeader, CardTitle } from "@newy/ui";
 import { MapPin, Mail, Phone, Clock, Send, CheckCircle } from "lucide-react";
 import { supabase } from "../../lib/supabase";
 import { ScrollReveal } from "@/components/scroll-reveal";

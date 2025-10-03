@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { supabase, Profile } from "@/lib/supabase";
 import { useProfile } from "@/hooks/use-profile";
 import { canAccessAdmin } from "@/lib/permissions";
-import { Button } from "@digitallinked/ui";
+import { Button } from "@newy/ui";
 import { Users, Shield, User, Crown } from "lucide-react";
 
 export default function AdminUsersPage() {

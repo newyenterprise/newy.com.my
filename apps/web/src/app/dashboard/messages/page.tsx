@@ -1,9 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@digitallinked/ui";
-import { Button } from "@digitallinked/ui";
-import { Badge } from "@digitallinked/ui";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@newy/ui";
+import { Button } from "@newy/ui";
+import { Badge } from "@newy/ui";
 import { MessageSquare, Send, Clock, CheckCircle } from "lucide-react";
 
 export default function MessagesPage() {

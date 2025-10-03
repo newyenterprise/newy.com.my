@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Button, Card, CardContent, CardDescription, CardHeader, CardTitle, Badge } from "@digitallinked/ui";
+import { Button, Card, CardContent, CardDescription, CardHeader, CardTitle, Badge } from "@newy/ui";
 import { Mail, Calendar, Search, Eye, CheckCircle, Reply, Trash2, X } from "lucide-react";
 import { supabase, ContactMessage } from "../../../lib/supabase";
 

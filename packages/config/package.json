@@ -1,7 +1,7 @@
 {
-  "name": "@digitallinked/config",
+  "name": "@newy/config",
   "version": "1.0.0",
-  "description": "Shared configuration for Digital Linked monorepo",
+  "description": "Shared configuration for NewY Enterprise monorepo",
   "main": "index.js",
   "files": [
     "eslint",

@@ -3,8 +3,8 @@
 import { useRef } from "react";
 import { useIsomorphicLayoutEffect } from "@/hooks/use-isomorphic-layout-effect";
 import { getGsap, prefersReducedMotion } from "@/lib/gsap";
-import { Button } from "@digitallinked/ui";
-import { ButtonProps } from "@digitallinked/ui";
+import { Button } from "@newy/ui";
+import { ButtonProps } from "@newy/ui";
 
 interface MagneticButtonProps extends ButtonProps {
   children: React.ReactNode;

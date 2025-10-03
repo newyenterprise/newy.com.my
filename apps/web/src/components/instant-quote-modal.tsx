@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { Button, Card, CardContent, CardDescription, CardHeader, CardTitle } from "@digitallinked/ui";
+import { Button, Card, CardContent, CardDescription, CardHeader, CardTitle } from "@newy/ui";
 import { X, ArrowRight, ArrowLeft, CheckCircle, Sparkles, DollarSign, Clock, Star } from "lucide-react";
 import { supabase } from "../lib/supabase";
 import { useAuth } from "../contexts/auth-context";

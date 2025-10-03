@@ -1,6 +1,6 @@
 "use client";
 
-import { Button, Card, CardContent, CardDescription, CardHeader, CardTitle, Badge } from "@digitallinked/ui";
+import { Button, Card, CardContent, CardDescription, CardHeader, CardTitle, Badge } from "@newy/ui";
 import { ArrowRight, Globe, Smartphone, Zap, TrendingUp, CheckCircle, Users, Building2, GraduationCap, ShoppingCart, Heart, Target, Palette, Code } from "lucide-react";
 import Link from "next/link";
 import { ScrollReveal } from "../components/scroll-reveal";
@@ -44,7 +44,7 @@ export default function HomePage() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <ScrollReveal>
               <h1 className="text-5xl md:text-6xl font-bold font-display mb-6">
-                <span className="gradient-text">Digital Linked</span>
+                <span className="gradient-text">NewY Enterprise</span>
                 <br />
                 Your Strategic Partner for
                 <br />
@@ -182,7 +182,7 @@ export default function HomePage() {
             Ready to Cut the Chaos & Elevate Your Digital Presence?
           </h2>
           <p className="text-xl mb-8 max-w-2xl mx-auto opacity-90">
-            Let's discuss how Digital Linked can become your trusted partner in navigating 
+            Let's discuss how NewY Enterprise can become your trusted partner in navigating 
             the complexities of the digital world and achieving your business objectives.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

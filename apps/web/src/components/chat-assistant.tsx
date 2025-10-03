@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import { Button } from "@digitallinked/ui";
+import { Button } from "@newy/ui";
 import { MessageCircle, X, Send, Bot, User, Sparkles } from "lucide-react";
 
 interface Message {

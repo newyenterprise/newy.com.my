@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { Button, Card, CardContent, CardDescription, CardHeader, CardTitle, Badge } from "@digitallinked/ui";
+import { Button, Card, CardContent, CardDescription, CardHeader, CardTitle, Badge } from "@newy/ui";
 import { Plus, Edit, Trash2, Eye, Calendar, Clock, Tag, Search } from "lucide-react";
 import { supabase, BlogPost } from "../../../lib/supabase";
 

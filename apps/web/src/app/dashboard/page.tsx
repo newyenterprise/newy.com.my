@@ -1,7 +1,7 @@
 "use client";
 
 import { useAuth } from "@/contexts/auth-context";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@digitallinked/ui";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@newy/ui";
 import { 
   ShoppingCart, 
   MessageSquare, 

@@ -3,7 +3,7 @@
 import { useRef } from "react";
 import { useIsomorphicLayoutEffect } from "@/hooks/use-isomorphic-layout-effect";
 import { getGsap, prefersReducedMotion } from "@/lib/gsap";
-import { Card } from "@digitallinked/ui";
+import { Card } from "@newy/ui";
 
 interface HoverCardProps {
   children: React.ReactNode;

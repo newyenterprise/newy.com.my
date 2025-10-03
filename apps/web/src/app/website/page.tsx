@@ -1,4 +1,4 @@
-import { Button, Card, CardContent, CardDescription, CardHeader, CardTitle, Badge } from "@digitallinked/ui";
+import { Button, Card, CardContent, CardDescription, CardHeader, CardTitle, Badge } from "@newy/ui";
 import Link from "next/link";
 import { ArrowRight, Globe, Zap, TrendingUp, Check, Star, Code, Palette, Database, Shield, Award, Users, Clock, Target, Smartphone, Monitor, Tablet } from "lucide-react";
 import { ScrollReveal } from "../../components/scroll-reveal";

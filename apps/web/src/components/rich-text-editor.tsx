@@ -11,7 +11,7 @@ import Underline from '@tiptap/extension-underline';
 import TextAlign from '@tiptap/extension-text-align';
 import Youtube from '@tiptap/extension-youtube';
 import CodeBlock from '@tiptap/extension-code-block';
-import { Button } from '@digitallinked/ui';
+import { Button } from '@newy/ui';
 import {
   Bold,
   Italic,

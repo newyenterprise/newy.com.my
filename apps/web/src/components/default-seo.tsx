@@ -1,29 +1,29 @@
 import { DefaultSeo } from 'next-seo';
 
 const DEFAULT_SEO = {
-  titleTemplate: '%s | DigitalLinked',
-  defaultTitle: 'DigitalLinked - Digital Solutions & Web Development',
+  titleTemplate: '%s | NewY Enterprise',
+  defaultTitle: 'NewY Enterprise - Digital Solutions & Web Development',
   description: 'Professional digital solutions, web development, and technology services. We help businesses grow with cutting-edge digital strategies and custom web applications.',
-  canonical: 'https://digitallinked.com.au',
+  canonical: 'https://newy.com.my',
   openGraph: {
     type: 'website',
-    locale: 'en_AU',
-    url: 'https://digitallinked.com.au',
-    siteName: 'DigitalLinked',
-    title: 'DigitalLinked - Digital Solutions & Web Development',
+    locale: 'en_MY',
+    url: 'https://newy.com.my',
+    siteName: 'NewY Enterprise',
+    title: 'NewY Enterprise - Digital Solutions & Web Development',
     description: 'Professional digital solutions, web development, and technology services. We help businesses grow with cutting-edge digital strategies and custom web applications.',
     images: [
       {
-        url: 'https://digitallinked.com.au/og-image.jpg',
+        url: 'https://newy.com.my/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'DigitalLinked - Digital Solutions & Web Development',
+        alt: 'NewY Enterprise - Digital Solutions & Web Development',
       },
     ],
   },
   twitter: {
-    handle: '@digitallinked',
-    site: '@digitallinked',
+    handle: '@newyenterprise',
+    site: '@newyenterprise',
     cardType: 'summary_large_image',
   },
   additionalMetaTags: [

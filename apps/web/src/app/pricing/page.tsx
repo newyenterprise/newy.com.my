@@ -3,8 +3,8 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Check, Globe, Smartphone, Brain, TrendingUp, ArrowRight, Sparkles, Rocket, X } from "lucide-react";
-import { Button } from "@digitallinked/ui";
-import { Card, CardContent, CardHeader, CardTitle } from "@digitallinked/ui";
+import { Button } from "@newy/ui";
+import { Card, CardContent, CardHeader, CardTitle } from "@newy/ui";
 import { Badge } from "@/components/ui/badge";
 import { useRouter } from "next/navigation";
 

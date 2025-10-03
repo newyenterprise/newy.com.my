@@ -1,6 +1,6 @@
 "use client";
 
-import { Card, CardHeader, CardTitle } from "@digitallinked/ui";
+import { Card, CardHeader, CardTitle } from "@newy/ui";
 import { 
   Building2, 
   ShoppingCart, 

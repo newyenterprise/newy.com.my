@@ -1,7 +1,7 @@
 "use client";
 
-import { Button } from "@digitallinked/ui";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@digitallinked/ui";
+import { Button } from "@newy/ui";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@newy/ui";
 import { ArrowRight, Users, Target, Award, Globe, Lightbulb, Handshake, Rocket, Wrench, Building, Zap } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";

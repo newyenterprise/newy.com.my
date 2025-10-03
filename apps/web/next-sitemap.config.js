@@ -1,6 +1,6 @@
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
-  siteUrl: process.env.SITE_URL || 'https://digitallinked.com.au',
+  siteUrl: process.env.SITE_URL || 'https://newy.com.my',
   generateRobotsTxt: true,
   generateIndexSitemap: true,
   robotsTxtOptions: {
@@ -12,7 +12,7 @@ module.exports = {
       },
     ],
     additionalSitemaps: [
-      'https://digitallinked.com.au/sitemap.xml',
+      'https://newy.com.my/sitemap.xml',
     ],
   },
   exclude: ['/admin/*', '/dashboard/*', '/auth/*'],

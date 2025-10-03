@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { Button, Card, CardContent, CardDescription, CardHeader, CardTitle, Badge } from "@digitallinked/ui";
+import { Button, Card, CardContent, CardDescription, CardHeader, CardTitle, Badge } from "@newy/ui";
 import { Save, Eye, ArrowLeft, Plus, X, Sparkles } from "lucide-react";
 import { supabase } from "../../../../lib/supabase";
 import { RichTextEditor } from "../../../../components/rich-text-editor";

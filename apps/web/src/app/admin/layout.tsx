@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { useRouter, usePathname } from "next/navigation";
 import Link from "next/link";
-import { Button } from "@digitallinked/ui";
+import { Button } from "@newy/ui";
 import { 
   LayoutDashboard, 
   FileText,

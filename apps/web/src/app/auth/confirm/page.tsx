@@ -3,7 +3,7 @@
 import { useEffect, useState, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { supabase } from '@/lib/supabase';
-import { Card, CardContent, CardHeader, CardTitle, Button } from '@digitallinked/ui';
+import { Card, CardContent, CardHeader, CardTitle, Button } from '@newy/ui';
 import { CheckCircle, XCircle, Loader2 } from 'lucide-react';
 import Link from 'next/link';
 

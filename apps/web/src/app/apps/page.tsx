@@ -1,4 +1,4 @@
-import { Button, Card, CardContent, CardDescription, CardHeader, CardTitle, Badge } from "@digitallinked/ui";
+import { Button, Card, CardContent, CardDescription, CardHeader, CardTitle, Badge } from "@newy/ui";
 import Link from "next/link";
 import { ArrowRight, Smartphone, Globe, Zap, TrendingUp, Check, Star, Code, Palette, Database, Shield, Cloud, Layers, Smartphone as Mobile, Cpu, Server, Wifi, Lock, Zap as Lightning, Award, Users, Clock, Target, Monitor, Tablet, Smartphone as Phone, Smartphone as App, Smartphone as Device } from "lucide-react";
 import { ScrollReveal } from "../../components/scroll-reveal";
