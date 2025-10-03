@@ -24,9 +24,11 @@ export default function MarketingPage() {
                 comprehensive digital marketing services. From SEO to social media, we've got you covered.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <MagneticButton size="lg" className="btn-primary text-lg px-8 py-4 animate-glow">
-                  Boost Your Marketing ROI
-                  <ArrowRight className="ml-2 h-5 w-5" />
+                <MagneticButton size="lg" className="btn-primary text-lg px-8 py-4 animate-glow" asChild>
+                  <Link href="/pricing">
+                    Get a Marketing Quote
+                    <ArrowRight className="ml-2 h-5 w-5" />
+                  </Link>
                 </MagneticButton>
                 <MagneticButton size="lg" variant="outline" className="btn-outline text-lg px-8 py-4" asChild>
                   <Link href="/portfolio">View Case Studies</Link>

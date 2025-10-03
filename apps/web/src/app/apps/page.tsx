@@ -24,9 +24,11 @@ export default function AppsPage() {
                 drive business growth. From native mobile apps to progressive web applications.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <MagneticButton size="lg" className="btn-primary text-lg px-8 py-4 animate-glow">
-                  Discuss Your App Idea
-                  <ArrowRight className="ml-2 h-5 w-5" />
+                <MagneticButton size="lg" className="btn-primary text-lg px-8 py-4 animate-glow" asChild>
+                  <Link href="/pricing">
+                    Get an App Quote
+                    <ArrowRight className="ml-2 h-5 w-5" />
+                  </Link>
                 </MagneticButton>
                 <MagneticButton size="lg" variant="outline" className="btn-outline text-lg px-8 py-4" asChild>
                   <Link href="/portfolio">See App Projects</Link>
