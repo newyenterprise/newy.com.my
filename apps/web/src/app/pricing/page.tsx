@@ -821,7 +821,7 @@ export default function PricingPage() {
                     onClick={() => setSelectedService(service)}
                     className={`w-full ${service.gradient} hover:opacity-90 transition-all`}
                   >
-                    Get Started
+                    Get Quote
                     <ArrowRight className="w-4 h-4 ml-2" />
                   </Button>
                 </CardContent>
