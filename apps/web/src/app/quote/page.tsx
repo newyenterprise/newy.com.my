@@ -50,8 +50,6 @@ function QuoteRequestContent() {
   const searchParams = useSearchParams();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
-  const [wantsAccount, setWantsAccount] = useState(false);
-  const [accountPassword, setAccountPassword] = useState('');
   
   const [quoteRequest, setQuoteRequest] = useState<QuoteRequest>({
     service: searchParams.get('service') || '',
@@ -90,31 +88,6 @@ function QuoteRequestContent() {
     setIsSubmitting(true);
 
     try {
-      let userId = null;
-
-      // Create user account if requested
-      if (wantsAccount && accountPassword) {
-        try {
-          const { data: authData, error: authError } = await supabase.auth.signUp({
-            email: quoteRequest.customerInfo.email,
-            password: accountPassword,
-            options: {
-              data: {
-                full_name: quoteRequest.customerInfo.fullName,
-                company: quoteRequest.customerInfo.company,
-                phone: quoteRequest.customerInfo.phone
-              }
-            }
-          });
-
-          if (!authError) {
-            userId = authData.user?.id;
-          }
-        } catch (error) {
-          // Continue without account
-        }
-      }
-
       // Save quote request to database
       const { data, error } = await supabase
         .from('quote_requests')
@@ -146,8 +119,7 @@ function QuoteRequestContent() {
           selectedAddOns: quoteRequest.selectedAddOns,
           basePrice: quoteRequest.basePrice,
           addOnsTotal: quoteRequest.addOnsTotal,
-          estimatedTotal: quoteRequest.estimatedTotal,
-          hasAccount: wantsAccount && userId !== null
+          estimatedTotal: quoteRequest.estimatedTotal
         }),
       });
 
@@ -480,71 +452,6 @@ function QuoteRequestContent() {
                       placeholder="Any additional requirements, preferences, or questions..."
                     />
                   </div>
-                </CardContent>
-              </Card>
-
-              {/* User Account Signup */}
-              <Card className="bg-gray-800/50 backdrop-blur-sm border-gray-700 shadow-xl hover:shadow-2xl transition-shadow duration-300">
-                <CardHeader className="pb-4">
-                  <CardTitle className="text-white flex items-center gap-2">
-                    <div className="w-8 h-8 bg-green-500/20 rounded-lg flex items-center justify-center">
-                      <User className="w-5 h-5 text-green-400" />
-                    </div>
-                    Create Account (Optional)
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <div className="p-4 bg-purple-500/10 border border-purple-500/20 rounded-lg">
-                    <div className="flex items-center gap-2 text-purple-300 mb-2">
-                      <Star className="w-4 h-4" />
-                      <span className="text-sm font-medium">Benefits of Creating an Account</span>
-                    </div>
-                    <ul className="text-sm text-purple-400 space-y-1">
-                      <li>• Track your quote status in real-time</li>
-                      <li>• Access your quote history anytime</li>
-                      <li>• Faster checkout for future projects</li>
-                      <li>• Receive project updates and notifications</li>
-                    </ul>
-                  </div>
-                  
-                  <div className="flex items-center space-x-3 p-3 bg-gray-700/30 rounded-lg hover:bg-gray-700/50 transition-colors cursor-pointer">
-                    <input
-                      type="checkbox"
-                      id="wantsAccount"
-                      checked={wantsAccount}
-                      onChange={(e) => setWantsAccount(e.target.checked)}
-                      className="w-4 h-4 text-purple-500 bg-gray-700 border-gray-600 rounded focus:ring-purple-500 focus:ring-2 cursor-pointer"
-                    />
-                    <label htmlFor="wantsAccount" className="text-white cursor-pointer flex-1">
-                      Yes, create an account for me
-                    </label>
-                  </div>
-                  
-                  {wantsAccount && (
-                    <motion.div
-                      initial={{ opacity: 0, height: 0 }}
-                      animate={{ opacity: 1, height: 'auto' }}
-                      exit={{ opacity: 0, height: 0 }}
-                      className="space-y-4"
-                    >
-                      <div>
-                        <label className="block text-sm font-medium text-gray-300 mb-2">
-                          Password *
-                        </label>
-                        <input
-                          type="password"
-                          value={accountPassword}
-                          onChange={(e) => setAccountPassword(e.target.value)}
-                          required={wantsAccount}
-                          className="w-full px-3 py-2 bg-gray-700/50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500"
-                          placeholder="Create a secure password"
-                        />
-                      </div>
-                      <p className="text-xs text-gray-400">
-                        Your account will be created with the email address provided above.
-                      </p>
-                    </motion.div>
-                  )}
                 </CardContent>
               </Card>
 

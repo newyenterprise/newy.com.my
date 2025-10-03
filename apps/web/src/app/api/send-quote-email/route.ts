@@ -19,8 +19,7 @@ export async function POST(request: NextRequest) {
       selectedAddOns,
       basePrice,
       addOnsTotal,
-      estimatedTotal,
-      hasAccount
+      estimatedTotal
     } = await request.json();
 
     // Send email to customer
@@ -84,14 +83,6 @@ export async function POST(request: NextRequest) {
                 <li>Once approved, we'll begin development immediately</li>
               </ul>
               
-              ${hasAccount ? `
-                <div style="background: #e0e7ff; padding: 15px; border-radius: 8px; margin: 20px 0;">
-                  <h4>Account Created!</h4>
-                  <p>We've created an account for you. You can now track your quote status and access your project dashboard.</p>
-                  <p><strong>Note:</strong> Please check your email for a confirmation link to activate your account.</p>
-          </div>
-          ` : ''}
-          
               <p>If you have any questions, feel free to contact us at <a href="mailto:hello@digitallinked.com.au">hello@digitallinked.com.au</a> or call us at <a href="tel:+61406612824">0406 612 824</a>.</p>
               
               <p>Best regards,<br>
@@ -168,8 +159,6 @@ export async function POST(request: NextRequest) {
                 <p><strong>Timeline:</strong> ${customerInfo.timeline || 'Not specified'}</p>
                 ${customerInfo.additionalNotes ? `<p><strong>Additional Notes:</strong> ${customerInfo.additionalNotes}</p>` : ''}
           </div>
-          
-              <p><strong>Account Created:</strong> ${hasAccount ? 'Yes' : 'No'}</p>
               
               <p><a href="${process.env.NEXT_PUBLIC_SITE_URL}/admin/quotes" style="background: #9333ea; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;">View in Admin Dashboard</a></p>
           </div>
