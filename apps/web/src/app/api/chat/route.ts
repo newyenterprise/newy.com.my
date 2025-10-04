@@ -38,7 +38,7 @@ const KNOWLEDGE_BASE = {
   },
   company: {
     name: "Digital Linked",
-    email: "hello@digitallinked.com.au",
+    email: "hello@newy.com.my",
     phone: "0406 612 824",
     address: "Newcastle, NSW, Australia",
     hours: "Monday-Friday 9AM-6PM",
@@ -106,7 +106,7 @@ RESPONSE STYLE:
 - Use 1-2 emojis max 😊
 - NEVER use placeholder text like [insert link here] - always use actual URLs provided above
 - When mentioning portfolio, use: https://digitallinked.com.au/portfolio
-- For contact options, format as: "Email us: hello@digitallinked.com.au" and "Call us: 0406 612 824"
+- For contact options, format as: "Email us: hello@newy.com.my" and "Call us: +60 12-345 6789"
 - Include contact info in clickable options when users ask about contacting or quotes
 
 OPTION FORMAT:
@@ -297,10 +297,10 @@ What are your primary marketing goals? Are you looking to increase brand awarene
     let response = `I'd be happy to help you get a quote! Our pricing varies based on project complexity and requirements.
 
 Here's a general overview:
-• Website Development: Starting from $2,000 AUD
-• Mobile App Development: Starting from $5,000 AUD  
+• Website Development: Starting from RM6,000
+• Mobile App Development: Starting from RM15,000  
 • AI Automation: Custom pricing based on requirements
-• Digital Marketing: Starting from $1,500 AUD/month`;
+• Digital Marketing: Starting from RM4,500/month`;
 
     if (updatedContext.interestedService) {
       const service = KNOWLEDGE_BASE.services[updatedContext.interestedService as keyof typeof KNOWLEDGE_BASE.services];

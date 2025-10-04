@@ -32,7 +32,7 @@ The `@digitallinked/ui` package was incorrectly configured to bundle `@digitalli
    ```
 
 2. **Login Credentials:**
-   - **Email:** `admin@digitallinked.com.au`
+   - **Email:** `hello@newy.com.my`
    - **Password:** `admin123`
 
 3. **Available Admin Features:**

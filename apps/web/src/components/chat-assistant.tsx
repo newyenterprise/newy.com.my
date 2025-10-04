@@ -135,13 +135,13 @@ export function ChatAssistant() {
       console.error('Chat API error:', error);
       
       // Determine the type of error and provide appropriate fallback
-      let fallbackMessage = "I apologize, but I'm having trouble connecting right now. Please try again in a moment, or feel free to contact us directly at hello@digitallinked.com.au for immediate assistance.";
+      let fallbackMessage = "I apologize, but I'm having trouble connecting right now. Please try again in a moment, or feel free to contact us directly at hello@newy.com.my for immediate assistance.";
       
       if (error instanceof Error) {
         if (error.name === 'AbortError') {
-          fallbackMessage = "I'm taking a bit longer than usual to respond. Please try again, or contact us directly at hello@digitallinked.com.au for immediate assistance.";
+          fallbackMessage = "I'm taking a bit longer than usual to respond. Please try again, or contact us directly at hello@newy.com.my for immediate assistance.";
         } else if (error.message.includes('Failed to fetch')) {
-          fallbackMessage = "I'm having trouble connecting to our servers. Please check your internet connection and try again, or contact us directly at hello@digitallinked.com.au.";
+          fallbackMessage = "I'm having trouble connecting to our servers. Please check your internet connection and try again, or contact us directly at hello@newy.com.my.";
         }
       }
       

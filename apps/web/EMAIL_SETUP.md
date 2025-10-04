@@ -5,7 +5,7 @@ This document explains how the contact form email functionality is set up using 
 ## Overview
 
 The contact form now sends emails to both:
-1. **Admin notification** - Sent to `hello@digitallinked.com.au` and `digitallinked.au@gmail.com` when someone submits the form
+1. **Admin notification** - Sent to `hello@newy.com.my` when someone submits the form
 2. **User confirmation** - Sent to the user's email address as a confirmation
 
 ## Setup Requirements
@@ -47,7 +47,7 @@ The email functionality is handled by the `/api/send-email` endpoint:
 
 ### Admin Notification Email
 - **From**: `DigitalLinked Contact Form <noreply@digitallinked.com.au>`
-- **To**: `hello@digitallinked.com.au` and `digitallinked.au@gmail.com`
+- **To**: `hello@newy.com.my`
 - **Subject**: `New Contact Form Submission: [subject]`
 - **Content**: Includes contact details and message in a formatted HTML template
 

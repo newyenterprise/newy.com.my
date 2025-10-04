@@ -260,8 +260,8 @@ function QuoteSuccessContent() {
             >
               <p className="text-gray-400 text-sm">
                 Questions? Contact us at{" "}
-                <a href="mailto:hello@digitallinked.com.au" className="text-purple-400 hover:text-purple-300">
-                  hello@digitallinked.com.au
+                <a href="mailto:hello@newy.com.my" className="text-purple-400 hover:text-purple-300">
+                  hello@newy.com.my
                 </a>
               </p>
             </motion.div>

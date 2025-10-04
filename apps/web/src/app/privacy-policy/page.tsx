@@ -15,7 +15,7 @@ export default function PrivacyPolicyPage() {
           <section>
             <h2 className="text-2xl font-semibold mb-4">1. Introduction</h2>
             <p className="text-muted-foreground mb-4">
-              Digital Linked ("we," "our," or "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website, use our services, or interact with us in any way.
+              Newy Enterprise ("we," "our," or "us") is committed to protecting your privacy in accordance with Malaysia's Personal Data Protection Act 2010 (PDPA). This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website, use our services, or interact with us in any way.
             </p>
             <p className="text-muted-foreground">
               By using our services, you consent to the data practices described in this policy. If you do not agree with our policies and practices, please do not use our services.
@@ -58,39 +58,52 @@ export default function PrivacyPolicyPage() {
           <section>
             <h2 className="text-2xl font-semibold mb-4">3. How We Use Your Information</h2>
             <p className="text-muted-foreground mb-4">
-              We use the information we collect for various purposes, including:
+              We use the information we collect for various purposes in compliance with Malaysia's PDPA, including:
             </p>
             <ul className="list-disc list-inside text-muted-foreground mb-4 space-y-2">
-              <li>Providing and maintaining our services</li>
+              <li>Providing and maintaining our digital services (website development, mobile apps, AI automation, digital marketing)</li>
               <li>Processing transactions and managing payments</li>
-              <li>Communicating with you about our services</li>
-              <li>Sending marketing and promotional materials (with your consent)</li>
-              <li>Responding to your inquiries and support requests</li>
-              <li>Improving our website and services</li>
-              <li>Analyzing usage patterns and trends</li>
-              <li>Preventing fraud and ensuring security</li>
-              <li>Complying with legal obligations</li>
+              <li>Communicating with you about our services and responding to inquiries</li>
+              <li>Sending marketing and promotional materials (only with your explicit consent)</li>
+              <li>Providing technical support and customer service</li>
+              <li>Improving our website and services based on user feedback</li>
+              <li>Analyzing usage patterns and trends for service enhancement</li>
+              <li>Preventing fraud and ensuring security of our systems</li>
+              <li>Complying with legal obligations under Malaysian law</li>
+              <li>Maintaining business records as required by Malaysian regulations</li>
             </ul>
           </section>
 
           <section>
             <h2 className="text-2xl font-semibold mb-4">4. Information Sharing and Disclosure</h2>
             <p className="text-muted-foreground mb-4">
-              We do not sell, trade, or otherwise transfer your personal information to third parties without your consent, except in the following circumstances:
+              We do not sell, trade, or otherwise transfer your personal information to third parties without your consent, except in the following circumstances permitted under Malaysia's PDPA:
             </p>
             <ul className="list-disc list-inside text-muted-foreground mb-4 space-y-2">
-              <li><strong>Service Providers:</strong> We may share information with trusted third-party service providers who assist us in operating our website, conducting business, or servicing you</li>
-              <li><strong>Legal Requirements:</strong> We may disclose information if required by law or in response to valid legal process</li>
-              <li><strong>Business Transfers:</strong> In the event of a merger, acquisition, or sale of assets, your information may be transferred as part of the transaction</li>
-              <li><strong>Protection of Rights:</strong> We may disclose information to protect our rights, property, or safety, or that of our users or others</li>
-              <li><strong>Consent:</strong> We may share information with your explicit consent</li>
+              <li><strong>Service Providers:</strong> We may share information with trusted third-party service providers who assist us in operating our website, conducting business, or servicing you, subject to strict confidentiality agreements</li>
+              <li><strong>Legal Requirements:</strong> We may disclose information if required by Malaysian law, court orders, or government authorities</li>
+              <li><strong>Business Transfers:</strong> In the event of a merger, acquisition, or sale of assets, your information may be transferred as part of the transaction, with prior notice to affected individuals</li>
+              <li><strong>Protection of Rights:</strong> We may disclose information to protect our rights, property, or safety, or that of our users or others, as permitted by law</li>
+              <li><strong>Explicit Consent:</strong> We may share information with your explicit written consent for specific purposes</li>
+              <li><strong>Public Interest:</strong> We may disclose information when necessary for public interest, national security, or law enforcement purposes as permitted under Malaysian law</li>
             </ul>
           </section>
 
           <section>
             <h2 className="text-2xl font-semibold mb-4">5. Data Security</h2>
             <p className="text-muted-foreground mb-4">
-              We implement appropriate technical and organizational security measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction. However, no method of transmission over the internet or electronic storage is 100% secure, and we cannot guarantee absolute security.
+              We implement appropriate technical and organizational security measures in compliance with Malaysia's PDPA to protect your personal information against unauthorized access, alteration, disclosure, or destruction. Our security measures include:
+            </p>
+            <ul className="list-disc list-inside text-muted-foreground mb-4 space-y-2">
+              <li>SSL encryption for data transmission</li>
+              <li>Secure data storage with access controls</li>
+              <li>Regular security audits and updates</li>
+              <li>Employee training on data protection</li>
+              <li>Incident response procedures</li>
+              <li>Regular backup and recovery systems</li>
+            </ul>
+            <p className="text-muted-foreground">
+              However, no method of transmission over the internet or electronic storage is 100% secure, and we cannot guarantee absolute security. We will notify you promptly of any data breaches as required by Malaysian law.
             </p>
           </section>
 
@@ -104,40 +117,61 @@ export default function PrivacyPolicyPage() {
           <section>
             <h2 className="text-2xl font-semibold mb-4">7. Your Rights and Choices</h2>
             <p className="text-muted-foreground mb-4">
-              Depending on your location, you may have certain rights regarding your personal information:
+              Under Malaysia's Personal Data Protection Act 2010 (PDPA), you have the following rights regarding your personal information:
             </p>
             <ul className="list-disc list-inside text-muted-foreground mb-4 space-y-2">
-              <li><strong>Access:</strong> Request access to your personal information</li>
-              <li><strong>Correction:</strong> Request correction of inaccurate information</li>
-              <li><strong>Deletion:</strong> Request deletion of your personal information</li>
-              <li><strong>Portability:</strong> Request a copy of your data in a portable format</li>
-              <li><strong>Restriction:</strong> Request restriction of processing</li>
-              <li><strong>Objection:</strong> Object to processing of your personal information</li>
-              <li><strong>Withdrawal:</strong> Withdraw consent where processing is based on consent</li>
+              <li><strong>Right to Access:</strong> Request access to your personal information that we hold</li>
+              <li><strong>Right to Correction:</strong> Request correction of inaccurate, incomplete, or outdated personal information</li>
+              <li><strong>Right to Withdraw Consent:</strong> Withdraw your consent for the processing of your personal information at any time</li>
+              <li><strong>Right to Prevent Processing:</strong> Request that we stop processing your personal information for direct marketing purposes</li>
+              <li><strong>Right to Data Portability:</strong> Request a copy of your personal information in a structured, commonly used format</li>
+              <li><strong>Right to Complain:</strong> Lodge a complaint with the Personal Data Protection Commissioner if you believe your rights have been violated</li>
             </ul>
+            <p className="text-muted-foreground mb-4">
+              To exercise these rights, please contact us using the information provided below. We will respond to your request within 21 days as required by Malaysian law.
+            </p>
             <p className="text-muted-foreground">
-              To exercise these rights, please contact us using the information provided below.
+              <strong>Note:</strong> We may charge a reasonable fee for processing your request, as permitted under the PDPA.
             </p>
           </section>
 
           <section>
             <h2 className="text-2xl font-semibold mb-4">8. Data Retention</h2>
+            <p className="text-muted-foreground mb-4">
+              We retain your personal information for as long as necessary to fulfill the purposes outlined in this Privacy Policy, in compliance with Malaysia's PDPA. Our retention periods are as follows:
+            </p>
+            <ul className="list-disc list-inside text-muted-foreground mb-4 space-y-2">
+              <li><strong>Customer Data:</strong> Retained for the duration of our business relationship plus 7 years for legal and tax compliance</li>
+              <li><strong>Marketing Data:</strong> Retained until you withdraw consent or for 3 years of inactivity</li>
+              <li><strong>Website Analytics:</strong> Retained for 26 months as per standard industry practice</li>
+              <li><strong>Support Records:</strong> Retained for 3 years after case closure</li>
+              <li><strong>Financial Records:</strong> Retained for 7 years as required by Malaysian tax law</li>
+            </ul>
             <p className="text-muted-foreground">
-              We retain your personal information for as long as necessary to fulfill the purposes outlined in this Privacy Policy, unless a longer retention period is required or permitted by law. When we no longer need your information, we will securely delete or anonymize it.
+              When we no longer need your information, we will securely delete or anonymize it in accordance with PDPA requirements.
             </p>
           </section>
 
           <section>
             <h2 className="text-2xl font-semibold mb-4">9. International Data Transfers</h2>
+            <p className="text-muted-foreground mb-4">
+              Your information may be transferred to and processed in countries other than Malaysia. We ensure that such transfers comply with Malaysia's PDPA and implement appropriate safeguards to protect your information, including:
+            </p>
+            <ul className="list-disc list-inside text-muted-foreground mb-4 space-y-2">
+              <li>Standard contractual clauses approved by the Personal Data Protection Commissioner</li>
+              <li>Adequacy decisions by the Commissioner for specific countries</li>
+              <li>Explicit consent from data subjects for specific transfers</li>
+              <li>Binding corporate rules for intra-group transfers</li>
+            </ul>
             <p className="text-muted-foreground">
-              Your information may be transferred to and processed in countries other than your own. We ensure that such transfers comply with applicable data protection laws and implement appropriate safeguards to protect your information.
+              We will only transfer your personal data to countries that provide adequate protection or with appropriate safeguards in place.
             </p>
           </section>
 
           <section>
             <h2 className="text-2xl font-semibold mb-4">10. Children's Privacy</h2>
             <p className="text-muted-foreground">
-              Our services are not intended for children under the age of 16. We do not knowingly collect personal information from children under 16. If you believe we have collected information from a child under 16, please contact us immediately.
+              Our services are not intended for children under the age of 13. We do not knowingly collect personal information from children under 13 without parental consent, as required by Malaysia's PDPA. If you believe we have collected information from a child under 13 without proper consent, please contact us immediately so we can take appropriate action.
             </p>
           </section>
 
@@ -158,43 +192,31 @@ export default function PrivacyPolicyPage() {
             </p>
             <div className="bg-muted/30 p-6 rounded-lg">
               <p className="text-muted-foreground mb-2">
-                <strong>Digital Linked</strong><br />
-                Email: privacy@digitallinked.com.au<br />
-                Phone: +61 (0) 400 000 000<br />
-                Address: [Your Business Address]<br />
-                Website: www.digitallinked.com.au
+                <strong>Newy Enterprise</strong><br />
+                Email: hello@newy.com.my<br />
+                Phone: +60 11 2890 8472<br />
+                Address: Bandar Baru Bangi, Selangor, Malaysia<br />
+                Website: www.newy.com.my
               </p>
             </div>
           </section>
 
           <section>
-            <h2 className="text-2xl font-semibold mb-4">13. Legal Basis for Processing (GDPR)</h2>
+            <h2 className="text-2xl font-semibold mb-4">13. Malaysian Personal Data Protection Act 2010 Compliance</h2>
             <p className="text-muted-foreground mb-4">
-              For users in the European Economic Area (EEA), our legal basis for processing your personal information includes:
+              This Privacy Policy is designed to comply with Malaysia's Personal Data Protection Act 2010 (PDPA). Our data processing activities are based on the following principles:
             </p>
             <ul className="list-disc list-inside text-muted-foreground mb-4 space-y-2">
-              <li><strong>Consent:</strong> Where you have given clear consent for us to process your personal data</li>
-              <li><strong>Contract:</strong> Where processing is necessary for the performance of a contract</li>
-              <li><strong>Legitimate Interest:</strong> Where processing is necessary for our legitimate interests</li>
-              <li><strong>Legal Obligation:</strong> Where processing is necessary for compliance with legal obligations</li>
+              <li><strong>Consent:</strong> We obtain your explicit consent before processing your personal data</li>
+              <li><strong>Purpose Limitation:</strong> We only process personal data for specified, explicit, and legitimate purposes</li>
+              <li><strong>Data Minimization:</strong> We collect only the personal data that is necessary for our purposes</li>
+              <li><strong>Accuracy:</strong> We take reasonable steps to ensure personal data is accurate and up-to-date</li>
+              <li><strong>Security:</strong> We implement appropriate security measures to protect personal data</li>
+              <li><strong>Transparency:</strong> We provide clear information about our data processing activities</li>
             </ul>
           </section>
 
-          <section>
-            <h2 className="text-2xl font-semibold mb-4">14. California Privacy Rights (CCPA)</h2>
-            <p className="text-muted-foreground mb-4">
-              California residents have additional rights under the California Consumer Privacy Act (CCPA):
-            </p>
-            <ul className="list-disc list-inside text-muted-foreground mb-4 space-y-2">
-              <li>Right to know what personal information is collected and how it is used</li>
-              <li>Right to delete personal information</li>
-              <li>Right to opt-out of the sale of personal information</li>
-              <li>Right to non-discrimination for exercising CCPA rights</li>
-            </ul>
-            <p className="text-muted-foreground">
-              To exercise your CCPA rights, please contact us using the information provided above.
-            </p>
-          </section>
+          
         </ScrollReveal>
       </div>
     </div>

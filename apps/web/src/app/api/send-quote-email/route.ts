@@ -24,7 +24,7 @@ export async function POST(request: NextRequest) {
 
     // Send email to customer
     const customerEmail = await resend.emails.send({
-      from: 'Digital Linked <hello@digitallinked.com.au>',
+      from: 'Newy <hello@newy.com.my>',
       to: [customerInfo.email],
       subject: `Your Quote Request - ${serviceNames[service as keyof typeof serviceNames]}`,
       html: `
@@ -83,15 +83,15 @@ export async function POST(request: NextRequest) {
                 <li>Once approved, we'll begin development immediately</li>
               </ul>
               
-              <p>If you have any questions, feel free to contact us at <a href="mailto:hello@digitallinked.com.au">hello@digitallinked.com.au</a> or call us at <a href="tel:+61406612824">0406 612 824</a>.</p>
+              <p>If you have any questions, feel free to contact us at <a href="mailto:hello@newy.com.my">hello@newy.com.my</a> or call us at <a href="tel:+60123456789">+60 12-345 6789</a>.</p>
               
               <p>Best regards,<br>
-              The Digital Linked Team</p>
+              The Newy Team</p>
             </div>
             
             <div class="footer">
-              <p>Digital Linked - Your All-In-One Digital Partner</p>
-              <p>Newcastle, NSW, Australia | hello@digitallinked.com.au</p>
+              <p>Newy - Your All-In-One Digital Partner</p>
+              <p>Malaysia | hello@newy.com.my</p>
           </div>
         </div>
         </body>
@@ -101,8 +101,8 @@ export async function POST(request: NextRequest) {
 
     // Send notification email to admin
     const adminEmail = await resend.emails.send({
-      from: 'Digital Linked <hello@digitallinked.com.au>',
-      to: ['hello@digitallinked.com.au'],
+      from: 'Newy <hello@newy.com.my>',
+      to: ['hello@newy.com.my'],
       subject: `New Quote Request - ${customerInfo.fullName} - ${serviceNames[service as keyof typeof serviceNames]}`,
       html: `
         <!DOCTYPE html>

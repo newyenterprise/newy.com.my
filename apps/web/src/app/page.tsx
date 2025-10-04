@@ -44,7 +44,7 @@ export default function HomePage() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <ScrollReveal>
               <h1 className="text-5xl md:text-6xl font-bold font-display mb-6">
-                <span className="gradient-text">NewY Enterprise</span>
+                <span className="gradient-text">Newy.</span>
                 <br />
                 Your Strategic Partner for
                 <br />

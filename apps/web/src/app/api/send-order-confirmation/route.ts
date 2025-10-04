@@ -92,7 +92,7 @@ export async function POST(request: NextRequest) {
               
               <div style="background: #fff3cd; padding: 15px; border-radius: 6px; border-left: 4px solid #ffc107;">
                 <strong>Need immediate assistance?</strong><br>
-                📧 Email: hello@digitallinked.com.au<br>
+                📧 Email: hello@newy.com.my<br>
                 📞 Phone: 0406 612 824<br>
                 🕒 Business Hours: Monday-Friday 9AM-6PM (AEST)
               </div>
@@ -173,7 +173,7 @@ export async function POST(request: NextRequest) {
 
     const adminEmail = await resend.emails.send({
       from: 'Digital Linked Orders <noreply@digitallinked.com.au>',
-      to: ['hello@digitallinked.com.au', 'digitallinked.au@gmail.com'],
+      to: ['hello@newy.com.my'],
       subject: `🎉 New Order #${orderNumber} - $${total.toLocaleString()}`,
       html: adminHtmlContent,
     });

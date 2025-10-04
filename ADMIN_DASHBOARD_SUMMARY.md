@@ -10,7 +10,7 @@ I have created a comprehensive admin dashboard for managing all aspects of the D
 - **Admin Login Page** (`/admin/login`)
   - Secure email/password authentication
   - Admin role verification
-  - Demo credentials: `admin@digitallinked.com.au` / `admin123`
+  - Demo credentials: `hello@newy.com.my` / `admin123`
   - Responsive design with branded styling
 
 - **Protected Routes**
@@ -188,7 +188,7 @@ apps/web/src/app/admin/
 ### **Access the Admin Panel**
 1. Navigate to `/admin/login`
 2. Use demo credentials:
-   - **Email:** `admin@digitallinked.com.au`
+   - **Email:** `hello@newy.com.my`
    - **Password:** `admin123`
 3. Access full admin dashboard
 

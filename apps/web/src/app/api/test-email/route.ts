@@ -17,7 +17,7 @@ export async function POST(request: NextRequest) {
 
     const { data, error } = await resend.emails.send({
       from: 'DigitalLinked Test <noreply@digitallinked.com.au>',
-      to: ['hello@digitallinked.com.au'],
+      to: ['hello@newy.com.my'],
       subject: 'Test Email - DigitalLinked Quote System',
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">

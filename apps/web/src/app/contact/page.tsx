@@ -115,7 +115,7 @@ export default function ContactPage() {
       
       if (error instanceof Error) {
         if (error.message.includes('Email service is not configured')) {
-          errorMessage = 'Email service is temporarily unavailable. Please contact us directly at hello@digitallinked.com.au or call 0406 612 824.';
+          errorMessage = 'Email service is temporarily unavailable. Please contact us directly at hello@newy.com.my or call 011 2890 8472.';
         } else if (error.message.includes('Failed to send email')) {
           errorMessage = 'Unable to send email at this time. Please try again later or contact us directly.';
         }
@@ -185,7 +185,7 @@ export default function ContactPage() {
                     <div>
                       <h3 className="font-semibold text-lg mb-1">Our Office</h3>
                       <p className="text-muted-foreground">
-                        Newcastle, NSW, Australia
+                        Bandar Baru Bangi, Selangor, Malaysia
                       </p>
                     </div>
                   </div>
@@ -196,7 +196,12 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <h3 className="font-semibold text-lg mb-1">Email Us</h3>
-                      <p className="text-muted-foreground">hello@digitallinked.com.au</p>
+                      <a 
+                        href="mailto:hello@newy.com.my" 
+                        className="text-muted-foreground hover:text-accent transition-colors"
+                      >
+                        hello@newy.com.my
+                      </a>
                     </div>
                   </div>
 
@@ -209,12 +214,12 @@ export default function ContactPage() {
                     <div>
                       <h3 className="font-semibold text-lg mb-1">WhatsApp Us</h3>
                       <a 
-                        href="https://wa.me/61406612824" 
+                        href="https://wa.me/601128908472" 
                         target="_blank" 
                         rel="noopener noreferrer"
                         className="text-muted-foreground hover:text-accent transition-colors"
                       >
-                        0406 612 824
+                        011 2890 8472
                       </a>
                     </div>
                   </div>
@@ -227,7 +232,7 @@ export default function ContactPage() {
                       <h3 className="font-semibold text-lg mb-1">Business Hours</h3>
                       <p className="text-muted-foreground">
                         Monday - Friday: 9:00 AM - 6:00 PM<br />
-                        Saturday: 10:00 AM - 4:00 PM<br />
+                        Saturday: 9:00 AM - 1:00 PM<br />
                         Sunday: Closed
                       </p>
                     </div>

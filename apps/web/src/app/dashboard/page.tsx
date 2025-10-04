@@ -18,7 +18,7 @@ import {
 
 export default function DashboardPage() {
   const { user } = useAuth();
-  const isAdmin = user?.email === "admin@digitallinked.com.au" || user?.user_metadata?.role === "admin";
+  const isAdmin = user?.email === "hello@newy.com.my" || user?.user_metadata?.role === "admin";
 
   // Mock data - in a real app, this would come from your database
   const stats = [

@@ -15,7 +15,7 @@ export default function TermsOfServicePage() {
           <section>
             <h2 className="text-2xl font-semibold mb-4">1. Acceptance of Terms</h2>
             <p className="text-muted-foreground mb-4">
-              By accessing and using the services provided by Digital Linked ("we," "our," or "us"), including our website, applications, and any related services (collectively, the "Services"), you accept and agree to be bound by these Terms of Service ("Terms").
+              By accessing and using the services provided by Newy Enterprise ("we," "our," or "us"), including our website, applications, and any related services (collectively, the "Services"), you accept and agree to be bound by these Terms of Service ("Terms") governed by Malaysian law.
             </p>
             <p className="text-muted-foreground">
               If you do not agree to these Terms, you must not use our Services. These Terms apply to all users, customers, and visitors of our Services.
@@ -25,7 +25,7 @@ export default function TermsOfServicePage() {
           <section>
             <h2 className="text-2xl font-semibold mb-4">2. Description of Services</h2>
             <p className="text-muted-foreground mb-4">
-              Digital Linked provides digital services including but not limited to:
+              Newy Enterprise provides comprehensive digital services including but not limited to:
             </p>
             <ul className="list-disc list-inside text-muted-foreground mb-4 space-y-2">
               <li>Website development and design services</li>
@@ -86,19 +86,20 @@ export default function TermsOfServicePage() {
               For paid services, the following terms apply:
             </p>
             <ul className="list-disc list-inside text-muted-foreground mb-4 space-y-2">
-              <li>All fees are quoted in Australian Dollars (AUD) unless otherwise specified</li>
+              <li>All fees are quoted in Malaysian Ringgit (MYR) unless otherwise specified</li>
               <li>Payment is due upon receipt of invoice unless otherwise agreed in writing</li>
               <li>We reserve the right to change our pricing with 30 days' notice</li>
-              <li>Late payments may result in suspension of services</li>
+              <li>Late payments may result in suspension of services and may incur late payment charges</li>
               <li>All payments are non-refundable unless otherwise specified in writing</li>
-              <li>You are responsible for any taxes associated with your use of our Services</li>
+              <li>You are responsible for any taxes (including SST/GST) associated with your use of our Services</li>
+              <li>Payment methods accepted include bank transfer, credit card, and other methods as specified</li>
             </ul>
           </section>
 
           <section>
             <h2 className="text-2xl font-semibold mb-4">6. Intellectual Property Rights</h2>
             <p className="text-muted-foreground mb-4">
-              <strong>Our Rights:</strong> All content, features, and functionality of our Services, including but not limited to text, graphics, logos, images, software, and code, are owned by Digital Linked or its licensors and are protected by copyright, trademark, and other intellectual property laws.
+              <strong>Our Rights:</strong> All content, features, and functionality of our Services, including but not limited to text, graphics, logos, images, software, and code, are owned by Newy Enterprise or its licensors and are protected by Malaysian copyright, trademark, and other intellectual property laws.
             </p>
             <p className="text-muted-foreground mb-4">
               <strong>Your Rights:</strong> Upon full payment, you retain ownership of your content and we grant you a limited, non-exclusive license to use the deliverables created specifically for your project.
@@ -141,7 +142,7 @@ export default function TermsOfServicePage() {
               <strong>Service Availability:</strong> We strive to provide reliable Services but cannot guarantee uninterrupted or error-free operation. Our Services are provided "as is" and "as available" without warranties of any kind.
             </p>
             <p className="text-muted-foreground mb-4">
-              <strong>Limitation of Liability:</strong> To the maximum extent permitted by law, Digital Linked shall not be liable for any indirect, incidental, special, consequential, or punitive damages, including but not limited to loss of profits, data, or use, arising out of or relating to your use of our Services.
+              <strong>Limitation of Liability:</strong> To the maximum extent permitted by Malaysian law, Newy Enterprise shall not be liable for any indirect, incidental, special, consequential, or punitive damages, including but not limited to loss of profits, data, or use, arising out of or relating to your use of our Services.
             </p>
             <p className="text-muted-foreground">
               <strong>Maximum Liability:</strong> Our total liability to you for any claims arising from these Terms or your use of our Services shall not exceed the amount you paid us in the 12 months preceding the claim.
@@ -151,7 +152,7 @@ export default function TermsOfServicePage() {
           <section>
             <h2 className="text-2xl font-semibold mb-4">10. Indemnification</h2>
             <p className="text-muted-foreground">
-              You agree to indemnify, defend, and hold harmless Digital Linked and its officers, directors, employees, and agents from and against any claims, damages, losses, costs, and expenses (including reasonable attorneys' fees) arising out of or relating to your use of our Services, violation of these Terms, or violation of any rights of another party.
+              You agree to indemnify, defend, and hold harmless Newy Enterprise and its officers, directors, employees, and agents from and against any claims, damages, losses, costs, and expenses (including reasonable legal fees) arising out of or relating to your use of our Services, violation of these Terms, or violation of any rights of another party.
             </p>
           </section>
 
@@ -174,13 +175,13 @@ export default function TermsOfServicePage() {
           <section>
             <h2 className="text-2xl font-semibold mb-4">12. Governing Law and Dispute Resolution</h2>
             <p className="text-muted-foreground mb-4">
-              These Terms shall be governed by and construed in accordance with the laws of Australia, without regard to conflict of law principles.
+              These Terms shall be governed by and construed in accordance with the laws of Malaysia, without regard to conflict of law principles.
             </p>
             <p className="text-muted-foreground mb-4">
-              Any disputes arising from these Terms or your use of our Services shall be resolved through binding arbitration in accordance with the rules of the Australian Centre for International Commercial Arbitration (ACICA).
+              Any disputes arising from these Terms or your use of our Services shall be resolved through the courts of Malaysia. We encourage parties to attempt to resolve disputes through good faith negotiations before pursuing legal action.
             </p>
             <p className="text-muted-foreground">
-              You agree to submit to the personal jurisdiction of the courts located in Australia for any legal proceedings that may arise.
+              You agree to submit to the personal jurisdiction of the courts located in Malaysia for any legal proceedings that may arise.
             </p>
           </section>
 
@@ -201,7 +202,7 @@ export default function TermsOfServicePage() {
           <section>
             <h2 className="text-2xl font-semibold mb-4">15. Entire Agreement</h2>
             <p className="text-muted-foreground">
-              These Terms, together with our Privacy Policy and any other agreements referenced herein, constitute the entire agreement between you and Digital Linked regarding your use of our Services and supersede all prior agreements and understandings.
+              These Terms, together with our Privacy Policy and any other agreements referenced herein, constitute the entire agreement between you and Newy Enterprise regarding your use of our Services and supersede all prior agreements and understandings.
             </p>
           </section>
 
@@ -222,11 +223,11 @@ export default function TermsOfServicePage() {
             </p>
             <div className="bg-muted/30 p-6 rounded-lg">
               <p className="text-muted-foreground mb-2">
-                <strong>Digital Linked</strong><br />
-                Email: legal@digitallinked.com.au<br />
-                Phone: +61 (0) 400 000 000<br />
-                Address: [Your Business Address]<br />
-                Website: www.digitallinked.com.au
+                <strong>Newy Enterprise</strong><br />
+                Email: hello@newy.com.my<br />
+                Phone: +60 11 2890 8472<br />
+                Address: Bandar Baru Bangi, Selangor, Malaysia<br />
+                Website: www.newy.com.my
               </p>
             </div>
           </section>
@@ -252,10 +253,40 @@ export default function TermsOfServicePage() {
 
                          <h3 className="text-xl font-semibold mb-3">18.3 Support and Maintenance</h3>
             <ul className="list-disc list-inside text-muted-foreground space-y-2">
-              <li>Support is provided during business hours unless otherwise agreed</li>
+              <li>Support is provided during Malaysian business hours unless otherwise agreed</li>
               <li>Emergency support may incur additional charges</li>
               <li>Updates and maintenance are performed as needed</li>
               <li>Client is responsible for backing up their data</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2 className="text-2xl font-semibold mb-4">19. Malaysian Business Compliance</h2>
+            <p className="text-muted-foreground mb-4">
+              Newy Enterprise operates in compliance with Malaysian business laws and regulations:
+            </p>
+            <ul className="list-disc list-inside text-muted-foreground mb-4 space-y-2">
+              <li><strong>Company Registration:</strong> We are duly registered under Malaysian law</li>
+              <li><strong>Tax Compliance:</strong> All services are subject to applicable Malaysian taxes (SST/GST)</li>
+              <li><strong>Consumer Protection:</strong> We comply with the Consumer Protection Act 1999</li>
+              <li><strong>Data Protection:</strong> We adhere to Malaysia's Personal Data Protection Act 2010</li>
+              <li><strong>Business Ethics:</strong> We conduct business in accordance with Malaysian business ethics and standards</li>
+              <li><strong>Professional Standards:</strong> Our services meet Malaysian professional and industry standards</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2 className="text-2xl font-semibold mb-4">20. Limitation of Claims</h2>
+            <p className="text-muted-foreground mb-4">
+              To protect Newy Enterprise from excessive legal exposure, the following limitations apply:
+            </p>
+            <ul className="list-disc list-inside text-muted-foreground mb-4 space-y-2">
+              <li>Any claim against us must be brought within 2 years of the event giving rise to the claim</li>
+              <li>Our total liability for any single claim or series of related claims shall not exceed the total amount paid by you for the specific service in question</li>
+              <li>We are not liable for any indirect, consequential, or punitive damages</li>
+              <li>Force majeure events absolve us from liability for service interruptions</li>
+              <li>Third-party actions or content are not our responsibility</li>
+              <li>You must mitigate any damages to the extent possible</li>
             </ul>
           </section>
         </ScrollReveal>

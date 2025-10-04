@@ -295,7 +295,7 @@ This project is proprietary to Digital Linked. All rights reserved.
 ## 📞 Support
 
 For support and questions:
-- Email: hello@digitallinked.com.au
+- Email: hello@newy.com.my
 - Phone: +60138994478
 - Address: 38, Jalan 3/24, Bandar Baru Bangi, Selangor 43650 Malaysia
 

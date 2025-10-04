@@ -200,7 +200,7 @@ Based on market research, Digital Linked now offers competitive and affordable p
 
 ### Contact Information Update
 - ✅ **Updated phone number**: Changed to 0406 612 824
-- ✅ **Email**: hello@digitallinked.com.au
+- ✅ **Email**: hello@newy.com.my
 - ✅ **Contact options**: Available in all AI responses
 
 ### Clickable Contact Options
@@ -272,7 +272,7 @@ The chatbot can be tested by:
 
 ## Support
 
-For technical support or customization requests, contact the development team at hello@digitallinked.com.au.
+For technical support or customization requests, contact the development team at hello@newy.com.my.
 
 ## API Key Management
 

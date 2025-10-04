@@ -22,7 +22,7 @@ export default function SignupPage() {
 
   useEffect(() => {
     if (!authLoading && user) {
-      const isAdmin = user.email === "admin@digitallinked.com.au" || user.user_metadata?.role === "admin";
+      const isAdmin = user.email === "hello@newy.com.my" || user.user_metadata?.role === "admin";
       if (isAdmin) {
         router.push("/admin");
       } else {

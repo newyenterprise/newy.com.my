@@ -27,7 +27,7 @@ export default function DashboardLayout({
   const pathname = usePathname();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
-  const isAdmin = user?.email === "admin@digitallinked.com.au" || user?.user_metadata?.role === "admin";
+  const isAdmin = user?.email === "hello@newy.com.my" || user?.user_metadata?.role === "admin";
 
   useEffect(() => {
     if (!loading && !user) {

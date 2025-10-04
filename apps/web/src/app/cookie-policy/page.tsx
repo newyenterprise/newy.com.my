@@ -15,7 +15,7 @@ export default function CookiePolicyPage() {
           <section>
             <h2 className="text-2xl font-semibold mb-4">1. Introduction</h2>
             <p className="text-muted-foreground mb-4">
-              This Cookie Policy explains how Digital Linked ("we," "our," or "us") uses cookies and similar technologies when you visit our website, use our services, or interact with us online.
+              This Cookie Policy explains how Newy Enterprise ("we," "our," or "us") uses cookies and similar technologies when you visit our website, use our services, or interact with us online, in compliance with Malaysia's Personal Data Protection Act 2010 (PDPA).
             </p>
             <p className="text-muted-foreground">
               By using our website and services, you consent to the use of cookies in accordance with this policy. If you do not agree to our use of cookies, you should set your browser settings accordingly or refrain from using our website.
@@ -205,11 +205,11 @@ export default function CookiePolicyPage() {
             </p>
             <div className="bg-muted/30 p-6 rounded-lg">
               <p className="text-muted-foreground mb-2">
-                <strong>Digital Linked</strong><br />
-                Email: privacy@digitallinked.com.au<br />
-                Phone: +61 (0) 400 000 000<br />
-                Address: [Your Business Address]<br />
-                Website: www.digitallinked.com.au
+                <strong>Newy Enterprise</strong><br />
+                Email: hello@newy.com.my<br />
+                Phone: +60 11 2890 8472<br />
+                Address: Bandar Baru Bangi, Selangor, Malaysia<br />
+                Website: www.newy.com.my
               </p>
             </div>
           </section>
@@ -239,15 +239,17 @@ export default function CookiePolicyPage() {
               <li>You can request deletion of your personal information</li>
             </ul>
 
-            <h3 className="text-xl font-semibold mb-3">11.3 Australian Privacy Principles</h3>
+            <h3 className="text-xl font-semibold mb-3">11.3 Malaysian Personal Data Protection Act 2010</h3>
             <p className="text-muted-foreground">
-              We comply with the Australian Privacy Principles (APPs) under the Privacy Act 1988:
+              We comply with Malaysia's Personal Data Protection Act 2010 (PDPA):
             </p>
             <ul className="list-disc list-inside text-muted-foreground space-y-2">
-              <li>We collect personal information only for lawful purposes</li>
-              <li>We take reasonable steps to protect personal information</li>
-              <li>We provide access to personal information upon request</li>
+              <li>We collect personal information only for lawful purposes and with consent</li>
+              <li>We take reasonable steps to protect personal information from unauthorized access</li>
+              <li>We provide access to personal information upon request within 21 days</li>
               <li>We use personal information only for the purposes for which it was collected</li>
+              <li>We obtain explicit consent before setting non-essential cookies</li>
+              <li>We allow users to withdraw consent for cookie usage at any time</li>
             </ul>
           </section>
 
@@ -295,6 +297,41 @@ export default function CookiePolicyPage() {
                 </tbody>
               </table>
             </div>
+          </section>
+
+          <section>
+            <h2 className="text-2xl font-semibold mb-4">13. Malaysian Cookie Compliance</h2>
+            <p className="text-muted-foreground mb-4">
+              In compliance with Malaysia's Personal Data Protection Act 2010 (PDPA), we implement the following cookie practices:
+            </p>
+            
+            <h3 className="text-xl font-semibold mb-3">13.1 Consent Management</h3>
+            <ul className="list-disc list-inside text-muted-foreground mb-4 space-y-2">
+              <li>We obtain explicit consent before setting non-essential cookies</li>
+              <li>Our cookie consent banner provides clear information about cookie usage</li>
+              <li>Users can withdraw consent at any time through our cookie settings</li>
+              <li>We maintain records of consent for audit purposes</li>
+            </ul>
+
+            <h3 className="text-xl font-semibold mb-3">13.2 Data Minimization</h3>
+            <ul className="list-disc list-inside text-muted-foreground mb-4 space-y-2">
+              <li>We only collect data necessary for the stated purposes</li>
+              <li>Cookie data is automatically deleted after the specified retention period</li>
+              <li>We regularly review and minimize the data collected through cookies</li>
+            </ul>
+
+            <h3 className="text-xl font-semibold mb-3">13.3 User Rights</h3>
+            <ul className="list-disc list-inside text-muted-foreground mb-4 space-y-2">
+              <li>Right to access cookie data we hold about you</li>
+              <li>Right to correct inaccurate cookie data</li>
+              <li>Right to delete cookie data (subject to legal requirements)</li>
+              <li>Right to object to processing of cookie data for marketing purposes</li>
+            </ul>
+
+            <h3 className="text-xl font-semibold mb-3">13.4 Contact for Cookie Inquiries</h3>
+            <p className="text-muted-foreground">
+              For any questions about our cookie practices or to exercise your rights under the PDPA, please contact our Data Protection Officer at dpo@newy.com.my or use the contact information provided above.
+            </p>
           </section>
         </ScrollReveal>
       </div>

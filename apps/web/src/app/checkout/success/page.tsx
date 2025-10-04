@@ -273,7 +273,7 @@ function CheckoutSuccessContent() {
                   <div className="space-y-2 text-sm">
                     <div className="flex items-center gap-2 text-blue-600 dark:text-blue-400">
                       <Mail className="h-4 w-4" />
-                      <span>hello@digitallinked.com.au</span>
+                      <span>hello@newy.com.my</span>
                     </div>
                     <div className="flex items-center gap-2 text-blue-600 dark:text-blue-400">
                       <Phone className="h-4 w-4" />

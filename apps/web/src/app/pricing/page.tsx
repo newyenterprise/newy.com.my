@@ -52,7 +52,7 @@ const services: Service[] = [
     name: "Website Development",
     icon: <Globe className="w-8 h-8" />,
     description: "Professional websites that convert visitors into customers",
-    basePrice: 500,
+    basePrice: 1500,
     popular: true,
     color: "from-blue-500 to-purple-600",
     gradient: "bg-gradient-to-br from-blue-500 to-purple-600",
@@ -69,41 +69,41 @@ const services: Service[] = [
         id: "new-website",
         name: "New Website",
         description: "Build a brand new website from scratch",
-        basePrice: 500,
+        basePrice: 1500,
         platforms: [
           {
             id: "wordpress",
             name: "WordPress",
             description: "Most popular CMS platform",
-            price: 1500,
+            price: 4500,
             features: ["Up to 5 Pages", "Theme Customization", "Plugin Integration", "Easy Content Management"]
           },
           {
             id: "wix",
             name: "Wix",
             description: "User-friendly website builder",
-            price: 1200,
+            price: 3600,
             features: ["Up to 5 Pages", "Drag & Drop Editor", "Wix App Market", "Built-in SEO Tools"]
           },
           {
             id: "shopify",
             name: "Shopify",
             description: "E-commerce focused platform",
-            price: 2000,
+            price: 6000,
             features: ["Up to 20 Products", "Payment Processing", "Inventory Management", "Shopify App Integration"]
           },
           {
             id: "squarespace",
             name: "Squarespace",
             description: "Beautiful design templates",
-            price: 1300,
+            price: 3900,
             features: ["Up to 5 Pages", "Modern Templates", "Built-in Analytics", "Mobile Responsive"]
           },
           {
             id: "webflow",
             name: "Webflow",
             description: "Professional design platform",
-            price: 1800,
+            price: 5400,
             features: ["Up to 5 Pages", "Custom Animations", "CMS Integration", "Advanced Design Control"]
           }
         ]
@@ -112,55 +112,55 @@ const services: Service[] = [
         id: "upgrade-website",
         name: "Upgrade Existing Website",
         description: "Enhance your current website",
-        basePrice: 800,
+        basePrice: 2400,
         platforms: [
           {
             id: "wordpress-upgrade",
             name: "WordPress Upgrade",
             description: "Modernize your WordPress site",
-            price: 1200,
+            price: 3600,
             features: ["Theme Update", "Performance Optimization", "Security Enhancement", "Plugin Updates"]
           },
           {
             id: "wix-upgrade",
             name: "Wix Upgrade",
             description: "Enhance your Wix site",
-            price: 1000,
+            price: 3000,
             features: ["Design Refresh", "New Features", "SEO Improvements", "Mobile Optimization"]
           },
           {
             id: "shopify-upgrade",
             name: "Shopify Upgrade",
             description: "Upgrade your online store",
-            price: 1500,
+            price: 4500,
             features: ["Store Optimization", "Checkout Enhancement", "Product Page Redesign", "App Integration"]
           },
           {
             id: "platform-migration",
             name: "Platform Migration",
             description: "Move to a better platform",
-            price: 2500,
+            price: 7500,
             features: ["Content Migration", "Design Transfer", "SEO Preservation", "Training & Support"]
           },
           {
             id: "redesign",
             name: "Complete Redesign",
             description: "Fresh new look and feel",
-            price: 2000,
+            price: 6000,
             features: ["Modern Design", "UX Improvements", "Branding Update", "Performance Boost"]
           }
         ]
       }
     ],
     addOns: [
-      { id: "ecommerce", name: "E-commerce Integration", description: "Online store (up to 20 products)", price: 1500, popular: true },
-      { id: "additional-pages", name: "Additional Pages", description: "5 extra pages beyond base package", price: 500 },
-      { id: "domain", name: "Domain Registration", description: "Custom domain (.com, .com.au, etc.)", price: 50 },
-      { id: "hosting", name: "Hosting Setup (1 Year)", description: "Managed hosting with SSL & backups", price: 300 },
-      { id: "additional-products", name: "Additional Products", description: "20 extra products for e-commerce", price: 800 },
-      { id: "professional-email", name: "Professional Email", description: "5 custom email addresses", price: 100 },
-      { id: "monthly-maintenance", name: "Monthly Maintenance", description: "Updates, backups & monitoring", price: 200 },
-      { id: "ssl", name: "Premium SSL Certificate", description: "Enhanced security certificate", price: 150 }
+      { id: "ecommerce", name: "E-commerce Integration", description: "Online store (up to 20 products)", price: 4500, popular: true },
+      { id: "additional-pages", name: "Additional Pages", description: "5 extra pages beyond base package", price: 1500 },
+      { id: "domain", name: "Domain Registration", description: "Custom domain (.com, .com.my, etc.)", price: 150 },
+      { id: "hosting", name: "Hosting Setup (1 Year)", description: "Managed hosting with SSL & backups", price: 900 },
+      { id: "additional-products", name: "Additional Products", description: "20 extra products for e-commerce", price: 2400 },
+      { id: "professional-email", name: "Professional Email", description: "5 custom email addresses", price: 300 },
+      { id: "monthly-maintenance", name: "Monthly Maintenance", description: "Updates, backups & monitoring", price: 600 },
+      { id: "ssl", name: "Premium SSL Certificate", description: "Enhanced security certificate", price: 450 }
     ]
   },
   {
@@ -168,7 +168,7 @@ const services: Service[] = [
     name: "Web Applications",
     icon: <Rocket className="w-8 h-8" />,
     description: "Custom web applications built with modern frameworks",
-    basePrice: 2500,
+    basePrice: 7500,
     color: "from-cyan-500 to-blue-600",
     gradient: "bg-gradient-to-br from-cyan-500 to-blue-600",
     features: [
@@ -184,62 +184,62 @@ const services: Service[] = [
         id: "new-webapp",
         name: "New Web Application",
         description: "Build a custom web application",
-        basePrice: 2500,
+        basePrice: 7500,
         platforms: [
           {
             id: "nextjs",
             name: "Next.js",
             description: "React framework for production",
-            price: 5000,
+            price: 15000,
             features: ["Server-Side Rendering", "API Routes", "Optimized Performance", "SEO Friendly"]
           },
           {
             id: "nuxtjs",
             name: "Nuxt.js",
             description: "Vue.js framework",
-            price: 4500,
+            price: 13500,
             features: ["Universal Rendering", "Auto Routing", "Static Generation", "Module System"]
           },
           {
             id: "flutter-web",
             name: "Flutter Web",
             description: "Cross-platform framework",
-            price: 5500,
+            price: 16500,
             features: ["Single Codebase", "Beautiful UI", "Fast Performance", "Native Feel"]
           },
           {
             id: "react-spa",
             name: "React SPA",
             description: "Single Page Application",
-            price: 4000,
+            price: 12000,
             features: ["Fast Navigation", "Component-Based", "State Management", "Modern UI"]
           },
           {
             id: "vue-spa",
             name: "Vue.js SPA",
             description: "Progressive JavaScript framework",
-            price: 3800,
+            price: 11400,
             features: ["Reactive Components", "Easy Learning Curve", "Flexible Architecture", "Performance Optimized"]
           },
           {
             id: "angular",
             name: "Angular",
             description: "Enterprise-grade framework",
-            price: 5200,
+            price: 15600,
             features: ["TypeScript Based", "Complete Solution", "Enterprise Ready", "Rich Ecosystem"]
           },
           {
             id: "svelte",
             name: "Svelte/SvelteKit",
             description: "Compile-time framework",
-            price: 4200,
+            price: 12600,
             features: ["No Virtual DOM", "Smaller Bundles", "Better Performance", "Simple Syntax"]
           },
           {
             id: "laravel",
             name: "Laravel + Blade/Inertia",
             description: "PHP full-stack framework",
-            price: 4500,
+            price: 13500,
             features: ["MVC Architecture", "Built-in Auth", "Database ORM", "Admin Panel"]
           }
         ]
@@ -248,60 +248,60 @@ const services: Service[] = [
         id: "webapp-enhancement",
         name: "Web App Enhancement",
         description: "Improve existing web application",
-        basePrice: 1500,
+        basePrice: 4500,
         platforms: [
           {
             id: "nextjs-upgrade",
             name: "Next.js Upgrade",
             description: "Enhance your Next.js app",
-            price: 3000,
+            price: 9000,
             features: ["Performance Optimization", "Feature Addition", "SEO Enhancement", "Code Refactoring"]
           },
           {
             id: "nuxt-upgrade",
             name: "Nuxt.js Upgrade",
             description: "Improve your Nuxt app",
-            price: 2800,
+            price: 8400,
             features: ["Module Integration", "Performance Tuning", "UI Enhancement", "Bug Fixes"]
           },
           {
             id: "react-upgrade",
             name: "React App Upgrade",
             description: "Modernize your React app",
-            price: 2500,
+            price: 7500,
             features: ["Component Refactoring", "State Management", "Performance Boost", "UI Improvements"]
           },
           {
             id: "vue-upgrade",
             name: "Vue.js Upgrade",
             description: "Enhance your Vue app",
-            price: 2400,
+            price: 7200,
             features: ["Composition API", "Vuex Integration", "Performance Optimization", "Feature Addition"]
           },
           {
             id: "framework-migration",
             name: "Framework Migration",
             description: "Migrate to modern framework",
-            price: 6000,
+            price: 18000,
             features: ["Code Migration", "Architecture Redesign", "Data Preservation", "Testing & QA"]
           },
           {
             id: "feature-enhancement",
             name: "Feature Enhancement",
             description: "Add new capabilities",
-            price: 2000,
+            price: 6000,
             features: ["New Features", "Integration", "Testing", "Documentation"]
           }
         ]
       }
     ],
     addOns: [
-      { id: "domain", name: "Domain Registration", description: "Custom domain (.com, .com.au, etc.)", price: 50 },
-      { id: "cloud-hosting", name: "Cloud Hosting Setup", description: "AWS/Vercel/Railway deployment (1 year)", price: 500 },
-      { id: "database-hosting", name: "Database Hosting", description: "Managed database (PostgreSQL/MySQL)", price: 300 },
-      { id: "admin-dashboard", name: "Admin Dashboard", description: "Custom admin panel (up to 10 models)", price: 2000, popular: true },
-      { id: "additional-models", name: "Additional Data Models", description: "5 extra database models/tables", price: 800 },
-      { id: "monthly-maintenance", name: "Monthly Maintenance", description: "Updates, monitoring & support", price: 400 }
+      { id: "domain", name: "Domain Registration", description: "Custom domain (.com, .com.my, etc.)", price: 150 },
+      { id: "cloud-hosting", name: "Cloud Hosting Setup", description: "AWS/Vercel/Railway deployment (1 year)", price: 1500 },
+      { id: "database-hosting", name: "Database Hosting", description: "Managed database (PostgreSQL/MySQL)", price: 900 },
+      { id: "admin-dashboard", name: "Admin Dashboard", description: "Custom admin panel (up to 10 models)", price: 6000, popular: true },
+      { id: "additional-models", name: "Additional Data Models", description: "5 extra database models/tables", price: 2400 },
+      { id: "monthly-maintenance", name: "Monthly Maintenance", description: "Updates, monitoring & support", price: 1200 }
     ]
   },
   {
@@ -309,7 +309,7 @@ const services: Service[] = [
     name: "Mobile Apps",
     icon: <Smartphone className="w-8 h-8" />,
     description: "Native & cross-platform mobile applications",
-    basePrice: 3000,
+    basePrice: 9000,
     color: "from-green-500 to-teal-600",
     gradient: "bg-gradient-to-br from-green-500 to-teal-600",
     features: [
@@ -325,48 +325,48 @@ const services: Service[] = [
         id: "new-app",
         name: "New Mobile App",
         description: "Build a new mobile application",
-        basePrice: 3000,
+        basePrice: 9000,
         platforms: [
           {
             id: "flutter",
             name: "Flutter",
             description: "Cross-platform framework by Google",
-            price: 8000,
+            price: 24000,
             features: ["iOS & Android", "Native Performance", "Beautiful UI", "Hot Reload"]
           },
           {
             id: "react-native",
             name: "React Native",
             description: "Popular cross-platform framework",
-            price: 7500,
+            price: 22500,
             features: ["iOS & Android", "JavaScript/TypeScript", "Large Community", "Reusable Components"]
           },
           {
             id: "ios-native",
             name: "Native iOS",
             description: "Swift/SwiftUI development",
-            price: 10000,
+            price: 30000,
             features: ["Best Performance", "iOS Only", "Native Features", "App Store Optimized"]
           },
           {
             id: "android-native",
             name: "Native Android",
             description: "Kotlin development",
-            price: 9000,
+            price: 27000,
             features: ["Best Performance", "Android Only", "Material Design", "Google Play Optimized"]
           },
           {
             id: "both-native",
             name: "Both Native (iOS + Android)",
             description: "Separate native apps",
-            price: 16000,
+            price: 48000,
             features: ["Maximum Performance", "Platform-Specific Features", "Best User Experience", "Separate Codebases"]
           },
           {
             id: "pwa",
             name: "Progressive Web App (PWA)",
             description: "Web-based mobile experience",
-            price: 5000,
+            price: 15000,
             features: ["Works Everywhere", "No App Store", "Offline Support", "Push Notifications"]
           }
         ]
@@ -375,47 +375,47 @@ const services: Service[] = [
         id: "app-enhancement",
         name: "App Enhancement",
         description: "Improve existing mobile app",
-        basePrice: 2000,
+        basePrice: 6000,
         platforms: [
           {
             id: "flutter-upgrade",
             name: "Flutter App Upgrade",
             description: "Enhance your Flutter app",
-            price: 4000,
+            price: 12000,
             features: ["New Features", "Performance Optimization", "Bug Fixes", "UI Enhancement"]
           },
           {
             id: "react-native-upgrade",
             name: "React Native Upgrade",
             description: "Improve your RN app",
-            price: 3800,
+            price: 11400,
             features: ["Library Updates", "Performance Tuning", "Feature Addition", "UI Refresh"]
           },
           {
             id: "native-upgrade",
             name: "Native App Upgrade",
             description: "Enhance native iOS/Android app",
-            price: 5000,
+            price: 15000,
             features: ["New Features", "OS Updates", "Performance Boost", "Security Enhancement"]
           },
           {
             id: "cross-platform-migration",
             name: "Cross-Platform Migration",
             description: "Migrate to Flutter/React Native",
-            price: 10000,
+            price: 30000,
             features: ["Code Migration", "Feature Parity", "Testing", "App Store Submission"]
           }
         ]
       }
     ],
     addOns: [
-      { id: "additional-screens", name: "Additional Screens", description: "5 extra screens beyond base package", price: 1000 },
-      { id: "push-notifications", name: "Push Notifications", description: "Firebase Cloud Messaging integration", price: 800 },
-      { id: "backend-api", name: "Backend API", description: "Custom REST/GraphQL API", price: 3000, popular: true },
-      { id: "app-analytics", name: "App Analytics", description: "Firebase Analytics & Crashlytics", price: 500 },
-      { id: "in-app-payments", name: "In-App Payments", description: "Stripe/Apple Pay/Google Pay", price: 1500 },
-      { id: "app-store-optimization", name: "App Store Optimization", description: "ASO for better visibility", price: 600 },
-      { id: "monthly-maintenance", name: "Monthly Maintenance", description: "Updates & bug fixes", price: 300 }
+      { id: "additional-screens", name: "Additional Screens", description: "5 extra screens beyond base package", price: 3000 },
+      { id: "push-notifications", name: "Push Notifications", description: "Firebase Cloud Messaging integration", price: 2400 },
+      { id: "backend-api", name: "Backend API", description: "Custom REST/GraphQL API", price: 9000, popular: true },
+      { id: "app-analytics", name: "App Analytics", description: "Firebase Analytics & Crashlytics", price: 1500 },
+      { id: "in-app-payments", name: "In-App Payments", description: "Stripe/Apple Pay/Google Pay", price: 4500 },
+      { id: "app-store-optimization", name: "App Store Optimization", description: "ASO for better visibility", price: 1800 },
+      { id: "monthly-maintenance", name: "Monthly Maintenance", description: "Updates & bug fixes", price: 900 }
     ]
   },
   {
@@ -423,7 +423,7 @@ const services: Service[] = [
     name: "AI Automation",
     icon: <Brain className="w-8 h-8" />,
     description: "Workflow automation & intelligent chatbots",
-    basePrice: 1500,
+    basePrice: 4500,
     color: "from-purple-500 to-pink-600",
     gradient: "bg-gradient-to-br from-purple-500 to-pink-600",
     features: [
@@ -439,62 +439,62 @@ const services: Service[] = [
         id: "new-automation",
         name: "New Automation Project",
         description: "Build custom automation workflow",
-        basePrice: 1500,
+        basePrice: 4500,
         platforms: [
           {
             id: "lead-generation",
             name: "Lead Generation Automation",
             description: "Automate lead capture and follow-up",
-            price: 2000,
+            price: 6000,
             features: ["Form Integration", "Auto-Response", "CRM Sync", "Lead Scoring"]
           },
           {
             id: "email-marketing",
             name: "Email Marketing Automation",
             description: "Automated email campaigns",
-            price: 1800,
+            price: 5400,
             features: ["Email Sequences", "Segmentation", "A/B Testing", "Analytics"]
           },
           {
             id: "customer-support-chatbot",
             name: "Customer Support Chatbot",
             description: "AI-powered customer support",
-            price: 3000,
+            price: 9000,
             features: ["24/7 Support", "Natural Language", "Knowledge Base", "Multi-Channel"]
           },
           {
             id: "social-media-automation",
             name: "Social Media Automation",
             description: "Schedule and manage posts",
-            price: 1500,
+            price: 4500,
             features: ["Post Scheduling", "Multi-Platform", "Analytics", "Content Calendar"]
           },
           {
             id: "data-collection",
             name: "Data Collection & Reporting",
             description: "Automated data aggregation",
-            price: 2500,
+            price: 7500,
             features: ["Data Scraping", "API Integration", "Custom Reports", "Dashboard"]
           },
           {
             id: "ecommerce-automation",
             name: "E-commerce Automation",
             description: "Order and inventory automation",
-            price: 3500,
+            price: 10500,
             features: ["Order Processing", "Inventory Sync", "Customer Notifications", "Analytics"]
           },
           {
             id: "n8n-workflow",
             name: "n8n Workflow Automation",
             description: "Visual workflow builder",
-            price: 2200,
+            price: 6600,
             features: ["Visual Builder", "400+ Integrations", "Self-Hosted", "Custom Workflows"]
           },
           {
             id: "make-zapier",
             name: "Make/Zapier Automation",
             description: "No-code automation platform",
-            price: 1800,
+            price: 5400,
             features: ["Easy Setup", "1000+ Apps", "Templates", "Cloud-Based"]
           }
         ]
@@ -503,52 +503,52 @@ const services: Service[] = [
         id: "automation-enhancement",
         name: "Automation Enhancement",
         description: "Optimize existing automation",
-        basePrice: 1000,
+        basePrice: 3000,
         platforms: [
           {
             id: "workflow-optimization",
             name: "Workflow Optimization",
             description: "Improve existing workflows",
-            price: 1500,
+            price: 4500,
             features: ["Performance Analysis", "Bottleneck Removal", "Error Handling", "Monitoring"]
           },
           {
             id: "integration-expansion",
             name: "Integration Expansion",
             description: "Add more integrations",
-            price: 1200,
+            price: 3600,
             features: ["New Platforms", "API Connections", "Data Sync", "Testing"]
           },
           {
             id: "chatbot-training",
             name: "Chatbot Training & Enhancement",
             description: "Improve AI responses",
-            price: 2000,
+            price: 6000,
             features: ["Training Data", "Intent Recognition", "Response Quality", "Analytics"]
           },
           {
             id: "automation-consulting",
             name: "Automation Consulting",
             description: "Strategy and planning",
-            price: 800,
+            price: 2400,
             features: ["Process Analysis", "ROI Calculation", "Implementation Plan", "Best Practices"]
           }
         ]
       }
     ],
     addOns: [
-      { id: "crm-integration", name: "CRM Integration", description: "HubSpot, Salesforce, etc.", price: 1000, popular: true },
-      { id: "advanced-chatbot", name: "Advanced Chatbot Training", description: "Custom training on your data", price: 1500 },
-      { id: "multi-platform", name: "Multi-Platform Deployment", description: "Website, Slack, Teams, etc.", price: 800 },
-      { id: "email-platform", name: "Email Platform Integration", description: "Mailchimp, SendGrid, etc.", price: 600 },
-      { id: "social-integration", name: "Social Media Integration", description: "Facebook, Twitter, LinkedIn", price: 700 },
-      { id: "analytics-dashboard", name: "Analytics Dashboard", description: "Custom metrics & reporting", price: 1200 },
-      { id: "slack-teams", name: "Slack/Teams Integration", description: "Internal notifications", price: 500 },
-      { id: "database-integration", name: "Database Integration", description: "Connect to existing databases", price: 900 },
-      { id: "additional-workflows", name: "Additional Workflows", description: "3 extra automation workflows", price: 1500 },
-      { id: "ongoing-optimization", name: "Ongoing Optimization", description: "Continuous improvement (per month)", price: 400 },
-      { id: "team-training", name: "Team Training Session", description: "2-hour training for your team", price: 500 },
-      { id: "monthly-maintenance", name: "Monthly Maintenance", description: "Monitoring & updates", price: 250 }
+      { id: "crm-integration", name: "CRM Integration", description: "HubSpot, Salesforce, etc.", price: 3000, popular: true },
+      { id: "advanced-chatbot", name: "Advanced Chatbot Training", description: "Custom training on your data", price: 4500 },
+      { id: "multi-platform", name: "Multi-Platform Deployment", description: "Website, Slack, Teams, etc.", price: 2400 },
+      { id: "email-platform", name: "Email Platform Integration", description: "Mailchimp, SendGrid, etc.", price: 1800 },
+      { id: "social-integration", name: "Social Media Integration", description: "Facebook, Twitter, LinkedIn", price: 2100 },
+      { id: "analytics-dashboard", name: "Analytics Dashboard", description: "Custom metrics & reporting", price: 3600 },
+      { id: "slack-teams", name: "Slack/Teams Integration", description: "Internal notifications", price: 1500 },
+      { id: "database-integration", name: "Database Integration", description: "Connect to existing databases", price: 2700 },
+      { id: "additional-workflows", name: "Additional Workflows", description: "3 extra automation workflows", price: 4500 },
+      { id: "ongoing-optimization", name: "Ongoing Optimization", description: "Continuous improvement (per month)", price: 1200 },
+      { id: "team-training", name: "Team Training Session", description: "2-hour training for your team", price: 1500 },
+      { id: "monthly-maintenance", name: "Monthly Maintenance", description: "Monitoring & updates", price: 750 }
     ]
   },
   {
@@ -556,7 +556,7 @@ const services: Service[] = [
     name: "Digital Marketing",
     icon: <TrendingUp className="w-8 h-8" />,
     description: "Data-driven marketing strategies & campaigns",
-    basePrice: 1000,
+    basePrice: 3000,
     color: "from-orange-500 to-red-600",
     gradient: "bg-gradient-to-br from-orange-500 to-red-600",
     features: [
@@ -572,62 +572,62 @@ const services: Service[] = [
         id: "new-campaign",
         name: "New Marketing Campaign",
         description: "Launch a new marketing initiative",
-        basePrice: 1000,
+        basePrice: 3000,
         platforms: [
           {
             id: "seo-campaign",
             name: "SEO Campaign",
             description: "Search engine optimization",
-            price: 2000,
+            price: 6000,
             features: ["Keyword Research", "On-Page SEO", "Link Building", "Monthly Reporting"]
           },
           {
             id: "ppc-advertising",
             name: "PPC Advertising",
             description: "Google Ads & social ads",
-            price: 2500,
+            price: 7500,
             features: ["Ad Creation", "Targeting Setup", "Budget Management", "Performance Tracking"]
           },
           {
             id: "social-media-marketing",
             name: "Social Media Marketing",
             description: "Organic social media growth",
-            price: 1800,
+            price: 5400,
             features: ["Content Creation", "Daily Posting", "Community Management", "Analytics"]
           },
           {
             id: "content-marketing",
             name: "Content Marketing",
             description: "Blog posts and articles",
-            price: 1500,
+            price: 4500,
             features: ["4 Blog Posts/Month", "SEO Optimization", "Keyword Targeting", "Content Calendar"]
           },
           {
             id: "email-marketing",
             name: "Email Marketing",
             description: "Email campaigns",
-            price: 1200,
+            price: 3600,
             features: ["4 Campaigns/Month", "List Segmentation", "A/B Testing", "Analytics"]
           },
           {
             id: "full-digital",
             name: "Full Digital Strategy",
             description: "Comprehensive marketing solution",
-            price: 5000,
+            price: 15000,
             features: ["Multi-Channel", "SEO + PPC + Social", "Content Creation", "Full Reporting"]
           },
           {
             id: "ecommerce-marketing",
             name: "E-commerce Marketing",
             description: "Online store promotion",
-            price: 3000,
+            price: 9000,
             features: ["Product Ads", "Shopping Campaigns", "Retargeting", "Conversion Optimization"]
           },
           {
             id: "local-marketing",
             name: "Local Marketing",
             description: "Local business promotion",
-            price: 1500,
+            price: 4500,
             features: ["Google My Business", "Local SEO", "Review Management", "Local Ads"]
           }
         ]
@@ -636,46 +636,46 @@ const services: Service[] = [
         id: "campaign-enhancement",
         name: "Campaign Enhancement",
         description: "Optimize existing campaigns",
-        basePrice: 800,
+        basePrice: 2400,
         platforms: [
           {
             id: "campaign-audit",
             name: "Campaign Audit",
             description: "Comprehensive performance review",
-            price: 1000,
+            price: 3000,
             features: ["Performance Analysis", "Competitor Research", "Recommendations", "Action Plan"]
           },
           {
             id: "campaign-optimization",
             name: "Campaign Optimization",
             description: "Improve ROI",
-            price: 1500,
+            price: 4500,
             features: ["A/B Testing", "Targeting Refinement", "Budget Optimization", "Creative Refresh"]
           },
           {
             id: "channel-expansion",
             name: "Channel Expansion",
             description: "Add new marketing channels",
-            price: 2000,
+            price: 6000,
             features: ["New Platforms", "Strategy Development", "Implementation", "Tracking Setup"]
           },
           {
             id: "marketing-consulting",
             name: "Marketing Consulting",
             description: "Strategic guidance",
-            price: 800,
+            price: 2400,
             features: ["Strategy Session", "Market Analysis", "Growth Plan", "Recommendations"]
           }
         ]
       }
     ],
     addOns: [
-      { id: "additional-content", name: "Additional Content", description: "4 extra blog posts per month", price: 600 },
-      { id: "video-marketing", name: "Video Marketing", description: "2 videos per month", price: 1500, popular: true },
-      { id: "landing-pages", name: "Landing Page Design", description: "2 custom landing pages", price: 1000 },
-      { id: "ongoing-management", name: "Ongoing Management", description: "Monthly campaign management", price: 800 },
-      { id: "influencer-marketing", name: "Influencer Marketing", description: "Influencer outreach & collaboration", price: 1200 },
-      { id: "reputation-management", name: "Reputation Management", description: "Review monitoring & response", price: 600 }
+      { id: "additional-content", name: "Additional Content", description: "4 extra blog posts per month", price: 1800 },
+      { id: "video-marketing", name: "Video Marketing", description: "2 videos per month", price: 4500, popular: true },
+      { id: "landing-pages", name: "Landing Page Design", description: "2 custom landing pages", price: 3000 },
+      { id: "ongoing-management", name: "Ongoing Management", description: "Monthly campaign management", price: 2400 },
+      { id: "influencer-marketing", name: "Influencer Marketing", description: "Influencer outreach & collaboration", price: 3600 },
+      { id: "reputation-management", name: "Reputation Management", description: "Review monitoring & response", price: 1800 }
     ]
   }
 ];

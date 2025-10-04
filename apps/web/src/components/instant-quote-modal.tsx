@@ -125,11 +125,11 @@ export function InstantQuoteModal({ isOpen, onClose }: InstantQuoteModalProps) {
   ];
 
   const budgetRanges = [
-    '$5,000 - $10,000',
-    '$10,000 - $25,000',
-    '$25,000 - $50,000',
-    '$50,000 - $100,000',
-    '$100,000+'
+    'RM15,000 - RM30,000',
+    'RM30,000 - RM75,000',
+    'RM75,000 - RM150,000',
+    'RM150,000 - RM300,000',
+    'RM300,000+'
   ];
 
   const timelines = [
@@ -148,10 +148,10 @@ export function InstantQuoteModal({ isOpen, onClose }: InstantQuoteModalProps) {
     let duration = '';
     let features: string[] = [];
 
-    // Base pricing by project type
+    // Base pricing by project type (in MYR)
     switch (projectType) {
       case 'website':
-        basePrice = 8000;
+        basePrice = 24000;
         features = [
           'Responsive Design',
           'SEO Optimization',
@@ -161,7 +161,7 @@ export function InstantQuoteModal({ isOpen, onClose }: InstantQuoteModalProps) {
         ];
         break;
       case 'apps':
-        basePrice = 15000;
+        basePrice = 45000;
         features = [
           'Cross-platform Development',
           'User Authentication',
@@ -171,7 +171,7 @@ export function InstantQuoteModal({ isOpen, onClose }: InstantQuoteModalProps) {
         ];
         break;
       case 'ai_automation':
-        basePrice = 12000;
+        basePrice = 36000;
         features = [
           'AI Integration',
           'Process Automation',
@@ -181,7 +181,7 @@ export function InstantQuoteModal({ isOpen, onClose }: InstantQuoteModalProps) {
         ];
         break;
       case 'marketing':
-        basePrice = 6000;
+        basePrice = 18000;
         features = [
           'Strategy Development',
           'Content Creation',
@@ -191,7 +191,7 @@ export function InstantQuoteModal({ isOpen, onClose }: InstantQuoteModalProps) {
         ];
         break;
       default:
-        basePrice = 8000;
+        basePrice = 24000;
     }
 
     // Complexity multiplier
@@ -641,9 +641,9 @@ export function InstantQuoteModal({ isOpen, onClose }: InstantQuoteModalProps) {
                     <div className="text-center">
                       <h4 className="text-lg font-semibold mb-2">Estimated Investment</h4>
                       <div className="text-3xl font-bold text-purple-500 mb-2">
-                        ${quoteEstimate.minPrice.toLocaleString()} - ${quoteEstimate.maxPrice.toLocaleString()}
+                        RM{quoteEstimate.minPrice.toLocaleString()} - RM{quoteEstimate.maxPrice.toLocaleString()}
                       </div>
-                      <p className="text-sm text-muted-foreground">USD</p>
+                      <p className="text-sm text-muted-foreground">MYR</p>
                     </div>
                   </div>
 

@@ -115,7 +115,7 @@ export const UserConfirmationEmail: React.FC<ContactFormData> = ({
       <p>DigitalLinked<br />
       Newcastle, NSW, Australia<br />
       Phone: 0406 612 824<br />
-      Email: hello@digitallinked.com.au</p>
+      Email: hello@newy.com.my</p>
     </div>
   </div>
 );
