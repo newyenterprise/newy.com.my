@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "type-check": "tsc --noEmit",
-    "postbuild": "next-sitemap",
+    "postbuild": "node scripts/generate-sitemap.js",
     "analyze": "cross-env ANALYZE=true next build",
     "test:email": "node scripts/test-email.js"
   },
