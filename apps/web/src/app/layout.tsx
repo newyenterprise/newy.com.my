@@ -72,7 +72,7 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    google: "your-google-verification-code",
+    google: "OIZtBsB8Ea4HW_XBx4xoa-iWCy85z56rgTF8Ys-nwEc",
   },
   other: {
     "theme-color": "#1c0940",
