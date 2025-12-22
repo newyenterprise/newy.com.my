@@ -11,12 +11,11 @@ export function Footer() {
           <div>
             <div className="mb-6">
               <Image 
-                src="/media/newy_logo.png" 
+                src="/newy_logo.png" 
                 alt="NewY Logo" 
                 width={120} 
                 height={40} 
                 className="h-8 w-auto"
-                unoptimized
               />
             </div>
             <p className="text-muted-foreground mb-6 leading-relaxed">

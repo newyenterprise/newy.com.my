@@ -27,13 +27,12 @@ export function Navigation() {
           {/* Logo */}
           <Link href="/" className="flex items-center">
             <Image 
-              src="/media/newy_logo.png" 
+              src="/newy_logo.png" 
               alt="NewY Logo" 
               width={120} 
               height={40} 
               className="h-8 w-auto"
               priority
-              unoptimized
             />
           </Link>
 
