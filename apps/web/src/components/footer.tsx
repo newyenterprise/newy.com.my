@@ -16,6 +16,7 @@ export function Footer() {
                 width={120} 
                 height={40} 
                 className="h-8 w-auto"
+                unoptimized
               />
             </div>
             <p className="text-muted-foreground mb-6 leading-relaxed">
