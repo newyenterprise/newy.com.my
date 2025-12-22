@@ -4,7 +4,6 @@ import { Button } from "@newy/ui";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@newy/ui";
 import { ArrowRight, Users, Target, Award, Globe, Lightbulb, Handshake, Rocket, Wrench, Building, Zap } from "lucide-react";
 import Link from "next/link";
-import Image from "next/image";
 import { MagneticButton } from "../../components/magnetic-button";
 
 export default function AboutPage() {
@@ -12,17 +11,6 @@ export default function AboutPage() {
     <div className="min-h-screen">
       {/* Hero Section */}
       <section className="relative overflow-hidden min-h-screen flex items-center">
-        <div className="absolute inset-0">
-          <Image
-            src="/media/About_us-Digitallinked.jpeg"
-            alt="Digital Linked founder in the office with company signage"
-            fill
-            className="object-cover object-center"
-            priority
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/40"></div>
-        </div>
-        
         <div className="relative container">
           <div className="max-w-3xl">
             <h1 className="text-5xl md:text-7xl font-bold font-display mb-8 text-white leading-tight">
@@ -30,7 +18,7 @@ export default function AboutPage() {
             </h1>
             <p className="text-xl md:text-2xl text-white/90 mb-12 leading-relaxed max-w-2xl">
               A journey that spans engineering, business, and digital transformation. 
-              Digital Linked was born from real-world experience and a passion for solving 
+              Newy was born from real-world experience and a passion for solving 
               business challenges through technology.
             </p>
             <div className="flex flex-col sm:flex-row gap-6">
@@ -63,7 +51,7 @@ export default function AboutPage() {
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-bold font-display mb-4">
-                The Journey Behind Digital Linked
+                The Journey Behind Newy.
               </h2>
               <p className="text-xl text-muted-foreground">
                 From mechanical engineering to digital innovation - a story of persistence, learning, and growth.
@@ -171,7 +159,7 @@ export default function AboutPage() {
             </div>
 
             <div className="bg-gradient-to-r from-primary/10 via-secondary/10 to-primary/10 rounded-2xl p-8 border border-primary/20">
-              <h3 className="text-2xl font-bold mb-4">That's When Digital Linked Was Born</h3>
+              <h3 className="text-2xl font-bold mb-4">That's When Newy Was Born</h3>
               <p className="text-lg text-muted-foreground">
                 Born from the need to solve fragmented digital solutions, too many tools, 
                 and not enough clarity for businesses.
@@ -186,7 +174,7 @@ export default function AboutPage() {
         <div className="container">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold font-display mb-4">
-              What Digital Linked Represents
+              What Newy Represents
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               We combine unique perspectives to deliver solutions that truly understand both business and digital worlds.
@@ -353,14 +341,14 @@ export default function AboutPage() {
               The Road Ahead
             </h2>
             <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
-              Digital Linked is more than a digital agency — it's a story of <strong>persistence, learning, and growth</strong>. 
+              Newy is more than a digital agency — it's a story of <strong>persistence, learning, and growth</strong>. 
               We're here to help businesses like yours navigate digital challenges with confidence, 
               turning complexity into opportunity.
             </p>
             <div className="bg-gradient-to-r from-primary/10 via-secondary/10 to-primary/10 rounded-2xl p-8 border border-primary/20 mb-12">
               <h3 className="text-2xl font-bold mb-4">Because at the heart of it...</h3>
               <p className="text-xl text-muted-foreground">
-                <strong>Digital Linked is about creating connections that matter.</strong>
+                <strong>Newy is about creating connections that matter.</strong>
               </p>
             </div>
           </div>
@@ -400,11 +388,11 @@ export default function AboutPage() {
           
           <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-3xl mx-auto">
             <div className="text-center">
-              <div className="text-3xl font-bold mb-2">100+</div>
+              <div className="text-3xl font-bold mb-2">50+</div>
               <div className="text-sm opacity-90">Happy Clients</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold mb-2">500+</div>
+              <div className="text-3xl font-bold mb-2">100+</div>
               <div className="text-sm opacity-90">Projects Completed</div>
             </div>
             <div className="text-center">
