@@ -33,6 +33,7 @@ export function Navigation() {
               height={40} 
               className="h-8 w-auto"
               priority
+              unoptimized
             />
           </Link>
 
