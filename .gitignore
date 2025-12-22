@@ -78,7 +78,8 @@ dist
 
 # Gatsby files
 .cache/
-public
+# public - commented out to allow Next.js public folder
+# public
 
 # Storybook build outputs
 .out

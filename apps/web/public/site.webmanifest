@@ -1,0 +1,23 @@
+{
+  "name": "Newy Enterprise",
+  "short_name": "Newy",
+  "description": "Newy Enterprise - Leading digital agency in Malaysia. Professional digital solutions, web development, and technology services.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#1c0940",
+  "theme_color": "#1c0940",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
+
