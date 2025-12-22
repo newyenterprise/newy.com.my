@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Button } from "@newy/ui";
 import { Menu, X } from "lucide-react";
 
@@ -25,9 +26,14 @@ export function Navigation() {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center">
-            <span className="text-2xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-              Newy.
-            </span>
+            <Image 
+              src="/media/newy_logo.png" 
+              alt="NewY Logo" 
+              width={120} 
+              height={40} 
+              className="h-8 w-auto"
+              priority
+            />
           </Link>
 
           {/* Desktop Navigation */}

@@ -47,11 +47,12 @@ const DEFAULT_SEO = {
   additionalLinkTags: [
     {
       rel: 'icon',
-      href: '/favicon.ico?v=2',
+      href: '/media/newy_icon_main.png?v=2',
+      type: 'image/png',
     },
     {
       rel: 'apple-touch-icon',
-      href: '/apple-touch-icon.png?v=2',
+      href: '/media/newy_icon_main.png?v=2',
       sizes: '180x180',
     },
     {

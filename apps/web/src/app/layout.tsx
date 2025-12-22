@@ -89,8 +89,8 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <link rel="icon" href="/favicon.ico?v=2" />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2" />
+        <link rel="icon" href="/media/newy_icon_main.png?v=2" type="image/png" />
+        <link rel="apple-touch-icon" href="/media/newy_icon_main.png?v=2" />
         <link rel="manifest" href="/site.webmanifest?v=2" />
       </head>
       <body className={`${inter.variable} ${poppins.variable} font-sans antialiased`} suppressHydrationWarning>

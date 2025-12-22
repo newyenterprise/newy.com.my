@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Mail, Phone, MapPin, Twitter, Linkedin, Facebook, Instagram } from "lucide-react";
 
 export function Footer() {
@@ -9,9 +10,13 @@ export function Footer() {
           {/* Company Info */}
           <div>
             <div className="mb-6">
-              <span className="text-2xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                Newy.
-              </span>
+              <Image 
+                src="/media/newy_logo.png" 
+                alt="NewY Logo" 
+                width={120} 
+                height={40} 
+                className="h-8 w-auto"
+              />
             </div>
             <p className="text-muted-foreground mb-6 leading-relaxed">
               Your All-In-One Digital Partner.
