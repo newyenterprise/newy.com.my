@@ -1,13 +1,13 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-// Knowledge base for Digital Linked services
+// Knowledge base for Newy Enterprise services
 const KNOWLEDGE_BASE = {
   services: {
     website: {
       description: "Custom website development including responsive design, e-commerce solutions, and content management systems",
       features: ["Responsive Design", "SEO Optimization", "E-commerce Integration", "Content Management", "Performance Optimization"],
       process: ["Discovery & Planning", "Design & Prototyping", "Development", "Testing & QA", "Launch & Support"],
-      pricing: "Starting from $790 AUD for basic websites, $2,500 for business sites, $5,500+ for e-commerce",
+      pricing: "Starting from RM6,000 for basic websites, RM15,000 for business sites, RM35,000+ for e-commerce",
       timeline: "2-8 weeks depending on complexity",
       technologies: ["React", "Next.js", "WordPress", "Shopify", "Custom CMS"]
     },
@@ -15,7 +15,7 @@ const KNOWLEDGE_BASE = {
       description: "Mobile app development for iOS and Android platforms, including cross-platform solutions",
       features: ["Native iOS/Android", "Cross-platform (React Native)", "Push Notifications", "Offline Capability", "App Store Deployment"],
       process: ["Requirements Analysis", "UI/UX Design", "Development", "Testing", "App Store Submission"],
-      pricing: "Starting from $4,500 AUD for basic apps, $12,000 for business apps, $25,000+ for complex apps",
+      pricing: "Starting from RM25,000 for basic apps, RM60,000 for business apps, RM120,000+ for complex apps",
       timeline: "6-20 weeks depending on complexity",
       technologies: ["React Native", "Flutter", "Swift", "Kotlin", "Firebase"]
     },
@@ -23,7 +23,7 @@ const KNOWLEDGE_BASE = {
       description: "AI automation solutions to streamline business processes and improve efficiency",
       features: ["Process Automation", "Chatbot Integration", "Data Analysis", "Predictive Analytics", "Custom AI Solutions"],
       process: ["Process Assessment", "Solution Design", "Development", "Integration", "Training & Support"],
-      pricing: "Starting from $1,200 AUD for chatbots, $3,500 for process automation, $8,000+ for custom AI",
+      pricing: "Starting from RM6,000 for chatbots, RM18,000 for process automation, RM40,000+ for custom AI",
       timeline: "2-12 weeks depending on complexity",
       technologies: ["Python", "TensorFlow", "OpenAI API", "Custom ML Models", "API Integrations"]
     },
@@ -31,19 +31,19 @@ const KNOWLEDGE_BASE = {
       description: "Digital marketing services including SEO, PPC, social media, and content marketing",
       features: ["SEO Optimization", "PPC Management", "Social Media Marketing", "Content Strategy", "Analytics & Reporting"],
       process: ["Strategy Development", "Implementation", "Monitoring", "Optimization", "Reporting"],
-      pricing: "Starting from $650 AUD/month for basic SEO, $1,200/month for full marketing packages",
+      pricing: "Starting from RM3,500/month for basic SEO, RM6,000/month for full marketing packages",
       timeline: "Ongoing with initial setup in 2-3 weeks",
       technologies: ["Google Analytics", "Google Ads", "Facebook Ads", "SEO Tools", "Social Media Platforms"]
     }
   },
   company: {
-    name: "Digital Linked",
+    name: "Newy Enterprise",
     email: "hello@newy.com.my",
-    phone: "0406 612 824",
-    address: "Newcastle, NSW, Australia",
-    hours: "Monday-Friday 9AM-6PM",
-    website: "https://digitallinked.com.au",
-    portfolio: "https://digitallinked.com.au/portfolio",
+    phone: "+60 12-345 6789",
+    address: "Malaysia",
+    hours: "Monday-Friday 9AM-6PM (MYT)",
+    website: "https://newy.com.my",
+    portfolio: "https://newy.com.my/portfolio",
     founded: "2023",
     team: "Experienced developers, designers, and digital strategists"
   }
@@ -86,7 +86,7 @@ async function getAIResponse(message: string, conversationHistory: any[], contex
       const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
       // Prepare conversation for Gemini
-      const systemPrompt = `You are LinkBot Pro, Digital Linked's friendly digital solutions expert. Keep responses SHORT (under 80 words), conversational, and human-like.
+      const systemPrompt = `You are LinkBot Pro, Newy Enterprise's friendly digital solutions expert. Keep responses SHORT (under 80 words), conversational, and human-like.
 
 SERVICES & PRICING:
 • Website Development: ${KNOWLEDGE_BASE.services.website.pricing} (${KNOWLEDGE_BASE.services.website.timeline})
@@ -105,7 +105,7 @@ RESPONSE STYLE:
 - Offer 2-3 clickable options using bullet points (•)
 - Use 1-2 emojis max 😊
 - NEVER use placeholder text like [insert link here] - always use actual URLs provided above
-- When mentioning portfolio, use: https://digitallinked.com.au/portfolio
+- When mentioning portfolio, use: https://newy.com.my/portfolio
 - For contact options, format as: "Email us: hello@newy.com.my" and "Call us: +60 12-345 6789"
 - Include contact info in clickable options when users ask about contacting or quotes
 

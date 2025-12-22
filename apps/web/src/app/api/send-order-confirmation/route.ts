@@ -24,7 +24,7 @@ export async function POST(request: NextRequest) {
         <head>
           <meta charset="utf-8">
           <meta name="viewport" content="width=device-width, initial-scale=1.0">
-          <title>Order Confirmation - Digital Linked</title>
+          <title>Order Confirmation - Newy Enterprise</title>
           <style>
             body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
             .container { max-width: 600px; margin: 0 auto; padding: 20px; }
@@ -45,7 +45,7 @@ export async function POST(request: NextRequest) {
           <div class="container">
             <div class="header">
               <h1>🎉 Order Confirmed!</h1>
-              <p>Thank you for choosing Digital Linked</p>
+              <p>Thank you for choosing Newy Enterprise</p>
               <p><strong>Order #${orderNumber}</strong></p>
             </div>
             
@@ -87,20 +87,20 @@ export async function POST(request: NextRequest) {
               </div>
               
               <div style="text-align: center; margin: 30px 0;">
-                <a href="https://digitallinked.com.au/dashboard" class="button">View Your Dashboard</a>
+                <a href="https://newy.com.my/dashboard" class="button">View Your Dashboard</a>
               </div>
               
               <div style="background: #fff3cd; padding: 15px; border-radius: 6px; border-left: 4px solid #ffc107;">
                 <strong>Need immediate assistance?</strong><br>
                 📧 Email: hello@newy.com.my<br>
                 📞 Phone: 0406 612 824<br>
-                🕒 Business Hours: Monday-Friday 9AM-6PM (AEST)
+                🕒 Business Hours: Monday-Friday 9AM-6PM (MYT)
               </div>
             </div>
             
             <div class="footer">
-              <p>Thank you for choosing Digital Linked!</p>
-              <p>Your Strategic Partner for Digital Success</p>
+              <p>Thank you for choosing Newy Enterprise!</p>
+              <p>Your Strategic Partner for Digital Success in Malaysia</p>
               <p><small>This email was sent to ${customerInfo.email} regarding order #${orderNumber}</small></p>
             </div>
           </div>
@@ -110,9 +110,9 @@ export async function POST(request: NextRequest) {
 
     // Send customer confirmation email
     const customerEmail = await resend.emails.send({
-      from: 'Digital Linked <noreply@digitallinked.com.au>',
+      from: 'Newy Enterprise <noreply@newy.com.my>',
       to: [customerInfo.email],
-      subject: `Order Confirmation #${orderNumber} - Digital Linked`,
+      subject: `Order Confirmation #${orderNumber} - Newy Enterprise`,
       html: htmlContent,
     });
 
@@ -122,7 +122,7 @@ export async function POST(request: NextRequest) {
       <html>
         <head>
           <meta charset="utf-8">
-          <title>New Order Received - Digital Linked</title>
+          <title>New Order Received - Newy Enterprise</title>
           <style>
             body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
             .container { max-width: 600px; margin: 0 auto; padding: 20px; }
@@ -172,7 +172,7 @@ export async function POST(request: NextRequest) {
     `;
 
     const adminEmail = await resend.emails.send({
-      from: 'Digital Linked Orders <noreply@digitallinked.com.au>',
+      from: 'Newy Enterprise Orders <noreply@newy.com.my>',
       to: ['hello@newy.com.my'],
       subject: `🎉 New Order #${orderNumber} - $${total.toLocaleString()}`,
       html: adminHtmlContent,

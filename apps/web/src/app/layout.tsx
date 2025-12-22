@@ -20,11 +20,11 @@ const poppins = Poppins({
 
 export const metadata: Metadata = {
   title: {
-    default: "NewY Enterprise - Digital Solutions & Web Development",
-    template: "%s | NewY Enterprise"
+    default: "Newy Enterprise - Digital Agency in Malaysia",
+    template: "%s | Newy Enterprise"
   },
-  description: "Professional digital solutions, web development, and technology services. We help businesses grow with cutting-edge digital strategies and custom web applications.",
-  keywords: ["web development", "app development", "AI automation", "digital marketing", "agency", "digital solutions"],
+  description: "Newy Enterprise is a leading digital agency in Malaysia. We provide professional digital solutions, web development, mobile apps, AI automation, and digital marketing services to help businesses grow.",
+  keywords: ["digital agency Malaysia", "web development Malaysia", "app development Malaysia", "AI automation Malaysia", "digital marketing Malaysia", "Malaysia digital agency", "Newy Enterprise"],
   authors: [{ name: "NewY Enterprise" }],
   creator: "NewY Enterprise",
   publisher: "NewY Enterprise",
@@ -41,22 +41,22 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_MY",
     url: "https://newy.com.my",
-    title: "NewY Enterprise - Digital Solutions & Web Development",
-    description: "Professional digital solutions, web development, and technology services. We help businesses grow with cutting-edge digital strategies and custom web applications.",
-    siteName: "NewY Enterprise",
+    title: "Newy Enterprise - Digital Agency in Malaysia",
+    description: "Newy Enterprise is a leading digital agency in Malaysia. We provide professional digital solutions, web development, mobile apps, AI automation, and digital marketing services to help businesses grow.",
+    siteName: "Newy Enterprise",
     images: [
       {
         url: "https://newy.com.my/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "NewY Enterprise - Digital Solutions & Web Development",
+        alt: "Newy Enterprise - Digital Agency in Malaysia",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "NewY Enterprise - Digital Solutions & Web Development",
-    description: "Professional digital solutions, web development, and technology services. We help businesses grow with cutting-edge digital strategies and custom web applications.",
+    title: "Newy Enterprise - Digital Agency in Malaysia",
+    description: "Newy Enterprise is a leading digital agency in Malaysia. We provide professional digital solutions, web development, mobile apps, AI automation, and digital marketing services to help businesses grow.",
     creator: "@newyenterprise",
     site: "@newyenterprise",
   },

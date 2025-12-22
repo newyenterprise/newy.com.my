@@ -16,15 +16,15 @@ export async function POST(request: NextRequest) {
     }
 
     const { data, error } = await resend.emails.send({
-      from: 'DigitalLinked Test <noreply@digitallinked.com.au>',
+      from: 'Newy Enterprise Test <noreply@newy.com.my>',
       to: ['hello@newy.com.my'],
-      subject: 'Test Email - DigitalLinked Quote System',
+      subject: 'Test Email - Newy Enterprise Quote System',
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
           <h2 style="color: #7c3aed;">Test Email</h2>
-          <p>This is a test email to verify that the DigitalLinked quote system email functionality is working correctly.</p>
-          <p><strong>Timestamp:</strong> ${new Date().toLocaleString('en-AU', { 
-            timeZone: 'Australia/Sydney',
+          <p>This is a test email to verify that the Newy Enterprise quote system email functionality is working correctly.</p>
+          <p><strong>Timestamp:</strong> ${new Date().toLocaleString('en-MY', { 
+            timeZone: 'Asia/Kuala_Lumpur',
             year: 'numeric',
             month: 'long',
             day: 'numeric',

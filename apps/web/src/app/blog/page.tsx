@@ -40,7 +40,7 @@ export default async function BlogPage() {
                 <span className="gradient-text">Our Blog</span>
               </h1>
               <p className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto leading-relaxed">
-                Insights, news, and articles from the Digital Linked team. Explore topics on digital 
+                Insights, news, and articles from the Newy Enterprise team. Explore topics on digital 
                 innovation, technology trends, and business growth strategies.
               </p>
               

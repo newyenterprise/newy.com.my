@@ -2,7 +2,7 @@ import { MetadataRoute } from 'next'
 import { createClient } from '@supabase/supabase-js'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = process.env.SITE_URL || 'https://digitallinked.com.au'
+  const baseUrl = process.env.SITE_URL || 'https://newy.com.my'
   
   // Static pages
   const staticPages = [

@@ -55,9 +55,9 @@ export const AdminNotificationEmail: React.FC<ContactFormData> = ({
       color: '#6b7280', 
       fontSize: '14px' 
     }}>
-      <p>This message was sent from the DigitalLinked contact form.</p>
-      <p>Submitted on: {new Date().toLocaleString('en-AU', { 
-        timeZone: 'Australia/Sydney',
+      <p>This message was sent from the Newy Enterprise contact form.</p>
+      <p>Submitted on: {new Date().toLocaleString('en-MY', { 
+        timeZone: 'Asia/Kuala_Lumpur',
         year: 'numeric',
         month: 'long',
         day: 'numeric',
@@ -87,7 +87,7 @@ export const UserConfirmationEmail: React.FC<ContactFormData> = ({
     
     <p>Dear {fullName},</p>
     
-    <p>Thank you for contacting DigitalLinked. We have received your message and will get back to you within 24 hours.</p>
+    <p>Thank you for contacting Newy Enterprise. We have received your message and will get back to you within 24 hours.</p>
     
     <div style={{ 
       backgroundColor: '#f8fafc', 
@@ -100,10 +100,10 @@ export const UserConfirmationEmail: React.FC<ContactFormData> = ({
       <p><strong>Message Type:</strong> {messageType || 'General Inquiry'}</p>
     </div>
     
-    <p>If you have any urgent questions, please don't hesitate to call us at <strong>0406 612 824</strong>.</p>
+    <p>If you have any urgent questions, please don't hesitate to call us at <strong>+60 12-345 6789</strong>.</p>
     
     <p>Best regards,<br />
-    The DigitalLinked Team</p>
+    The Newy Enterprise Team</p>
     
     <div style={{ 
       marginTop: '30px', 
@@ -112,9 +112,9 @@ export const UserConfirmationEmail: React.FC<ContactFormData> = ({
       color: '#6b7280', 
       fontSize: '14px' 
     }}>
-      <p>DigitalLinked<br />
-      Newcastle, NSW, Australia<br />
-      Phone: 0406 612 824<br />
+      <p>Newy Enterprise<br />
+      Malaysia<br />
+      Phone: +60 12-345 6789<br />
       Email: hello@newy.com.my</p>
     </div>
   </div>

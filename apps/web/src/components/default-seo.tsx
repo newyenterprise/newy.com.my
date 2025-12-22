@@ -1,23 +1,23 @@
 import { DefaultSeo } from 'next-seo';
 
 const DEFAULT_SEO = {
-  titleTemplate: '%s | NewY Enterprise',
-  defaultTitle: 'NewY Enterprise - Digital Solutions & Web Development',
-  description: 'Professional digital solutions, web development, and technology services. We help businesses grow with cutting-edge digital strategies and custom web applications.',
+  titleTemplate: '%s | Newy Enterprise',
+  defaultTitle: 'Newy Enterprise - Digital Agency in Malaysia',
+  description: 'Newy Enterprise is a leading digital agency in Malaysia. We provide professional digital solutions, web development, mobile apps, AI automation, and digital marketing services to help businesses grow.',
   canonical: 'https://newy.com.my',
   openGraph: {
     type: 'website',
     locale: 'en_MY',
     url: 'https://newy.com.my',
-    siteName: 'NewY Enterprise',
-    title: 'NewY Enterprise - Digital Solutions & Web Development',
-    description: 'Professional digital solutions, web development, and technology services. We help businesses grow with cutting-edge digital strategies and custom web applications.',
+    siteName: 'Newy Enterprise',
+    title: 'Newy Enterprise - Digital Agency in Malaysia',
+    description: 'Newy Enterprise is a leading digital agency in Malaysia. We provide professional digital solutions, web development, mobile apps, AI automation, and digital marketing services to help businesses grow.',
     images: [
       {
         url: 'https://newy.com.my/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'NewY Enterprise - Digital Solutions & Web Development',
+        alt: 'Newy Enterprise - Digital Agency in Malaysia',
       },
     ],
   },

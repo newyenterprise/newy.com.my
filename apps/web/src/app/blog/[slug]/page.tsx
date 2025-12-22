@@ -35,19 +35,19 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
   }
 
   const description = post.excerpt || post.content.replace(/<[^>]*>/g, '').substring(0, 160);
-  const ogImage = post.featured_image || 'https://digitallinked.com.au/og-image.jpg';
+  const ogImage = post.featured_image || 'https://newy.com.my/og-image.jpg';
 
   return {
     title: post.title,
     description,
     keywords: post.tags?.join(', ') || '',
-    authors: [{ name: 'DigitalLinked' }],
+    authors: [{ name: 'Newy Enterprise' }],
     openGraph: {
       title: post.title,
       description,
       type: 'article',
       publishedTime: post.published_at,
-      authors: ['DigitalLinked'],
+      authors: ['Newy Enterprise'],
       tags: post.tags || [],
       images: [
         {
@@ -108,7 +108,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     .update({ views: (post.views || 0) + 1 })
     .eq('id', post.id)
 
-  const shareUrl = `https://digitallinked.com.au/blog/${post.slug}`;
+  const shareUrl = `https://newy.com.my/blog/${post.slug}`;
   const shareTitle = post.title;
 
   // Structured Data for Article
@@ -117,20 +117,20 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     "@type": "BlogPosting",
     "headline": post.title,
     "description": post.excerpt || "",
-    "image": post.featured_image || "https://digitallinked.com.au/og-image.jpg",
+    "image": post.featured_image || "https://newy.com.my/og-image.jpg",
     "datePublished": post.published_at || post.created_at,
     "dateModified": post.updated_at,
     "author": {
       "@type": "Organization",
-      "name": "DigitalLinked",
-      "url": "https://digitallinked.com.au"
+      "name": "Newy Enterprise",
+      "url": "https://newy.com.my"
     },
     "publisher": {
       "@type": "Organization",
-      "name": "DigitalLinked",
+      "name": "Newy Enterprise",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://digitallinked.com.au/logo.png"
+        "url": "https://newy.com.my/logo.png"
       }
     },
     "mainEntityOfPage": {
@@ -315,7 +315,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           {/* This would be populated with related articles based on category/tags */}
           <Card>
             <CardHeader>
-              <CardTitle className="text-lg">More from DigitalLinked</CardTitle>
+              <CardTitle className="text-lg">More from Newy Enterprise</CardTitle>
             </CardHeader>
             <CardContent>
               <p className="text-muted-foreground">

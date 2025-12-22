@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server'
 import { createClient } from '@supabase/supabase-js'
 
 export async function GET() {
-  const baseUrl = process.env.SITE_URL || 'https://digitallinked.com.au'
+  const baseUrl = process.env.SITE_URL || 'https://newy.com.my'
   
   try {
     const supabase = createClient(

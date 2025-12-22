@@ -213,7 +213,7 @@ export default function NotFound() {
                 onClick={() => {
                   const messages = [
                     "You found the secret button! 🎉",
-                    "DigitalLinked appreciates your curiosity! 🚀",
+                    "Newy Enterprise appreciates your curiosity! 🚀",
                     "404 errors happen to the best of us! 💫",
                     "Thanks for exploring our digital space! 🌟"
                   ];

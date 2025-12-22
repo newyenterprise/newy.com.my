@@ -27,7 +27,7 @@ export function ChatAssistant() {
      const [messages, setMessages] = useState<Message[]>([
      {
        id: '1',
-       content: 'Hey there! 👋 I\'m AskLinked, your digital solutions expert. I can help you with quotes, pricing, and info about Digital Linked\'s services!\n\nWhat can I help you with today?\n• Website development quote\n• Mobile app pricing\n• AI automation info\n• Digital marketing services\n• Just browsing - tell me more!',
+       content: 'Hey there! 👋 I\'m AskLinked, your digital solutions expert. I can help you with quotes, pricing, and info about Newy Enterprise\'s services!\n\nWhat can I help you with today?\n• Website development quote\n• Mobile app pricing\n• AI automation info\n• Digital marketing services\n• Just browsing - tell me more!',
        sender: 'assistant',
        timestamp: new Date()
      }
