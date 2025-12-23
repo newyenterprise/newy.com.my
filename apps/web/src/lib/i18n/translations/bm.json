@@ -1,0 +1,88 @@
+{
+  "nav": {
+    "website": "Laman Web",
+    "apps": "Aplikasi",
+    "aiAutomation": "Automasi AI",
+    "marketing": "Pemasaran",
+    "pricing": "Harga",
+    "portfolio": "Portfolio",
+    "blog": "Blog",
+    "contact": "Hubungi",
+    "instantQuote": "Sebut Harga Segera"
+  },
+  "footer": {
+    "tagline": "Rakan Digital Serba Lengkap Anda.",
+    "quickLinks": "Pautan Pantas",
+    "home": "Laman Utama",
+    "aboutUs": "Tentang Kami",
+    "portfolio": "Portfolio",
+    "blog": "Blog",
+    "contactUs": "Hubungi Kami",
+    "services": "Perkhidmatan",
+    "websiteDevelopment": "Pembangunan Laman Web",
+    "mobileApps": "Aplikasi Mudah Alih",
+    "aiAutomation": "Automasi AI",
+    "digitalMarketing": "Pemasaran Digital",
+    "contactUs": "Hubungi Kami",
+    "copyright": "© 2025 Newy. Hak cipta terpelihara.",
+    "privacyPolicy": "Dasar Privasi",
+    "termsOfService": "Terma Perkhidmatan",
+    "cookiePolicy": "Dasar Kuki"
+  },
+  "home": {
+    "hero": {
+      "title": "Newy.",
+      "subtitle": "Rakan Strategik Anda untuk",
+      "highlight": "Kejayaan Digital",
+      "description": "Kami mencipta laman web yang menakjubkan, membina aplikasi inovatif, melaksanakan automasi AI yang pintar, dan memacu strategi pemasaran yang memberi kesan untuk mengembangkan perniagaan anda.",
+      "cta": "Mula Sekarang",
+      "learnMore": "Ketahui Lebih Lanjut",
+      "contactUs": "Hubungi Kami"
+    },
+    "services": {
+      "title": "Penyelesaian Digital Menyeluruh",
+      "subtitle": "Dari konsep hingga pelancaran, kami menyediakan penyelesaian digital dari hujung ke hujung yang mendorong pertumbuhan, meningkatkan pengalaman pengguna, dan memberikan hasil yang boleh diukur untuk perniagaan anda.",
+      "website": {
+        "title": "Pembangunan Laman Web",
+        "description": "Laman web tersuai dan responsif yang menukar pelawat kepada pelanggan."
+      },
+      "apps": {
+        "title": "Pembangunan Aplikasi",
+        "description": "Aplikasi mudah alih asli dan merentas platform untuk iOS dan Android."
+      },
+      "ai": {
+        "title": "Automasi AI",
+        "description": "Penyelesaian automasi pintar yang memudahkan operasi anda."
+      },
+      "marketing": {
+        "title": "Pemasaran Digital",
+        "description": "Strategi pemasaran berasaskan data yang mengembangkan kehadiran dalam talian anda."
+      }
+    },
+    "features": {
+      "title": "Mula dengan Cepat & Cekap",
+      "subtitle": "Proses kami yang teratur memastikan perjalanan yang lancar dan cekap dari konsep hingga pelancaran. Kami mengutamakan kejelasan, kerjasama, dan memberikan nilai dengan cepat.",
+      "items": {
+        "0": "Onboarding pantas & penyelarasan strategi.",
+        "1": "Pengurusan projek & komunikasi yang telus.",
+        "2": "Penyelesaian fleksibel yang disesuaikan dengan bajet & matlamat anda."
+      }
+    },
+    "cta": {
+      "title": "Bersedia untuk Mengurangkan Kekacauan & Meningkatkan Kehadiran Digital Anda?",
+      "description": "Mari kita bincangkan bagaimana NewY Enterprise boleh menjadi rakan kongsi yang dipercayai anda dalam menavigasi kerumitan dunia digital dan mencapai objektif perniagaan anda.",
+      "strategyCall": "Tempah Panggilan Strategi Percuma",
+      "instantQuote": "Sebut Harga Segera"
+    },
+    "excellence": {
+      "title": "Kecemerlangan Digital",
+      "subtitle": "Mengubah idea menjadi realiti digital"
+    }
+  },
+  "seo": {
+    "defaultTitle": "Newy Enterprise - Agensi Digital di Malaysia",
+    "defaultDescription": "Newy Enterprise adalah agensi digital terkemuka di Malaysia. Kami menyediakan penyelesaian digital profesional, pembangunan laman web, aplikasi mudah alih, automasi AI, dan perkhidmatan pemasaran digital untuk membantu perniagaan berkembang.",
+    "keywords": "agensi digital Malaysia, pembangunan laman web Malaysia, pembangunan aplikasi Malaysia, automasi AI Malaysia, pemasaran digital Malaysia, agensi digital Malaysia, Newy Enterprise"
+  }
+}
+

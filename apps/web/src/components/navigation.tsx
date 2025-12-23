@@ -5,19 +5,23 @@ import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@newy/ui";
 import { Menu, X } from "lucide-react";
+import { useTranslations } from "@/hooks/use-translations";
+import { LanguageSwitcher } from "./language-switcher";
+import { LocalizedLink } from "@/lib/i18n/link";
 
 export function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
+  const { t } = useTranslations();
 
   const navigation = [
-    { name: "Website", href: "/website" },
-    { name: "Apps", href: "/apps" },
-    { name: "AI Automation", href: "/ai-automation" },
-    { name: "Marketing", href: "/marketing" },
-    { name: "Pricing", href: "/pricing" },
-    { name: "Portfolio", href: "/portfolio" },
-    { name: "Blog", href: "/blog" },
-    { name: "Contact", href: "/contact" },
+    { name: t("nav.website"), href: "/website", key: "website" },
+    { name: t("nav.apps"), href: "/apps", key: "apps" },
+    { name: t("nav.aiAutomation"), href: "/ai-automation", key: "aiAutomation" },
+    { name: t("nav.marketing"), href: "/marketing", key: "marketing" },
+    { name: t("nav.pricing"), href: "/pricing", key: "pricing" },
+    { name: t("nav.portfolio"), href: "/portfolio", key: "portfolio" },
+    { name: t("nav.blog"), href: "/blog", key: "blog" },
+    { name: t("nav.contact"), href: "/contact", key: "contact" },
   ];
 
   return (
@@ -25,7 +29,7 @@ export function Navigation() {
       <div className="container">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link href="/" className="flex items-center">
+          <LocalizedLink href="/" className="flex items-center">
             <Image 
               src="/newy_logo.png" 
               alt="NewY Logo" 
@@ -35,33 +39,35 @@ export function Navigation() {
               priority
               unoptimized
             />
-          </Link>
+          </LocalizedLink>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             {navigation.map((item) => (
-              <Link
-                key={item.name}
+              <LocalizedLink
+                key={item.key}
                 href={item.href}
                 className="text-foreground hover:text-accent transition-colors duration-200"
               >
                 {item.name}
-              </Link>
+              </LocalizedLink>
             ))}
           </div>
 
-          {/* CTA Button */}
+          {/* CTA Button & Language Switcher */}
           <div className="hidden md:flex items-center space-x-4">
+            <LanguageSwitcher />
             <Button 
               className="btn-primary"
               asChild
             >
-              <Link href="/pricing">Instant Quote</Link>
+              <LocalizedLink href="/pricing">{t("nav.instantQuote")}</LocalizedLink>
             </Button>
           </div>
 
-          {/* Mobile menu button */}
-          <div className="md:hidden">
+          {/* Mobile menu button & Language Switcher */}
+          <div className="md:hidden flex items-center gap-3">
+            <LanguageSwitcher />
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="text-foreground hover:text-accent"
@@ -76,21 +82,21 @@ export function Navigation() {
           <div className="md:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1 bg-background/95 backdrop-blur-md border-t border-primary/20">
               {navigation.map((item) => (
-                <Link
-                  key={item.name}
+                <LocalizedLink
+                  key={item.key}
                   href={item.href}
                   className="block px-3 py-2 text-foreground hover:text-accent transition-colors duration-200"
                   onClick={() => setIsOpen(false)}
                 >
                   {item.name}
-                </Link>
+                </LocalizedLink>
               ))}
-              <div className="px-3 py-2 space-y-2">
+              <div className="px-3 py-2">
                 <Button 
                   className="btn-primary w-full"
                   asChild
                 >
-                  <Link href="/pricing" onClick={() => setIsOpen(false)}>Instant Quote</Link>
+                  <LocalizedLink href="/pricing" onClick={() => setIsOpen(false)}>{t("nav.instantQuote")}</LocalizedLink>
                 </Button>
               </div>
             </div>

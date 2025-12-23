@@ -1,8 +1,13 @@
-import Link from "next/link";
+"use client";
+
 import Image from "next/image";
 import { Mail, Phone, MapPin, Twitter, Linkedin, Facebook, Instagram } from "lucide-react";
+import { useTranslations } from "@/hooks/use-translations";
+import { LocalizedLink } from "@/lib/i18n/link";
 
 export function Footer() {
+  const { t } = useTranslations();
+  
   return (
     <footer className="bg-background border-t border-primary/20">
       <div className="container py-12">
@@ -20,7 +25,7 @@ export function Footer() {
               />
             </div>
             <p className="text-muted-foreground mb-6 leading-relaxed">
-              Your All-In-One Digital Partner.
+              {t("footer.tagline")}
             </p>
             <div className="flex space-x-4">
               <a 
@@ -56,66 +61,66 @@ export function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h3 className="font-semibold text-lg mb-6">Quick Links</h3>
+            <h3 className="font-semibold text-lg mb-6">{t("footer.quickLinks")}</h3>
             <ul className="space-y-3">
               <li>
-                <Link href="/" className="text-muted-foreground hover:text-accent transition-colors">
-                  Home
-                </Link>
+                <LocalizedLink href="/" className="text-muted-foreground hover:text-accent transition-colors">
+                  {t("footer.home")}
+                </LocalizedLink>
               </li>
               <li>
-                <Link href="/about" className="text-muted-foreground hover:text-accent transition-colors">
-                  About Us
-                </Link>
+                <LocalizedLink href="/about" className="text-muted-foreground hover:text-accent transition-colors">
+                  {t("footer.aboutUs")}
+                </LocalizedLink>
               </li>
               <li>
-                <Link href="/portfolio" className="text-muted-foreground hover:text-accent transition-colors">
-                  Portfolio
-                </Link>
+                <LocalizedLink href="/portfolio" className="text-muted-foreground hover:text-accent transition-colors">
+                  {t("footer.portfolio")}
+                </LocalizedLink>
               </li>
               <li>
-                <Link href="/blog" className="text-muted-foreground hover:text-accent transition-colors">
-                  Blog
-                </Link>
+                <LocalizedLink href="/blog" className="text-muted-foreground hover:text-accent transition-colors">
+                  {t("footer.blog")}
+                </LocalizedLink>
               </li>
               <li>
-                <Link href="/contact" className="text-muted-foreground hover:text-accent transition-colors">
-                  Contact Us
-                </Link>
+                <LocalizedLink href="/contact" className="text-muted-foreground hover:text-accent transition-colors">
+                  {t("footer.contactUs")}
+                </LocalizedLink>
               </li>
             </ul>
           </div>
 
           {/* Services */}
           <div>
-            <h3 className="font-semibold text-lg mb-6">Services</h3>
+            <h3 className="font-semibold text-lg mb-6">{t("footer.services")}</h3>
             <ul className="space-y-3">
               <li>
-                <Link href="/website" className="text-muted-foreground hover:text-accent transition-colors">
-                  Website Development
-                </Link>
+                <LocalizedLink href="/website" className="text-muted-foreground hover:text-accent transition-colors">
+                  {t("footer.websiteDevelopment")}
+                </LocalizedLink>
               </li>
               <li>
-                <Link href="/apps" className="text-muted-foreground hover:text-accent transition-colors">
-                  Mobile Apps
-                </Link>
+                <LocalizedLink href="/apps" className="text-muted-foreground hover:text-accent transition-colors">
+                  {t("footer.mobileApps")}
+                </LocalizedLink>
               </li>
               <li>
-                <Link href="/ai-automation" className="text-muted-foreground hover:text-accent transition-colors">
-                  AI Automation
-                </Link>
+                <LocalizedLink href="/ai-automation" className="text-muted-foreground hover:text-accent transition-colors">
+                  {t("footer.aiAutomation")}
+                </LocalizedLink>
               </li>
               <li>
-                <Link href="/marketing" className="text-muted-foreground hover:text-accent transition-colors">
-                  Digital Marketing
-                </Link>
+                <LocalizedLink href="/marketing" className="text-muted-foreground hover:text-accent transition-colors">
+                  {t("footer.digitalMarketing")}
+                </LocalizedLink>
               </li>
             </ul>
           </div>
 
           {/* Contact Us */}
           <div>
-            <h3 className="font-semibold text-lg mb-6">Contact Us</h3>
+            <h3 className="font-semibold text-lg mb-6">{t("footer.contactUs")}</h3>
             <div className="space-y-4">
               <div className="flex items-start gap-3">
                 <MapPin className="h-5 w-5 text-accent mt-0.5 flex-shrink-0" />
@@ -153,18 +158,18 @@ export function Footer() {
         <div className="border-t border-primary/20 mt-12 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-muted-foreground text-sm">
-              © 2025 Newy. All rights reserved.
+              {t("footer.copyright")}
             </p>
             <div className="flex items-center gap-6 text-sm">
-              <Link href="/privacy-policy" className="text-muted-foreground hover:text-accent transition-colors">
-                Privacy Policy
-              </Link>
-              <Link href="/terms-of-service" className="text-muted-foreground hover:text-accent transition-colors">
-                Terms of Service
-              </Link>
-              <Link href="/cookie-policy" className="text-muted-foreground hover:text-accent transition-colors">
-                Cookie Policy
-              </Link>
+              <LocalizedLink href="/privacy-policy" className="text-muted-foreground hover:text-accent transition-colors">
+                {t("footer.privacyPolicy")}
+              </LocalizedLink>
+              <LocalizedLink href="/terms-of-service" className="text-muted-foreground hover:text-accent transition-colors">
+                {t("footer.termsOfService")}
+              </LocalizedLink>
+              <LocalizedLink href="/cookie-policy" className="text-muted-foreground hover:text-accent transition-colors">
+                {t("footer.cookiePolicy")}
+              </LocalizedLink>
             </div>
           </div>
         </div>

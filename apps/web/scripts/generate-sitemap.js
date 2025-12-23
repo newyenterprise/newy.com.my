@@ -5,8 +5,8 @@ const path = require('path');
 async function generateSitemap() {
   const baseUrl = process.env.SITE_URL || 'https://newy.com.my';
   
-  // Static pages
-  const staticPages = [
+  // Static pages - English (root level, no prefix)
+  const staticPagesEN = [
     {
       url: baseUrl,
       lastModified: new Date().toISOString(),
@@ -81,6 +81,12 @@ async function generateSitemap() {
     },
   ];
 
+  // Static pages - Bahasa Malaysia (with /bm prefix)
+  const staticPagesBM = staticPagesEN.map(page => ({
+    ...page,
+    url: page.url === baseUrl ? `${baseUrl}/bm` : `${baseUrl}/bm${page.url.replace(baseUrl, '')}`,
+  }));
+
   // Dynamic blog posts
   let blogPosts = [];
   
@@ -98,12 +104,23 @@ async function generateSitemap() {
         .order('published_at', { ascending: false });
 
       if (!error && posts) {
-        blogPosts = posts.map((post) => ({
+        // English blog posts
+        const blogPostsEN = posts.map((post) => ({
           url: `${baseUrl}/blog/${post.slug}`,
           lastModified: new Date(post.updated_at || post.published_at || new Date()).toISOString(),
           changeFrequency: 'monthly',
           priority: 0.6,
         }));
+        
+        // Bahasa Malaysia blog posts
+        const blogPostsBM = posts.map((post) => ({
+          url: `${baseUrl}/bm/blog/${post.slug}`,
+          lastModified: new Date(post.updated_at || post.published_at || new Date()).toISOString(),
+          changeFrequency: 'monthly',
+          priority: 0.6,
+        }));
+        
+        blogPosts = [...blogPostsEN, ...blogPostsBM];
       }
     } else {
       console.warn('Supabase credentials not found. Skipping blog posts in sitemap.');
@@ -112,8 +129,8 @@ async function generateSitemap() {
     console.error('Error fetching blog posts for sitemap:', error);
   }
 
-  // Combine all pages
-  const allPages = [...staticPages, ...blogPosts];
+  // Combine all pages (English + Bahasa Malaysia)
+  const allPages = [...staticPagesEN, ...staticPagesBM, ...blogPosts];
 
   // Generate XML
   const xml = `<?xml version="1.0" encoding="UTF-8"?>

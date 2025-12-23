@@ -6,6 +6,8 @@ import { Toaster } from "../components/ui/toaster";
 import { LayoutWrapper } from "../components/layout-wrapper";
 import { AuthProvider } from "../contexts/auth-context";
 import { AnalyticsWrapper } from "../components/analytics";
+import { getServerTranslations } from "@/lib/i18n/server";
+import { defaultLocale } from "@/lib/i18n";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -18,68 +20,81 @@ const poppins = Poppins({
   variable: "--font-poppins",
 });
 
-export const metadata: Metadata = {
-  title: {
-    default: "Newy Enterprise - Digital Agency in Malaysia",
-    template: "%s | Newy Enterprise"
-  },
-  description: "Newy Enterprise is a leading digital agency in Malaysia. We provide professional digital solutions, web development, mobile apps, AI automation, and digital marketing services to help businesses grow.",
-  keywords: ["digital agency Malaysia", "web development Malaysia", "app development Malaysia", "AI automation Malaysia", "digital marketing Malaysia", "Malaysia digital agency", "Newy Enterprise"],
-  authors: [{ name: "NewY Enterprise" }],
-  creator: "NewY Enterprise",
-  publisher: "NewY Enterprise",
-  formatDetection: {
-    email: false,
-    address: false,
-    telephone: false,
-  },
-  metadataBase: new URL('https://newy.com.my'),
-  alternates: {
-    canonical: '/',
-  },
-  openGraph: {
-    type: "website",
-    locale: "en_MY",
-    url: "https://newy.com.my",
-    title: "Newy Enterprise - Digital Agency in Malaysia",
-    description: "Newy Enterprise is a leading digital agency in Malaysia. We provide professional digital solutions, web development, mobile apps, AI automation, and digital marketing services to help businesses grow.",
-    siteName: "Newy Enterprise",
-    images: [
-      {
-        url: "https://newy.com.my/og-image.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Newy Enterprise - Digital Agency in Malaysia",
+export async function generateMetadata(): Promise<Metadata> {
+  const { t } = await getServerTranslations('en');
+  const baseUrl = 'https://newy.com.my';
+  
+  const metadata: Metadata = {
+    title: {
+      default: t("seo.defaultTitle"),
+      template: `%s | Newy Enterprise`
+    },
+    description: t("seo.defaultDescription"),
+    keywords: t("seo.keywords").split(", "),
+    authors: [{ name: "NewY Enterprise" }],
+    creator: "NewY Enterprise",
+    publisher: "NewY Enterprise",
+    formatDetection: {
+      email: false,
+      address: false,
+      telephone: false,
+    },
+    metadataBase: new URL(baseUrl),
+    alternates: {
+      canonical: '/',
+      languages: {
+        'en': `${baseUrl}`,
+        'bm': `${baseUrl}/bm`,
+        'x-default': `${baseUrl}`,
       },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Newy Enterprise - Digital Agency in Malaysia",
-    description: "Newy Enterprise is a leading digital agency in Malaysia. We provide professional digital solutions, web development, mobile apps, AI automation, and digital marketing services to help businesses grow.",
-    creator: "@newyenterprise",
-    site: "@newyenterprise",
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
+    },
+    openGraph: {
+      type: "website",
+      locale: 'en_MY',
+      alternateLocale: 'ms_MY',
+      url: `${baseUrl}`,
+      title: t("seo.defaultTitle"),
+      description: t("seo.defaultDescription"),
+      siteName: "Newy Enterprise",
+      images: [
+        {
+          url: `${baseUrl}/og-image.jpg`,
+          width: 1200,
+          height: 630,
+          alt: t("seo.defaultTitle"),
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: t("seo.defaultTitle"),
+      description: t("seo.defaultDescription"),
+      creator: "@newyenterprise",
+      site: "@newyenterprise",
+    },
+    robots: {
       index: true,
       follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-video-preview": -1,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+      },
     },
-  },
-  verification: {
-    google: "OIZtBsB8Ea4HW_XBx4xoa-iWCy85z56rgTF8Ys-nwEc",
-  },
-  other: {
-    "theme-color": "#1c0940",
-    "mobile-web-app-capable": "yes",
-    "apple-mobile-web-app-status-bar-style": "default",
-  },
-};
+    verification: {
+      google: "OIZtBsB8Ea4HW_XBx4xoa-iWCy85z56rgTF8Ys-nwEc",
+    },
+    other: {
+      "theme-color": "#1c0940",
+      "mobile-web-app-capable": "yes",
+      "apple-mobile-web-app-status-bar-style": "default",
+    },
+  };
+
+  return metadata;
+}
 
 export default function RootLayout({
   children,
@@ -100,6 +115,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           }}
         />
         {/* End Google Tag Manager */}
+        {/* Hreflang tags for SEO */}
+        <link rel="alternate" hrefLang="en" href="https://newy.com.my" />
+        <link rel="alternate" hrefLang="bm" href="https://newy.com.my/bm" />
+        <link rel="alternate" hrefLang="x-default" href="https://newy.com.my" />
         <link rel="icon" href="/media/newy_icon_main.png?v=2" type="image/png" />
         <link rel="apple-touch-icon" href="/media/newy_icon_main.png?v=2" />
         <link rel="manifest" href="/site.webmanifest?v=2" />

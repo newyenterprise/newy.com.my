@@ -1,0 +1,68 @@
+{
+  "nav": {
+    "website": "Website",
+    "apps": "Apps",
+    "aiAutomation": "AI Automation",
+    "marketing": "Marketing",
+    "pricing": "Pricing",
+    "portfolio": "Portfolio",
+    "blog": "Blog",
+    "contact": "Contact",
+    "instantQuote": "Instant Quote"
+  },
+  "footer": {
+    "tagline": "Your All-In-One Digital Partner.",
+    "quickLinks": "Quick Links",
+    "home": "Home",
+    "aboutUs": "About Us",
+    "portfolio": "Portfolio",
+    "blog": "Blog",
+    "contactUs": "Contact Us",
+    "services": "Services",
+    "websiteDevelopment": "Website Development",
+    "mobileApps": "Mobile Apps",
+    "aiAutomation": "AI Automation",
+    "digitalMarketing": "Digital Marketing",
+    "contactUs": "Contact Us",
+    "copyright": "© 2025 Newy. All rights reserved.",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfService": "Terms of Service",
+    "cookiePolicy": "Cookie Policy"
+  },
+  "home": {
+    "hero": {
+      "title": "Newy.",
+      "subtitle": "Your Strategic Partner for",
+      "highlight": "Digital Excellence",
+      "description": "We transform businesses through innovative digital solutions, cutting-edge technology, and strategic marketing that drives real results.",
+      "cta": "Get Started",
+      "learnMore": "Learn More"
+    },
+    "services": {
+      "title": "Our Services",
+      "subtitle": "Comprehensive Digital Solutions",
+      "website": {
+        "title": "Website Development",
+        "description": "Custom websites that convert visitors into customers"
+      },
+      "apps": {
+        "title": "Mobile Apps",
+        "description": "Native and cross-platform mobile applications"
+      },
+      "ai": {
+        "title": "AI Automation",
+        "description": "Intelligent automation to streamline your business"
+      },
+      "marketing": {
+        "title": "Digital Marketing",
+        "description": "Data-driven marketing strategies that deliver results"
+      }
+    }
+  },
+  "seo": {
+    "defaultTitle": "Newy Enterprise - Digital Agency in Malaysia",
+    "defaultDescription": "Newy Enterprise is a leading digital agency in Malaysia. We provide professional digital solutions, web development, mobile apps, AI automation, and digital marketing services to help businesses grow.",
+    "keywords": "digital agency Malaysia, web development Malaysia, app development Malaysia, AI automation Malaysia, digital marketing Malaysia, Malaysia digital agency, Newy Enterprise"
+  }
+}
+
