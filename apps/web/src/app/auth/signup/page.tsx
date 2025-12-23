@@ -19,6 +19,7 @@ export default function SignupPage() {
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
 
   useEffect(() => {
     if (!authLoading && user) {
@@ -58,15 +59,27 @@ export default function SignupPage() {
     }
 
     try {
+      setError("");
+      setSuccess("");
       const { error } = await signUp(formData.email, formData.password, formData.name);
       if (error) {
         setError(error.message);
+        setSuccess("");
       } else {
-        // Show success message or redirect
-        setError("Account created successfully! Please check your email to verify your account.");
+        // Show success message
+        setSuccess("Account created successfully! Please check your email to verify your account.");
+        setError("");
+        // Clear form
+        setFormData({
+          email: "",
+          password: "",
+          confirmPassword: "",
+          name: ""
+        });
       }
     } catch (err) {
       setError("An unexpected error occurred");
+      setSuccess("");
     } finally {
       setIsLoading(false);
     }
@@ -103,12 +116,14 @@ export default function SignupPage() {
           <h2 className="text-2xl font-bold text-white text-center mb-6">Sign Up</h2>
           
           {error && (
-            <div className={`mb-4 p-3 rounded-lg text-sm ${
-              error.includes("successfully") 
-                ? "bg-green-500/20 border border-green-500/50 text-green-200"
-                : "bg-red-500/20 border border-red-500/50 text-red-200"
-            }`}>
+            <div className="mb-4 p-3 rounded-lg text-sm bg-red-500/20 border border-red-500/50 text-red-200">
               {error}
+            </div>
+          )}
+
+          {success && (
+            <div className="mb-4 p-3 rounded-lg text-sm bg-green-500/20 border border-green-500/50 text-green-200">
+              {success}
             </div>
           )}
 
