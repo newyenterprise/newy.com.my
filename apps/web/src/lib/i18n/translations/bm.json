@@ -79,6 +79,84 @@
       "subtitle": "Mengubah idea menjadi realiti digital"
     }
   },
+  "website": {
+    "hero": {
+      "title": "Pembangunan Laman Web Tersuai",
+      "description": "Kami membina laman web yang cantik, responsif, dan berprestasi tinggi yang bukan sahaja kelihatan hebat tetapi juga menghasilkan hasil untuk perniagaan anda. Dari laman pendaratan mudah hingga platform e-dagang yang kompleks.",
+      "cta": "Dapatkan Sebut Harga Laman Web",
+      "viewPortfolio": "Lihat Portfolio Kami"
+    },
+    "approach": {
+      "title": "Pendekatan Pembangunan Web Kami",
+      "subtitle": "Di Newy Enterprise, kami menggabungkan teknologi canggih dengan reka bentuk kreatif untuk menyampaikan penyelesaian web yang selaras dengan identiti jenama dan objektif perniagaan anda."
+    },
+    "types": {
+      "title": "Jenis Laman Web Yang Kami Bina",
+      "subtitle": "Dari laman pendaratan mudah hingga platform e-dagang yang kompleks, kami mempunyai kepakaran untuk mewujudkan visi anda"
+    }
+  },
+  "apps": {
+    "hero": {
+      "title": "Pembangunan Aplikasi Inovatif",
+      "description": "Kami membina aplikasi mudah alih dan web tersuai yang menarik pengguna, menyelesaikan masalah, dan mendorong pertumbuhan perniagaan. Dari aplikasi mudah alih asli hingga aplikasi web progresif.",
+      "cta": "Dapatkan Sebut Harga Aplikasi",
+      "viewProjects": "Lihat Projek Aplikasi"
+    },
+    "expertise": {
+      "title": "Kepakaran Pembangunan Aplikasi Kami",
+      "subtitle": "Kami pakar dalam mencipta pelbagai aplikasi, dari penyelesaian perusahaan yang canggih hingga aplikasi pengguna yang menarik."
+    }
+  },
+  "aiAutomation": {
+    "hero": {
+      "title": "Automasi Aliran Kerja & Chatbot AI",
+      "description": "Permudahkan aliran kerja pemasaran dan perniagaan anda dengan platform automasi yang berkuasa dan chatbot pintar yang melibatkan pelanggan 24/7.",
+      "cta": "Dapatkan Sebut Harga Automasi AI",
+      "viewProjects": "Lihat Projek Automasi"
+    },
+    "transform": {
+      "title": "Bagaimana Automasi Boleh Mengubah Perniagaan Anda",
+      "subtitle": "Kami pakar dalam automasi aliran kerja menggunakan platform seperti n8n, Make, dan Zapier, ditambah chatbot pintar yang memudahkan proses pemasaran dan perniagaan anda."
+    }
+  },
+  "marketing": {
+    "hero": {
+      "title": "Pemasaran Digital Strategik",
+      "description": "Amplifikasikan jenama anda, libatkan audiens anda, dan dorong hasil yang boleh diukur dengan perkhidmatan pemasaran digital komprehensif kami. Dari SEO hingga media sosial, kami ada untuk anda.",
+      "cta": "Dapatkan Sebut Harga Pemasaran",
+      "viewCases": "Lihat Kajian Kes"
+    },
+    "approach": {
+      "title": "Pendekatan Pemasaran Berasaskan Data Kami",
+      "subtitle": "Kami percaya pada strategi yang disokong oleh data dan kreativiti yang menukar. Perkhidmatan pemasaran digital kami direka untuk membantu anda mencapai pertumbuhan mampan dan hasil yang boleh diukur."
+    }
+  },
+  "pricing": {
+    "title": "Harga & Pakej",
+    "subtitle": "Penyelesaian fleksibel yang disesuaikan dengan bajet dan matlamat anda"
+  },
+  "portfolio": {
+    "title": "Portfolio Kami",
+    "subtitle": "Lihat projek-projek yang telah kami selesaikan untuk pelanggan di seluruh Malaysia"
+  },
+  "contact": {
+    "title": "Hubungi Kami",
+    "subtitle": "Mari kita bincangkan bagaimana kami boleh membantu perniagaan anda berkembang",
+    "form": {
+      "name": "Nama",
+      "email": "E-mel",
+      "phone": "Nombor Telefon",
+      "message": "Mesej",
+      "submit": "Hantar Mesej"
+    }
+  },
+  "common": {
+    "getQuote": "Dapatkan Sebut Harga",
+    "learnMore": "Ketahui Lebih Lanjut",
+    "viewPortfolio": "Lihat Portfolio",
+    "contactUs": "Hubungi Kami",
+    "backToHome": "Kembali ke Laman Utama"
+  },
   "seo": {
     "defaultTitle": "Newy Enterprise - Agensi Digital di Malaysia",
     "defaultDescription": "Newy Enterprise adalah agensi digital terkemuka di Malaysia. Kami menyediakan penyelesaian digital profesional, pembangunan laman web, aplikasi mudah alih, automasi AI, dan perkhidmatan pemasaran digital untuk membantu perniagaan berkembang.",
