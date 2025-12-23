@@ -16,8 +16,8 @@ export async function getServerTranslations(locale?: string) {
   };
 }
 
-export function getServerLocale(): Locale {
-  const headersList = headers();
+export async function getServerLocale(): Promise<Locale> {
+  const headersList = await headers();
   const pathname = headersList.get('x-pathname') || '';
   
   // If pathname starts with /bm, it's Bahasa Malaysia
