@@ -118,10 +118,25 @@ async function billplzRequest<T>(
         const errorData = JSON.parse(responseText);
         if (errorData.error?.message) {
           errorMessage = errorData.error.message;
+        } else if (errorData.error) {
+          errorMessage = typeof errorData.error === 'string' 
+            ? errorData.error 
+            : JSON.stringify(errorData.error);
+        } else if (errorData.message) {
+          errorMessage = errorData.message;
         }
       } catch {
-        // Use default error message
+        // If not JSON, use response text as error message
+        if (responseText) {
+          errorMessage = responseText;
+        }
       }
+      
+      // Add status code to error message for debugging
+      if (response.status === 401 || response.status === 403) {
+        errorMessage = `Access denied (${response.status}). Please check your Billplz API credentials and Collection ID.`;
+      }
+      
       throw new Error(errorMessage);
     }
 
