@@ -73,9 +73,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         data: {
           full_name: fullName,
         },
-        emailRedirectTo: typeof window !== 'undefined' 
-          ? `${window.location.origin}/auth/callback?next=/dashboard`
-          : undefined,
       },
     })
     return { error }

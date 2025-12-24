@@ -57,6 +57,24 @@
         "title": "Digital Marketing",
         "description": "Data-driven marketing strategies that deliver results"
       }
+    },
+    "industries": {
+      "title": "Serving Diverse Industries",
+      "subtitle": "We adapt our expertise to meet the unique challenges and opportunities of various sectors, delivering tailored digital solutions that drive success.",
+      "list": {
+        "realEstate": "Real Estate",
+        "ecommerce": "E-commerce",
+        "healthcare": "Healthcare",
+        "education": "Education",
+        "startups": "Startups",
+        "logistics": "Logistics",
+        "restaurants": "Restaurants",
+        "portfolios": "Portfolios",
+        "creative": "Creative",
+        "technology": "Technology",
+        "aiAutomation": "AI & Automation",
+        "marketing": "Marketing"
+      }
     }
   },
   "seo": {
@@ -65,4 +83,5 @@
     "keywords": "digital agency Malaysia, web development Malaysia, app development Malaysia, AI automation Malaysia, digital marketing Malaysia, Malaysia digital agency, Newy Enterprise"
   }
 }
+
 

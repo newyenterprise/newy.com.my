@@ -15,38 +15,40 @@ import {
   Zap,
   Target
 } from "lucide-react";
+import { useTranslations } from "@/hooks/use-translations";
 
 interface Industry {
-  name: string;
+  nameKey: string;
   icon: React.ComponentType<{ className?: string }>;
 }
 
 const industries: Industry[] = [
-  { name: "Real Estate", icon: Building2 },
-  { name: "E-commerce", icon: ShoppingCart },
-  { name: "Healthcare", icon: Heart },
-  { name: "Education", icon: GraduationCap },
-  { name: "Startups", icon: Users },
-  { name: "Logistics", icon: Truck },
-  { name: "Restaurants", icon: UtensilsCrossed },
-  { name: "Portfolios", icon: Briefcase },
-  { name: "Creative", icon: Palette },
-  { name: "Technology", icon: Globe },
-  { name: "AI & Automation", icon: Zap },
-  { name: "Marketing", icon: Target },
+  { nameKey: "realEstate", icon: Building2 },
+  { nameKey: "ecommerce", icon: ShoppingCart },
+  { nameKey: "healthcare", icon: Heart },
+  { nameKey: "education", icon: GraduationCap },
+  { nameKey: "startups", icon: Users },
+  { nameKey: "logistics", icon: Truck },
+  { nameKey: "restaurants", icon: UtensilsCrossed },
+  { nameKey: "portfolios", icon: Briefcase },
+  { nameKey: "creative", icon: Palette },
+  { nameKey: "technology", icon: Globe },
+  { nameKey: "aiAutomation", icon: Zap },
+  { nameKey: "marketing", icon: Target },
 ];
 
 export function AnimatedIndustries() {
+  const { t } = useTranslations();
+
   return (
     <div className="py-20 bg-secondary/30">
       <div className="container">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold font-display mb-4">
-            Serving Diverse Industries
+            {t("home.industries.title")}
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            We adapt our expertise to meet the unique challenges and opportunities of various sectors, 
-            delivering tailored digital solutions that drive success.
+            {t("home.industries.subtitle")}
           </p>
         </div>
         
@@ -60,7 +62,7 @@ export function AnimatedIndustries() {
                 <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-4">
                   <industry.icon className="h-6 w-6 text-primary" />
                 </div>
-                <CardTitle className="text-lg">{industry.name}</CardTitle>
+                <CardTitle className="text-lg">{t(`home.industries.list.${industry.nameKey}`)}</CardTitle>
               </CardHeader>
             </Card>
           ))}

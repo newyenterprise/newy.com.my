@@ -77,6 +77,24 @@
     "excellence": {
       "title": "Kecemerlangan Digital",
       "subtitle": "Mengubah idea menjadi realiti digital"
+    },
+    "industries": {
+      "title": "Berkhidmat untuk Pelbagai Industri",
+      "subtitle": "Kami menyesuaikan kepakaran kami untuk memenuhi cabaran dan peluang unik pelbagai sektor, menyediakan penyelesaian digital tersuai yang mendorong kejayaan.",
+      "list": {
+        "realEstate": "Hartanah",
+        "ecommerce": "E-dagang",
+        "healthcare": "Penjagaan Kesihatan",
+        "education": "Pendidikan",
+        "startups": "Permulaan",
+        "logistics": "Logistik",
+        "restaurants": "Restoran",
+        "portfolios": "Portfolio",
+        "creative": "Kreatif",
+        "technology": "Teknologi",
+        "aiAutomation": "AI & Automasi",
+        "marketing": "Pemasaran"
+      }
     }
   },
   "website": {
