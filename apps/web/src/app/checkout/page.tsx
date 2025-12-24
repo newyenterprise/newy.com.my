@@ -44,7 +44,7 @@ export default function CheckoutPage() {
   });
   const [isProcessing, setIsProcessing] = useState(false);
   const [orderComplete, setOrderComplete] = useState(false);
-  const [paymentMethod, setPaymentMethod] = useState("card");
+  const [paymentMethod, setPaymentMethod] = useState("billplz"); // Default to Billplz for Malaysian customers
 
   // Load cart from localStorage or state management
   useEffect(() => {
@@ -127,33 +127,70 @@ export default function CheckoutPage() {
         throw new Error('Failed to create order');
       }
 
-      // Create Stripe checkout session
-      const response = await fetch('/api/create-checkout-session', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          orderId: order.id,
-          items: cartItems,
-          customerInfo,
-          total: calculateTotal()
-        }),
-      });
+      // Handle different payment methods
+      if (paymentMethod === 'billplz') {
+        // Create Billplz bill
+        const response = await fetch('/api/billplz/create-bill', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            orderId: order.id,
+            customerInfo: {
+              email: customerInfo.email,
+              fullName: customerInfo.fullName,
+              phone: customerInfo.phone,
+            },
+            amount: calculateTotal(),
+            description: `Order for ${cartItems.map(item => item.name).join(', ')}`,
+            reference1: order.id,
+            reference1Label: 'Order ID',
+          }),
+        });
 
-      const { url, error } = await response.json();
+        const { url, error } = await response.json();
 
-      if (error) {
-        throw new Error(error);
+        if (error) {
+          throw new Error(error);
+        }
+
+        // Redirect to Billplz payment page
+        window.location.href = url;
+      } else if (paymentMethod === 'card') {
+        // Create Stripe checkout session
+        const response = await fetch('/api/create-checkout-session', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            orderId: order.id,
+            items: cartItems,
+            customerInfo,
+            total: calculateTotal()
+          }),
+        });
+
+        const { url, error } = await response.json();
+
+        if (error) {
+          throw new Error(error);
+        }
+
+        // Redirect to Stripe checkout
+        window.location.href = url;
+      } else {
+        // Bank transfer - just mark as pending
+        setIsProcessing(false);
+        setOrderComplete(true);
       }
-
-      // Redirect to Stripe checkout
-      window.location.href = url;
 
     } catch (error) {
       console.error('Error processing order:', error);
       setIsProcessing(false);
       // Show error message to user
+      alert('Failed to process payment. Please try again.');
     }
   };
 
@@ -372,7 +409,21 @@ export default function CheckoutPage() {
                       />
                       <label htmlFor="card" className="flex items-center gap-2 cursor-pointer">
                         <CreditCard className="h-5 w-5" />
-                        <span>Credit/Debit Card</span>
+                        <span>Credit/Debit Card (Stripe)</span>
+                      </label>
+                    </div>
+                    <div className="flex items-center space-x-3">
+                      <input
+                        type="radio"
+                        id="billplz"
+                        name="paymentMethod"
+                        value="billplz"
+                        checked={paymentMethod === "billplz"}
+                        onChange={(e) => setPaymentMethod(e.target.value)}
+                        className="text-purple-500"
+                      />
+                      <label htmlFor="billplz" className="flex items-center gap-2 cursor-pointer">
+                        <span>Billplz (FPX, Credit Card, E-Wallet)</span>
                       </label>
                     </div>
                     <div className="flex items-center space-x-3">
@@ -397,7 +448,9 @@ export default function CheckoutPage() {
                       <span className="text-sm font-medium">Secure Payment</span>
                     </div>
                     <p className="text-xs text-blue-600 dark:text-blue-400 mt-1">
-                      Your payment information is encrypted and secure. We use Stripe for payment processing.
+                      {paymentMethod === 'billplz' 
+                        ? 'Your payment is processed securely through Billplz. Supports FPX, Credit Cards, and E-Wallets (Boost, Touch n Go, GrabPay, ShopeePay, etc.).'
+                        : 'Your payment information is encrypted and secure. We use Stripe for payment processing.'}
                     </p>
                   </div>
                 </CardContent>
