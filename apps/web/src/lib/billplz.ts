@@ -148,7 +148,7 @@ export async function createCollection(
   config: BillplzConfig,
   params: CreateCollectionParams
 ): Promise<CollectionResponse> {
-  const response = await billplzRequest<{ collection: CollectionResponse }>(
+  const response = await billplzRequest<{ collection: CollectionResponse } | CollectionResponse>(
     '/v3/collections',
     'POST',
     config.apiSecretKey,
@@ -156,7 +156,11 @@ export async function createCollection(
     { title: params.title }
   );
 
-  return (response as any).collection || response as CollectionResponse;
+  // Handle both response formats: { collection: {...} } or direct CollectionResponse
+  if (typeof response === 'object' && response !== null && 'collection' in response) {
+    return (response as { collection: CollectionResponse }).collection;
+  }
+  return response as CollectionResponse;
 }
 
 /**
@@ -199,7 +203,7 @@ export async function createBill(
     billData.reference_2_label = params.reference2Label;
   }
 
-  const response = await billplzRequest<{ bill: BillResponse }>(
+  const response = await billplzRequest<{ bill: BillResponse } | BillResponse>(
     '/v3/bills',
     'POST',
     config.apiSecretKey,
@@ -207,7 +211,11 @@ export async function createBill(
     billData
   );
 
-  return (response as any).bill || response as BillResponse;
+  // Handle both response formats: { bill: {...} } or direct BillResponse
+  if (typeof response === 'object' && response !== null && 'bill' in response) {
+    return (response as { bill: BillResponse }).bill;
+  }
+  return response as BillResponse;
 }
 
 /**
@@ -217,14 +225,18 @@ export async function getBill(
   config: BillplzConfig,
   billId: string
 ): Promise<BillResponse> {
-  const response = await billplzRequest<{ bill: BillResponse }>(
+  const response = await billplzRequest<{ bill: BillResponse } | BillResponse>(
     `/v3/bills/${billId}`,
     'GET',
     config.apiSecretKey,
     config.isSandbox
   );
 
-  return (response as any).bill || response as BillResponse;
+  // Handle both response formats: { bill: {...} } or direct BillResponse
+  if (typeof response === 'object' && response !== null && 'bill' in response) {
+    return (response as { bill: BillResponse }).bill;
+  }
+  return response as BillResponse;
 }
 
 import crypto from 'crypto';
