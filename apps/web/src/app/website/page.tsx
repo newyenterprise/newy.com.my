@@ -60,7 +60,7 @@ export default function WebsitePage() {
           <ScrollReveal className="text-center mb-16">
             <h2 className="text-4xl font-bold font-display mb-4">Our Web Development Approach</h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              At Digital Linked, we combine cutting-edge technology with creative design to deliver 
+              At Newy, we combine cutting-edge technology with creative design to deliver 
               web solutions that are perfectly aligned with your brand identity and business 
               objectives. Our proven process ensures success:
             </p>
