@@ -204,7 +204,7 @@ export default function WebsitePage() {
       <section className="py-24 bg-gradient-to-r from-purple-900/20 to-pink-900/20">
         <div className="container">
           <ScrollReveal className="text-center mb-16">
-            <h2 className="text-4xl font-bold font-display mb-4">Why Choose Digital Linked?</h2>
+            <h2 className="text-4xl font-bold font-display mb-4">Why Choose Newy?</h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               We're not just developers – we're your digital partners committed to your success
             </p>
@@ -460,14 +460,14 @@ export default function WebsitePage() {
             {[
               {
                 rating: 5,
-                text: "Digital Linked transformed our outdated website into a modern, high-converting platform. Our leads increased by 40% within the first month!",
+                text: "Newy transformed our outdated website into a modern, high-converting platform. Our leads increased by 40% within the first month!",
                 author: "Sarah Johnson",
                 company: "TechStart Solutions",
                 project: "Corporate Website Redesign"
               },
               {
                 rating: 5,
-                text: "The team at Digital Linked is incredibly professional and skilled. They built our e-commerce store exactly as envisioned, and it's performing beyond expectations.",
+                text: "The team at Newy is incredibly professional and skilled. They built our e-commerce store exactly as envisioned, and it's performing beyond expectations.",
                 author: "Michael Chen",
                 company: "EcoStyle Boutique",
                 project: "E-commerce Platform"

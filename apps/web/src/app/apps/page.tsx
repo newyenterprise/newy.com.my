@@ -234,7 +234,7 @@ export default function AppsPage() {
       <section className="py-24 bg-gradient-to-r from-purple-900/20 to-pink-900/20">
         <div className="container">
           <ScrollReveal className="text-center mb-16">
-            <h2 className="text-4xl font-bold font-display mb-4">Why Choose Digital Linked?</h2>
+            <h2 className="text-4xl font-bold font-display mb-4">Why Choose Newy?</h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               We're not just developers – we're your digital partners committed to your app's success
             </p>
@@ -489,14 +489,14 @@ export default function AppsPage() {
             {[
               {
                 rating: 5,
-                text: "Digital Linked built our e-commerce app from scratch and it's been a game-changer for our business. User engagement increased by 60% and sales went up 40% in the first quarter!",
+                text: "Newy built our e-commerce app from scratch and it's been a game-changer for our business. User engagement increased by 60% and sales went up 40% in the first quarter!",
                 author: "Alex Rodriguez",
                 company: "Fashion Forward",
                 project: "E-commerce Mobile App"
               },
               {
                 rating: 5,
-                text: "The team at Digital Linked delivered our fitness app on time and within budget. The app has over 10,000 downloads and maintains a 4.8-star rating on the App Store.",
+                text: "The team at Newy delivered our fitness app on time and within budget. The app has over 10,000 downloads and maintains a 4.8-star rating on the App Store.",
                 author: "Sarah Kim",
                 company: "FitLife Solutions",
                 project: "Health & Fitness App"

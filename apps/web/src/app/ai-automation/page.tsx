@@ -204,7 +204,7 @@ export default function AIAutomationPage() {
       <section className="py-24 bg-gradient-to-r from-purple-900/20 to-pink-900/20">
         <div className="container">
           <ScrollReveal className="text-center mb-16">
-            <h2 className="text-4xl font-bold font-display mb-4">Why Choose Digital Linked?</h2>
+            <h2 className="text-4xl font-bold font-display mb-4">Why Choose Newy?</h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               We're not just automation experts – we're your digital partners committed to streamlining your workflows
             </p>
@@ -459,7 +459,7 @@ export default function AIAutomationPage() {
             {[
               {
                 rating: 5,
-                text: "Digital Linked automated our lead generation process and our conversion rate increased by 35%. The chatbot handles 80% of customer inquiries automatically!",
+                text: "Newy automated our lead generation process and our conversion rate increased by 35%. The chatbot handles 80% of customer inquiries automatically!",
                 author: "Maria Santos",
                 company: "TechGrowth Marketing",
                 project: "Lead Generation Automation"

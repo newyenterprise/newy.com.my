@@ -208,7 +208,7 @@ export default function MarketingPage() {
       <section className="py-24 bg-gradient-to-r from-purple-900/20 to-pink-900/20">
         <div className="container">
           <ScrollReveal className="text-center mb-16">
-            <h2 className="text-4xl font-bold font-display mb-4">Why Choose Digital Linked?</h2>
+              <h2 className="text-4xl font-bold font-display mb-4">Why Choose Newy?</h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               We're not just marketers – we're your growth partners committed to your success
             </p>
@@ -469,7 +469,7 @@ export default function MarketingPage() {
               {[
                 {
                   rating: 5,
-                  text: "Digital Linked transformed our online presence completely. Our organic traffic increased by 150% and we're generating 3x more leads than before!",
+                  text: "Newy transformed our online presence completely. Our organic traffic increased by 150% and we're generating 3x more leads than before!",
                   author: "Jennifer Martinez",
                   company: "EcoTech Solutions",
                   project: "SEO & Content Marketing"
